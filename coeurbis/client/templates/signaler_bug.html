@@ -1,0 +1,33 @@
+<template name="signaler_bug">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages">
+
+    <div class="register-form blanc">
+
+
+    <form id="contact" method="post" action="message_envoye_bug.php">
+
+    <fieldset><legend style="color: #0a68b4"><b>Signaler un bug</b></legend>
+         <div class="presentation-site">Tu as repéré un bug ? N'hésite pas à le signaler. <br><br></div>
+       
+    </fieldset>
+ 
+    <fieldset><strong>Titre du message :</strong><br/>
+        <p><input type="text" id="objet" name="titre" required class="form-control input-blanc"  value="" tabindex="3" /></p>
+        <p><strong>Message :</strong><br/><textarea id="message" class="form-control" name="message" tabindex="4" required cols="30" rows="8"></textarea></p>
+    </fieldset>
+ 
+    <input type="submit" class="btn btn-primary" name="envoi" value="Valider" />
+    </form>
+
+
+    </div>
+
+
+
+</div>
+
+</template>
