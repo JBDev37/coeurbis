@@ -32,7 +32,6 @@ spacebars
 templating
 deps
 tmeasday:paginated-subscription
-yogiben:admin
 dburles:collection-helpers
 aldeed:collection2
 alanning:roles
@@ -49,3 +48,4 @@ raix:handlebar-helpers
 zimme:active-route
 meteorhacks:unblock
 mfactory:admin-lte
+houston:admin
