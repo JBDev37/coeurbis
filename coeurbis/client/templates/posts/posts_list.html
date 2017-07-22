@@ -93,12 +93,13 @@
                                 } else{
                                  echo "<div style=\"color: red; display: inline-block;\"><a href=\"lire-message.php?id={$affiche_messages->ID}\"style=\"color:red;\">$nb_com</a></div> réponses";   
                                  } ; ?>--> 
+                                 <a href="{{pathFor 'postPage'}}">{{commentsCount}} réponses</a>
             </div>
              
              
                    <a href=""  class="private_message"><img  src="img/comment.png"></a>
              
-
+          {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
             
        </div>
            

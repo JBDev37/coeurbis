@@ -1,0 +1,30 @@
+<template name="postEdit">
+{{> side_bar_right }}
+{{> side_bar_left }}
+<div class="container-messages">
+    <div class="message-gauche">
+        <div class="container-messages-gauche">
+            <div class="blanc">
+                <form enctype="multipart/form-data" action="" method="post">
+                    <fieldset>
+             
+                        <label><strong>Titre</strong></label>
+                        <input type="text" id="" name="titre" class="titre_modifier form-control" value="{{post_title}}" required/><br>
+                        
+                        <label><strong>Message</strong></label>
+                        <textarea id="m" name="message" class="modifier_area" required> {{post_content}} </textarea><br>
+                        
+                        <br>
+                        <div class="input-conseillere">
+                        <input type="submit" name="submit" value="Modifier" class="btn btn-primary"/>
+                       </div>
+                    </fieldset>
+                       <a class="btn btn-danger delete" href="#">Supprimer</a>
+                    
+                     <div class="bloc-emoticones-poster-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

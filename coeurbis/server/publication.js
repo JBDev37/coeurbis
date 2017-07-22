@@ -5,3 +5,7 @@ Meteor.publish('posts', function() {
 Meteor.publish('users', function() {
   return Meteors.users.find();
 });
+
+Meteor.publish('comments', function() {
+  return Comments.find();
+});

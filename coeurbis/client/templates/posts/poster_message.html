@@ -1,12 +1,19 @@
 <template name="postSubmit">
 {{#if currentUser}}
 <div class="poster_message">
-        <form action="message_poster.php" class="form-horizontal" method="POST" id="" >
+        <form action="message_poster.php" class="form-horizontal" method="POST" id="" ><span class="help-block">{{errorMessage 'post_title'}}</span>
+        <span class="help-block">{{errorMessage 'title'}}</span>
             <div class="titre_poster_mesage">
                 <p>Demander un conseil</p>
             </div>
-            <input type="text" name="titre_message" class="titre_message_acceuil" placeholder="Titre du message" maxlength="35" required onfocus="this.placeholder = ''" onblur="this.placeholder = ' Titre du message'"/>
-            <textarea id="m"  name="contenu" class="textarea_poster_message" required  placeholder="Comment peut-on vous aider ?" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Comment peut-on vous aider ?'"  ></textarea>
+            
+            <input type="text" id="titre" required name="titre_message" class="titre_message_acceuil
+            " placeholder="Titre du message" maxlength="35"  onfocus="this.placeholder = ''" onblur="this.placeholder = ' Titre du message'"/>
+            
+            
+            
+            <textarea id="m" required name="contenu" class="textarea_poster_message {{errorClass 'post_title'}}"   placeholder="Comment peut-on vous aider ?" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Comment peut-on vous aider ?'"  ></textarea>
+            
             
             <div class="form-group footer-poster-message">
 					  
@@ -34,7 +41,7 @@
                 </div>
                 </ul>
           </div>
-                <input type="submit" name="submit_message" value="valider" class="btn btn-sm btn-primary valider-message"/> 
+                <input type="submit" name="submit" value="valider" class="btn btn-sm btn-primary valider-message"/> 
             </div>
         </form>
     </div>

@@ -1,11 +1,21 @@
 Posts = new Mongo.Collection('posts');
 
-Posts.allow({
+/*Posts.allow({
   insert: function(userId, doc) {
     // autoriser les posts seulement si l'utilisateur est authentifié
     return !! userId;
   }
- });
+ });*/
+
+Posts.allow({
+  
+  update: function(userId, post) { return ownsDocument(userId, post); },
+  remove: function(userId, post) { return ownsDocument(userId, post); },
+});
+
+/*var errors = validatePost(postAttributes);
+    if (errors.post_title || errors.post_content)
+      throw new Meteor.Error('invalid-post', "You must set a title and URL for your post");*/
 
  Meteor.methods({
     postInsert: function(postAttributes) {
@@ -28,3 +38,11 @@ Posts.allow({
     }
 });
 
+validatePost = function (post) {
+  var errors = {};
+  if (!post.post_title)
+    errors.title = "Please fill in a headline";
+  if (!post.content)
+    errors.url = "Please fill in a URL";
+  return errors;
+}

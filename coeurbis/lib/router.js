@@ -3,8 +3,8 @@ Router.configure({
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound',
    waitOn: function() {
-    return Meteor.subscribe('posts');
-    return Meteor.subscribe('users');
+    return [Meteor.subscribe('posts'),
+     Meteor.subscribe('comments')];
      }
 });
 
@@ -16,6 +16,12 @@ Router.route('/', {
 Router.route('/posts/:_id', {
   name: 'postPage',
   template: 'postPage',
+  data: function() {
+   return Posts.findOne(this.params._id); }
+});
+
+Router.route('/posts/:_id/edit', {
+  name: 'postEdit',
   data: function() {
    return Posts.findOne(this.params._id); }
 });
