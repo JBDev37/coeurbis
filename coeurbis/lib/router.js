@@ -1,10 +1,23 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  loadingTemplate: 'loading',
+  notFoundTemplate: 'notFound',
+   waitOn: function() {
+    return Meteor.subscribe('posts');
+    return Meteor.subscribe('users');
+     }
 });
 
 Router.route('/', {
 	name: 'index',
 	template : 'postsList'
+});
+
+Router.route('/posts/:_id', {
+  name: 'postPage',
+  template: 'postPage',
+  data: function() {
+   return Posts.findOne(this.params._id); }
 });
 
 Router.route('/contact', {
@@ -48,3 +61,5 @@ Router.route('/supprimer_compte', {
 	template : 'supprimer_compte',
 
 });
+
+Router.onBeforeAction('dataNotFound', {only: 'postPage'});

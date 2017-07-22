@@ -349,7 +349,9 @@
 
     }
 
-    
+    #btnRespNav{
+     display: block;
+    }
 
     .width--sidebar .site-pusher{
         transform: translateX(250px);

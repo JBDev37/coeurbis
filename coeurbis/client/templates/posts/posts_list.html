@@ -3,45 +3,9 @@
 {{> side_bar_right }}
 {{> side_bar_left }}
 <div class="container-messages">
-	<div class="poster_message">
-        <form action="message_poster.php" class="form-horizontal" method="POST" id="" >
-            <div class="titre_poster_mesage">
-                <p>Demander un conseil</p>
-            </div>
-            <input type="text" name="titre_message" class="titre_message_acceuil" placeholder="Titre du message" maxlength="35" required onfocus="this.placeholder = ''" onblur="this.placeholder = ' Titre du message'"/>
-            <textarea id="m"  name="contenu" class="textarea_poster_message" required  placeholder="Comment peut-on vous aider ?" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Comment peut-on vous aider ?'"  ></textarea>
-            
-            <div class="form-group footer-poster-message">
-					  
-            <div class="form-group choix-theme" >
-					     
-                 <div data-toggle="buttons">
-  					      <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked>Amour</label>
-  					      <label class="btn btn-primary  btn-xs btn-circle ">       <input type="radio" name="categorie" value="Amitié">Amitié</label>
-  					      <label class="btn btn-primary btn-xs btn-circle ">       <input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
-  					       <label class="btn btn-primary btn-xs btn-circle">       <input type="radio" name="categorie" value="Sexo">Sexo</label>
-			    </div>
-			</div>
-
-          <div class="dropdown choix-deroulant form-group">
-                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Catégories
-                <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <div data-toggle="buttons">
-                  <label class="btn btn-primary btn-circle active"><input type="radio" name="categorie" value="Amour">Amour</label><br>
-                  <label class="btn btn-primary  btn-xs btn-circle ">       <input type="radio" name="categorie" value="Amitié">Amitié</label><br>
-                 <label class="btn btn-primary btn-xs btn-circle ">       <input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label><br>
-                  <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label><br>
-                </div>
-                </ul>
-          </div>
+	{{> postSubmit}}
          
-				<input type="submit" name="submit_message" value="valider" class="btn btn-sm btn-primary valider-message"/> 
-            </div>
-        </form>
-    </div>
+	
 
     {{#each posts}}
       {{> postItem}}
@@ -58,7 +22,7 @@
     <div class="container-messages-gauche">
       
       <!--<?php if ($user_Sexe == "garcon"){ ?>-->
-      <div class="titre_message_container">
+      <div class="titre_message_container">{{post_title}}
         
          <!--<?php 
          echo "<div class=\"titre_message\"><a href=\"lire-message.php?id={$affiche_messages->ID}\">$affiche_messages->post_title</a> </div>";
@@ -69,7 +33,7 @@
          
 
 
-          <div class="categorie_msg"  ><!--<?php echo $categorie_msg?>--></div> 
+          <div class="categorie_msg"  >{{categorie}}</div> 
          <!--<?php if(isset($_SESSION['auth'])){ 
           
           $is_signaler = Messages::is_signaler_msg($db, $message_id, $my_id);
@@ -83,7 +47,7 @@
       </div> <!--<?php } ?>-->
 
       <!--<?php if ($user_Sexe == "fille"){ ?>-->
-       <div class="titre_message_container_fille">{{title}}
+       <div class="titre_message_container_fille">{{post_title}}
         
          <!--<?php 
          echo "<div class=\"titre_message_fille\"><a href=\"lire-message.php?id={$affiche_messages->ID}\">$affiche_messages->post_title</a> </div>";
@@ -94,7 +58,7 @@
          
 
 
-          <div class="categorie_msg"  ><!--<?php echo $categorie_msg?>--></div> 
+          <div class="categorie_msg"  >{{categorie}}</div> 
          <!--<?php if(isset($_SESSION['auth'])){ 
           
           $is_signaler = Messages::is_signaler_msg($db, $message_id, $my_id);
@@ -107,17 +71,17 @@
              </form> <!--<?php } ?>-->
       </div> <!--<?php } ?>-->
      
-      <div class="content-message-gauche"> <!--<?php echo Emojione\Emojione::shortnameToImage(nl2br(substr($message_poste , 0,600)));?>--></div>
+      <div class="content-message-gauche"> {{post_content}}</div>
         
       <div class="footer-message_acceuil">
            
-            <div class="repondre btn btn-sm btn-primary"><!--<?php echo "<a href=\"lire-message.php?id={$affiche_messages->ID}\">Aider</a>" ?>--></div>
-            <div class="date-message"><!--<?php echo date("d", $date_c); echo $name_mois ; echo date("Y", $date_c); ?>--> </div>  {{author}}
+            <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
+            <div class="date-message">{{post_date}}</div>  
 
                 <!--<?php if ($user_Sexe == "fille"){
-                 echo " <div class=\"fille\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >$name_author  </a></div>";
+                 echo " <div class=\"fille\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >{{post_author}} </a></div>";
                 } else {
-                  echo " <div class=\"garcon\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >$name_author  </a></div>";
+                  echo " <div class=\"garcon\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >{{post_author}}  </a></div>";
                 }
 
  ?>-->
@@ -131,9 +95,9 @@
                                  } ; ?>--> 
             </div>
              
-             	<!--<?php 
-                    echo "<a href=\"chat.php?user=$author_id\" title=\"message privé\" class=\"private_message\"><img  src=\"img/comment.png\"></a>";
-                ?>-->  
+             
+                   <a href=""  class="private_message"><img  src="img/comment.png"></a>
+             
 
             
        </div>

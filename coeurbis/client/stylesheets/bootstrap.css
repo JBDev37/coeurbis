@@ -4003,7 +4003,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: white;
 }
 .nav > li.disabled > a {
   color: #bbbbbb;
@@ -4018,8 +4018,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eeeeee;
+  background-color: white;
   border-color: #2196f3;
+  color:#000000;
+  height: 100%;
 }
 .nav .nav-divider {
   height: 1px;

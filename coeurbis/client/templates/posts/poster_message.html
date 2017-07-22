@@ -1,0 +1,42 @@
+<template name="postSubmit">
+{{#if currentUser}}
+<div class="poster_message">
+        <form action="message_poster.php" class="form-horizontal" method="POST" id="" >
+            <div class="titre_poster_mesage">
+                <p>Demander un conseil</p>
+            </div>
+            <input type="text" name="titre_message" class="titre_message_acceuil" placeholder="Titre du message" maxlength="35" required onfocus="this.placeholder = ''" onblur="this.placeholder = ' Titre du message'"/>
+            <textarea id="m"  name="contenu" class="textarea_poster_message" required  placeholder="Comment peut-on vous aider ?" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Comment peut-on vous aider ?'"  ></textarea>
+            
+            <div class="form-group footer-poster-message">
+					  
+            <div class="form-group choix-theme" >
+					     
+                 <div data-toggle="buttons">
+  					      <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" >Amour</label>
+  					      <label class="btn btn-primary  btn-xs btn-circle ">       <input type="radio" name="categorie" value="Amitié">Amitié</label>
+  					      <label class="btn btn-primary btn-xs btn-circle ">       <input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
+  					       <label class="btn btn-primary btn-xs btn-circle">       <input type="radio" name="categorie" value="Sexo">Sexo</label>
+			    </div>
+			</div>
+
+          <div class="dropdown choix-deroulant form-group">
+                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Catégories
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <div data-toggle="buttons">
+                  <label class="btn btn-primary btn-circle active"><input type="radio" name="categorie" value="Amour">Amour</label><br>
+                  <label class="btn btn-primary  btn-xs btn-circle ">       <input type="radio" name="categorie" value="Amitié">Amitié</label><br>
+                 <label class="btn btn-primary btn-xs btn-circle ">       <input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label><br>
+                  <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label><br>
+                </div>
+                </ul>
+          </div>
+                <input type="submit" name="submit_message" value="valider" class="btn btn-sm btn-primary valider-message"/> 
+            </div>
+        </form>
+    </div>
+{{/if}}
+</template>
