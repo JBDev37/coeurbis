@@ -2757,4 +2757,7 @@ label{
  display: none;
 }
 
+.badge{
+    background-color: red;
+}
 

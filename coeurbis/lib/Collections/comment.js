@@ -12,11 +12,16 @@ Meteor.methods({
     var post = Posts.findOne(commentAttributes.postId);
     if (!post)
       throw new Meteor.Error('invalid-comment', 'Vous devez commenter sur un post');
-    comment = _.extend(commentAttributes, {
+      comment = _.extend(commentAttributes, {
       userId: user._id,
       author: user.username,
       submitted: new Date()
     });
-    return Comments.insert(comment);
+    // crée le commentaire et enregistre l'id
+    comment._id = Comments.insert(comment);
+    // crée maintenant une notification, informant l'utilisateur qu'il y a eu un commentaire
+    createCommentNotification(comment);
+    return comment._id;
   }
 });
+

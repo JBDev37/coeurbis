@@ -3,15 +3,33 @@ Router.configure({
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound',
    waitOn: function() {
-    return [Meteor.subscribe('posts'),
-     Meteor.subscribe('comments')];
+    return [
+    Meteor.subscribe('notifications'),
+   
+     Meteor.subscribe('comments')
+     ];
      }
 });
 
-Router.route('/', {
+
+
+
+Router.route('/:postsLimit?', {
 	name: 'index',
-	template : 'postsList'
+	template : 'postsList',
+	waitOn: function() {
+    var limit = parseInt(this.params.postsLimit) || 50;
+    return Meteor.subscribe('posts', {sort: {submitted: -1}, limit: limit});
+  },
+  data: function() {
+    var limit = parseInt(this.params.postsLimit) || 50;
+    return {
+      posts: Posts.find({}, {sort: {post_date: -1}, limit: limit})
+    };
+  }
+
 });
+
 
 Router.route('/posts/:_id', {
   name: 'postPage',
