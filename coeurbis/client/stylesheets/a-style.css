@@ -1,4 +1,8 @@
-@font-face {
+#login-dropdown-list .dropdown-menu {
+    min-width: 300px;
+    padding: 15px;
+    margin-left: -121px;
+}@font-face {
     font-family: "Saint denis";
     src: url('/police/Boulevard Saint Denis Light.ttf');
 }
@@ -2760,4 +2764,37 @@ label{
 .badge{
     background-color: red;
 }
+
+#login-dropdown-list .dropdown-menu {
+    min-width: 300px;
+    padding: 15px;
+    /*margin-left: 121px;*/
+}
+
+.vote{
+    background-color: white;
+    width: 20px;
+    border-radius: 4px;
+    margin-right: -5px;
+}
+
+.upvote{
+    width: 6px;
+    
+
+}
+
+.result-vote{
+   display: inline-block;
+    font-weight: bold;
+    float: right;
+    margin-top: 6px;
+
+}
+ 
+ .thumbs{
+    display: inline-block;
+    float: right;
+    margin-top: -10px;
+ }
 

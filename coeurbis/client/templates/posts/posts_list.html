@@ -23,84 +23,29 @@
   <div class="message-gauche">
 
     <div class="container-messages-gauche">
-      
-      <!--<?php if ($user_Sexe == "garcon"){ ?>-->
-      <div class="titre_message_container">{{post_title}}
-        
-         <!--<?php 
-         echo "<div class=\"titre_message\"><a href=\"lire-message.php?id={$affiche_messages->ID}\">$affiche_messages->post_title</a> </div>";
-         ?>-->
-
-         <!--<?php if($user_online == true){
-         echo "<img class=\"user_online\" src=\"img/Point_vert.gif\">"; } ?>-->
-         
-
-
+         <div class="titre_message_container">{{post_title}}
           <div class="categorie_msg"  >{{categorie}}</div> 
-         <!--<?php if(isset($_SESSION['auth'])){ 
-          
-          $is_signaler = Messages::is_signaler_msg($db, $message_id, $my_id);
-             if($is_signaler==true){
-             echo "<form class=\"signaler \" enctype=\"multipart/form-data\"   method=\"post\">";?>-->      <!--<?php echo "<input type=\"submit\" name=\"$message_id\" disabled id=\"$message_id\" value=\"Signalé !\" id=\"$message_id\" class=\"signaler\" style=\"font-weight:bold;\"/>";}
-             else {
-              echo "--><form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-             
-
-             </form> <!--<?php } ?>-->
-      </div> <!--<?php } ?>-->
-
-      <!--<?php if ($user_Sexe == "fille"){ ?>-->
-       <div class="titre_message_container_fille">{{post_title}}
-        
-         <!--<?php 
-         echo "<div class=\"titre_message_fille\"><a href=\"lire-message.php?id={$affiche_messages->ID}\">$affiche_messages->post_title</a> </div>";
-        ?>-->
-
-         <!--<?php if($user_online == true){
-         echo "<img class=\"user_online\" src=\"img/Point_vert.gif\">"; } ?>-->
-         
-
-
-          <div class="categorie_msg"  >{{categorie}}</div> 
-         <!--<?php if(isset($_SESSION['auth'])){ 
-          
-          $is_signaler = Messages::is_signaler_msg($db, $message_id, $my_id);
-             if($is_signaler==true){
-             echo "<form class=\"signaler \" enctype=\"multipart/form-data\"   method=\"post\">";?>-->      <!--<?php echo "<input type=\"submit\" name=\"$message_id\" disabled id=\"$message_id\" value=\"Signalé !\" id=\"$message_id\" class=\"signaler\" style=\"font-weight:bold;\"/>";}
-             else {
-              echo "--><form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-             
-
-             </form> <!--<?php } ?>-->
-      </div> <!--<?php } ?>-->
+         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
+             </form> 
+      </div> 
      
+       <div class="titre_message_container_fille">{{post_title}}
+          <div class="categorie_msg"  >{{categorie}}</div> 
+         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
+
+             </form> 
+      </div> 
       <div class="content-message-gauche"> {{post_content}}</div>
         
       <div class="footer-message_acceuil">
            
             <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
-            <div class="date-message">{{post_date}}</div>  
-
-                <!--<?php if ($user_Sexe == "fille"){
-                 echo " <div class=\"fille\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >{{post_author}} </a></div>";
-                } else {
-                  echo " <div class=\"garcon\" ><a href=\"profile.php?user=$author_id\" title=\"profil $name_author\" >{{post_author}}  </a></div>";
-                }
-
- ?>-->
-
-             
-           
-            <div class="nbr-reponse"><!--<?php if ($nb_com < 2) {
-                                echo "<div style=\"color: red; display: inline-block;\"><a href=\"lire-message.php?id={$affiche_messages->ID}\" style=\"color:red;\">$nb_com</a></div> réponse";   
-                                } else{
-                                 echo "<div style=\"color: red; display: inline-block;\"><a href=\"lire-message.php?id={$affiche_messages->ID}\"style=\"color:red;\">$nb_com</a></div> réponses";   
-                                 } ; ?>--> 
-                                 <a href="{{pathFor 'postPage'}}">{{commentsCount}} réponses</a>
+            <div class="date-message">{{date_francais post_date }}</div>  
+            
+            <div class="nbr-reponse">
+             <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "réponse"}}</a>
             </div>
-             
-             
-                   <a href=""  class="private_message"><img  src="img/comment.png"></a>
+          <a href=""  class="private_message"><img  src="img/comment.png"></a>
              
           {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
             

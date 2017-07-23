@@ -27,9 +27,62 @@
 <template name="commentItem">
   <li>
     <h4>
-      <span class="author">{{author}}</span>
-      <span class="date">on {{submittedText}}</span>
+      <span class="author"></span>
+      <span class="date"></span>
     </h4>
-    <p>{{body}}</p>
+    <p></p>
   </li>
+
+
+<div class="message-gauche">
+
+    <div class="container-messages-gauche">
+      <div class="titre_message_container">
+          <div class="categorie_msg"  ></div> 
+       <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
+
+             </form> 
+      </div> 
+     
+       <div class="titre_message_container_fille">
+          <div class="categorie_msg"  ></div> 
+         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
+
+             </form> 
+      </div> 
+     
+      <div class="content-message-gauche"> {{body}}</div>
+        
+      <div class="footer-message_acceuil">
+           
+            
+            <div class="date-message">{{date_francais submitted }}</div>  
+
+      <div class="thumbs">
+      <a href="#" class="upvote btn {{downvotedClass}}"><img src="img/down.png" class=" vote " style="margin-right: -15px;"></a>
+      <a href="#" class="upvote btn {{upvotedClass}}"><img src="img/up.png" class=" vote "></a>
+      </div>
+       <div class="result-vote"> {{count votes }} </div>    
+            
+            <div class="nbr-reponse">
+                                 
+            </div>
+             
+                   <a href=""  class="private_message"><img  src="img/comment.png"></a>{{author}}
+             
+          
+            
+       </div>
+           
+       </div>
+
+</div>
+
+
+
+
+
+
+
+
 </template>

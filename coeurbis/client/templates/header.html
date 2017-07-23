@@ -49,14 +49,14 @@
                 </div><!-- /.container-fluid -->               
               </div> <!-- menu -->
 {{/if}}
-                      <div class="nav navbar-nav ">
+                      <div class="nav navbar-nav login_meteor1">
                         {{> loginButtons align="right"}}
                         
                       </div>
-                      <div class="contact_accueil ">
+                     <!-- <div class="contact_accueil ">
                         <a href="{{pathFor 'contact'}}">Contact</a>
                         
-                      </div>
+                      </div>-->
     </div><!--  header -->
     
     </div><!--  site-container -->
@@ -67,6 +67,8 @@
   <div class="slideout-menu">
     <h3>Menu <a href="#" class="slideout-menu-toggle">×</a></h3>
     <ul>
+        <li><a href="{{pathFor 'inscription'}}">Connexion</a></li>
+        <li><a href="{{pathFor 'inscription'}}">Inscription</a></li>
         <li><a href="{{pathFor 'profil'}}">Profil</a></li>
         <li><a href="{{pathFor 'messagerie'}}">Messagerie</a></li>
         <li><a href="{{pathFor 'mot_de_passe'}}">Mot de passe</a></li>
