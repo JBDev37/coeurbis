@@ -37,3 +37,22 @@ Template.registerHelper('count', function(votes) {
     return votes;
   }
 });
+
+Template.registerHelper('is_fille', function(sexe) {
+  // on recherche le sexe de l'utilisateur
+  if (sexe =='fille') {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+Template.registerHelper('is_garcon', function(sexe) {
+  // on recherche le sexe de l'utilisateur
+  if (sexe =='garcon') {
+    return true;
+  } else {
+    return false;
+  }
+});
+

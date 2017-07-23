@@ -29,6 +29,7 @@ Posts.allow({
         var post = _.extend(postAttributes, {
             post_author: user._id,
             author_name: user.username,
+            gender :user.profile.gender,
             post_date: new Date(),
             upvoters: [],
   			votes: 0

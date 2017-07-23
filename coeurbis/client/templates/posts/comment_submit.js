@@ -34,5 +34,7 @@ Template.commentSubmit.events({
         $body.val('');
       }
     });
+    document.getElementById("ma").value=""; // on vide les champs du formulaire
+    
   }
 });

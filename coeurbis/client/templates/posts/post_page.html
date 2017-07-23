@@ -2,19 +2,17 @@
 {{> side_bar_right }}
 {{> side_bar_left }}
   <div class="container-messages">
-    {{> postItem}}
+    {{> postContent}}
 
 
 {{> commentSubmit}}
-
+<br>
 
   <ul class="comments">
     {{#each comments}}
       {{> commentItem}}
     {{/each}}
   </ul>
-
-
 </div>
 
 </template>
@@ -23,34 +21,27 @@
 
 
 
-
 <template name="commentItem">
-  <li>
-    <h4>
-      <span class="author"></span>
-      <span class="date"></span>
-    </h4>
-    <p></p>
-  </li>
-
 
 <div class="message-gauche">
 
     <div class="container-messages-gauche">
+    {{#if is_garcon gender}}
       <div class="titre_message_container">
-          <div class="categorie_msg"  ></div> 
+          <div class="categorie_msg"  >{{author}}</div> 
        <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
 
              </form> 
       </div> 
-     
+     {{/if}}
+     {{#if is_fille gender}}
        <div class="titre_message_container_fille">
-          <div class="categorie_msg"  ></div> 
+          <div class="categorie_msg"  >{{author}}</div> 
          <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
 
              </form> 
       </div> 
-     
+     {{/if}}
       <div class="content-message-gauche"> {{body}}</div>
         
       <div class="footer-message_acceuil">
@@ -68,7 +59,7 @@
                                  
             </div>
              
-                   <a href=""  class="private_message"><img  src="img/comment.png"></a>{{author}}
+                   <a href=""  class="private_message"><img  src="img/comment.png"></a>
              
           
             

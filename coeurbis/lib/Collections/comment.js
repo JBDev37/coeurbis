@@ -14,6 +14,7 @@ Meteor.methods({
       throw new Meteor.Error('invalid-comment', 'Vous devez commenter sur un post');
       comment = _.extend(commentAttributes, {
       userId: user._id,
+      gender :user.profile.gender,
       author: user.username,
       submitted: new Date(),
       upvoters: [],

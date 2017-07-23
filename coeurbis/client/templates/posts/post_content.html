@@ -1,25 +1,4 @@
-<template name="postsList">
-
-{{> side_bar_right }}
-{{> side_bar_left }}
-<div class="container-messages">
-	{{> postSubmit}}
-         
-	
-
-    {{#each posts}}
-      {{> postItem}}
-    {{/each}}
-
-    
-
-</div>
-
-</template>
-
-
-
-<template name="postItem">
+<template name="postContent">
   <div class="message-gauche">
 
     <div class="container-messages-gauche">
@@ -42,11 +21,11 @@
         
       <div class="footer-message_acceuil">
            
-            <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
+           
             <div class="date-message">{{date_francais post_date }}</div>  
             
             <div class="nbr-reponse">
-             <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "réponse"}}</a>
+             <div>{{pluralize commentsCount "réponse"}}</div>
             </div>
           <a href=""  class="private_message"><img  src="img/comment.png"></a>
              
