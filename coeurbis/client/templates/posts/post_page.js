@@ -49,7 +49,15 @@ Template.postContent.helpers({
     } else {
       return 'disabled';
     }
-  }
+  },
+  downvotedClass: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.upvoters, userId)) {
+      return 'btn-primary upvotable';
+    } else {
+      return 'disabled';
+    }
+  },
 
 });
 

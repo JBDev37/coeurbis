@@ -3994,6 +3994,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+  height: 38px;
 }
 .nav > li > a {
   position: relative;
@@ -4004,6 +4005,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: white;
+  height: 20px;
+  color: #2196f3;
+
 }
 .nav > li.disabled > a {
   color: #bbbbbb;
@@ -4115,6 +4119,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a:focus {
   color: #ffffff;
   background-color: #2196f3;
+  height: inherit;
 }
 .nav-stacked > li {
   float: none;
