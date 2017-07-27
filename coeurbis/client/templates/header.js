@@ -25,6 +25,21 @@ Accounts.ui.config({
     },
 
     {
+        fieldName: 'presentation',
+        showFieldLabel: false,     
+        fieldLabel: 'Presentation',
+        inputType: 'radio',
+        radioLayout: 'vertical',    
+        data: [{
+            id: 1,
+            label: 'presentation',
+            value: 'dddd',
+            checked: 'checked'
+        }],
+        visible: true
+    },
+
+    {
         
         fieldName: 'naissance',
         fieldLabel: 'Date de naissance (+ 13 ans)',

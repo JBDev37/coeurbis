@@ -13,6 +13,10 @@ Posts.allow({
   remove: function(userId, post) { return ownsDocument(userId, post); },
 });
 
+Meteor.users.allow({
+    update: function(userId, post) { return true },
+});
+
 /*var errors = validatePost(postAttributes);
     if (errors.post_title || errors.post_content)
       throw new Meteor.Error('invalid-post', "You must set a title and URL for your post");*/

@@ -43,8 +43,10 @@ Router.route('/contact', {
 Router.route('/profil', {
 	name: 'profil',
 	template : 'profil',
-
+	data: function() {
+   return Meteor.users; }
 });
+
 
 Router.route('/messagerie', {
 	name: 'messagerie',

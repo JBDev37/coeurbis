@@ -74,8 +74,9 @@
                 <div class="panel-body">
                     <div class="pull-left">
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>John Doe</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                    <span>
+                    <h4 class="titre-profil "><strong>Ma présentation</strong>  <small><small>
+                    <i><!--<i class="fa fa-clock-o" aria-hidden="true"></i>--> Visible par tous les utilisateurs</i></small></small></h4>
+                   <!-- <span>
                         <div class="navbar-right">
                             <div class="dropdown">
                                 <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -92,13 +93,12 @@
                                 </ul>
                             </div>
                         </div>
-                    </span>
+                    </span>-->
                     <hr>
-                    <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                    </div>
-                    <hr>
+                    <pre class="post-content ">
+                        {{currentUser.profile.presentation}}
+                    </pre>
+                    <!--<hr>
                     <div>
                         <div class="pull-right btn-group-xs">
                             <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
@@ -110,21 +110,42 @@
                         </div>
                         <br>
                     </div>
-                    <hr>
+                    <hr>-->
                     <div class="media">
                         <div class="pull-left">
-                            
                         </div>
                         <div class="media-body">
-                            <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
-                        </div>
+	                        <ul class="nav nav-pills">
+							  <li class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></li>
+							  <li style="float: right;"><a href="#tabb" class="taba" data-toggle="tab">Modifier</a></li>
+							</ul>
+							<div class="tab-content">
+	  							<div class="tab-pane active " id="taba" ></div>
+	                        	<div class="tab-pane " id="tabb" >
+	                            
+                                <form enctype="multipart/form-data" action="" method="post">
+	                            <fieldset>                        
+		                        <label><strong>Présentation</strong></label>
+		                         <textarea id="" name="presentation" class="modifier_area" required> {{currentUser.profile.presentation}} </textarea><br>
+		                        
+		                        <br>
+		                        <div class="input-conseillere">
+		                       
+		                        <input type="submit" name="submit" value="Valider" class="btn btn-success submit1"/>
+		                       </div>
+		                    </fieldset>
+		                    </form>
+	                        
+                            </div>
+	                        </div>
+						</div>
                     </div>
                 </div>
             </div>
        </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab2">
+                  <div class="tab-pane " id="tab2">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -181,66 +202,8 @@
        </div>
 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab2">
-            <!-- Simple post content example. -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="pull-left">
-                        
-                    </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Histoire</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                    <span>
-                        <div class="navbar-right">
-                            <div class="dropdown">
-                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
-                                    <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </span>
-                    <hr>
-                    <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
-                    </div>
-                    <hr>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
-                        </div>
-                        <div class="pull-left">
-                            <p class="text-muted" style="margin-left:5px;"><i class="fa fa-globe" aria-hidden="true"></i> Public</p>
-                        </div>
-                        <br>
-                    </div>
-                    <hr>
-                    <div class="media">
-                        <div class="pull-left">
-                            
-                        </div>
-                        <div class="media-body">
-                            <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </div>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-                  <div class="tab-pane active" id="tab3">
+            <div class="tab-pane" id="tab3">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -297,7 +260,7 @@
        </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab4">
+                  <div class="tab-pane " id="tab4">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -353,7 +316,7 @@
        </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab5">
+                  <div class="tab-pane " id="tab5">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -410,7 +373,7 @@
        </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab6">
+                  <div class="tab-pane " id="tab6">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -467,7 +430,7 @@
        </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab7">
+                  <div class="tab-pane " id="tab7">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -524,7 +487,7 @@
        </div>     
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-                  <div class="tab-pane active" id="tab8">
+                  <div class="tab-pane " id="tab8">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -581,7 +544,7 @@
        </div> 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<div class="tab-pane active" id="tab9">
+<div class="tab-pane " id="tab9">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -638,7 +601,7 @@
        </div> 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<div class="tab-pane active" id="tab10">
+<div class="tab-pane " id="tab10">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -695,7 +658,7 @@
        </div> 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<div class="tab-pane active" id="tab11">
+<div class="tab-pane " id="tab11">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
