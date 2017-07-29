@@ -24,7 +24,6 @@ sunkay:easy-side-menu
 iron:router
 dburles:mongo-collection-instances
 accounts-password
-accounts-base
 coffeescript
 check
 spacebars
@@ -51,3 +50,5 @@ houston:admin
 ian:accounts-ui-bootstrap-3
 sacha:spin
 anti:i18n
+socialize:base-model
+autopublish

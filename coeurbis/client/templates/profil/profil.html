@@ -8,20 +8,15 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <span>
-                        <h1 class="panel-title pull-left" style="font-size:30px;">John Doe <small></small> </h1>
+                        <h1 class="panel-title pull-left" style="font-size:30px;"> {{username}} <small></small> </h1>
+                         {{#if my_id this._id}}{{else}}
                         <div class="dropdown pull-right">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Friends
-                                <span class="caret"></span>
+                            <button class="btn btn-success dropdown-toggle ami" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                +1 Ami
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Familly</a></li>
-                                <li><a href="#"><i class="fa fa-fw fa-check" aria-hidden="true"></i> Friends</a></li>
-                                <li><a href="#">Work</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#"><i class="fa fa-fw fa-plus" aria-hidden="true"></i> Add a new aspect</a></li>
-                            </ul>
                         </div>
+                        {{/if}}
+
                     </span>
                     <br><br>
                     <i class="fa fa-handshake-o" aria-hidden="true"></i> Indice de confiance : 50%<br><br>

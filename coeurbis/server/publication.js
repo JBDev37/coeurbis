@@ -18,3 +18,11 @@ Meteor.publish('histoires', function() {
   return Histoires.find();
 });
 
+Meteor.publish('requests', function() {
+  return Requests.find();
+});
+
+Meteor.publish('friends', function() {
+  return Friends.find();
+});
+

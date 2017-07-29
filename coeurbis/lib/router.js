@@ -7,7 +7,9 @@ Router.configure({
     Meteor.subscribe('notifications'),
     Meteor.subscribe('posts'),
     Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires')
+    Meteor.subscribe('histoires'),
+    Meteor.subscribe('requests'),
+    Meteor.subscribe('friends'),
      ];
      }
 });
@@ -41,13 +43,18 @@ Router.route('/contact', {
 
 });
 
-Router.route('/profil', {
+Router.route('/profil/:post_author?', {
 	name: 'profil',
 	template : 'profil',
 	data: function() {
-   return Meteor.users; }
+    return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/profil/:_id', {
+	name: 'mon_profil',
+	template : 'profil',
+
+});
 
 Router.route('/messagerie', {
 	name: 'messagerie',

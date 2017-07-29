@@ -6,30 +6,22 @@
                 <div class="panel-body">
                     <div class="pull-left">
                     </div>
+                    {{#if my_id this._id}}
                     <h4 class="titre-profil "><strong>Ma présentation</strong>  <small><small>
-                    <i><!--<i class="fa fa-clock-o" aria-hidden="true"></i>--> Visible par tous les utilisateurs</i></small></small></h4>
-                   <!-- <span>
-                        <div class="navbar-right">
-                            <div class="dropdown">
-                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
-                                    <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </span>-->
+                    <i> Visible par tous les utilisateurs</i></small></small></h4>
                     <hr>
+                    
                     <div class="post-content ">
                         {{{breaklines currentUser.profile.presentation}}}
                     </div>
+                    {{else}}
+                    <h4 class="titre-profil "><strong>Présentation</strong> 
+                    </h4>
+                    <hr>
+                    <div class="post-content ">
+                        {{{breaklines profile.presentation}}}
+                    </div>
+                    {{/if}}
                     <!--<hr>
                     <div>
                         <div class="pull-right btn-group-xs">
@@ -46,6 +38,7 @@
                     <div class="media">
                         <div class="pull-left">
                         </div>
+                        {{#if my_id this._id}}
                         <div class="media-body">
 	                        <div class="pull-right btn-group-xs nav nav-pills">
 							  <div class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></div>
@@ -59,7 +52,7 @@
                                 <form enctype="multipart/form-data" action="" method="post" id="1">
 	                            <fieldset>                        
 		                        <label><strong>Présentation</strong></label>
-		                         <textarea id="" name="presentation" class="form-control" style="height:250px;" required> {{   currentUser.profile.presentation}} </textarea><br>
+		                         <textarea id="" name="presentation" class="form-control" style="height:250px;" required> {{   profile.presentation}} </textarea><br>
 		                        
 		                        <br>
 		                        <div class="input-conseillere">
@@ -72,6 +65,7 @@
                             </div>
 	                        </div>
 						</div>
+                        {{/if}}
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@
                     <div class="pull-left">
                         
                     </div>
+                   {{#if my_id this._id}}
                     <h4><a href="#" style="text-decoration:none;"><strong>Mes histoires d'amour</strong></a> <small><small>
                     <i> Visible par tous les utilisateurs</i></small></small></h4>
                     
@@ -13,6 +14,11 @@
                     <div class="post-content">
                         Raconte tes différentes expériences amoureuses explique ce qu'elle t'on apportées : réussites, échecs, les conseils que tu pourrais donner...
                     </div>
+                    {{else}}
+                     <h4><a href="#" style="text-decoration:none;"><strong>Ses histoires d'amour</strong></a></h4>
+                    {{/if}}
+
+                    {{#if my_id this._id}}
                     <div class="media">
                         <div class="pull-left">
                         </div>
@@ -48,12 +54,14 @@
                             </div>
                         </div>
                     </div>
+                    {{/if}}
                 </div>
             </div>
-
+          {{#if my_id this._id}}
 	       	{{#each histoires}}
 	      		{{> Item_Histoires}}
 	    	{{/each}}
+          {{/if}}
 
        </div>
 

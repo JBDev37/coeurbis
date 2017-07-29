@@ -1,3 +1,11 @@
+Template.header.helpers({
+    id: function() {
+    return Meteor.userId();
+  }
+});
+
+
+
 accountsUIBootstrap3.setLanguage('fr');
 
 Accounts.ui.config({

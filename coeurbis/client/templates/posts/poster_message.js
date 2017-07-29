@@ -1,9 +1,7 @@
 Template.postSubmit.events({
   'submit form': function(e) {
     e.preventDefault();
-    
-    
-    
+
     var post = {
       post_title: $(e.target).find('[name=titre_message]').val(),
       post_content: $(e.target).find('[name=contenu]').val(),

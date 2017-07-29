@@ -57,8 +57,14 @@ Template.registerHelper('is_garcon', function(sexe) {
 });
 
 Template.registerHelper('breaklines', function(text) {
-
   text1 = text.replace(/(\r\n|\n|\r)/g, "<br>");
-  
   return text1;
 });
+
+Template.registerHelper('my_id', function(id) {
+  if(Meteor.userId()==this._id){
+  return true; }
+});
+
+
+

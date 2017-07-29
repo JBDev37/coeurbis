@@ -1,6 +1,6 @@
 Template.histoire.helpers({
   histoires: function() {
-    var curentUser = Meteor.userId();
+    var curentUser = this._id;
     return Histoires.find({post_author: curentUser});
   }
 });
