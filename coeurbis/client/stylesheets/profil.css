@@ -130,6 +130,8 @@ body {
 
 }
 
+
+
 .badge{
   color: #666666;
   background-color: rgba(102,102,102,0);
@@ -162,5 +164,26 @@ body {
     margin-left: 10px;
 }
 
+
+ pre {
+    display: block;
+    font-family: arial;
+    /*white-space: pre;*/
+    margin: 1em 0;
+} 
+
+.post-content{
+  font-size: 15px;
+}
+
+.form-group{
+  width: 100%;
+}
+
+.titre_histoires{
+  color: #cc0000;
+  font-size: 18px;
+  font-weight: bold;
+}
 
 

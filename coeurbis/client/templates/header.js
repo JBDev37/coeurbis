@@ -12,6 +12,12 @@ i18n.map("fr",{
   }
 });
 
+accountsUIBootstrap3.setCustomSignupOptions = function() {
+    return {
+        histoire: ' ',
+        titre_histoire: ' '
+    }
+}
 
 Accounts.ui.config({
     requestPermissions: {},
@@ -36,7 +42,7 @@ Accounts.ui.config({
             value: 'dddd',
             checked: 'checked'
         }],
-        visible: true
+        visible: false,
     },
 
     {

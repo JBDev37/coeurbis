@@ -6,7 +6,8 @@ Router.configure({
     return [
     Meteor.subscribe('notifications'),
     Meteor.subscribe('posts'),
-    Meteor.subscribe('comments')
+    Meteor.subscribe('comments'),
+    Meteor.subscribe('histoires')
      ];
      }
 });

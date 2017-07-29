@@ -19,16 +19,10 @@ Template.presentation.events({
   },
 
     'click .taba': function(e) {
-    e.preventDefault();
-
-    
+       e.preventDefault();
         document.getElementById("tabb").style.display = "block";
-    
-  },
-
-    
+  }
 
 });
-
 
 
