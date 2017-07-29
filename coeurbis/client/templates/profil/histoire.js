@@ -46,13 +46,13 @@ Template.histoire.events({
   'submit form#hist': function(e) {
     e.preventDefault();
     
-    var currentId = Meteor.userId();
+    var currentId = this._id;
     
     var postProperties = {
         'histoire': $(e.target).find('[name=modif_histoire]').val()
     }
 
-    Histoires.update('vyGhGemAgf9cZH96m', {$set: postProperties}, function(error) {
+    Histoires.update(currentId, {$set: postProperties}, function(error) {
       if (error) {
         // affiche l'erreur à l'utilisateur
        return throwError(error.reason);
@@ -62,9 +62,9 @@ Template.histoire.events({
     });
   },
 
-    'click .hist': function(e) {
+    'click .modifier': function(e) {
        e.preventDefault();
-        document.getElementById("tabb").style.display = "block";
+        document.getElementById("modif").style.display = "block";
   }
 });
 
