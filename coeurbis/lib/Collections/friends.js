@@ -18,6 +18,7 @@ Meteor.methods({
         var post = _.extend(postAttributes, {
             date: new Date(),
         });
+        
         var postId = Friends.insert(post);
         return {
             _id: postId

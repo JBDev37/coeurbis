@@ -67,7 +67,6 @@ Template.registerHelper('my_id', function(id) {
 });
 
 Template.registerHelper('is_friends', function(id) {
-   
    var my_id = Meteor.userId();
    var request = Friends.findOne({"from_id": my_id , "to_id":id });
    var request1 = Friends.findOne({"from_id": id, "to_id":my_id });
@@ -75,5 +74,12 @@ Template.registerHelper('is_friends', function(id) {
   if(request1 || request){
   return true; }
 });
+
+Template.registerHelper('mon_message', function(id) {
+   var my_id = Meteor.userId();
+  if(my_id == id){
+  return true; }
+});
+
 
 

@@ -26,3 +26,7 @@ Meteor.publish('friends', function() {
   return Friends.find();
 });
 
+Meteor.publish('chat', function() {
+  return Chat.find();
+});
+

@@ -52,3 +52,4 @@ sacha:spin
 anti:i18n
 socialize:base-model
 autopublish
+joncursi:socket-io-client

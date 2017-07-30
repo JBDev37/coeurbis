@@ -10,6 +10,7 @@ Router.configure({
     Meteor.subscribe('histoires'),
     Meteor.subscribe('requests'),
     Meteor.subscribe('friends'),
+    Meteor.subscribe('chat'),
      ];
      }
 });
@@ -56,10 +57,11 @@ Router.route('/profil/:_id', {
 
 });
 
-Router.route('/messagerie', {
+Router.route('/messagerie/:post_author?', {
 	name: 'messagerie',
 	template : 'messagerie',
-
+    data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
 });
 
 Router.route('/mot_de_passe', {

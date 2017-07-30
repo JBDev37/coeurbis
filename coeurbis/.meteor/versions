@@ -58,6 +58,7 @@ iron:location@1.0.11
 iron:middleware-stack@1.1.0
 iron:router@1.1.2
 iron:url@1.1.0
+joncursi:socket-io-client@0.1.4
 jquery@1.11.10
 lai:collection-extensions@0.1.4
 launch-screen@1.1.1
