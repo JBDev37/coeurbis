@@ -11,8 +11,8 @@
                         <h1 class="panel-title pull-left" style="font-size:30px;"> {{username}} <small></small> </h1>
                          {{#if my_id this._id}}{{else}}
                         <div class="dropdown pull-right">
-                            <button class="btn btn-success dropdown-toggle ami" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                +1 Ami
+                            <button class="btn btn-success dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">
+                                {{en_attente}}
                             </button>
                         </div>
                         {{/if}}
@@ -30,11 +30,11 @@
                        
                        <li> <a href="#tab2" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires <span class="badge">42</span></a>
                        </li>    
-
+                        {{#if my_id this._id}}
                         <li> <a href="#tab3" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <span class="badge">42</span></a> </li>
-                        
+                     
                         <li> <a href="#tab4" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-eye" aria-hidden="true"></i> Visites <span class="badge">42</span></a> </li>
-                        
+                           {{/if}}
                         <li> <a href="#tab5" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <span class="badge">42</span></a> </li>
                         
                         <li> <a href="#tab6" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i> Mes conseils <span class="badge">42</span></a> </li>

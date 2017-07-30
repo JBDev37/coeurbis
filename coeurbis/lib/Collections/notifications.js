@@ -19,3 +19,15 @@ createCommentNotification = function(comment) {
     });
   }
 };
+
+createFriendsNotification = function(post) {
+    Notifications.insert({
+      from_id: post.from_id,
+      to_id:post.to_id,
+      name_from_id:post.name_from_id,
+      name_to_id:post.name_to_id,
+      date:post.date,
+      read: false
+    });
+
+};

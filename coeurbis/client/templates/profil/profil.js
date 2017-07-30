@@ -1,6 +1,41 @@
 Template.profil.helpers({
-  
+    request: function() {
+    var userId = Meteor.userId();
+    var to_id = this._id;
+    var request1 = Requests.findOne({"from_id": userId , "to_id":to_id });
+    var request2 = Friends.findOne({"from_id": userId , "to_id":to_id });
+    var request3 = Friends.findOne({"from_id": to_id, "to_id":userId });
+    if (request1) { 
+      return 'disabled';
+    } 
+    if (request2 || request3) { 
+      return 'disabled';
+    } 
+    else {
+      return 'ami';
+    }
+  },
+
+    en_attente: function() {
+    var userId = Meteor.userId();
+    var to_id = this._id;
+    var request1 = Requests.findOne({"from_id": userId , "to_id":to_id });
+    var request2 = Friends.findOne({"from_id": userId , "to_id":to_id });
+    var request3 = Friends.findOne({"from_id": to_id, "to_id":userId });
+    if (request1) { 
+      return 'En attente';
+    }
+    if (request2 || request3) { 
+      return 'Ami';
+    }
+     else {
+      return '+1 Ami';
+    }
+  },
+
 });
+
+
 
 Template.profil.events({
   'click .ami': function(e) {
@@ -20,16 +55,13 @@ Template.profil.events({
     var errors = validatePost(post);
     if (errors.from_id || errors.to_id)
       return Session.set('postSubmitErrors', errors);
-
+    
     Meteor.call('demande_ami', post, function(error, result) { // on recherche la methode 'postInsert' 
             // affiche l'erreur à l'utilisateur et s'interrompt
             if (error)
                 return throwError(error.reason);
             //Router.go('postPage', {_id: result._id});
-        });
-    
-    /*document.getElementById("m").value=""; // on vide les champs du formulaire
-    document.getElementById("titre").value="";// on vide les champs du formulaire*/
+        });  
   }
 });
 

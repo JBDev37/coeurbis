@@ -26,10 +26,28 @@
                         </div>
                     </span>
                     <hr>
+
+    {{#each amis}}
+
                     <div class="post-content">
-                        <p>Simple post content example.</p>
+                         <p>{{name}}</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                     </div>
+                     <a href="{{pathFor 'profil' post_author=id}}"><div class="profil btn btn-success btn-xs">Profil</div></a>
+                    <div class="supprimer_ami btn btn-danger btn-xs">supprimer</div>
+
+    {{/each}}
+    {{#each amis1}}
+
+                    <div class="post-content">
+                        <p>{{name}}</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                    </div>
+                     <a href="{{pathFor 'profil' post_author=id}}"><div class="profil btn btn-success btn-xs">Profil</div></a>
+                    <div class="supprimer_ami btn btn-danger btn-xs">supprimer</div>
+
+    {{/each}}
+
                     <hr>
                     <div>
                         <div class="pull-right btn-group-xs">
