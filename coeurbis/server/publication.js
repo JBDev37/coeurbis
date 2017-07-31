@@ -30,3 +30,12 @@ Meteor.publish('chat', function() {
   return Chat.find();
 });
 
+Meteor.publish('userBloquer', function() {
+  return UserBloquer.find();
+});
+
+Meteor.publish('contact_Chat', function() {
+  return ContactChat.find();
+});
+
+

@@ -29,6 +29,31 @@ Template.registerHelper('date_francais', function(date) {
 
 });
 
+
+
+Template.registerHelper('date_francais_heures', function(date) {
+  // affiche la date en francais
+   var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+   var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
+   // on recupere la date
+   var date_fr = new Date(date);
+   // on construit le message
+   /*affiche_date = jours[date.getDay()] + " ";   // nom du jour*/
+   var affiche_date = date.getDate(date_fr) + " ";   // numero du jour
+   affiche_date += mois[date_fr.getMonth()] + " ";   // mois
+   affiche_date += date_fr.getFullYear();
+
+   var heure = date_fr.getHours();
+   var minutes = date_fr.getMinutes();
+   if(minutes < 10){
+        minutes = "0" + minutes;
+   }
+   la_date = affiche_date +" " +heure + "h" + minutes;
+   return la_date;
+
+});
+
+
 Template.registerHelper('count', function(votes) {
   // pluraliser assez simpliste
   if (votes > 0) {
@@ -81,5 +106,16 @@ Template.registerHelper('mon_message', function(id) {
   return true; }
 });
 
+Template.registerHelper('is_bloquer', function(id) {
+    var userId = Meteor.userId();
+    var to_id = id;
+    var request = UserBloquer.findOne({"from_id":id, "to_id":userId });
+    if (request) { 
+      return true;
+    } 
+    else {
+      return false;
+    }
+});
 
 

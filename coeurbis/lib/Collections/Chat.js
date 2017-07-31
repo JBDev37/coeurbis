@@ -15,5 +15,18 @@ Chat.allow({
         return {
             _id: postId
         };
-    }
+    },
+
+    bloquer_user: function(postAttributes) {
+    var post = _.extend(postAttributes, {
+        date: new Date(),
+    });
+    var postId = UserBloquer.insert(post);
+    return {
+        _id: postId
+    };
+},
+
+
+
 });

@@ -4,7 +4,10 @@ Template.header.helpers({
   }
 });
 
-
+accountsUIBootstrap3.logoutCallback = function(error) {
+  if(error) console.log("Error:" + error);
+  Router.go('index');
+}
 
 accountsUIBootstrap3.setLanguage('fr');
 

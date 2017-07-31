@@ -163,7 +163,7 @@
 }
 .chat_area .admin_chat .chat-body1 {
   margin-left: 0;
-  margin-right: 50px;
+  margin-right: 0px;
 }
 .chat_area li:last-child {
   padding-bottom: 10px;
@@ -178,6 +178,7 @@
 .message_write textarea.form-control {
   height: 70px;
   padding: 10px;
+  background-color: white;
 }
 .chat_bottom {
   float: left;
@@ -218,4 +219,92 @@
 
 .chat_area{
   height: 600px;
+  background-color: white;
+}
+
+.valider{
+  float:right;
+}
+
+.message_droite{
+  display: block;
+  float: right;
+  background-color: #0a68b4;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  clear: both;
+}
+
+.message_droite_date{
+  display: block;
+  font-size: 12px;
+  float: right;
+  color: #d2d2d2;
+  margin-bottom: 2px;
+  max-width: 80%;
+  clear: both;
+  margin-top: 20px;
+  
+}
+
+.message_gauche{
+  display: block;
+  float: left;
+  background-color: #f5f3f3;
+  color: #000;
+  border-radius: 5px;
+  padding: 7px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  clear: both;
+}
+
+.message_gauche_date{
+  display: block;
+  float: left;
+  font-size: 12px;
+  color: #d2d2d2;
+  margin-bottom: 2px;
+  max-width: 80%;
+  clear: both;
+  margin-top: 20px;
+  
+}
+
+.bloquer_user{
+  position: fixed;
+  right: 0px;
+  color: red;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.bloquer_user a:hover{
+  text-decoration: none;
+}
+
+.bloquer_user a:active{
+  text-decoration: none;
+}
+
+.bloquer_user a{
+  color: red;
+}
+
+.name_user a:hover{
+    text-decoration: none;
+}
+
+.is_bloquer{
+  text-align: center;
+  width: 100%;
+  background-color: red;
+  height: 25px;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+
 }

@@ -11,6 +11,8 @@ Router.configure({
     Meteor.subscribe('requests'),
     Meteor.subscribe('friends'),
     Meteor.subscribe('chat'),
+    Meteor.subscribe('userBloquer'),
+    Meteor.subscribe('contact_Chat'),
      ];
      }
 });
