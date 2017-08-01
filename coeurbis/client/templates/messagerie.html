@@ -1,5 +1,6 @@
 <template name="messagerie">
 {{add_contact_chat}}
+
 <div class="main_section">
    <div class="container">
       <div class="chat_container">
@@ -35,7 +36,7 @@
             <div class="member_list">
                <ul class="list-unstyled">
                   {{#each mes_contacts}}
-                  111 {{>Item_contact}}
+                    {{>Item_contact}}
                   {{/each}}
 
               </ul>
@@ -104,12 +105,18 @@
 
 
 <template name="Item_contact">
+  {{#if my_name from_name}}
+<div class="receive_message">
+   
         <li class="left clearfix">
            <span class="chat-img pull-left">
            </span>
            <div class="chat-body clearfix">
               <div class="header_sec">
-                 <strong class="primary-font">{{to_name}}</strong> <strong class="pull-right">
+                 <strong class="primary-font">
+                {{to_name }}
+                  
+                </strong> <strong class="pull-right">
                  09:45AM</strong>
               </div>
               <div class="contact_sec">
@@ -117,4 +124,29 @@
               </div>
            </div>
         </li>
+  
+</div>
+{{else}}
+<div class="receive_message">
+  
+        <li class="left clearfix">
+           <span class="chat-img pull-left">
+           </span>
+           <div class="chat-body clearfix">
+              <div class="header_sec">
+                 <strong class="primary-font">
+                {{from_name }}
+                  
+                </strong> <strong class="pull-right">
+                 09:45AM</strong>
+              </div>
+              <div class="contact_sec">
+                 <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+              </div>
+           </div>
+        </li>
+  
+</div>
+ {{/if}}
+
 </template>

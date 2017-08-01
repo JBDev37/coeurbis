@@ -118,4 +118,18 @@ Template.registerHelper('is_bloquer', function(id) {
     }
 });
 
+Template.registerHelper('my_name', function(name) {
+  var user = Meteor.user();
+  var my_name = user.username;
+  if(my_name==name){
+    return true;
+  }
+});
+
+
+Template.registerHelper('scroll_bottom', function() {
+    var element = document.getElementById('msgbox');
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+   return element.scrollTop;
+});
 

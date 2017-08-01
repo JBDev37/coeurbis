@@ -306,5 +306,16 @@
   color: white;
   padding: 5px;
   border-radius: 3px;
+}
 
+.receive_message{
+  border-bottom: solid 0.5px;
+}
+
+.receive_message a:hover{
+  text-decoration: none;
+}
+
+.receive_message a:active{
+  background-color: red;
 }

@@ -62,9 +62,15 @@ Router.route('/profil/:_id', {
 Router.route('/messagerie/:post_author?', {
 	name: 'messagerie',
 	template : 'messagerie',
+  
+
     data: function() {
-    return Meteor.users.findOne(this.params.post_author); }
+    return Meteor.users.findOne(this.params.post_author); 
+
+  }
 });
+
+
 
 Router.route('/mot_de_passe', {
 	name: 'mot_de_passe',

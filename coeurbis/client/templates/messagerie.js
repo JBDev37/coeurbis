@@ -1,10 +1,8 @@
-Template.messagerie.rendered = function() {
+Template.Item_message_gauche.rendered = function() {
 var element = document.getElementById('msgbox');
 element.scrollTop = element.scrollHeight - element.clientHeight;
 
 };
-
-
 
 Template.messagerie.helpers({
     
@@ -35,34 +33,37 @@ Template.messagerie.helpers({
     var name = Meteor.users.findOne(this._id);
     var username = name.username;
     var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
-    if (request) {
-    } 
-    else {
-      var post = {
-      from_id: Meteor.userId(),
-      from_name: user.username,
-      to_id: this._id,
-      to_name: username
-    };
+    if(to_id){
+        if (request) {
+        } 
+        else {
+          var post = {
+          from_id: Meteor.userId(),
+          from_name: user.username,
+          to_id: this._id,
+          to_name: username
+        };
 
-    var errors = validatePost(post);
-    if (errors.user)
-      return Session.set('postSubmitErrors', errors);
+        var errors = validatePost(post);
+        if (errors.user)
+          return Session.set('postSubmitErrors', errors);
 
-    Meteor.call('contact_chat', post, function(error, result) { // on recherche la methode 'postInsert' 
-            // affiche l'erreur à l'utilisateur et s'interrompt
-            if (error)
-                return throwError(error.reason);
-            //Router.go('postPage', {_id: result._id});
-        });
-    
+        Meteor.call('contact_chat', post, function(error, result) { // on recherche la methode 'postInsert' 
+                // affiche l'erreur à l'utilisateur et s'interrompt
+                if (error)
+                    return throwError(error.reason);
+                //Router.go('postPage', {_id: result._id});
+            });
+        
+        }
     }
   },
 
-  mes_contacts: function() {
+    mes_contacts: function() {
     var userId = Meteor.userId();
     return ContactChat.find({$or : [{from_id: userId }, {to_id:userId}]}, {sort: {date: -1}});
-  }
+  },
+
 
 
 });
@@ -138,7 +139,32 @@ Template.messagerie.events({
 
     }
 
-  }
+  },
+
+   'click .receive_message':function() {
+
+    if (Meteor.userId()==this.from_id){ 
+    var id = this.to_id;
+   
+    }else{ var id = this.from_id;
+
+    }
+
+   Router.go('messagerie', {post_author: id});
+
+    
+  },
+
+  'click .member_list':function() {
+    var element = document.getElementById('msgbox');
+    element.scrollTop = element.scrollHeight - element.clientHeight;
+   
+   return element.scrollTop;
+    
+  },
+
+
+
 
 
 });
