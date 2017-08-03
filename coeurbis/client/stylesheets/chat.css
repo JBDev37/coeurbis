@@ -316,6 +316,8 @@
   text-decoration: none;
 }
 
-.receive_message a:active{
-  background-color: red;
+.current a{
+  background-color: #0a68b4;
+  color: white;
 }
+

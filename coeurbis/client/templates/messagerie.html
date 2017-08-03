@@ -43,7 +43,7 @@
             </div></div>
          </div>
          <!--chat_sidebar-->
-         
+        
          
          <div class="col-sm-9 message_section">
          <div class="row">
@@ -106,47 +106,102 @@
 
 <template name="Item_contact">
   {{#if my_name from_name}}
-<div class="receive_message">
-   
-        <li class="left clearfix">
-           <span class="chat-img pull-left">
-           </span>
-           <div class="chat-body clearfix">
-              <div class="header_sec">
-                 <strong class="primary-font">
-                {{to_name }}
-                  
-                </strong> <strong class="pull-right">
-                 09:45AM</strong>
-              </div>
-              <div class="contact_sec">
-                 <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
-              </div>
-           </div>
-        </li>
-  
-</div>
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="{{_id}}">    
+                <a href="{{pathFor 'messagerie' post_author=to_id}}" id="a">
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{to_name }}
+
+                        </strong> <strong class="pull-right">
+                         09:45AM</strong>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                      </div>
+                   </div>
+                </li>
+           </a>
+        </div>
+     {{/if}}
+    {{#if not_current_user _id}}  
+        <div class="receive_message  {{to_id}}"  id="{{_id}}">    
+                <a href="{{pathFor 'messagerie' post_author=to_id}}" id="a">
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{to_name }}
+
+                        </strong> <strong class="pull-right">
+                         09:45AM</strong>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                      </div>
+                   </div>
+                </li>
+           </a>
+        </div>
+     {{/if}}
+
+
+
+
+
 {{else}}
-<div class="receive_message">
-  
-        <li class="left clearfix">
-           <span class="chat-img pull-left">
-           </span>
-           <div class="chat-body clearfix">
-              <div class="header_sec">
-                 <strong class="primary-font">
-                {{from_name }}
-                  
-                </strong> <strong class="pull-right">
-                 09:45AM</strong>
-              </div>
-              <div class="contact_sec">
-                 <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
-              </div>
-           </div>
-        </li>
-  
-</div>
+
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="{{_id}}">    
+                <a href="{{pathFor 'messagerie' post_author=from_id}}" id="a">
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{from_name }}
+
+                        </strong> <strong class="pull-right">
+                         09:45AM</strong>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                      </div>
+                   </div>
+                </li>
+           </a>
+        </div>
+     {{/if}}
+     {{#if not_current_user _id}}  
+        <div class="receive_message  {{to_id}}"  id="{{_id}}">    
+                <a href="{{pathFor 'messagerie' post_author=from_id}}" id="a">
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{from_name }}
+
+                        </strong> <strong class="pull-right">
+                         09:45AM</strong>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                      </div>
+                   </div>
+                </li>
+           </a>
+        </div>
+     {{/if}}
+
  {{/if}}
 
 </template>

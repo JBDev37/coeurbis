@@ -41,7 +41,7 @@ Template.messagerie.helpers({
           from_id: Meteor.userId(),
           from_name: user.username,
           to_id: this._id,
-          to_name: username
+          to_name: username,
         };
 
         var errors = validatePost(post);
@@ -64,6 +64,43 @@ Template.messagerie.helpers({
     return ContactChat.find({$or : [{from_id: userId }, {to_id:userId}]}, {sort: {date: -1}});
   },
 
+  /*current_user: function() {
+   var current_id = Router.current().params.post_author;
+
+    var userId = Meteor.userId();
+    var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id }, {to_id:userId,from_id:current_id }]});
+ if (user) {
+ return true;};
+
+  /*if (userId==user.from_id){ 
+    var id = user.to_id;
+   
+    return true;
+
+    }else{ 
+    var id = user.from_id;
+    
+      return true;
+  }
+  },*/
+
+    not_current_user: function() {
+   var current_id = Router.current().params.post_author;
+
+    var userId = Meteor.userId();
+    var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id }, {to_id:userId,from_id:current_id }]});
+  
+  if (userId==user.from_id){ 
+    var id = user.to_id;
+   
+    return true;
+
+    }else{ 
+    var id = user.from_id;
+    
+      return true;
+  }
+  },
 
 
 });
@@ -71,6 +108,7 @@ Template.messagerie.helpers({
 Template.messagerie.events({
   'submit form': function(e) {
     e.preventDefault();
+
     var user = Meteor.user();
     var name = Meteor.users.findOne(this._id);
     var username = name.username;
@@ -141,28 +179,30 @@ Template.messagerie.events({
 
   },
 
-   'click .receive_message':function() {
 
-    if (Meteor.userId()==this.from_id){ 
-    var id = this.to_id;
-   
-    }else{ var id = this.from_id;
+ 'click .receive_message':function() {
+  //Router.go('messagerie', {post_author: this._id});
+  
+       /*var current_id = Router.current().params.post_author;
+ alert(current_id);
+alert(this.to_id);*/
 
-    }
 
-   Router.go('messagerie', {post_author: id});
+   /* var errors = validatePost(post);
+    if (errors.message)
+      return Session.set('postSubmitErrors', errors);
 
-    
+    Meteor.call('update_active', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });*/
+
+
+ 
   },
-
-  'click .member_list':function() {
-    var element = document.getElementById('msgbox');
-    element.scrollTop = element.scrollHeight - element.clientHeight;
-   
-   return element.scrollTop;
     
-  },
-
 
 
 

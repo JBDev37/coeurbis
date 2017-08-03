@@ -133,3 +133,38 @@ Template.registerHelper('scroll_bottom', function() {
    return element.scrollTop;
 });
 
+Template.registerHelper('current_chat_from', function(id) {
+
+    var request = ContactChat.findOne({"_id":id, "id_from_active":true });
+    if(request){
+   return true  ;}
+});
+
+Template.registerHelper('current_chat_to', function(id) {
+
+    var request = ContactChat.findOne({"_id":id, "id_to_active":true });
+    if(request){
+   return true  ;}
+});
+
+Template.registerHelper('not_current_user', function(id) {
+   var current_id = Router.current().params.post_author;
+
+    var userId = Meteor.userId();
+    var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id, _id:id }, {to_id:userId,from_id:current_id,_id:id  }]});
+ if (!user) {
+ return true;}
+});
+
+Template.registerHelper('current_user', function(id) {
+  
+   var current_id = Router.current().params.post_author;
+
+    var userId = Meteor.userId();
+    var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id, _id:id }, {to_id:userId,from_id:current_id,_id:id  }]});
+ if (user) {
+ return true;}
+
+
+  
+});
