@@ -6,7 +6,7 @@ Meteor.startup(function () {
 });
 
 
-Accounts.onCreateUser(function( user) {
-    /*console.log(user);*/
+/*Accounts.onCreateUser(function( user) {
+    /*console.log(user);
     return user;
-});
+});*/

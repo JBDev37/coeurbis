@@ -12,10 +12,12 @@ Chat.allow({
             post_date: new Date(),
         });
         var postId = Chat.insert(post);
+       
         return {
             _id: postId
         };
     },
+
 
     bloquer_user: function(postAttributes) {
     var post = _.extend(postAttributes, {

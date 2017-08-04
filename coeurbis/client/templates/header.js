@@ -5,9 +5,16 @@ Template.header.helpers({
 });
 
 accountsUIBootstrap3.logoutCallback = function(error) {
+
   if(error) console.log("Error:" + error);
   Router.go('index');
 }
+ /*var id = Meteor.userId();
+var on = Meteor.users.find({"_id":id, "status.online": true })
+if(on){
+
+}*/
+
 
 accountsUIBootstrap3.setLanguage('fr');
 
@@ -23,12 +30,14 @@ i18n.map("fr",{
   }
 });
 
-accountsUIBootstrap3.setCustomSignupOptions = function() {
+/*accountsUIBootstrap3.setCustomSignupOptions = function() {
+
     return {
         histoire: ' ',
-        titre_histoire: ' '
+        titre_histoire: ' ',
+        on_line: new Date(),
     }
-}
+}*/
 
 Accounts.ui.config({
     requestPermissions: {},
@@ -41,21 +50,7 @@ Accounts.ui.config({
         visible: true,
     },
 
-    {
-        fieldName: 'presentation',
-        showFieldLabel: false,     
-        fieldLabel: 'Presentation',
-        inputType: 'radio',
-        radioLayout: 'vertical',    
-        data: [{
-            id: 1,
-            label: 'presentation',
-            value: 'dddd',
-            checked: 'checked'
-        }],
-        visible: false,
-    },
-
+    
     {
         
         fieldName: 'naissance',

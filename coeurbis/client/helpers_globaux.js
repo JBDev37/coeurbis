@@ -29,6 +29,36 @@ Template.registerHelper('date_francais', function(date) {
 
 });
 
+Template.registerHelper('date_contact_chat', function(date) {
+  // affiche la date en francais
+   var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+   var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
+   // on recupere la date
+   var date_fr = new Date(date);
+   // on construit le message
+   /*affiche_date = jours[date.getDay()] + " ";   // nom du jour*/
+   var jours = date.getDate(date_fr);
+   if(jours< 10){
+        jours = "0" + jours;
+   }
+
+   var mois = date_fr.getMonth()+1;   // mois
+   if(mois< 10){
+        mois = "0" + mois;
+   }
+
+   var annee = date_fr.getFullYear();
+
+   var heure = date_fr.getHours();
+   var minutes = date_fr.getMinutes();
+   if(minutes < 10){
+        minutes = "0" + minutes;
+   }
+   la_date = jours+"/"+mois+"/" +annee+" " +heure + "h" + minutes;
+   return la_date;
+
+});
+
 
 
 Template.registerHelper('date_francais_heures', function(date) {
@@ -164,7 +194,15 @@ Template.registerHelper('current_user', function(id) {
     var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id, _id:id }, {to_id:userId,from_id:current_id,_id:id  }]});
  if (user) {
  return true;}
-
-
   
+});
+
+Template.registerHelper('user_online', function(id) {
+    var request = Meteor.users.findOne(id);
+    return request.status.online;
+
+});
+
+Template.registerHelper("limite_caractere", function(text) {
+  return text.substring(0, 30);
 });

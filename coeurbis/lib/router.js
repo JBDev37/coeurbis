@@ -13,6 +13,7 @@ Router.configure({
     Meteor.subscribe('chat'),
     Meteor.subscribe('userBloquer'),
     Meteor.subscribe('contact_Chat'),
+    Meteor.subscribe('userStatus'),
      ];
      }
 });

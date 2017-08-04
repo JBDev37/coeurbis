@@ -38,4 +38,6 @@ Meteor.publish('contact_Chat', function() {
   return ContactChat.find();
 });
 
-
+Meteor.publish("userStatus", function() {
+  return Meteor.users.find({ "status.online": true });
+});

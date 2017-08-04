@@ -115,13 +115,13 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{to_name }}
+                       {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
 
-                        </strong> <strong class="pull-right">
-                         09:45AM</strong>
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
                       </div>
                       <div class="contact_sec">
-                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
                       </div>
                    </div>
                 </li>
@@ -137,24 +137,19 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{to_name }}
+                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
 
-                        </strong> <strong class="pull-right">
-                         09:45AM</strong>
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
                       </div>
                       <div class="contact_sec">
-                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
                       </div>
                    </div>
                 </li>
            </a>
         </div>
      {{/if}}
-
-
-
-
-
 {{else}}
 
        {{#if current_user _id}}  
@@ -166,13 +161,13 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{from_name }}
+                        {{#if user_online from_id}} <img src="/img/Point_vert.png">  {{/if}} {{from_name }} 
 
-                        </strong> <strong class="pull-right">
-                         09:45AM</strong>
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
                       </div>
                       <div class="contact_sec">
-                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
                       </div>
                    </div>
                 </li>
@@ -188,13 +183,13 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{from_name }}
+                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} 
 
-                        </strong> <strong class="pull-right">
-                         09:45AM</strong>
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
                       </div>
                       <div class="contact_sec">
-                         <strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
                       </div>
                    </div>
                 </li>

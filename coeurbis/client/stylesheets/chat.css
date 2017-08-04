@@ -73,7 +73,7 @@
   padding: 3px 20px;
 }
    .member_list .chat-body {
-   margin-left: 47px;
+   margin-left: 10px;
    margin-top: 0;
    }
    .top_nav {
@@ -321,3 +321,6 @@
   color: white;
 }
 
+.pull-right{
+  margin-right: 5px;
+}

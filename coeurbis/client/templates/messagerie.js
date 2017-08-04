@@ -108,10 +108,11 @@ Template.messagerie.helpers({
 Template.messagerie.events({
   'submit form': function(e) {
     e.preventDefault();
-
+    var userId = Meteor.userId();
     var user = Meteor.user();
     var name = Meteor.users.findOne(this._id);
     var username = name.username;
+    var last_message= $(e.target).find('[name=message]').val();
     var post = {
       message: $(e.target).find('[name=message]').val(),
       from_id: Meteor.userId(),
@@ -119,6 +120,18 @@ Template.messagerie.events({
       to_id: this._id,
       to_name: username
     };
+
+    var search = ContactChat.findOne({$or : [{from_id: userId, to_id:this._id }, {to_id:userId,from_id:this._id }]});
+    var contact_id = search._id;
+
+        ContactChat.update(contact_id, {$set: {last_message :last_message} }, function(error) {
+      if (error) {
+        // affiche l'erreur à l'utilisateur
+       return throwError(error.reason);
+      } else {
+        
+      }
+    });
 
     var errors = validatePost(post);
     if (errors.message)
