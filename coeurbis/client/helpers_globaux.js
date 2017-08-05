@@ -232,7 +232,9 @@ Template.registerHelper('current_user', function(id) {
 });
 
 Template.registerHelper('user_online', function(id) {
+   
     var request = Meteor.users.findOne(id);
+
     return request.status.online;
 
 });

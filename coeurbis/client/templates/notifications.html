@@ -16,6 +16,10 @@
       {{#each notificationFriends}}
         {{> notificationItemFriends}}
       {{/each}}
+
+      {{#each notificationMessages}}
+        {{> notificationItemMessages}}
+      {{/each}}
     
     {{else}}
       <li><span>No Notifications</span></li>
@@ -40,3 +44,15 @@
     <div class="non btn btn-danger btn-xs">refuser</div>
   </li>
 </template>
+
+<template name="notificationItemMessages">
+  <li>
+    <a href="{{notificationPathMessage}}">
+      Tu as reçu un message de <strong>{{to_name}}</strong> 
+    </a>{{test}}
+  </li>
+</template>
+
+
+
+
