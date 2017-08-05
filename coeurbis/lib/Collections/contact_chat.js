@@ -10,7 +10,8 @@ ContactChat.allow({
     contact_chat: function(postAttributes) {
         var post = _.extend(postAttributes, {
             date: new Date(),
-            last_message : ' '
+            last_message : ' ',
+            read : false
         });
         var postId = ContactChat.insert(post);
         return {

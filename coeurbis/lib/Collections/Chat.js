@@ -10,6 +10,7 @@ Chat.allow({
     message: function(postAttributes) {
         var post = _.extend(postAttributes, {
             post_date: new Date(),
+            read:false
         });
         var postId = Chat.insert(post);
        

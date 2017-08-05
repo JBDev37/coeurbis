@@ -136,6 +136,40 @@ Template.registerHelper('mon_message', function(id) {
   return true; }
 });
 
+Template.registerHelper('message_read', function(from_id) {
+   var current_id = Router.current().params.post_author;
+   var my_id = Meteor.userId();
+  var contact = ContactChat.findOne({$or : [{from_id: my_id, to_id:from_id }, {to_id:my_id,from_id:from_id}]});
+
+  if(from_id == current_id){
+     Chat.update(this._id,  {$set: {read:true}});
+     
+   } else{
+    ContactChat.update(contact._id,  {$set: {read:true}});
+   }
+});
+
+Template.registerHelper('not_read', function() {
+   var userId = Meteor.userId();
+if(this.to_id == userId){
+    id=this.from_id
+  }else {id=this.to_id}
+
+ 
+   var contact = Chat.find({from_id: id, to_id:userId, read:false}).count();
+
+
+  if(contact>0){
+    return true;
+  }
+
+});
+
+
+
+
+
+
 Template.registerHelper('is_bloquer', function(id) {
     var userId = Meteor.userId();
     var to_id = id;
@@ -206,3 +240,17 @@ Template.registerHelper('user_online', function(id) {
 Template.registerHelper("limite_caractere", function(text) {
   return text.substring(0, 30);
 });
+
+Template.registerHelper("url_contact", function() {
+  var userId = Meteor.userId();
+  var current_id = Router.current().params.post_author;
+  var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
+
+  if(userId==user.from_id){id=user.to_id
+  }
+    else{id=user.from_id}
+  return id;
+});
+
+
+

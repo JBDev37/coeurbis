@@ -59,10 +59,11 @@
                      </span>
                      <div class="chat-body1 clearfix" >
                         {{#each mes_messages}}
+
                             {{#if mon_message from_id}}
-                            {{> Item_message_droite}}
+                            {{> Item_message_droite}} {{message_read from_id}} 
                             {{else}}
-                            {{> Item_message_gauche}}
+                            {{> Item_message_gauche}} {{message_read from_id}}
                             {{/if}}
                         {{/each}}
                        
@@ -108,14 +109,14 @@
   {{#if my_name from_name}}
        {{#if current_user _id}}  
         <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="{{_id}}">    
-                <a href="{{pathFor 'messagerie' post_author=to_id}}" id="a">
+            
                 <li class="left clearfix" i>
                    <span class="chat-img pull-left">
                    </span>
                    <div class="chat-body clearfix">
                       <div class="header_sec">
-                         <strong class="primary-font">
-                       {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                         <strong class="primary-font"> 
+                       {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} aaaaa 
 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
@@ -125,19 +126,20 @@
                       </div>
                    </div>
                 </li>
-           </a>
+        
         </div>
      {{/if}}
-    {{#if not_current_user _id}}  
-        <div class="receive_message  {{to_id}}"  id="{{_id}}">    
-                <a href="{{pathFor 'messagerie' post_author=to_id}}" id="a">
+    {{#if not_current_user _id}} 
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}"  style="background-color: red;" id="{{_id}}">    
+              
                 <li class="left clearfix" i>
                    <span class="chat-img pull-left">
                    </span>
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} bbbbb
 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
@@ -147,43 +149,66 @@
                       </div>
                    </div>
                 </li>
-           </a>
+         
         </div>
+        {{else}}
+        <div class="receive_message  {{to_id}}"  id="{{_id}}">    
+              
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} cccc 
+
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
      {{/if}}
 {{else}}
 
        {{#if current_user _id}}  
         <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="{{_id}}">    
-                <a href="{{pathFor 'messagerie' post_author=from_id}}" id="a">
+              
                 <li class="left clearfix" i>
                    <span class="chat-img pull-left">
                    </span>
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online from_id}} <img src="/img/Point_vert.png">  {{/if}} {{from_name }} 
+                        {{#if user_online from_id}} <img src="/img/Point_vert.png">  {{/if}} {{from_name }} dddd
 
                         </strong> <div class="pull-right">
-                         {{date_contact_chat date}}</div>
+                         {{date_contact_chat date}}</div>{{from_id}}
                       </div>
                       <div class="contact_sec">
                          <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
                       </div>
                    </div>
                 </li>
-           </a>
+          
         </div>
      {{/if}}
      {{#if not_current_user _id}}  
-        <div class="receive_message  {{to_id}}"  id="{{_id}}">    
-                <a href="{{pathFor 'messagerie' post_author=from_id}}" id="a">
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}" style="background-color: red;" id="{{_id}}">    
+              
                 <li class="left clearfix" i>
                    <span class="chat-img pull-left">
                    </span>
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} 
+                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} eeee
 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
@@ -193,9 +218,30 @@
                       </div>
                    </div>
                 </li>
-           </a>
+         
         </div>
-     {{/if}}
+{{else}}
+                <div class="receive_message  {{to_id}}"  id="{{_id}}">    
+                
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} fff
+
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+     {{/if}}{{/if}}
 
  {{/if}}
 

@@ -8,10 +8,33 @@ Template.messagerie.helpers({
     
     mes_messages: function() {
     var curentUser = this._id;
+    var current_id = Router.current().params.post_author;
     var my_id = Meteor.userId();
     var messages_recu = Chat.find({$or : [{from_id: curentUser, to_id:my_id}, {from_id: my_id, to_id:curentUser}]});
     
+   
+
     return messages_recu;
+  },
+
+
+    message_unread: function() {
+    var current_id = Router.current().params.post_author;
+    var my_id = Meteor.userId();
+    var messages_recu = Chat.findOne({$or : [{from_id: current_id, to_id:my_id}, {from_id: my_id, to_id:current_id}]});
+
+    if (current_id==messages_recu.from_id){ 
+    var id = messages_recu.from_id;}
+
+    if (current_id==messages_recu.to_id){
+    var id = messages_recu.to_id;}
+    
+    
+   return 'ssssss';
+    /*if (current_id != id){
+      return alert('ok');
+    } */
+
   },
 
     bloquer: function() {
@@ -124,7 +147,7 @@ Template.messagerie.events({
     var search = ContactChat.findOne({$or : [{from_id: userId, to_id:this._id }, {to_id:userId,from_id:this._id }]});
     var contact_id = search._id;
 
-        ContactChat.update(contact_id, {$set: {last_message :last_message} }, function(error) {
+        ContactChat.update(contact_id, {$set: {last_message :last_message, read:false} }, function(error) {
       if (error) {
         // affiche l'erreur à l'utilisateur
        return throwError(error.reason);
@@ -194,7 +217,18 @@ Template.messagerie.events({
 
 
  'click .receive_message':function() {
-  //Router.go('messagerie', {post_author: this._id});
+  
+
+  var userId = Meteor.userId();
+
+  //var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
+  if(this.to_id == userId){
+    id=this.from_id
+  }else {id=this.to_id}
+
+
+   Router.go('messagerie', {post_author: id});
+
   
        /*var current_id = Router.current().params.post_author;
  alert(current_id);
