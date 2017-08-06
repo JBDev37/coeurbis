@@ -3,11 +3,11 @@ Comments = new Mongo.Collection('comments');
 
 Meteor.methods({
   commentInsert: function(commentAttributes) {
-    check(this.userId, String);
+    /*check(this.userId, String);
     check(commentAttributes, {
       postId: String,
       body: String
-    });
+    });*/
     var user = Meteor.user();
     var post = Posts.findOne(commentAttributes.postId);
     if (!post)

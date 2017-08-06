@@ -1,13 +1,22 @@
 <template name="messages_poste">
-	  <div class="tab-pane " id="tab7">
+	 <div class="tab-pane " id="tab7">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="pull-left">
                         
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>message posté</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                    <span>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Messages postés</strong></a></h4>
+                    {{#each mes_messages}}
+                      {{> messagePosteItem}}
+                    {{/each}}
+                </div>
+            </div>
+    </div>
+</template>
+
+<template name="messagePosteItem">
+
                         <div class="navbar-right">
                             <div class="dropdown">
                                 <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -24,11 +33,12 @@
                                 </ul>
                             </div>
                         </div>
-                    </span>
+                   
                     <hr>
                     <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                        <p>{{post_title}}</p><p>{{categorie}}</p>
+                        <p>{{post_content}}</p>
+                        {{date_francais_heures post_date}}
                     </div>
                     <hr>
                     <div>
@@ -51,7 +61,5 @@
                             <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
                         </div>
                     </div>
-                </div>
-            </div>
-       </div>     
+
 </template>
