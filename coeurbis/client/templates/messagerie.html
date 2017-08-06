@@ -116,8 +116,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font"> 
-                       {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} aaaaa 
-
+                       {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
                       </div>
@@ -139,8 +139,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} bbbbb
-
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
                       </div>
@@ -160,8 +160,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} cccc 
-
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
                       </div>
@@ -185,10 +185,10 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online from_id}} <img src="/img/Point_vert.png">  {{/if}} {{from_name }} dddd {{from_id}}
-
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
-                         {{date_contact_chat date}}</div>{{from_id}}
+                         {{date_contact_chat date}}</div>
                       </div>
                       <div class="contact_sec">
                          <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
@@ -208,8 +208,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} eeee
-
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
                       </div>
@@ -229,8 +229,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online from_id}} <img src="/img/Point_vert.png"> {{/if}} {{from_name }} fff
-
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat date}}</div>
                       </div>

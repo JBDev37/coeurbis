@@ -231,11 +231,17 @@ Template.registerHelper('current_user', function(id) {
   
 });
 
-Template.registerHelper('user_online', function(id) {
-   
-    var request = Meteor.users.findOne(id);
+Template.registerHelper('user_online_chat', function(current_id) {
+  var userId = Meteor.userId();
+  var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
 
-    return request.status.online;
+  if(userId==user.from_id){
+    var id=user.to_id; }
+  else{
+    var id=user.from_id;
+  }
+  var request = Meteor.users.findOne(id);
+  return request.status.online;
 
 });
 
