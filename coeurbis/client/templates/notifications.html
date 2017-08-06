@@ -2,7 +2,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     Notifications
     {{#if notificationCount}}
-      <span class="badge badge-inverse">{{notificationCount}}</span>
+      <span class="badge badge-inverse notif">{{notificationCount}}</span>
     {{/if}}
     <b class="caret"></b>
   </a>
@@ -48,7 +48,7 @@
 <template name="notificationItemMessages">
   <li>
     <a href="{{notificationPathMessage}}">
-      Tu as reçu un message de <strong>{{to_name}}</strong> 
+      Tu as reçu un message de <strong>{{from_name}}</strong> 
     </a>
   </li>
 </template>

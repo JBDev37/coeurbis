@@ -32,5 +32,27 @@ Template.postItem.events({
   'click .upvotable': function(e) {
     e.preventDefault();
     Meteor.call('upvote1', this._id);
-  }
+  },
+
+  'click .private_message': function(e) {
+    e.preventDefault();
+
+    var user = Meteor.user();
+    var userId = Meteor.userId();
+    var to_id = this.post_author;
+    var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
+    if(to_id){
+        if (request) {
+               ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+              if (error) {
+               return throwError(error.reason);
+              } else {}
+              });
+             }
+           }
+
+    Router.go('messagerie', {post_author: this.post_author});
+  },
+
+
 });

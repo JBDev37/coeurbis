@@ -148,7 +148,7 @@ padding-top: 40px;
      display: none;
  }
 .menu{
-    display: inline-block;
+    display: block;
 
 }
 
@@ -159,9 +159,9 @@ padding-top: 40px;
 }
 
 .nav > li > a:hover {
-    background-color: white;
+    /*background-color: white;
     height: 40px;
-    color: black;
+    color: black;*/
 }
 
 
@@ -2317,7 +2317,7 @@ label{
 
 .navbar-default .navbar-nav > li > a:hover{
     /*background-color: #ffffff;*/
-    color: #ffffff;
+    /*color: #ffffff;*/
     /*border-radius: 2px;*/
     /*height: 42px;*/
    

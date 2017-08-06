@@ -133,9 +133,9 @@ body {
 
 
 .badge{
-  color: #666666;
+  /*color: #666666;
   background-color: rgba(102,102,102,0);
-  margin-left: -6px;
+  margin-left: -6px;*/
 
 }
 
@@ -149,10 +149,10 @@ body {
 
 .nav > li > a:hover,
 .nav > li > a:focus {
-  text-decoration: none;
+  /*text-decoration: none;
   background-color: white;
   height: 20px;
-  color: #2196f3;
+  color: #2196f3;*/
 
 }
 

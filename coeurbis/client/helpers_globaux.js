@@ -151,22 +151,24 @@ Template.registerHelper('message_read', function(from_id) {
 
 Template.registerHelper('not_read', function() {
    var userId = Meteor.userId();
-if(this.to_id == userId){
+  if(this.to_id == userId){
     id=this.from_id
   }else {id=this.to_id}
-
- 
    var contact = Chat.find({from_id: id, to_id:userId, read:false}).count();
-
 
   if(contact>0){
     return true;
   }
-
 });
 
 
-
+Template.registerHelper('id_contact', function() {
+  var userId = Meteor.userId();
+  if(this.to_id == userId){
+    id=this.from_id
+  }else {id=this.to_id}
+    return id;
+});
 
 
 

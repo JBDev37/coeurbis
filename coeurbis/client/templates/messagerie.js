@@ -58,6 +58,11 @@ Template.messagerie.helpers({
     var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
     if(to_id){
         if (request) {
+               /*ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+              if (error) {
+               return throwError(error.reason);
+              } else {}
+              });*/
         } 
         else {
           var post = {
@@ -65,14 +70,14 @@ Template.messagerie.helpers({
           from_name: user.username,
           to_id: this._id,
           to_name: username,
+          show:true
         };
 
         var errors = validatePost(post);
         if (errors.user)
           return Session.set('postSubmitErrors', errors);
 
-        Meteor.call('contact_chat', post, function(error, result) { // on recherche la methode 'postInsert' 
-                // affiche l'erreur à l'utilisateur et s'interrompt
+        Meteor.call('contact_chat', post, function(error, result) { 
                 if (error)
                     return throwError(error.reason);
                 //Router.go('postPage', {_id: result._id});
@@ -84,28 +89,8 @@ Template.messagerie.helpers({
 
     mes_contacts: function() {
     var userId = Meteor.userId();
-    return ContactChat.find({$or : [{from_id: userId }, {to_id:userId}]}, {sort: {date: -1}});
+    return ContactChat.find({$or : [{from_id: userId, show:true }, {to_id:userId, show:true}]}, {sort: {date: -1}});
   },
-
-  /*current_user: function() {
-   var current_id = Router.current().params.post_author;
-
-    var userId = Meteor.userId();
-    var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id }, {to_id:userId,from_id:current_id }]});
- if (user) {
- return true;};
-
-  /*if (userId==user.from_id){ 
-    var id = user.to_id;
-   
-    return true;
-
-    }else{ 
-    var id = user.from_id;
-    
-      return true;
-  }
-  },*/
 
     not_current_user: function() {
    var current_id = Router.current().params.post_author;
@@ -124,7 +109,6 @@ Template.messagerie.helpers({
       return true;
   }
   },
-
 
 });
 
@@ -215,40 +199,51 @@ Template.messagerie.events({
 
   },
 
-
  'click .receive_message':function() {
-  
-
   var userId = Meteor.userId();
-
   //var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
   if(this.to_id == userId){
     id=this.from_id
   }else {id=this.to_id}
 
-
    Router.go('messagerie', {post_author: id});
-
-  
-       /*var current_id = Router.current().params.post_author;
- alert(current_id);
-alert(this.to_id);*/
-
-
-   /* var errors = validatePost(post);
-    if (errors.message)
-      return Session.set('postSubmitErrors', errors);
-
-    Meteor.call('update_active', post, function(error, result) { // on recherche la methode 'postInsert' 
-            // affiche l'erreur à l'utilisateur et s'interrompt
-            if (error)
-                return throwError(error.reason);
-            //Router.go('postPage', {_id: result._id});
-        });*/
-
-
- 
   },
+
+  'mouseenter .receive_message':function() {
+    var userId = Meteor.userId();
+    if(this.to_id == userId){
+    id=this.from_id
+    }else {id=this.to_id}
+
+    document.getElementById(id).style.display="block";
+  },
+
+   'mouseleave .receive_message':function() {
+    var userId = Meteor.userId();
+    if(this.to_id == userId){
+    id=this.from_id
+    }else {id=this.to_id}
+    document.getElementById(id).style.display="none";
+  },
+
+   'click .delete_contact':function() {
+    var userId = Meteor.userId();
+    if(this.to_id == userId){
+    id=this.from_id
+    }else {id=this.to_id}
+
+    var search = ContactChat.findOne({$or : [{from_id: userId, to_id:id }, {to_id:userId,from_id:id }]});
+    var contact_id = search._id;
+
+    ContactChat.update(contact_id, {$set: {show:false} }, function(error) {
+          if (error) {
+           return throwError(error.reason);
+          } else {}
+      });
+
+  },
+
+
     
 
 

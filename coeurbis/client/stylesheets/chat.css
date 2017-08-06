@@ -100,7 +100,7 @@
    border-bottom:none;
    }
    .member_list {
-   height: 380px;
+   height: 580px;
    overflow-x: hidden;
    overflow-y: auto;
    }
@@ -204,6 +204,7 @@
 
 .container{
   width: 100%;
+  position: fixed;
 }
 
 .new_message_head{
@@ -319,8 +320,39 @@
 .current a{
   background-color: #0a68b4;
   color: white;
+
+}
+
+.current {
+  color: white;
 }
 
 .pull-right{
   margin-right: 5px;
+}
+
+.delete_contact{
+    width: 20px;
+    float: right;
+    padding: 0px;
+    margin-right: 5px;
+    height: 25px;
+}
+
+.nav > li > a {
+    background-color: transparent;
+    height: 39px;
+}
+
+.nav > li > a:focus {
+    background-color: white;
+    color: #000000;
+}
+.nav > li > a:hover {
+    background-color: white;
+    color: #000000;
+}
+
+.nav > li:hover {
+    
 }
