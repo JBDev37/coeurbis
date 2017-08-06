@@ -41,3 +41,7 @@ Meteor.publish('contact_Chat', function() {
 Meteor.publish("userStatus", function() {
   return Meteor.users.find({ "status.online": true });
 });
+
+Meteor.publish("visites", function() {
+    return Visites.find();
+});

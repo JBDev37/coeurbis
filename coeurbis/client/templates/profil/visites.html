@@ -3,9 +3,20 @@
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="pull-left">
+                  <h4><a href="#" style="text-decoration:none;"><strong>Vistes sur mon profil</strong></a></h4>      
+                {{#each visites}}
+                      {{> Itemvisites}}
+                    {{/each}}
+                </div>
+            </div>
+       </div>
+
+</template>
+
+<template name="Itemvisites">
+        <div class="pull-left">
                       </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>visite</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                    
                     <span>
                         <div class="navbar-right">
                             <div class="dropdown">
@@ -26,8 +37,8 @@
                     </span>
                     <hr>
                     <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                        <p>{{name_from_id}}</p>
+                        {{date_francais_heures post_date}}
                     </div>
                     <hr>
                     <div>
@@ -50,8 +61,5 @@
                             <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
                         </div>
                     </div>
-                </div>
-            </div>
-       </div>
 
-</template>
+</template>    

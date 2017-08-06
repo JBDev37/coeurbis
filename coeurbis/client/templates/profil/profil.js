@@ -33,6 +33,30 @@ Template.profil.helpers({
     }
   },
 
+  add_visites: function() {
+    var userId = Meteor.userId();
+    var current_id = Router.current().params.post_author;
+    var name = Meteor.users.findOne(current_id);
+    var username = name.username;
+    var user = Meteor.user();
+
+    var post = {
+      from_id: userId,
+      name_from_id: user.username,
+      to_id: current_id,
+      name_to_id: username
+    };
+
+    if (userId !== current_id) {
+        Meteor.call('add_visites', post, function(error, result) { 
+            if (error)
+                return throwError(error.reason);
+        }); 
+    };
+  },
+
+
+
 });
 
 
