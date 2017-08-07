@@ -3,12 +3,29 @@
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="pull-left">
-                        
-                    </div>
+    
                     <h4><a href="#" style="text-decoration:none;"><strong>commentaires</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                    <span>
-                        <div class="navbar-right">
+                
+                   {{#if my_id this._id}}
+                         {{#each mes_commentaires}}
+                            {{> ItemCommentaire}}
+                         {{/each}}
+                    {{else}}
+                        {{#each commentaires}}
+                            {{> ItemCommentaire}}
+                        {{/each}}
+                    {{/if}}
+
+
+
+                </div>
+            </div>
+       </div> 
+
+</template>
+
+<template name="ItemCommentaire">
+                            <div class="navbar-right">
                             <div class="dropdown">
                                 <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
@@ -24,11 +41,12 @@
                                 </ul>
                             </div>
                         </div>
-                    </span>
+                    
                     <hr>
                     <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                        <p>{{commentaire}}</p>
+                        <p>{{date_francais date}}</p>
+                        <p>{{from_name}}</p>
                     </div>
                     <hr>
                     <div>
@@ -51,8 +69,5 @@
                             <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
                         </div>
                     </div>
-                </div>
-            </div>
-       </div> 
 
 </template>

@@ -45,3 +45,7 @@ Meteor.publish("userStatus", function() {
 Meteor.publish("visites", function() {
     return Visites.find();
 });
+
+Meteor.publish('commentaires', function() {
+  return Commentaires.find();
+});

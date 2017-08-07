@@ -20,6 +20,10 @@
       {{#each notificationMessages}}
         {{> notificationItemMessages}}
       {{/each}}
+
+      {{#each notificationCommentaires}}
+        {{> notificationItemCommentaires}}
+      {{/each}}
     
     {{else}}
       <li><span>No Notifications</span></li>
@@ -30,7 +34,7 @@
 <template name="notificationItem">
   <li>
     <a href="{{notificationPostPath}}">
-      <strong>{{commenterName}}</strong> a commenté votre article
+      <strong>{{commenterName}}</strong> t'a donné un conseil
     </a>
   </li>
 </template>
@@ -49,6 +53,14 @@
   <li>
     <a href="{{notificationPathMessage}}">
       Tu as reçu un message de <strong>{{from_name}}</strong> 
+    </a>
+  </li>
+</template>
+
+<template name="notificationItemCommentaires">
+  <li>
+    <a  class="comm">
+      Tu as reçu un commentaire de <strong>{{from_name}}</strong> 
     </a>
   </li>
 </template>

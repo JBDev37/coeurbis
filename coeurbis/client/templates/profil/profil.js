@@ -86,6 +86,8 @@ Template.profil.events({
                 return throwError(error.reason);
             //Router.go('postPage', {_id: result._id});
         });  
-  }
+  },
+
+  
 });
 

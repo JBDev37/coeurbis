@@ -13,14 +13,20 @@ Template.notifications.helpers({
    return Chat.find({to_id:userId, read:false});}
   },
 
+  notificationCommentaires : function() {
+   var userId = Meteor.userId();
+   return Commentaires.find({to_id:userId, read:false});
+  },
+
   notificationCount: function(){
     var userId = Meteor.userId();
     var comment = Notifications.find({userId: Meteor.userId(), read: false}).count();
     var friends = Notifications.find({to_id: Meteor.userId(), read: false}).count();
+    var commentaires = Commentaires.find({to_id: Meteor.userId(), read: false}).count();
     if( Router.current().route.getName() !=='messagerie'){
     var messages = Chat.find({to_id:userId, read:false}).count();
     }
-    var total = comment + friends + messages;
+    var total = comment + friends + messages + commentaires;
     return total;
   },
 
@@ -51,6 +57,14 @@ Template.notificationItemMessages.helpers({
   },
 
 });
+
+Template.notificationItemCommentaires.events({
+  'click .comm': function() {
+    Commentaires.update(this._id,{$set:{read:true}})
+    //Router.routes.profil.path({post_author: this.to_id});
+    Router.go('mon_profil', {_id: this.to_id});
+  },
+}); 
 
 Template.notificationItemFriends.events({
   'click .oui': function(e) {

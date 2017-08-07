@@ -10,11 +10,18 @@
                     <span>
                         <h1 class="panel-title pull-left" style="font-size:30px;"> {{username}} <small></small> </h1>
                          {{#if my_id this._id}}{{else}}
-                        <div class="dropdown pull-right">
+                          <div class="dropdown pull-right">
                             <button class="btn btn-success dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">
                                 {{en_attente}}
                             </button>
                         </div>
+                        <div class="clear"></div><br>
+                         <div class="dropdown pull-right show-com add-com">
+                            <button class="btn btn-warning dropdown-toggle " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="">
+                                Ajouter un commentaire
+                            </button>
+                        </div>
+                      
                         {{/if}}
 
                     </span>
@@ -61,6 +68,7 @@
             </div>
 
     <div class="tab-content">
+            {{> add_commentaire}}
             {{> presentation}}
             {{> histoire}}
             {{> amis}}

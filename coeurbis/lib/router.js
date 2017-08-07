@@ -15,6 +15,7 @@ Router.configure({
     Meteor.subscribe('contact_Chat'),
     Meteor.subscribe('userStatus'),
     Meteor.subscribe('visites'),
+    Meteor.subscribe('commentaires'),
      ];
      }
 });

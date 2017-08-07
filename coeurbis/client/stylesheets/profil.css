@@ -186,4 +186,16 @@ body {
   font-weight: bold;
 }
 
+.add-com{
+  display: block;
+  
+}
+
+.clear{
+  clear: both;
+}
+
+#show-com{
+  display: none;
+}
 
