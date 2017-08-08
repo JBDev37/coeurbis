@@ -20,24 +20,28 @@
 
 
 <template name="postItem">
+ {{supprimer_message _id}}
   <div class="message-gauche">
 
     <div class="container-messages-gauche">
-    {{#if is_garcon gender}}
+    {{#if is_garcon gender}} 
          <div class="titre_message_container">{{post_title}}
           <div class="categorie_msg"  >{{categorie}}</div> 
-         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-             </form> 
+          {{#if currentUser}}
+          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+          {{/if}}
       </div> 
       {{/if}}
-        {{#if is_fille gender}}
-       <div class="titre_message_container_fille">{{post_title}}
-          <div class="categorie_msg"  >{{categorie}}</div> 
-         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
 
-             </form> 
+        {{#if is_fille gender}} 
+       <div class="titre_message_container_fille">{{post_title}}
+          {{#if currentUser}}
+          <div class="categorie_msg"  >{{categorie}}</div> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
+         {{/if}}
       </div> 
       {{/if}}
+
       <div class="content-message-gauche"> {{post_content}}</div>
         
       <div class="footer-message_acceuil">
@@ -55,6 +59,7 @@
        </div>
            
        </div>
+
 
 </div>
 </template>

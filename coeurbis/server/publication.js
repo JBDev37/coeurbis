@@ -49,3 +49,11 @@ Meteor.publish("visites", function() {
 Meteor.publish('commentaires', function() {
   return Commentaires.find();
 });
+
+Meteor.publish('messages_signaler', function() {
+  return Signaler.find();
+});
+
+Meteor.publish('avertissement_user', function() {
+  return Avertissement.find();
+});

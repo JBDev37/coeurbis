@@ -16,6 +16,8 @@ Router.configure({
     Meteor.subscribe('userStatus'),
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
+    Meteor.subscribe('messages_signaler'),
+     Meteor.subscribe('avertissement_user'),
      ];
      }
 });
