@@ -57,3 +57,11 @@ Meteor.publish('messages_signaler', function() {
 Meteor.publish('avertissement_user', function() {
   return Avertissement.find();
 });
+
+Meteor.publish("userIP", function() {
+  return Meteor.users.find({ "status.lastLogin.ipAddr": true });
+});
+
+Meteor.publish('user_bloquer_IP', function() {
+  return UserBloquer_IP.find();
+});

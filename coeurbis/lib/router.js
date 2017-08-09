@@ -14,10 +14,12 @@ Router.configure({
     Meteor.subscribe('userBloquer'),
     Meteor.subscribe('contact_Chat'),
     Meteor.subscribe('userStatus'),
+    Meteor.subscribe('userIP'),
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-     Meteor.subscribe('avertissement_user'),
+    Meteor.subscribe('avertissement_user'),
+    Meteor.subscribe('user_bloquer_IP'),
      ];
      }
 });

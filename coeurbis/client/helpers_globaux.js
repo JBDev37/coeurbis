@@ -263,4 +263,47 @@ Template.registerHelper("url_contact", function() {
 });
 
 
+Template.registerHelper('user_IP', function() {
+  var userId = Meteor.userId();
+  var user = Meteor.user();
+  var my_name = this.username;
+  var search = Meteor.users.findOne(userId);
+  var adress_ip = search.status.lastLogin.ipAddr;
+  var count = Avertissement.find({user_id:userId}).count();
+  if(count >2){
+  var post = {
+      User_id:userId,
+      User_name:my_name,
+      User_IP:adress_ip
+    };
+    var errors = validatePost(post);
+    if (errors.User_id || errors.User_name)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('bloquerUser_IP', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+    var delet = Avertissement.findOne({user_id:userId});
+    var id = delet._id;
+    Avertissement.remove(id);
+  }
+
+});
+
+Template.registerHelper("user_bloquer_url", function() {
+  var userId = Meteor.userId();
+  var search = Meteor.users.findOne(userId);
+  var adress_ip = search.status.lastLogin.ipAddr;
+  var user = UserBloquer_IP.findOne({User_IP :adress_ip});
+  if(user){
+    Router.go('contact');
+    return true;
+  }
+
+   
+});
+
 

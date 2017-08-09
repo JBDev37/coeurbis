@@ -1,11 +1,17 @@
 <template name="layout">
+{{#if user_bloquer_url}}
 
-<button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" class="icon" id="icon"></a><!-- icone hamburger --></button>
+	{{>compte_bloquer}}
 
-{{> slideMenu}} <!-- header.html -->
-{{>header}} <!-- header.html -->
-{{> errors}}
 
-{{> yield}} <!-- affiche le contenu de la route courante-->
+ {{else}}
+ 
+	<button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" class="icon" id="icon"></a><!-- icone hamburger --></button>
 
+	{{> slideMenu}} <!-- header.html -->
+	{{>header}} <!-- header.html -->
+	{{> errors}}
+
+	{{> yield}} <!-- affiche le contenu de la route courante-->
+{{/if}}
 </template>
