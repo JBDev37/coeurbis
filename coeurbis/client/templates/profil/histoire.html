@@ -57,11 +57,11 @@
                     {{/if}}
                 </div>
             </div>
-          {{#if my_id this._id}}
+          
 	       	{{#each histoires}}
 	      		{{> Item_Histoires}}
 	    	{{/each}}
-          {{/if}}
+         
 
        </div>
 
@@ -86,8 +86,10 @@
                     </div>
                     <div>
                         <div class="pull-right btn-group-xs nav nav-pills">
+                             {{#if my_id post_author}}
                             <a class="btn btn-danger delete"><i class="fa fa-times" aria-hidden="true"></i></a>
                             <a href="#modif" class="btn btn-success modifier" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                             {{/if}}
                         </div>
                       
                         <br>
@@ -109,6 +111,7 @@
 			                    </form>
                             </div>
 	                        </div>
+                           
 
                 </div>
             </div>

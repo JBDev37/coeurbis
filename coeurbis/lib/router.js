@@ -20,6 +20,7 @@ Router.configure({
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('avertissement_user'),
     Meteor.subscribe('user_bloquer_IP'),
+    Meteor.subscribe('alertes'),
      ];
      }
 });

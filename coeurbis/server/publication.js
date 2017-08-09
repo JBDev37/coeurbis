@@ -65,3 +65,7 @@ Meteor.publish("userIP", function() {
 Meteor.publish('user_bloquer_IP', function() {
   return UserBloquer_IP.find();
 });
+
+Meteor.publish('alertes', function() {
+  return Alertes.find();
+});

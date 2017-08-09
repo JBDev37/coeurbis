@@ -117,7 +117,7 @@ Template.registerHelper('breaklines', function(text) {
 });
 
 Template.registerHelper('my_id', function(id) {
-  if(Meteor.userId()==this._id){
+  if(Meteor.userId()==id){
   return true; }
 });
 

@@ -1,57 +1,124 @@
 <template name="alerte">
-	<div class="tab-pane " id="tab11">
+    <div class="tab-pane " id="tab11">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="pull-left">
-                       
+                        
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Alerte</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
-                    <span>
-                        <div class="navbar-right">
-                            <div class="dropdown">
-                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
-                                    <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </span>
+                   {{#if my_id this._id}}
+                    <h4><a href="#" style="text-decoration:none; color: red;"><strong>Alertes</strong></a> <small><small>
+                    <i> Visible par tous les utilisateurs</i></small></small></h4>
+                    
                     <hr>
                     <div class="post-content">
-                        <p>Simple post content example.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                       Les alertes sont réservées aux situations les plus graves (agressions, viols, harcèlements...).
+                       <br><br>
+                       En créant une alerte, <u><strong> tout le monde</strong> </u> recevra ton message, tu aura ainsi très rapidement du soutien.
+                       <br><br>
+                       <span class="attention"> ATTENTION : Tu n'as le droit qu'à une seule alerte ! </span>
                     </div>
-                    <hr>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
-                        </div>
-                        <div class="pull-left">
-                            <p class="text-muted" style="margin-left:5px;"><i class="fa fa-globe" aria-hidden="true"></i> Public</p>
-                        </div>
-                        <br>
-                    </div>
-                    <hr>
+                    {{else}}
+                     <h4><a href="#" style="text-decoration:none;"><strong>Ses histoires d'amour</strong></a></h4>
+                    {{/if}}
+
+                    {{#if my_id this._id}}
                     <div class="media">
                         <div class="pull-left">
-                            
                         </div>
                         <div class="media-body">
-                            <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
+                            <ul class="nav nav-pills">
+                              <li class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></li>
+                              <li style="float: right;"><a href="#exp1" class="t22" data-toggle="tab">Créer une alerte</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active " id="taba" ></div>
+                                <div class="tab-pane " id="exp1" >
+                                
+                                <form enctype="multipart/form-data" action="" method="post" id="2alertes">
+                                
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Titre</label>
+                                    <input type="text" class="form-control" name="titre-alerte" id="titre-alerte" required placeholder="Titre">
+                                  </div>    <br>             
+                                   <div class="form-group">
+                                    <label for="exampleInputEmail1">Mon message</label>
+                                    <textarea class="form-control" rows="10" placeholder="Explique ton histoire..." required id="alerte" name="alerte1"></textarea>
+                                  </div>
+                                
+                                <br>
+                                <div class="input-conseillere">
+                               
+                                <input type="submit" name="submit" value="Valider" class="btn btn-success submit1" id="2alertes"/>
+                               </div>
+                           
+                            </form>
+                            
+                            </div>
+                            </div>
                         </div>
                     </div>
+                    {{/if}}
+                </div>
+            </div>
+          
+            {{#each les_alertes}}
+                {{> ItemAlerte}}
+            {{/each}}
+         
+
+       </div>
+
+</template>
+
+
+<template name="ItemAlerte">
+    
+
+    <div class="tab-pane" >
+            <!-- Simple post content example. -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        
+                    </div>
+                    <div class="titre_histoires">{{titre_alerte}} </div>
+                    
+                    <hr>
+                    <div class="post-content">
+                        {{{breaklines alerte}}}
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs nav nav-pills">
+                            <a class="btn btn-danger delete_alerte"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            {{#if my_id this.author_id}}
+                            <a href="#modif" class="btn btn-success modifier_alerte" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            {{/if}}
+                        </div>
+                      
+                        <br>
+                    </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active " id="taba" ></div>
+                                <div class="tab-pane hist" id="modifAlerte" >
+                                    <form enctype="multipart/form-data" action="" method="post" id="al">
+                                    <fieldset>                        
+                                    <label><strong>Modifier</strong></label>
+                                     <textarea id="" name="modif_alerte" class="form-control" style="height:250px;" required> {{ alerte}} </textarea><br>
+                                    
+                                    <br>
+                                    <div class="input-conseillere">
+                                   
+                                    <input type="submit" name="submit" value="Valider" id="hist" class="btn btn-success submit1"/>
+                                   </div>
+                                </fieldset>
+                                </form>
+                            </div>
+                            </div>
+                            
+
                 </div>
             </div>
        </div>
+
 </template>

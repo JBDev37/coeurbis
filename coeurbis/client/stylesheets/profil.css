@@ -199,3 +199,9 @@ body {
   display: none;
 }
 
+.attention{
+  color: red;
+  font-weight: bold;
+
+}
+
