@@ -21,6 +21,7 @@ Router.configure({
     Meteor.subscribe('avertissement_user'),
     Meteor.subscribe('user_bloquer_IP'),
     Meteor.subscribe('alertes'),
+    Meteor.subscribe('delete_alertes'),
      ];
      }
 });

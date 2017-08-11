@@ -24,6 +24,11 @@
       {{#each notificationCommentaires}}
         {{> notificationItemCommentaires}}
       {{/each}}
+
+
+      {{#each notificationAlertes}}
+        {{> notificationAlertesItem}}
+      {{/each}}
     
     {{else}}
       <li><span>No Notifications</span></li>
@@ -61,6 +66,14 @@
   <li>
     <a  class="comm">
       Tu as reçu un commentaire de <strong>{{from_name}}</strong> 
+    </a>
+  </li>
+</template>
+
+<template name="notificationAlertesItem">
+  <li>
+    <a  class="Une_alerte" id="{{id_unique}}">
+      <strong>{{ author_name}} </strong> a créé une alerte
     </a>
   </li>
 </template>

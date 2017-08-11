@@ -18,6 +18,25 @@ Template.notifications.helpers({
    return Commentaires.find({to_id:userId, read:false});
   },
 
+  notificationAlertes : function() {
+    var userId = Meteor.userId();
+   return Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } });
+  },
+
+  dont_show_alertNot: function(id) {
+    var my_id = Meteor.userId();
+    search = DeleteAlertes.findOne({"id_alerte":id, "delete_from_id": my_id});
+    if(!search)
+    return true;
+  },
+
+  id_unique: function() {
+    var my_id = Meteor.userId();
+    var id = this._id;
+    var unique = my_id + id;
+    return unique;
+  },
+
   notificationCount: function(){
     var userId = Meteor.userId();
     var comment = Notifications.find({userId: Meteor.userId(), read: false}).count();
@@ -26,7 +45,9 @@ Template.notifications.helpers({
     if( Router.current().route.getName() !=='messagerie'){
     var messages = Chat.find({to_id:userId, read:false}).count();
     }
-    var total = comment + friends + messages + commentaires;
+    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
+
+    var total = comment + friends + messages + commentaires + alertes;
     return total;
   },
 
@@ -63,6 +84,17 @@ Template.notificationItemCommentaires.events({
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
     Router.go('mon_profil', {_id: this.to_id});
+  },
+}); 
+
+Template.notificationAlertesItem.events({
+  'click .Une_alerte': function() {
+    var my_id = Meteor.userId();
+    var id = this._id;
+    var unique = my_id + id;
+      Alertes.update(id, {$addToSet: {read: my_id}});
+    //document.getElementById(unique).style.display = "none";
+    Router.go('mon_profil', {_id: my_id});
   },
 }); 
 
