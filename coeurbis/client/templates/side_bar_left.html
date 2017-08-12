@@ -17,9 +17,30 @@
         {{/if}}
 
          <div class="top-conseillere-scroll">
-          {{#each conseillers }}
-              {{> conseillerItem}}
-          {{/each}}
+
+          {{#each counter}}
+             
+
+    {{#if is_fille_conseillere gender}}
+        <div class="top-conseillere-content-fille">
+            <div class="top-conseillere-number"> {{ true_value @index}} </div>         
+            <div class="top-conseillere-pseudo-fille">{{name}}</div> 
+            <div class="top-conseillere-confiance">
+            </div>
+
+        </div>
+    {{/if}} 
+
+    {{#if is_garcon_conseillere gender}}    
+        <div class="top-conseillere-content-garcon">
+            <div class="top-conseillere-number"> {{true_value @index}} </div>                      
+            <div class="top-conseillere-pseudo-garcon">{{name}}</div>
+             <div class="top-conseillere-confiance">
+            </div>
+        </div>
+    {{/if}}    
+           {{/each}}   
+    
 
          </div>
 
@@ -34,26 +55,7 @@
 
 <template name="conseillerItem">
 
-{{#each counter}}{{name}} {{/each}}
 
-    {{#if is_fille_conseillere gender}}
-        <div class="top-conseillere-content-fille">
-            <div class="top-conseillere-number"></div>         
-            <div class="top-conseillere-pseudo-fille">{{username}}</div> 
-            <div class="top-conseillere-confiance">
-            </div>
-
-        </div>
-    {{/if}} 
-
-    {{#if is_garcon_conseillere gender}}    
-        <div class="top-conseillere-content-garcon">
-            <div class="top-conseillere-number"></div>                      
-            <div class="top-conseillere-pseudo-garcon">{{username}}</div>
-             <div class="top-conseillere-confiance">
-            </div>
-        </div>
-    {{/if}}    
 
 </template>
 
