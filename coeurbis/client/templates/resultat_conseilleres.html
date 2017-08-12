@@ -1,0 +1,67 @@
+<template name="resultat_conseillere">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages">
+
+    <div class="register-form-devenir blanc">
+            <fieldset>
+                
+                    <legend>Contacter un conseiller</legend>
+                    
+            </fieldset>
+    </div>
+
+</div>
+     {{#each show_conseilleres}}
+      {{> ItemConseillere}}
+    {{/each}}
+</template>
+
+
+<template name="ItemConseillere">
+<div class="container-messages">
+    <div class="message-gauche">
+
+    <div class="container-messages-gauche">
+    {{#if is_garcon gender}} 
+         <div class="titre_message_container">{{username}}
+          <div class="categorie_msg"  >{{categorie}}</div> 
+          {{#if currentUser}}
+          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+          {{/if}}
+      </div> 
+      {{/if}}
+
+        {{#if is_fille gender}} 
+       <div class="titre_message_container_fille">{{username}}
+          {{#if currentUser}}
+          <div class="categorie_msg"  >{{categorie}}</div> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
+         {{/if}}
+      </div> 
+      {{/if}}
+
+      <div class="content-message-gauche"> {{presentation}}</div>
+        
+      <div class="footer-message_acceuil">
+            <a href="{{pathFor 'profil' }}">{{author_name}}</a>
+            <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
+            <div class="date-message">{{date_francais post_date }}</div>  
+            
+            <div class="nbr-reponse">
+             <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "réponse"}}</a>
+            </div>
+          <a href="" class="private_message"><img  src="/img/comment.png"></a>
+             
+          {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
+         
+       </div>
+           
+       </div>
+
+    </div>
+</div>
+</template>
+

@@ -22,6 +22,7 @@ Router.configure({
     Meteor.subscribe('user_bloquer_IP'),
     Meteor.subscribe('alertes'),
     Meteor.subscribe('delete_alertes'),
+    Meteor.subscribe('conseilleres'),
      ];
      }
 });
@@ -79,8 +80,6 @@ Router.route('/messagerie/:post_author?', {
   }
 });
 
-
-
 Router.route('/mot_de_passe', {
 	name: 'mot_de_passe',
 	template : 'mot_de_passe',
@@ -110,5 +109,62 @@ Router.route('/inscription', {
 	template : 'inscription',
 
 });
+
+Router.route('/devenir_conseillere', {
+  name: 'devenir_conseillere',
+  template : 'devenir_conseillere',
+
+});
+
+Router.route('/confirmation_conseillere', {
+  name: 'confirmation_conseillere',
+  template : 'confirmation_conseillere',
+
+});
+
+Router.route('/recherche_conseillere', {
+  name: 'recherche_conseillere',
+  template : 'recherche_conseillere',
+
+});
+
+Router.route('/resultat_conseillere/:sexe_fille?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:sexe_garcon?', {
+  name: 'resultat_conseillere',
+  template : 'resultat_conseillere',
+      data: function() {
+    return Conseilleres.find(/*{$or :[
+      {college:this.params.college},
+      //{lycee:this.params.lycee}
+      //{college:this.params.college}
+      
+      //{college:this.params.college}
+{sexe_fille:this.params.sexe_fille},
+    ]}*/);
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});

@@ -111,6 +111,26 @@ Template.registerHelper('is_garcon', function(sexe) {
   }
 });
 
+Template.registerHelper('is_fille_global', function() {
+  var user = Meteor.user();
+  var gender = user.profile.gender;
+  if (gender =='fille') {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+Template.registerHelper('is_garcon_global', function() {
+  var user = Meteor.user();
+  var gender = user.profile.gender;
+  if (gender =='garcon') {
+    return true;
+  } else {
+    return false;
+  }
+});
+
 Template.registerHelper('breaklines', function(text) {
   text1 = text.replace(/(\r\n|\n|\r)/g, "<br>");
   return text1;
@@ -303,6 +323,15 @@ Template.registerHelper("user_bloquer_url", function() {
     return true;
   }
 
+   
+});
+
+Template.registerHelper("is_conseiller", function() {
+  var userId = Meteor.userId();
+  var search = Conseilleres.findOne({user_id:userId});
+  if(search){
+    return true
+  }
    
 });
 

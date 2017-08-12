@@ -1,0 +1,23 @@
+<template name="confirmation_conseillere">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages">
+
+    <div class="register-form-devenir blanc">
+         
+        <fieldset>
+        <legend >Confirmation d'inscription</legend>
+        <div class="confirmation_conseillere">
+        {{#if is_fille_global gender}}Tu es maintenant conseillère.<br><br>{{/if}}
+        {{#if is_garcon_global gender}}Tu es maintenant conseiller. <br><br>{{/if}}
+        <span >Félicitation ! Tu va pouvoir aider ceux et celles qui en ont besoin.</span>
+        </div>
+
+        </fieldset>
+    </div>
+
+</div>
+
+</template>

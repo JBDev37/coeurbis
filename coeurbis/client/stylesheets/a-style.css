@@ -2816,3 +2816,8 @@ label{
   background-color: inherit;
   border-color: transparent;
 }
+
+.confirmation_conseillere{
+    color: black;
+    font-size: 14px;
+}

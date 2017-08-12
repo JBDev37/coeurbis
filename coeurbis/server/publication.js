@@ -73,3 +73,7 @@ Meteor.publish('alertes', function() {
 Meteor.publish('delete_alertes', function() {
   return DeleteAlertes.find();
 });
+
+Meteor.publish('conseilleres', function() {
+  return Conseilleres.find();
+});

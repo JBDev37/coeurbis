@@ -1,0 +1,48 @@
+<template name="recherche_conseillere">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages">
+
+    <div class="register-form-devenir blanc">
+
+        <form enctype="multipart/form-data" action="" method="post">
+            <fieldset>
+                
+                    <legend>Contacter un conseiller</legend>
+                    <strong>Ta tranche d'&acirc;ge :</strong><br/>
+                     <div data-toggle="buttons">
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="college" value="true" >  Coll&egrave;ge</label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="lycee" value="true">  Lyc&eacute;e</label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="adulte" value="true">  +18 ans</label>
+                    </div>
+                    <br/>
+
+                    <strong>Dans quel domaine souhaites-tu obtenir un conseil :</strong><br/>
+                    <div data-toggle="buttons">
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="amour" value="true" >  Amour  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="amitie" value="true">  Amiti&eacute;  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="confiance" value="true">  Confiance en soi  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="sexo" value="true">  Sexo  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="autre" value="true">  Autre  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    </div>
+                    <br/> 
+                    <div data-toggle="buttons">
+                   
+                    <strong>Je veux un conseil des : </strong><br/>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="garcon" value="true"  >  Garçons  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="fille" value="true" >  Filles  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="les_deux" value="true">  Les deux  <div style="display: inline-block; margin-left: 5px"></div></label>
+                    <br/> <br/>
+                </div>
+                <input type="submit" name="submit" value="valider" class="btn btn-success"/>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+   
+</template>
+
+
