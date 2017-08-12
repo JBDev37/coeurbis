@@ -18,8 +18,8 @@ Template.recherche_conseillere.events({
       var Les_deux = $('input[type=radio][name=les_deux]:checked').attr('value');
       
       
-     if(Sexe_fille){sexe_fille = true;}else{sexe_fille=false}  
-     if(Sexe_garcon){sexe_garcon = true;}else{sexe_garcon=false}  
+     if(Sexe_fille){gender = 'fille';}else{gender='garcon'}  
+     if(Sexe_garcon){gender = 'garcon';}else{gender='fille'}  
      if(College){college = true;}else{college=false}
      if(Lycee){lycee = true;}else{lycee=false}
      if(Adulte){adulte = true;}else{adulte=false}
@@ -28,7 +28,7 @@ Template.recherche_conseillere.events({
      if(Confiance){confiance = true;}else{confiance=false}
      if(Sexo){sexo = true;}else{sexo=false}
      if(Autre ){autre = true;}else{autre=false}
-
+     if(Les_deux ){les_deux = true;}else{les_deux=false}
 
 
       Router.go('resultat_conseillere', {
@@ -42,8 +42,10 @@ Template.recherche_conseillere.events({
         sexo:sexo,
         autre:autre,
 
-        sexe_garcon:sexe_garcon,
-        sexe_fille:sexe_fille,
+        gender:gender,
+        les_deux:les_deux
+
+
 
       });
       

@@ -131,6 +131,22 @@ Template.registerHelper('is_garcon_global', function() {
   }
 });
 
+Template.registerHelper('is_garcon_conseillere', function(gender) {
+  if (gender =='garcon') {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+Template.registerHelper('is_fille_conseillere', function(gender) {
+  if (gender =='fille') {
+    return true;
+  } else {
+    return false;
+  }
+});
+
 Template.registerHelper('breaklines', function(text) {
   text1 = text.replace(/(\r\n|\n|\r)/g, "<br>");
   return text1;
@@ -255,13 +271,17 @@ Template.registerHelper('current_user', function(id) {
 
 Template.registerHelper('user_online_chat', function(current_id) {
   var userId = Meteor.userId();
-  var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
-
-  if(userId==user.from_id){
-    var id=user.to_id; }
+  if(userId==current_id){
+    return false}
   else{
-    var id=user.from_id;
+  var request = Meteor.users.findOne(current_id);
+  return request.status.online;
   }
+ 
+
+});
+
+Template.registerHelper('user_online_conseillere', function(id) {
   var request = Meteor.users.findOne(id);
   return request.status.online;
 
@@ -334,5 +354,18 @@ Template.registerHelper("is_conseiller", function() {
   }
    
 });
+
+Template.registerHelper("last_login_conseillere", function() {
+  var userId = Meteor.userId();
+  var search = Meteor.users.findOne(userId);
+  var lastLogin = search.status.lastLogin.date;
+  var conseillere = Conseilleres.findOne({user_id :userId});
+  var conseillere_id = conseillere._id; 
+   if(conseillere_id){
+   Conseilleres.update( conseillere_id,  {$set: {lastLogin:lastLogin}});
+   }
+});
+
+
 
 

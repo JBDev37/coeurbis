@@ -58,11 +58,11 @@ Template.messagerie.helpers({
     var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
     if(to_id){
         if (request) {
-               /*ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+               ContactChat.update(request._id, {$set: {show:true} }, function(error) {
               if (error) {
                return throwError(error.reason);
               } else {}
-              });*/
+              });
         } 
         else {
           var post = {

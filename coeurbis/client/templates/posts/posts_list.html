@@ -2,10 +2,11 @@
 
 {{> side_bar_right }}
 {{> side_bar_left }}
-<div class="container-messages">
+<div class="container-messages-acceuil">
 	{{> postSubmit}}
-         
-	
+ 
+
+
 
     {{#each posts}}
       {{> postItem}}
@@ -42,7 +43,7 @@
       </div> 
       {{/if}}
 
-      <div class="content-message-gauche"> {{post_content}}</div>
+      <div class="content-message-gauche"> {{{breaklines post_content}}}</div>
         
       <div class="footer-message_acceuil">
             <a href="{{pathFor 'profil' }}">{{author_name}}</a>

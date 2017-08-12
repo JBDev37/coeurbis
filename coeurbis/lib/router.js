@@ -23,6 +23,7 @@ Router.configure({
     Meteor.subscribe('alertes'),
     Meteor.subscribe('delete_alertes'),
     Meteor.subscribe('conseilleres'),
+    Meteor.subscribe('lastlogin'),
      ];
      }
 });
@@ -128,7 +129,7 @@ Router.route('/recherche_conseillere', {
 
 });
 
-Router.route('/resultat_conseillere/:sexe_fille?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:sexe_garcon?', {
+Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:les_deux?', {
   name: 'resultat_conseillere',
   template : 'resultat_conseillere',
       data: function() {

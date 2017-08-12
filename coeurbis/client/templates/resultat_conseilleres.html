@@ -3,12 +3,12 @@
 {{> side_bar_right }}
 {{> side_bar_left }}
 
-<div class="container-messages">
+<div class="container-messages-titre">
 
-    <div class="register-form-devenir blanc">
+    <div class="blanc">
             <fieldset>
                 
-                    <legend>Contacter un conseiller</legend>
+                    <legend>Resultat de la recherche</legend>
                     
             </fieldset>
     </div>
@@ -26,8 +26,8 @@
 
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
-         <div class="titre_message_container">{{username}}
-          <div class="categorie_msg"  >{{categorie}}</div> 
+         <div class="titre_message_container"><div class="username" >{{username}}</div>
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
           {{#if currentUser}}
           <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
           {{/if}}
@@ -35,27 +35,27 @@
       {{/if}}
 
         {{#if is_fille gender}} 
-       <div class="titre_message_container_fille">{{username}}
+       <div class="titre_message_container_fille"><div class="username" >{{username}}</div>
           {{#if currentUser}}
-          <div class="categorie_msg"  >{{categorie}}</div> 
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
          {{/if}}
       </div> 
       {{/if}}
 
-      <div class="content-message-gauche"> {{presentation}}</div>
+      <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
         
       <div class="footer-message_acceuil">
             <a href="{{pathFor 'profil' }}">{{author_name}}</a>
-            <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
-            <div class="date-message">{{date_francais post_date }}</div>  
+            <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
+            <div class="date-message"></div>  
             
             <div class="nbr-reponse">
-             <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "réponse"}}</a>
+             <a href="{{pathFor 'postPage'}}"></a>
             </div>
-          <a href="" class="private_message"><img  src="/img/comment.png"></a>
+          
              
-          {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
+         
          
        </div>
            

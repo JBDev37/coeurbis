@@ -14,6 +14,7 @@ Conseilleres.allow({
             username: user.username,
             gender :user.profile.gender,
             date: new Date(),
+            lastLogin: new Date(),
         });
         var postId = Conseilleres.insert(post);
         return {

@@ -14,24 +14,43 @@ Template.resultat_conseillere.helpers({
 
 
       var sexe_garcon = Router.current().params.sexe_garcon;
-      var sexe_fille = Router.current().params.sexe_fille;
+      var gender = Router.current().params.gender;
       var les_deux = Router.current().params.les_deux;
     
+    if(les_deux == 'true'){
+    return Conseilleres.find({$or :[
+        {college:college,
+        lycee:lycee,
+        adulte:adulte},
+
+        {amour:amour,
+        amitie:amitie,
+        confiance:confiance,
+        sexo:sexo,
+        autre:autre},
+
+        {gender:'fille'},
+         {gender:'garcon'},
+        
+
+    ]}, {sort: {lastLogin: -1}});
+    }else {
 
     return Conseilleres.find({$or :[
-        {college:college},
-        {lycee:lycee},
-        {adulte:adulte},
+        {college:college,
+        lycee:lycee,
+        adulte:adulte},
 
-        {amour:amour},
-        {amitie:amitie},
-        {confiance:confiance},
-        {sexo:sexo},
-        {autre:autre},
+        {amour:amour,
+        amitie:amitie,
+        confiance:confiance,
+        sexo:sexo,
+        autre:autre},
 
-        {sexe_garcon:sexe_garcon},
-        {sexe_fille:sexe_fille},
+        {gender:gender},
+        
 
-    ]});
+    ]}, {sort: {lastLogin: -1}});
+  }
   }
 });

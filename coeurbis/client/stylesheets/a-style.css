@@ -407,7 +407,7 @@ padding-top: 40px;
 
 
 .container-messages{
-    margin-top: 50px;
+    margin-top: -5px;
     /*float: right;*/
     /*width: 80%;*/
     margin-left: 240px;
@@ -417,6 +417,13 @@ padding-top: 40px;
     border-width: 2px;
     border-style: solid;*/
 
+}
+
+.container-messages-titre{
+    margin-top: 50px;
+    margin-left: 250px;
+    margin-right: 25px;
+    margin-bottom: 20px;
 }
 
 .container-messages-password{
@@ -545,9 +552,18 @@ padding-top: 40px;
 
 
 .categorie_msg{
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 15px;
     display: inline-block;
+
+}
+
+.username{
+    margin-top: 5px;
+    margin-left: 15px;
+    display: inline-block;
+    font-weight: bold;
+    
 }
 
 .categorie_msg_message{
@@ -626,13 +642,13 @@ padding-top: 40px;
     background-color: transparent;
     margin-top: -5px;
 }
-.repondre {
+.repondres {
     float: right;
     margin-right: 10px;
     margin-top: 6px;
 
 }
-.repondre a{
+.repondres a{
     text-decoration: none;
     color: #ffffff;
     
@@ -2145,13 +2161,13 @@ label{
     font-weight: bold;
 }
 
-.repondres{
+.repondre{
     float: right;
     margin-right: 10px;
     margin-top: 10px;
 }
 
-.repondres a{
+.repondre a{
     color: #ffffff;
     text-transform: none;
      text-decoration: none;
@@ -2821,3 +2837,29 @@ label{
     color: black;
     font-size: 14px;
 }
+
+.online-conseillere{
+    float: right;
+    margin-right: 10px;
+}
+
+.aider{
+    float: right;
+    margin-right: 10px;
+    color: white;
+}
+.aider a{
+    color: white;
+}
+
+.aider a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.container-messages-acceuil{
+    margin-top: 50px;
+    margin-left: 240px;
+    margin-right: 240px;
+}
+

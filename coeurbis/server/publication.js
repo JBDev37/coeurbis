@@ -62,6 +62,10 @@ Meteor.publish("userIP", function() {
   return Meteor.users.find({ "status.lastLogin.ipAddr": true });
 });
 
+Meteor.publish("lastlogin", function() {
+  return Meteor.users.find({ "status.lastLogin.date": true });
+});
+
 Meteor.publish('user_bloquer_IP', function() {
   return UserBloquer_IP.find();
 });
