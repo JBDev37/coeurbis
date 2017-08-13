@@ -1,12 +1,12 @@
-Template.side_bar_left.helpers({
-  conseillers: function() {
+Template.side_bar_right.helpers({
+  New_conseillers: function() {
     return Conseilleres.find({}, {sort: {date: -1}});
   },
 
   counter: function() {
   	var counters= [];
     var result= [];
-    var counters = Conseilleres.find({}, {sort: {date: -1}});
+    var counters = Conseilleres.find({});
     counters.forEach(function(doc){
     result.push({name: doc.username, gender:doc.gender, user_id:doc.user_id, presentation:doc.presentation});
     });
@@ -19,6 +19,3 @@ Template.side_bar_left.helpers({
   },
 
 });
-
-
-

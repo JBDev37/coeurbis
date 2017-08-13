@@ -1,5 +1,6 @@
 <template name="profil">
 {{add_visites}}
+{{calcul_confiance _id}}
 <div class="container-messages-profil">
 
 <div class="mainbody container-fluid">
@@ -26,7 +27,7 @@
 
                     </span>
                     <br><br>
-                    <i class="fa fa-handshake-o" aria-hidden="true"></i> Indice de confiance : 50%<br><br>
+                    Indice de confiance : <div class="raty"> </div>{{confiance}}/5<br><br>
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="/tags/diaspora" class="tag">Tu n'es pas conseiller</a>
                     <br><br><hr>
                     <span class="pull-left">

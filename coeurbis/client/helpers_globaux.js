@@ -291,6 +291,10 @@ Template.registerHelper("limite_caractere", function(text) {
   return text.substring(0, 30);
 });
 
+Template.registerHelper("limite_caractere_conseillere", function(text) {
+  return text.substring(0, 200);
+});
+
 Template.registerHelper("url_contact", function() {
   var userId = Meteor.userId();
   var current_id = Router.current().params.post_author;
@@ -365,6 +369,38 @@ Template.registerHelper("last_login_conseillere", function() {
    Conseilleres.update( conseillere_id,  {$set: {lastLogin:lastLogin}});
    }
 });
+
+Template.registerHelper("calcul_confiance", function(id) {
+ var total = 0;
+ var votant = 0;
+ Comments.find({userId:id}).map(function(doc) {
+  total += doc.votes;
+})
+ Comments.find({userId:id}).map(function(doc) {
+  votant += doc.nbr_votant;
+})
+ var vote_up= ((votant - total)/2) + total
+  
+  if(total >0){
+ var  result = (vote_up / votant)*5;
+ Meteor.users.update(id, {$set:{indice_confiance:result}});
+}
+  if(total <=0){
+ var  result = 0;
+ Meteor.users.update(id, {$set:{indice_confiance:result}});
+}
+ 
+});
+
+Template.registerHelper("confiance", function() {
+ var current_id = Router.current().params.post_author;
+ var user = Meteor.users.findOne(current_id);
+ var confiance = user.indice_confiance;
+ var round = confiance.toFixed(2);
+
+ return round;
+});
+
 
 
 

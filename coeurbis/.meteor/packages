@@ -54,3 +54,4 @@ socialize:base-model
 autopublish
 joncursi:socket-io-client
 mizzao:user-status
+mrt:jquery-raty

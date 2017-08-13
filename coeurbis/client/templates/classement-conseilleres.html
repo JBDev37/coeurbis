@@ -1,0 +1,57 @@
+<template name="classementComplet">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+<div class="container-messages-acceuil">
+    <div class="blanc">
+            <fieldset>
+                
+                    <legend style="text-align: center;">Classement complet</legend>
+                    
+            </fieldset>
+    </div><br>
+
+{{#each classement}}
+      <div class="message-gauche">
+    <div class="container-messages-gauche">
+    {{#if is_garcon gender}} 
+          <div class="titre_message_container"><div class="username" >{{name}}</div>
+          <div class="classement_conseillere"  >n°{{true_classement @index}}</div> 
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
+      </div> 
+      {{/if}}
+
+        {{#if is_fille gender}} 
+          <div class="titre_message_container_fille"><div class="username" >{{name}}</div>
+          <div class="classement_conseillere"  >n°{{true_classement @index}}</div>
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div>  
+      </div> 
+      {{/if}}
+
+      <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+        
+      <div class="footer-message_acceuil">
+             <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
+            <div class="date-message"></div>  
+            
+   
+       </div>
+           
+       </div>
+
+
+       </div>
+{{/each}}
+
+    
+
+</div>
+
+</template>
+
+
+
+<template name="ItemClassement">
+
+  
+</template>

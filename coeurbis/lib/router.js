@@ -133,21 +133,16 @@ Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/
   name: 'resultat_conseillere',
   template : 'resultat_conseillere',
       data: function() {
-    return Conseilleres.find(/*{$or :[
-      {college:this.params.college},
-      //{lycee:this.params.lycee}
-      //{college:this.params.college}
-      
-      //{college:this.params.college}
-{sexe_fille:this.params.sexe_fille},
-    ]}*/);
-
+    return Conseilleres.find();
   }
 
 });
 
+Router.route('/classement-conseilleres', {
+  name: 'classementComplet',
+  template : 'classementComplet',
 
-
+});
 
 
 

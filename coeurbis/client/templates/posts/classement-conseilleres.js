@@ -1,10 +1,7 @@
-Template.side_bar_left.helpers({
-  conseillers: function() {
-    return Conseilleres.find({}, {sort: {date: -1}});
-  },
+Template.classementComplet.helpers({
 
-  counter: function() {
-  	var counters= [];
+  classement: function() {
+    var counters= [];
     var result= [];
     var counters = Conseilleres.find({}, {sort: {date: -1}});
     counters.forEach(function(doc){
@@ -13,12 +10,12 @@ Template.side_bar_left.helpers({
     return result;
   },
 
-    true_value: function(n) {
+    true_classement: function(n) {
     var m = n+1;
     return m;
   },
 
-});
+  
 
-
+  });
 

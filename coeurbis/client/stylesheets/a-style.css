@@ -1281,6 +1281,23 @@ float: left;
     margin-left: 5px;
 }
 
+.top-conseillere-number a:hover{
+   text-decoration: none;
+}
+
+.top-conseillere-number-fille a {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+    color: #ff6af1;
+    margin-left: 5px;
+}
+
+.top-conseillere-number-fille a:hover {
+    text-decoration: none;
+    color: #ff6af1;
+}
+
 .top-conseillere-pseudo {
     /*position: relative;*/
     display: inline-block;
@@ -1332,6 +1349,8 @@ float: left;
     float: left;
 
 }
+
+
 
 .top-conseillere-pseudo-garcon {
     /*position: relative;*/
@@ -2863,3 +2882,10 @@ label{
     margin-right: 240px;
 }
 
+.container-liste-conseillere a:hover{
+    text-decoration: none;
+}
+
+.classement_conseillere{
+    float: right;
+}

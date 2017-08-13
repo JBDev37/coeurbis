@@ -91,3 +91,17 @@ Template.profil.events({
   
 });
 
+
+Template.profil.rendered = function(){
+ var current_id = Router.current().params.post_author;
+ var user = Meteor.users.findOne(current_id);
+ var confiance = user.indice_confiance;
+
+$('.raty').raty({
+  score:confiance,
+  showHalf:  true,
+  readOnly:  true,
+});
+   
+  };
+

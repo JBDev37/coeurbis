@@ -18,7 +18,8 @@ Meteor.methods({
       author: user.username,
       submitted: new Date(),
       upvoters: [],
-  	  votes: 0
+  	  votes: 0,
+      nbr_votant:0,
     });
     // crée le commentaire et enregistre l'id
     comment._id = Comments.insert(comment);
@@ -39,6 +40,9 @@ Meteor.methods({
       $addToSet: {upvoters: this.userId},
       $inc: {votes: 1}
     });
+    Comments.update(comment._id, {
+      $inc: {nbr_votant: 1}
+    });
   },
 
    downvote: function(commentId) {
@@ -52,6 +56,9 @@ Meteor.methods({
     Comments.update(comment._id, {
       $addToSet: {upvoters: this.userId},
       $inc: {votes: -1}
+    });
+    Comments.update(comment._id, {
+      $inc: {nbr_votant: 1}
     });
   }
 
