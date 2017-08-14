@@ -55,6 +55,57 @@ Template.profil.helpers({
     };
   },
 
+    count_histoires: function() {
+    var curentUser = this._id; 
+    return Histoires.find({post_author: curentUser}).count();
+  },
+
+    count_amis: function() {
+    var userId = Meteor.userId();
+    count1 =  Friends.find({"from_id": userId}).count();
+    count2 =  Friends.find({"to_id": userId}).count();
+
+    return count1 + count2;
+  },
+
+    count_visites: function() {
+    var userId = Meteor.userId();
+    return Visites.find({to_id:userId}).count();
+  },
+
+    count_liste_personne: function() {
+     var userId = Meteor.userId();
+    return Comments.find({userId:userId }).count();
+  },
+
+    count_mes_messages: function() {
+     var userId = Meteor.userId();
+    return Posts.find({post_author:userId}).count();
+  },
+
+    count_commentaires: function() {
+    var curentUser = this._id;
+    return Commentaires.find({to_id:curentUser }).count();
+  },
+
+    count_mes_commentaires: function() {
+    var userId = Meteor.userId();
+    return Commentaires.find({to_id:userId }).count();
+  },
+
+    count_liste_personne_aide: function() {
+     var userId = Meteor.userId();
+    return Comments.find({post_author_id:userId}).count();
+  },
+
+  count_avertissement:function() {
+  var current_id = Router.current().params.post_author;
+  return Avertissement.find({user_id:current_id}).count();
+  },
+
+  count_alertes: function() {
+    return Alertes.find().count();
+  },
 
 
 });

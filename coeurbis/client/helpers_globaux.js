@@ -9,6 +9,7 @@ Template.registerHelper('pluralize', function(n, thing) {
 
 Template.registerHelper('date_francais', function(date) {
   // affiche la date en francais
+   if(date){
    var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
    var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
    // on recupere la date
@@ -26,11 +27,12 @@ Template.registerHelper('date_francais', function(date) {
    }
  
    return affiche_date;
-
+   }
 });
 
 Template.registerHelper('date_contact_chat', function(date) {
   // affiche la date en francais
+     if(date){
    var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
    var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
    // on recupere la date
@@ -56,6 +58,7 @@ Template.registerHelper('date_contact_chat', function(date) {
    }
    la_date = jours+"/"+mois+"/" +annee+" " +heure + "h" + minutes;
    return la_date;
+   }
 
 });
 
@@ -63,6 +66,7 @@ Template.registerHelper('date_contact_chat', function(date) {
 
 Template.registerHelper('date_francais_heures', function(date) {
   // affiche la date en francais
+   if(date){
    var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
    var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
    // on recupere la date
@@ -80,7 +84,7 @@ Template.registerHelper('date_francais_heures', function(date) {
    }
    la_date = affiche_date +" " +heure + "h" + minutes;
    return la_date;
-
+   }
 });
 
 
@@ -148,8 +152,9 @@ Template.registerHelper('is_fille_conseillere', function(gender) {
 });
 
 Template.registerHelper('breaklines', function(text) {
+  if(text){
   text1 = text.replace(/(\r\n|\n|\r)/g, "<br>");
-  return text1;
+  return text1;}
 });
 
 Template.registerHelper('my_id', function(id) {
@@ -313,6 +318,7 @@ Template.registerHelper('user_IP', function() {
   var my_name = this.username;
   var search = Meteor.users.findOne(userId);
   var adress_ip = search.status.lastLogin.ipAddr;
+  if(adress_ip){
   var count = Avertissement.find({user_id:userId}).count();
   if(count >2){
   var post = {
@@ -333,7 +339,9 @@ Template.registerHelper('user_IP', function() {
     var delet = Avertissement.findOne({user_id:userId});
     var id = delet._id;
     Avertissement.remove(id);
+
   }
+}
 
 });
 
@@ -341,12 +349,13 @@ Template.registerHelper("user_bloquer_url", function() {
   var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
   var adress_ip = search.status.lastLogin.ipAddr;
+  if(adress_ip){
   var user = UserBloquer_IP.findOne({User_IP :adress_ip});
   if(user){
     Router.go('contact');
     return true;
   }
-
+  }
    
 });
 
@@ -359,15 +368,25 @@ Template.registerHelper("is_conseiller", function() {
    
 });
 
+Template.registerHelper("is_conseiller_user", function(id) {
+  var search = Conseilleres.findOne({user_id:id});
+  if(search){
+    return true
+  }
+   
+});
+
 Template.registerHelper("last_login_conseillere", function() {
   var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
   var lastLogin = search.status.lastLogin.date;
+  if(lastLogin){
   var conseillere = Conseilleres.findOne({user_id :userId});
   var conseillere_id = conseillere._id; 
    if(conseillere_id){
    Conseilleres.update( conseillere_id,  {$set: {lastLogin:lastLogin}});
    }
+  }
 });
 
 Template.registerHelper("calcul_confiance", function(id) {
@@ -379,18 +398,32 @@ Template.registerHelper("calcul_confiance", function(id) {
  Comments.find({userId:id}).map(function(doc) {
   votant += doc.nbr_votant;
 })
+
  var vote_up= ((votant - total)/2) + total
   
   if(total >0){
  var  result = (vote_up / votant)*5;
+
  Meteor.users.update(id, {$set:{indice_confiance:result}});
+
+  var search = Conseilleres.findOne({user_id:id});
+  if(search){
+    Conseilleres.update(search._id, {$set:{indice_confiance:result}});
+  }
 }
+
+
   if(total <=0){
  var  result = 0;
  Meteor.users.update(id, {$set:{indice_confiance:result}});
+ var search = Conseilleres.findOne({user_id:id});
+  if(search){
+    Conseilleres.update(search._id, {$set:{indice_confiance:result}});
+  }
 }
  
 });
+
 
 Template.registerHelper("confiance", function() {
  var current_id = Router.current().params.post_author;
@@ -402,6 +435,97 @@ Template.registerHelper("confiance", function() {
 });
 
 
+Template.registerHelper("etoile", function(id) {
+   var user = Meteor.users.findOne(id);
+   var confiance = user.indice_confiance;
 
+  $('.'+id).raty({
+    score:confiance,
+    showHalf:  true,
+    readOnly:  true,
+  });
+});
+
+Template.registerHelper("status_conseiller", function(id) {
+   var user = Conseilleres.findOne({user_id:id});
+   if(user){
+   var search = user.indice_confiance;
+   var round = search.toFixed(2);
+   var confiance = parseInt(round)
+   
+   if(confiance  < 2 ){
+    return "Bronze";
+   }
+
+    if(confiance <3){
+    return "Rubis";
+   }
+
+   if(confiance <4.5){
+    return "Diamant";
+   }
+
+   if(confiance >4.5){
+    return "Ange gardien";
+   }
+  }
+});
+
+
+Template.registerHelper("bronze", function(id) {
+   var user = Conseilleres.findOne({user_id:id});
+   if(user){
+   var search = user.indice_confiance;
+   var round = search.toFixed(2);
+   var confiance = parseInt(round)
+   
+   if(confiance  < 2 ){
+    return true;
+   }
+
+  }
+});
+
+Template.registerHelper("rubis", function(id) {
+   var user = Conseilleres.findOne({user_id:id});
+   if(user){
+   var search = user.indice_confiance;
+   var round = search.toFixed(2);
+   var confiance = parseInt(round)
+   
+   if(confiance  < 3 ){
+    return true;
+   }
+
+  }
+});
+
+Template.registerHelper("diamant", function(id) {
+   var user = Conseilleres.findOne({user_id:id});
+   if(user){
+   var search = user.indice_confiance;
+   var round = search.toFixed(2);
+   var confiance = parseInt(round)
+   
+   if(confiance  < 4.5 ){
+    return true;
+   }
+
+  }
+});
+
+Template.registerHelper("ange", function(id) {
+   var user = Conseilleres.findOne({user_id:id});
+   if(user){
+   var search = user.indice_confiance;
+   var round = search.toFixed(2);
+   var confiance = parseInt(round)
+   
+   if(confiance  > 4.5 ){
+    return true;
+   }
+
+  }
+});
 
 

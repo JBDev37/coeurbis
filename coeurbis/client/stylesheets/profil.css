@@ -133,10 +133,26 @@ body {
 
 
 .badge{
-  /*color: #666666;
-  background-color: rgba(102,102,102,0);
-  margin-left: -6px;*/
+  color: white;
+  background-color: #2196f3;
+  margin-left: -6px;
 
+}
+
+
+.badge_red {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: red;
+  border-radius: 10px;
 }
 
 /*.btn {
@@ -209,3 +225,49 @@ body {
   color: white;
 }
 
+.confiance_profil{
+  display: inline-block;
+}
+
+.tab-content{
+  margin-top: -15px;
+}
+
+.tab-pane{
+  margin-top: 20px;
+}
+
+.panel-body a:hover{
+ text-decoration: none;
+}
+
+.panel{
+  margin-bottom: 0px;
+}
+
+.username_fille{
+    color: #ff6af1;
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.username_garcon{
+    color: #2196f3;
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.panelBot{
+  margin-bottom: 5px;
+}
+
+.profil_ami{
+  margin-top: -5px;
+}
+.supprimer_ami{
+  margin-top: -5px;
+}

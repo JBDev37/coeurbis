@@ -1,65 +1,45 @@
 <template name="visites">
 	 <div class="tab-pane " id="tab4">
             <!-- Simple post content example. -->
-            <div class="panel panel-default">
+            <div class="panel panel-default panelBot">
                 <div class="panel-body">
                   <h4><a href="#" style="text-decoration:none;"><strong>Vistes sur mon profil</strong></a></h4>      
+               </div>
+            </div>
                     {{#each visites}}
                       {{> Itemvisites}}
                     {{/each}}
-                </div>
-            </div>
+
        </div>
 
 </template>
 
 <template name="Itemvisites">
-        <div class="pull-left">
-                      </div>
+        <div class="pull-left"> <p></p></div>
                     
-                    <span>
-                        <div class="navbar-right">
-                            <div class="dropdown">
-                                <button class="btn btn-link btn-xs dropdown-toggle" type="button" id="dd1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dd1" style="float: right;">
-                                    <li><a href="#"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Report</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-ban" aria-hidden="true"></i> Ignore</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Enable notifications for this post</a></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-eye-slash" aria-hidden="true"></i> Hide</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Delete</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </span>
-                    <hr>
-                    <div class="post-content">
-                        <p>{{name_from_id}}</p>
-                        {{date_francais_heures post_date}}
-                    </div>
-                    <hr>
-                    <div>
-                        <div class="pull-right btn-group-xs">
-                            <a class="btn btn-default btn-xs"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-retweet" aria-hidden="true"></i> Reshare</a>
-                            <a class="btn btn-default btn-xs"><i class="fa fa-comment" aria-hidden="true"></i> Comment</a>
-                        </div>
-                        <div class="pull-left">
-                            <p class="text-muted" style="margin-left:5px;"><i class="fa fa-globe" aria-hidden="true"></i> Public</p>
-                        </div>
-                        <br>
-                    </div>
-                    <hr>
-                    <div class="media">
-                        <div class="pull-left">
-                           
-                        </div>
-                        <div class="media-body">
-                            <textarea class="form-control" rows="1" placeholder="Comment"></textarea>
-                        </div>
-                    </div>
+ <div class="message-gauche">
+
+      <div class="container-messages-gauche">
+        {{#if gender_garcon}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{name_from_id}}</div></div> 
+        {{/if}}
+
+        {{#if gender_fille}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{name_from_id}}</div></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{{date_francais_heures post_date}}}</div>  
+                
+                <div class="nbr-reponse"></div>
+              
+                 <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+           </div>
+               
+        </div>
+
+    </div>
 
 </template>    

@@ -1422,7 +1422,7 @@ float: left;
     width: 180px;
     font-size: 90%;
     text-align: left;
-    margin-left: 5px;
+    margin-left: -5px;
 
 }
 

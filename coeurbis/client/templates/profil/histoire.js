@@ -2,7 +2,8 @@ Template.histoire.helpers({
   histoires: function() {
     var curentUser = this._id;
     return Histoires.find({post_author: curentUser});
-  }
+  },
+
 });
 
 

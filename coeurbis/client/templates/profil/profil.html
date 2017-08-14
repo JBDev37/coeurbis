@@ -27,43 +27,62 @@
 
                     </span>
                     <br><br>
-                    Indice de confiance : <div class="raty"> </div>{{confiance}}/5<br><br>
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="/tags/diaspora" class="tag">Tu n'es pas conseiller</a>
-                    <br><br><hr>
-                    <span class="pull-left">
+                   <div class="confiance_profil"> Indice de confiance : {{confiance}}/5 </div><div class="raty"> </div><br>
+                    
+                    {{#if is_conseiller_user _id}}
+                    Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
+                    
+                      {{else}}
+                         <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
+                          <br><hr>
+                    {{/if}}
+
+
+                    <span class="pull-left"><br>
                       <ul class="nav nav-pills">
                         
                          
                         <li class="active"><a href="#tab1" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Présentation</a></li>
                        
-                       <li> <a href="#tab2" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires <span class="badge">42</span></a>
+                       {{#if is_conseiller_user _id}}
+                       <li class=""><a href="#tab12" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-address-card-o" aria-hidden="true"></i> Conseiller</a></li>
+                       {{/if}}
+
+                       <li> <a href="#tab2" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires <span class="badge">{{count_histoires _id}}</span></a>
                        </li>    
                         {{#if my_id this._id}}
-                        <li> <a href="#tab3" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <span class="badge">42</span></a> </li>
+                        <li> <a href="#tab3" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <span class="badge">{{count_amis}}</span></a> </li>
                      
-                        <li> <a href="#tab4" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-eye" aria-hidden="true"></i> Visites <span class="badge">42</span></a> </li>
+                        <li> <a href="#tab4" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-eye" aria-hidden="true"></i> Visites <span class="badge">{{count_visites}}</span></a> </li>
                            {{/if}}
-                        <li> <a href="#tab5" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <span class="badge">42</span></a> </li>
+                        <li> <a href="#tab5" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <span class="badge">{{count_liste_personne}}</span></a> </li>
                         
                         <!--<li> <a href="#tab6" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i> Mes conseils <span class="badge">42</span></a> </li>-->
                         
-                        <li> <a href="#tab7" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Messages postés <span class="badge">42</span></a> </li>
+                        <li> <a href="#tab7" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Messages postés <span class="badge">{{count_mes_messages}}</span></a> </li>
                         
-                        <li> <a href="#tab8" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-commenting" aria-hidden="true"></i> Commentaires <span class="badge">42</span></a> </li>
-                        
-                        <li> <a href="#tab9" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> Ils m'ont aidés <span class="badge">42</span></a> </li>
-                        
-                        <li> <a href="#tab10" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Avertissement <span class="badge">42</span></a> </li>
-                        
-                        {{#if my_id this._id}}
-                        <li> <a href="#tab11" data-toggle="tab" class="red" style="text-decoration:none;"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Alerte <span class="badge">42</span></a> </li>
+                        <li> <a href="#tab8" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-commenting" aria-hidden="true"></i> Commentaires <span class="badge">
+                        {{#if my_id this._id}}{{count_mes_commentaires}}
+                        {{else}}{{count_commentaires}}
                         {{/if}}
+
+                        </span></a> </li>
+                        
+                        <li> <a href="#tab9" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> Ils m'ont aidés <span class="badge">{{count_liste_personne_aide}}</span></a> </li>
+
+                        {{#if my_id this._id}}
+                        <li> <a href="#tab11" data-toggle="tab" class="red" style="text-decoration:none;"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Alerte <span class="badge_red">{{count_alertes}}</span></a> </li>
+                        {{/if}}
+                        
+                        <li> <a href="#tab10" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Avertissements <span class="badge">{{count_avertissement}}</span></a> </li>
+                        
+                        
                     </ul>
 
                     </span>
                     <span class="pull-right">
                        
-                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-lg fa-envelope-o" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Message"></i></a>
+                        
                         
                     </span>
                 </div>
@@ -72,6 +91,7 @@
     <div class="tab-content">
             {{> add_commentaire}}
             {{> presentation}}
+            {{> presentation_conseiller}}
             {{> histoire}}
             {{> amis}}
             {{> visites}}

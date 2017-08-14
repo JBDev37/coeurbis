@@ -25,7 +25,7 @@
         <div class="top-conseillere-content-fille">
             <div class="top-conseillere-number"> n°{{true_value @index}} </div>         
             <div class="top-conseillere-pseudo-fille"><a href="{{pathFor 'profil' post_author=user_id}}">{{name}}</a></div> 
-            <div class="top-conseillere-confiance">Confiance : </div>
+            <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
 
         </div>
     {{/if}} 
@@ -34,7 +34,7 @@
         <div class="top-conseillere-content-garcon">
             <div class="top-conseillere-number"> n°{{true_value @index}} </div>                      
             <div class="top-conseillere-pseudo-garcon"><a href="{{pathFor 'profil' post_author=user_id}}">{{name}}</a></div> 
-             <div class="top-conseillere-confiance">Confiance : </div>
+             <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
         </div>
     {{/if}}    
            {{/each}}   
