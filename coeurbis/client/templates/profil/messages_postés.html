@@ -1,4 +1,5 @@
 <template name="messages_poste">
+{{>profil}}
 	 <div class="tab-pane " id="tab7">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
@@ -37,9 +38,10 @@
                 <div class="date-message">{{date_francais post_date}}</div>  
                 
                 <div class="nbr-reponse"></div>
-              
+               {{#if my_id post_author}}
                  <div class="repondre profil_ami btn btn-success btn-xs">Les réponses</div>
                  <div class="supprimer_ami repondre btn btn-danger btn-xs">supprimer</div>
+                {{/if}}
            </div>
                
         </div>

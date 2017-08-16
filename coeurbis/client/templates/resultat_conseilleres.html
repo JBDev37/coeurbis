@@ -6,11 +6,7 @@
 <div class="container-messages-acceuil">
 
     <div class="blanc">
-            <fieldset>
-                
-                     <legend style="text-align: center;">Resultat de la recherche</legend>
-                    
-            </fieldset>
+             <div class="titre_classement"> Résultats de la recherche</div>
     </div><br>
 
 </div>
@@ -26,7 +22,7 @@
 
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
-         <div class="titre_message_container"><div class="username" >{{username}}</div>
+         <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
           {{#if currentUser}}
           <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
@@ -35,7 +31,7 @@
       {{/if}}
 
         {{#if is_fille gender}} 
-       <div class="titre_message_container_fille"><div class="username" >{{username}}</div>
+       <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="color: #ff6af1; margin-left: 5px;">{{username}}</a></div>
           {{#if currentUser}}
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
@@ -50,8 +46,15 @@
             <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
             <div class="date-message"></div>  
             
-            <div class="nbr-reponse">
-             <a href="{{pathFor 'postPage'}}"></a>
+            <div class="footer-conseiller">
+            {{#if is_fille gender}} 
+              <div style="color: #ff6af1;" class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            
+            {{#if is_garcon gender}} 
+                <div class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            <div class="date_last_connexion">  {{date_last_connexion user_id}}  </div>
             </div>
           
              

@@ -4,25 +4,21 @@
 {{> side_bar_left }}
 <div class="container-messages-acceuil">
     <div class="blanc">
-            <fieldset>
-                
-                    <legend style="text-align: center;">Classement complet</legend>
-                    
-            </fieldset>
-    </div><br>
-
+           <div class="titre_classement"> Classement complet conseillers</div>
+    </div>
+<br>
 {{#each classement}}
       <div class="message-gauche">
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
-          <div class="titre_message_container"><div class="username" >{{name}}</div>
+          <div class="titre_message_container"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="margin-left: 5px;">{{name}}</a></div>
           <div class="classement_conseillere"  >n°{{true_classement @index}}</div> 
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
       </div> 
       {{/if}}
 
         {{#if is_fille gender}} 
-          <div class="titre_message_container_fille"><div class="username" >{{name}}</div>
+           <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id}}" style="color: #ff6af1; margin-left: 5px;">{{name}}</a></div>
           <div class="classement_conseillere"  >n°{{true_classement @index}}</div>
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div>  
       </div> 
@@ -31,8 +27,27 @@
       <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
         
       <div class="footer-message_acceuil">
-             <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
-            <div class="date-message"></div>  
+            
+            {{#if user_not_disponible user_id}}
+              <div class="aider btn btn-sm btn-primary disabled "><a href="">Contacter</a></div>
+            {{else}}
+              <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
+             {{/if}}
+
+            <div class="aider btn btn-sm btn-success"><a href="{{pathFor 'profil' post_author=user_id}}">Profil</a></div>
+           
+
+            <div class="date-message">
+            
+            {{#if is_fille gender}} 
+              <div style="color: #ff6af1;" class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            
+            {{#if is_garcon gender}} 
+                <div class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            <div class="date_last_connexion">  {{date_last_connexion user_id}}  </div>
+            </div>  
             
    
        </div>

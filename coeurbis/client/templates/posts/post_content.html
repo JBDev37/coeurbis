@@ -3,33 +3,37 @@
 
     <div class="container-messages-gauche">
     {{#if is_garcon gender}}
-         <div class="titre_message_container">{{post_title}}
+         <div class="titre_message_container" style="color: #2196f3">{{post_title}}
           <div class="categorie_msg"  >{{categorie}}</div> 
-         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-             </form> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
       </div> 
       {{/if}}
-        {{#if is_fille gender}}
-       <div class="titre_message_container_fille">{{post_title}}
-          <div class="categorie_msg"  >{{categorie}}</div> 
-         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
 
-             </form> 
+   {{#if is_fille gender}}
+       <div class="titre_message_container_fille" style="color: #ff6af1">{{post_title}}
+          <div class="categorie_msg"  >{{categorie}}</div> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
       </div> 
       {{/if}}
+
       <div class="content-message-gauche"> {{post_content}}</div>
         
       <div class="footer-message_acceuil">
-           
+           {{#if is_fille gender}} 
+            <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+            {{/if}}
+
+            {{#if is_garcon gender}} 
+            <a href="{{pathFor 'profil' }}" style="margin-left: 5px;">{{author_name}}</a>
+            {{/if}}
            
             <div class="date-message">{{date_francais post_date }}</div>  
             
             <div class="nbr-reponse">
              <div>{{pluralize commentsCount "réponse"}}</div>
             </div>
-          <a href=""  class="private_message"><img  src="/img/comment.png"></a>
              
-          {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
+           {{#if ownPost}} <div class="btn btn-warning btn-sm modifier_message"> <a href="{{pathFor 'postEdit'}}">Modifier</a></div> {{/if}}
          
        </div>
            

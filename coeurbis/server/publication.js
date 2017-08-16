@@ -42,6 +42,7 @@ Meteor.publish("userStatus", function() {
   return Meteor.users.find({ "status.online": true });
 });
 
+
 Meteor.publish("visites", function() {
     return Visites.find();
 });
@@ -59,11 +60,11 @@ Meteor.publish('avertissement_user', function() {
 });
 
 Meteor.publish("userIP", function() {
-  return Meteor.users.find({ "status.lastLogin.ipAddr": true });
+  return Meteor.users.find({},{ "status.lastLogin.ipAddr": true });
 });
 
 Meteor.publish("lastlogin", function() {
-  return Meteor.users.find({ "status.lastLogin.date": true });
+  return Meteor.users.find({},{ "status.lastLogin.date": true });
 });
 
 Meteor.publish('user_bloquer_IP', function() {

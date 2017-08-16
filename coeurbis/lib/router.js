@@ -145,6 +145,82 @@ Router.route('/classement-conseilleres', {
 });
 
 
+Router.route('/conseiller/:post_author?', {
+  name: 'presentation_conseiller',
+  template : 'presentation_conseiller',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/histoire/:post_author?', {
+  name: 'histoire',
+  template : 'histoire',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/amis/:post_author?', {
+  name: 'amis',
+  template : 'amis',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/visites/:post_author?', {
+  name: 'visites',
+  template : 'visites',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/personne_aide/:post_author?', {
+  name: 'personne_aide',
+  template : 'personne_aide',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/messages_poste/:post_author?', {
+  name: 'messages_poste',
+  template : 'messages_poste',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/commentaires/:post_author?', {
+  name: 'commentaires',
+  template : 'commentaires',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/ils_ont_aide/:post_author?', {
+  name: 'ils_ont_aide',
+  template : 'ils_ont_aide',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/alerte/:post_author?', {
+  name: 'alerte',
+  template : 'alerte',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/avertissement/:post_author?', {
+  name: 'avertissement',
+  template : 'avertissement',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/presentation/:post_author?', {
+  name: 'presentation',
+  template : 'presentation',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
 
 
 

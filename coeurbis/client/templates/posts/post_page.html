@@ -26,43 +26,34 @@
 <div class="message-gauche">
 
     <div class="container-messages-gauche">
+    
     {{#if is_garcon gender}}
-      <div class="titre_message_container">
-          <div class="categorie_msg"  >{{author}}</div> 
-       <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-
-             </form> 
+      <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'profil' post_author=this.userId}}">{{author}}</a>
+          <div class="categorie_msg" style="visibility: hidden;" >11</div> 
+       <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
       </div> 
      {{/if}}
+     
      {{#if is_fille gender}}
-       <div class="titre_message_container_fille">
-          <div class="categorie_msg"  >{{author}}</div> 
-         <form class="signaler" enctype="multipart/form-data"  method="post">   <input type="submit" name="$message_id"  id="$message_id" value="Signaler"  class="signaler">
-
-             </form> 
+       <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'profil' post_author=this.userId}}" style="color: #ff6af1" >{{author}}</a>
+          <div class="categorie_msg"  style="visibility: hidden;">11</div> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
       </div> 
      {{/if}}
+      
       <div class="content-message-gauche"> {{body}}</div>
         
       <div class="footer-message_acceuil">
-           
-            
-            <div class="date-message">{{date_francais submitted }}</div>  
+              
+          <div class="date-message">{{date_francais submitted }}</div>  
 
-      <div class="thumbs">
-      <a href="#" class="btn btn-xs  btn-success upvote {{upvotedClass}}"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-      <a href="#" class="btn btn-xs  btn-danger upvote {{downvotedClass}}"><span class="glyphicon glyphicon-thumbs-down"></span></a>
-      </div>
-       <div class="result-vote"> {{count votes }} </div>    
-            
-            <div class="nbr-reponse">
-                                 
-            </div>
-             
-                   <a href=""  class="private_message"><img  src="/img/comment.png"></a>
-             
-          
-            
+          <div class="thumbs">
+            <a href="#" class="btn btn-xs  btn-success upvote {{upvotedClass}}"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+            <a href="#" class="btn btn-xs  btn-danger upvote {{downvotedClass}}"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+          </div>
+           <div class="result-vote"> {{count votes }} </div> 
+
+              
        </div>
            
        </div>

@@ -107,6 +107,54 @@ Template.profil.helpers({
     return Alertes.find().count();
   },
 
+  activeRouteClass: function(name) {
+    var args = Array.prototype.slice.call(arguments, 0);
+    args.pop();
+
+    var active = _.any(args, function(name) {
+      return Router.current() && Router.current().route.getName() === name
+    });
+
+    return active && 'active';
+  },
+
+    is_disponible: function() {
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(userId);
+    var disponible = search.disponible;
+    if(disponible==true){
+       return 'btn-success';
+    }else{
+       return 'btn-danger';
+    }
+   
+  },
+
+    disponible_text: function() {
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(userId);
+    var disponible = search.disponible;
+    if(disponible==true){
+       return 'Disponible';
+    }else{
+       return 'Indisponible';
+    }
+   
+  },
+
+
+    explication: function() {
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(userId);
+    var disponible = search.disponible;
+    if(disponible==true){
+       return 'Tout le monde peut te contacter';
+    }else{
+       return 'Tu ne peux pas recevoir de nouveaux contacts';
+    }
+   
+  },
+
 
 });
 
@@ -139,7 +187,19 @@ Template.profil.events({
         });  
   },
 
-  
+  'click .disponible': function(e) {
+    e.preventDefault();
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(userId);
+    var disponible = search.disponible;
+   
+    if(disponible==true){
+        Meteor.users.update(userId, {$set:{disponible:false}});
+    }else{
+        Meteor.users.update(userId, {$set:{disponible:true}});
+    }
+  },
+
 });
 
 

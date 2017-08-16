@@ -528,4 +528,75 @@ Template.registerHelper("ange", function(id) {
   }
 });
 
+Template.registerHelper("user_not_disponible", function(id) {
+    var search = Meteor.users.findOne(id);
+    var disponible = search.disponible;
+    if(disponible==false){
+       return true;
+    }
+});
+
+Template.registerHelper("date_last_connexion", function(id) {
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(id);
+    var last_connect = search.status.lastLogin.date;
+    
+    var today = new Date();
+
+    var diff = {}                          
+    var tmp = today - last_connect;
+ 
+    tmp = Math.floor(tmp/1000);            
+    diff.sec = tmp % 60;                  
+ 
+    tmp = Math.floor((tmp-diff.sec)/60);    
+    diff.min = tmp % 60;                   
+ 
+    tmp = Math.floor((tmp-diff.min)/60);   
+    diff.hour = tmp % 24;                   
+     
+    tmp = Math.floor((tmp-diff.hour)/24);   
+    diff.day = tmp;
+
+    var request = Meteor.users.findOne(id);
+    if(request.status.online == true){
+    	return 'En ligne';
+    }else{
+	    if(diff.day>1){
+	     return 'Connecté il y a ' + diff.day + ' jours';
+	    }
+
+	    if(diff.day>0){
+	     return 'Connecté il y a ' + diff.day + ' jour';
+	    }
+
+	    if(diff.hour>1){
+	     return 'Connecté il y a ' + diff.hour + ' heures';
+	    }
+
+	    if(diff.hour>0){
+	     return 'Connecté il y a ' + diff.hour + ' heure';
+	    }
+
+	    if(diff.min>1){
+	     return 'Connecté il y a ' + diff.day + ' minutes';
+	    }
+
+	    if(diff.min>0){
+	     return 'Connecté il y a ' + diff.day + ' minute';
+	    }
+
+	    if(diff.sec>1){
+	     return 'Connecté il y a ' + diff.sec + ' secondes';
+	    }
+
+	    if(diff.sec>0){
+	     return 'Connecté il y a ' + diff.sec + ' seconde';
+	    }
+    }
+
+    
+});
+
+
 

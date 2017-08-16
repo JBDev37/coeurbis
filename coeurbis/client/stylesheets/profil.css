@@ -235,6 +235,8 @@ body {
 
 .tab-pane{
   margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .panel-body a:hover{
@@ -271,3 +273,11 @@ body {
 .supprimer_ami{
   margin-top: -5px;
 }
+
+.profil-connecté{
+  color: red;
+  float: left;
+  display: inline-block;
+
+}
+

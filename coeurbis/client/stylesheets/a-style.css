@@ -555,12 +555,13 @@ padding-top: 40px;
     margin-top: 5px;
     margin-left: 15px;
     display: inline-block;
+    font-weight: normal;
 
 }
 
 .username{
     margin-top: 5px;
-    margin-left: 15px;
+    margin-left: 0px;
     display: inline-block;
     font-weight: bold;
     
@@ -642,6 +643,18 @@ padding-top: 40px;
     background-color: transparent;
     margin-top: -5px;
 }
+
+.signaler_post{
+    display: inline-block;
+    margin-right: 10px;
+    color: red;
+    float: right;
+    border-width: 0px;
+    background-color: transparent;
+    margin-top: 10px;
+}
+
+
 .repondres {
     float: right;
     margin-right: 10px;
@@ -879,20 +892,23 @@ float: left;
    /*padding-top: 5px;*/
     /*padding-bottom: 5px;*/
    padding-left: 5px;
+   padding-top: 5px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
    /*padding-top: 5px;*/
    padding-left: 5px;
+   padding-top: 5px;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
    /*padding-top: 5px;*/
    padding-left: 5px;
+   padding-top: 5px;
 }
 
 :-ms-input-placeholder {  
-   /*padding-top: 5px;*/
+   padding-top: 5px;
    padding-left: 5px;
 }
 
@@ -953,6 +969,18 @@ float: left;
     background-color: rgba(10,104,180,0.1);
     padding-left: 5px;
     border-radius: 2px;
+    font-weight: bold;
+    font-size: 14px;
+    
+}
+
+.titre_message_container a:hover{
+    text-decoration: none;
+    
+}
+
+.titre_message_container_fille a:hover{
+    text-decoration: none;
     
 }
 
@@ -965,6 +993,8 @@ float: left;
     background-color: #ffe7f4;
     padding-left: 5px;
     border-radius: 2px;
+    font-weight: bold;
+    font-size: 14px;
     
 }
 
@@ -1043,11 +1073,18 @@ float: left;
 
 }
 
+.footer-message_acceuil a:hover{
+    text-decoration: none;
+
+}
+
 .private_message{
-	display: inline-block;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-left: 20px;
+ float: right;
+ margin-right: 10px;
+}
+.private_message_disabled{
+ float: right;
+ margin-right: 10px;
 }
 
 .private_message_repondre{
@@ -1217,7 +1254,7 @@ float: left;
     float: right;
 	margin-top: 0px;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: #0a68b4;
 
@@ -2201,7 +2238,7 @@ label{
     min-height: 250px;
     border-radius: 3px;
     padding: 5px;
-    background-color: #ffffd4;
+    /*background-color: #ffffd4;*/
 }
 
 .titre_modifier{
@@ -2816,7 +2853,7 @@ label{
 
 .upvote{
     width: 25px;
-    height: 20px;
+    height: 25px;
     
 
 }
@@ -2888,4 +2925,51 @@ label{
 
 .classement_conseillere{
     float: right;
+}
+
+.modifier_message a{
+   color: white;
+}
+
+.modifier_message a:hover{
+   color: white;
+   text-decoration: none;
+}
+
+.aider_message{
+    margin-top: 0px;
+}
+
+.repondre a:hover{
+   color: white;
+   text-decoration: none;
+}
+
+.titre_classement{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #2196f3;
+}
+
+.statuts_classement_conseiller{
+    font-size: 14px;
+    font-weight: bold;
+    color: #2196f3;
+    display: inline-block;
+    margin-left: 0px;
+}
+
+.date_last_connexion{
+    display: inline-block;
+   
+}
+
+.delete-msg{
+    margin-top: -50px;
+}
+
+.footer-conseiller{
+    margin-top: -10px;
+    margin-left: 5px;
 }

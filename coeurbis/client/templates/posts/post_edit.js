@@ -19,13 +19,13 @@ Template.postEdit.events({
     });
   },
 
-  'click .delete': function(e) {
+  'click .delete-msg': function(e) {
     e.preventDefault();
 
-    if (confirm("Supprimer ce message ?")) {
+    /*if (confirm("Supprimer ce message ?")) {*/
       var currentPostId = this._id;
       Posts.remove(currentPostId);
       Router.go('index');
-    }
+    /*}*/
   }
 });

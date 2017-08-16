@@ -3,7 +3,7 @@ Template.classementComplet.helpers({
   classement: function() {
     var counters= [];
     var result= [];
-    var counters = Conseilleres.find({}, {sort: {date: -1}});
+    var counters = Conseilleres.find({}, {sort: {indice_confiance: -1}});
     counters.forEach(function(doc){
     result.push({name: doc.username, gender:doc.gender, user_id:doc.user_id, presentation:doc.presentation});
     });

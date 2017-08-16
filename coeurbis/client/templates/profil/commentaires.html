@@ -1,10 +1,11 @@
 <template name="commentaires">
+{{>profil}}
 	 <div class="tab-pane " id="tab8">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
     
-                    <h4><a href="#" style="text-decoration:none;"><strong>commentaires</strong></a> </h4>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Commentaires</strong></a> </h4>
                     </div>
             </div>
                    
@@ -17,10 +18,6 @@
                             {{> ItemCommentaire}}
                         {{/each}}
                     {{/if}}
-
-
-
-            
        </div> 
 
 </template>
@@ -44,8 +41,9 @@
                 <div class="date-message">{{date_francais date}}</div>  
                 
                 <div class="nbr-reponse"></div>
-              
+               {{#if my_id this.to_id}}
                  <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+                {{/if}}
            </div>
                
         </div>

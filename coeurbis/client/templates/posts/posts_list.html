@@ -26,7 +26,7 @@
 
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
-         <div class="titre_message_container">{{post_title}}
+         <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'postPage' }}">{{post_title}}</a>
           <div class="categorie_msg"  >{{categorie}}</div> 
           {{#if currentUser}}
           <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
@@ -35,7 +35,7 @@
       {{/if}}
 
         {{#if is_fille gender}} 
-       <div class="titre_message_container_fille">{{post_title}}
+       <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'postPage' }}" style="color: #ff6af1">{{post_title}}</a>
           <div class="categorie_msg"  >{{categorie}}</div> 
          {{#if currentUser}}
          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
@@ -46,16 +46,38 @@
       <div class="content-message-gauche"> {{{breaklines post_content}}}</div>
         
       <div class="footer-message_acceuil">
-            <a href="{{pathFor 'profil' }}">{{author_name}}</a>
-            <div class="repondre btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
+            
+            {{#if is_fille gender}} 
+            <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+            {{/if}}
+
+            {{#if is_garcon gender}} 
+            <a href="{{pathFor 'profil' }}" style="margin-left: 5px;">{{author_name}}</a>
+            {{/if}}
+
+            <div class="repondre aider_message btn btn-sm btn-primary"><a href="{{pathFor 'postPage' }}">Aider</a></div>
+            
             <div class="date-message">{{date_francais post_date }}</div>  
             
+            {{#if is_fille gender}} 
+            <div class="nbr-reponse">
+             <a href="{{pathFor 'postPage'}}" style="color: #ff6af1; ">{{pluralize commentsCount "réponse"}}</a>
+            </div>
+            {{/if}}
+
+            {{#if is_garcon gender}} 
             <div class="nbr-reponse">
              <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "réponse"}}</a>
             </div>
-          <a href="" class="private_message"><img  src="/img/comment.png"></a>
-             
-          {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Modifier</a>{{/if}}
+            {{/if}}
+
+            {{#if user_not_disponible post_author}}
+            <div class="btn btn-success disabled btn-sm modifier_message private_message_disabled"><a href="" class="">Message privé</a></div>
+            {{else}}
+           <div class="btn btn-success btn-sm modifier_message private_message"><a href="{{pathFor 'messagerie'}}" class="">Message privé</a></div>
+             {{/if}}
+          {{#if ownPost}} <div class="btn btn-warning btn-sm modifier_message"> <a href="{{pathFor 'postEdit'}}">Modifier</a></div> {{/if}}
+         
          
        </div>
            
