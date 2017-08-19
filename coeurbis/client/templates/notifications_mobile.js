@@ -1,4 +1,4 @@
-Template.notifications.helpers({
+Template.notifications_mobile.helpers({
   notifications: function() {
     return Notifications.find({userId: Meteor.userId(), read: false});
   },
@@ -44,8 +44,6 @@ Template.notifications.helpers({
     var commentaires = Commentaires.find({to_id: Meteor.userId(), read: false}).count();
     if( Router.current().route.getName() !=='messagerie'){
     var messages = Chat.find({to_id:userId, read:false}).count();
-    }else{
-      var messages = 0;
     }
     var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
 
@@ -56,32 +54,32 @@ Template.notifications.helpers({
 
 });
 
-Template.notificationItem.helpers({
+Template.notificationItem_mobile.helpers({
   notificationPostPath: function() {
     return Router.routes.postPage.path({_id: this.postId});
   }
 });
 
-Template.notificationItemFriends.helpers({
+Template.notificationItemFriends_mobile.helpers({
    notificationPostPathFriend: function() {
     return Router.routes.profil.path({post_author: this.from_id});
   }
 });
 
-Template.notificationItem.events({
+Template.notificationItem_mobile.events({
   'click a': function() {
     Notifications.update(this._id, {$set: {read: true}});
   }
 });
 
-Template.notificationItemMessages.helpers({
+Template.notificationItemMessages_mobile.helpers({
   notificationPathMessage: function() {
     return Router.routes.messagerie.path({post_author: this.from_id});
   },
 
 });
 
-Template.notificationItemCommentaires.events({
+Template.notificationItemCommentaires_mobile.events({
   'click .comm': function() {
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
@@ -89,7 +87,7 @@ Template.notificationItemCommentaires.events({
   },
 }); 
 
-Template.notificationAlertesItem.events({
+Template.notificationAlertesItem_mobile.events({
   'click .Une_alerte': function() {
     var my_id = Meteor.userId();
     var id = this._id;
@@ -100,7 +98,7 @@ Template.notificationAlertesItem.events({
   },
 }); 
 
-Template.notificationItemFriends.events({
+Template.notificationItemFriends_mobile.events({
   'click .oui': function(e) {
     e.preventDefault();
     var from_id = this.from_id;

@@ -16,6 +16,8 @@ if(on){
 }*/
 
 
+
+
 accountsUIBootstrap3.setLanguage('fr');
 
 Accounts.ui.config({

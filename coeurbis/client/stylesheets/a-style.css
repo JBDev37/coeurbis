@@ -113,6 +113,7 @@ padding-top: 40px;
     display: inline-block;
     position: relative;
     top: -10px;
+
     
     
 }
@@ -2973,3 +2974,24 @@ label{
     margin-top: -10px;
     margin-left: 5px;
 }
+
+#member_list_mobile{
+    display: none;
+}
+
+#member_bloque_mobile{
+    display: none;
+}
+
+.footer_mobile{
+    display: none;
+}
+
+    .footer_1{
+        display: none;
+    }
+
+
+    .header_1{
+        display: none;
+    }

@@ -1,81 +1,74 @@
-<template name="notifications">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    Notifications
-    {{#if notificationCount}}
-      <span class="badge_red badge-inverse notif">{{notificationCount}}</span>
-    {{/if}}
-    <b class="caret"></b>
-  </a>
-  <ul class="notification dropdown-menu">
+<template name="notifications_mobile">
+
     {{#if notificationCount}}
       
       {{#each notifications}}
-        {{> notificationItem}}
+        {{> notificationItem_mobile}}
       {{/each}}
 
       {{#each notificationFriends}}
-        {{> notificationItemFriends}}
+        {{> notificationItemFriends_mobile}}
       {{/each}}
 
       {{#each notificationMessages}}
-        {{> notificationItemMessages}}
+        {{> notificationItemMessages_mobile}}
       {{/each}}
 
       {{#each notificationCommentaires}}
-        {{> notificationItemCommentaires}}
+        {{> notificationItemCommentaires_mobile}}
       {{/each}}
 
 
       {{#each notificationAlertes}}
-        {{> notificationAlertesItem}}
+        {{> notificationAlertesItem_mobile}}
       {{/each}}
     
     {{else}}
       <li><span>Pas de notification</span></li>
     {{/if}}
-  </ul>
+
 </template>
 
-<template name="notificationItem">
-  <li>
+<template name="notificationItem_mobile">
+  <div class="notif_mobile">
     <a href="{{notificationPostPath}}">
       <strong>{{commenterName}}</strong> t'a donné un conseil
     </a>
-  </li>
+  </div>
 </template>
 
-<template name="notificationItemFriends">
-  <li>
+<template name="notificationItemFriends_mobile">
+  <div class="notif_mobile">
     <a href="{{notificationPostPathFriend}}">
       <strong>{{name_from_id}}</strong> veut devenir ton ami
     </a>
     <div class="oui btn btn-success btn-xs">accepter</div>
     <div class="non btn btn-danger btn-xs">refuser</div>
-  </li>
+  </div>
 </template>
 
-<template name="notificationItemMessages">
-  <li>
+<template name="notificationItemMessages_mobile">
+  <div class="notif_mobile">
     <a href="{{notificationPathMessage}}">
       Tu as reçu un message de <strong>{{from_name}}</strong> 
     </a>
-  </li>
+  </div>
 </template>
 
-<template name="notificationItemCommentaires">
-  <li>
+<template name="notificationItemCommentaires_mobile">
+  <div class="notif_mobile">
     <a  class="comm">
       Tu as reçu un commentaire de <strong>{{from_name}}</strong> 
     </a>
-  </li>
+  </div>
 </template>
 
-<template name="notificationAlertesItem">
-  <li>
+<template name="notificationAlertesItem_mobile">
+  <div class="notif_mobile">
     <a  class="Une_alerte" id="{{id_unique}}">
       <strong>{{ author_name}} </strong> a créé une alerte
     </a>
-  </li>
+  </div>
 </template>
 
 

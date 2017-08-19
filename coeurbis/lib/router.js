@@ -81,6 +81,17 @@ Router.route('/messagerie/:post_author?', {
   }
 });
 
+Router.route('/messagerie_mobile/:post_author?', {
+  name: 'messagerie_mobile',
+  template : 'messagerie_mobile',
+  
+
+    data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+
+  }
+});
+
 Router.route('/mot_de_passe', {
 	name: 'mot_de_passe',
 	template : 'mot_de_passe',
@@ -222,7 +233,11 @@ Router.route('/presentation/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
-
+Router.route('/notifications', {
+  name: 'notifications',
+  template : 'notifications_mobile',
+  
+});
 
 
 

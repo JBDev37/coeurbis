@@ -6,22 +6,38 @@
           <div class="header">
               <div class="logo-kurbys-disconnect"><a href="{{pathFor 'index'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div>
 {{#if currentUser}}
+
+              <div class="header_1">
+                  <i class="fa fa-lg fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="header_1">
+                 <i class="fa fa-lg fa-users" aria-hidden="true"></i>
+                </div>
+                <div class="header_1">
+                  <i class="fa fa-lg fa-bell" aria-hidden="true"></i>
+
+
+                </div>
+
               <div class="menu">
+
                 <div class="container-fluid1">
                     <ul class="nav navbar-nav"> 
                       <li>
                         <div class="search">
                           <div class="span12">
-                              <form id="custom-search-form" class="form-search form-horizontal pull-right">
-                                  <div class="input-append span12">
-                                      <input type="text" class="search-query mac-style" placeholder="Chercher un pseudo">
-                                      <button type="submit" class="btn"><i class="icon-search"><img src="/img/search.png"></i></button>
-                                  </div>
-                              </form>
+                           <!-- <div id="custom-search-input">
+                               <div class="input-group col-md-12">
+                                  <input type="text" class="  search-query form-control" placeholder="Rechercher pseudo" />
+                                  <button class="btn btn-danger" type="button">
+                                  <span class=" glyphicon glyphicon-search"></span>
+                                  </button>
+                               </div>
+                            </div>-->
                           </div>
                         </div>
                       </li>
-
+  
                       <li><div id="notification1"> </div>
                       </li>
                       <li><a href="{{pathFor 'index'}}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
@@ -63,6 +79,9 @@
     </div><!--  header -->
     
     </div><!--  site-container -->
+
+
+
 </template>
 
 
@@ -83,3 +102,4 @@
   </div>
   <!--/.slideout-menu-->
 </template>
+

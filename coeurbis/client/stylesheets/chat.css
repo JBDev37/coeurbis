@@ -1,7 +1,6 @@
  #custom-search-input {
-  background: #e8e6e7 none repeat scroll 0 0;
-  margin: 0;
-  padding: 10px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
    #custom-search-input .search-query {
    background: #fff none repeat scroll 0 0 !important;
@@ -99,11 +98,21 @@
    .member_list li:last-child {
    border-bottom:none;
    }
-   .member_list {
+
+   #member_list {
    height: 580px;
    overflow-x: hidden;
    overflow-y: auto;
+   display: block;
    }
+
+   #member_bloque{
+    display: none;
+   }
+
+
+
+
    .sub_menu_ {
   background: #e8e6e7 none repeat scroll 0 0;
   left: 100%;
@@ -355,4 +364,27 @@
 
 .nav > li:hover {
     
+}
+
+.chat_sidebar{
+  margin-left: -10px;
+}
+
+.en_cour{
+  display: inline-block;
+}
+.user_bloquer_chat{
+  display: inline-block;
+}
+
+.liste_contact_mobile{
+   display: none;
+}
+
+.en_cour_mobile{
+  display: none;
+}
+
+.user_bloquer_chat_mobile{
+  display: none;
 }

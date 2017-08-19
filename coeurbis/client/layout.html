@@ -6,12 +6,14 @@
 
  {{else}}
  
-	<button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" class="icon" id="icon"></a><!-- icone hamburger --></button>
+	<button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></a><!-- icone hamburger --></button>
 
 	{{> slideMenu}} <!-- header.html -->
 	{{>header}} <!-- header.html -->
 	{{> errors}}
 
 	{{> yield}} <!-- affiche le contenu de la route courante-->
+    {{>footer}}
+
 {{/if}}
 </template>

@@ -56,3 +56,4 @@ joncursi:socket-io-client
 mizzao:user-status
 mrt:jquery-raty
 mizzao:timesync
+mizzao:autocomplete

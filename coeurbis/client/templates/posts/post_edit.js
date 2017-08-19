@@ -26,6 +26,7 @@ Template.postEdit.events({
       var currentPostId = this._id;
       Posts.remove(currentPostId);
       Router.go('index');
+     /* window.history.back();*/
     /*}*/
   }
 });
