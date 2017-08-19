@@ -679,7 +679,32 @@
 
     .header_1{
         display: inline-block;
-        width: 31%;
+        width: 10%;
+        color: white;
+        text-align: center;
+        margin-top: 0px;
+        float: left;
+    }
+
+    .header_2{
+        display: inline-block;
+        width: 28%;
+        color: white;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .header_3{
+        display: inline-block;
+        width: 28%;
+        color: white;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .header_4{
+        display: inline-block;
+        width: 28%;
         color: white;
         text-align: center;
         margin-top: 5px;
