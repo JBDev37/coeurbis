@@ -621,6 +621,8 @@
         padding: 0px;
         height: 40px;
         top: 30px;
+        display: block;
+        position: fixed;
     }
 
     .retour{
@@ -801,10 +803,46 @@
    }
 
    .notif_mobile{
-    height: 30px;
+    min-height: 35px;
+    padding-left: 10px;
+    margin-top: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+   }
 
+    .notif_mobile a:hover{
+    text-decoration: none;
+   }
+
+    .notif_mobile a{
+    color: black;
+   }
+
+   .oui_mobile{
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+   }
+
+   .non_mobile{
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+   }
+
+   .titre_notifications{
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    display: block;
 
    }
+
+   .badge_red{
+    margin-left: -10px;
+   }
+
+
 
 
 
@@ -824,6 +862,14 @@
    overflow-y: auto;
    display: block;
    }
+
+    .container_notificiations{
+    display: block;
+    margin-top: 40px;
+    height: 380px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:533px){
@@ -833,6 +879,14 @@
    overflow-x: hidden;
    overflow-y: auto;
    display: block;
+   }
+
+    .container_notificiations{
+    display: block;
+    margin-top: 40px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
    }
 }
 
@@ -844,6 +898,14 @@
    overflow-y: auto;
    display: block;
    }
+
+    .container_notificiations{
+    display: block;
+    margin-top: 40px;
+    height: 460px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:640px){
@@ -854,6 +916,14 @@
    overflow-y: auto;
    display: block;
    }
+
+    .container_notificiations{
+    display: block;
+    margin-top: 40px;
+    height: 520px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:667px){
@@ -863,6 +933,14 @@
    overflow-x: hidden;
    overflow-y: auto;
    display: block;
+   }
+
+    .container_notificiations{
+    display: block;
+    margin-top: 50px;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
    }
 }
 

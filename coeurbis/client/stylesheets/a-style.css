@@ -2987,11 +2987,23 @@ label{
     display: none;
 }
 
-    .footer_1{
-        display: none;
-    }
+.footer_1{
+    display: none;
+}
+
+.header_2{
+    display: none;
+}
+
+.header_3{
+    display: none;
+}
+
+.header_4{
+    display: none;
+}
 
 
-    .header_1{
-        display: none;
-    }
+.header_1{
+    display: none;
+}

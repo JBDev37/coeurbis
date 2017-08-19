@@ -1,5 +1,10 @@
 <template name="notifications_mobile">
 
+   <div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+   <span class="titre_notifications"> Notifications</span>
+  </div>
+
+ <div class="container_notificiations">
     {{#if notificationCount}}
       
       {{#each notifications}}
@@ -26,13 +31,15 @@
     {{else}}
       <li><span>Pas de notification</span></li>
     {{/if}}
+</div>
 
+   
 </template>
 
 <template name="notificationItem_mobile">
   <div class="notif_mobile">
     <a href="{{notificationPostPath}}">
-      <strong>{{commenterName}}</strong> t'a donné un conseil
+      <i class="fa fa-lg fa-handshake-o" aria-hidden="true" style="color: #0a68b4"></i><strong style="color: red">  {{commenterName}}</strong> t'a donné un conseil
     </a>
   </div>
 </template>
@@ -40,17 +47,18 @@
 <template name="notificationItemFriends_mobile">
   <div class="notif_mobile">
     <a href="{{notificationPostPathFriend}}">
-      <strong>{{name_from_id}}</strong> veut devenir ton ami
-    </a>
-    <div class="oui btn btn-success btn-xs">accepter</div>
-    <div class="non btn btn-danger btn-xs">refuser</div>
+     <i class="fa fa-lg fa-user-plus" aria-hidden="true" style="color: #0a68b4"></i>
+      <strong style="color: red"> {{name_from_id}}</strong> veut devenir ton ami
+    </a><br>
+    <div class="oui btn btn-success btn-xs oui_mobile ">accepter</div>
+    <div class="non btn btn-danger btn-xs non_mobile ">refuser</div>
   </div>
 </template>
 
 <template name="notificationItemMessages_mobile">
   <div class="notif_mobile">
     <a href="{{notificationPathMessage}}">
-      Tu as reçu un message de <strong>{{from_name}}</strong> 
+     <i class="fa fa-lg fa-comments-o" aria-hidden="true" style="color: #0a68b4"></i> Tu as reçu un message de <strong style="color: red">{{from_name}}</strong> 
     </a>
   </div>
 </template>
@@ -58,7 +66,7 @@
 <template name="notificationItemCommentaires_mobile">
   <div class="notif_mobile">
     <a  class="comm">
-      Tu as reçu un commentaire de <strong>{{from_name}}</strong> 
+     <i class="fa fa-lg fa-commenting-o" aria-hidden="true" style="color: #0a68b4"></i> Tu as reçu un commentaire de <strong style="color: red">{{from_name}}</strong> 
     </a>
   </div>
 </template>
@@ -66,7 +74,8 @@
 <template name="notificationAlertesItem_mobile">
   <div class="notif_mobile">
     <a  class="Une_alerte" id="{{id_unique}}">
-      <strong>{{ author_name}} </strong> a créé une alerte
+     <i class="fa fa-lg fa-bell" aria-hidden="true" style="color: red"></i>
+       <strong style="color: red"> {{ author_name}} </strong> a créé une alerte
     </a>
   </div>
 </template>

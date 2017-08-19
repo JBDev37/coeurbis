@@ -3,6 +3,7 @@ Template.notifications_mobile.helpers({
     return Notifications.find({userId: Meteor.userId(), read: false});
   },
 
+
   notificationFriends : function() {
     return Notifications.find({to_id: Meteor.userId(), read: false});
   },
@@ -54,6 +55,13 @@ Template.notifications_mobile.helpers({
 
 });
 
+
+Template.notifications_mobile.events({
+  'click .retour': function(e) {
+     window.history.back();
+   }
+});
+
 Template.notificationItem_mobile.helpers({
   notificationPostPath: function() {
     return Router.routes.postPage.path({_id: this.postId});
@@ -74,7 +82,7 @@ Template.notificationItem_mobile.events({
 
 Template.notificationItemMessages_mobile.helpers({
   notificationPathMessage: function() {
-    return Router.routes.messagerie.path({post_author: this.from_id});
+    return Router.routes.messagerie_mobile.path({post_author: this.from_id});
   },
 
 });
@@ -94,7 +102,7 @@ Template.notificationAlertesItem_mobile.events({
     var unique = my_id + id;
       Alertes.update(id, {$addToSet: {read: my_id}});
     //document.getElementById(unique).style.display = "none";
-    Router.go('mon_profil', {_id: my_id});
+    Router.go('alerte', {_id: my_id});
   },
 }); 
 
