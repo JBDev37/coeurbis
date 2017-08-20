@@ -45,6 +45,14 @@ Router.route('/posts/:_id', {
    return Posts.findOne(this.params._id); }
 });
 
+Router.route('/posts_mobile/:_id', {
+  name: 'postPage_mobile',
+  template: 'postPage_mobile',
+  data: function() {
+   return Posts.findOne(this.params._id); }
+});
+
+
 Router.route('/posts/:_id/edit', {
   name: 'postEdit',
   data: function() {
@@ -167,6 +175,12 @@ Router.route('/resultat_conseillere_mobile/:gender?/:college?/:lycee?/:adulte?/:
 Router.route('/classement-conseilleres', {
   name: 'classementComplet',
   template : 'classementComplet',
+
+});
+
+Router.route('/classement-conseilleres-mobile', {
+  name: 'classementComplet_mobile',
+  template : 'classementComplet_mobile',
 
 });
 

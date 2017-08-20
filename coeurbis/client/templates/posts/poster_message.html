@@ -19,30 +19,28 @@
 					  
             <div class="form-group choix-theme" >
 					     
-                 <div data-toggle="buttons">
+               <div data-toggle="buttons">
   					      <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
   					      <label class="btn btn-primary  btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
   					      <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
   					       <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
                    <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>
-			    </div> <input type="submit" name="submit" value="valider" class="btn btn-sm btn-primary valider-message"/> 
+			         </div> <input type="submit" name="submit" value="valider" class="btn btn-sm btn-primary valider-message"/> 
 			</div>
 
-          <div class="dropdown choix-deroulant form-group">
-                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Catégories
-                <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <div data-toggle="buttons">
-                  <label class="btn btn-primary btn-circle active"><input type="radio" name="categorie" value="Amour">Amour</label><br>
-                  <label class="btn btn-primary  btn-xs btn-circle ">       <input type="radio" name="categorie" value="Amitié">Amitié</label><br>
-                 <label class="btn btn-primary btn-xs btn-circle ">       <input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label><br>
-                  <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label><br>
-                </div>
-                </ul>
-          </div>
+          <div class=" choix-deroulant form-group">
                
+            <div data-toggle="buttons"> <!-- Affichage mobile -->
+                  <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
+                  <label class="btn btn-primary  btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
+                  <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
+                   <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
+                   <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>
+            </div>
+          </div>
+          <div class="valider_footer">
+            <input type="submit" name="submit" value="Valider" class="btn btn-block btn-success  valider_mobile"/>  
+           </div>    
             </div>
         </form>
     </div>
