@@ -1,0 +1,50 @@
+<template name="commentaires_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Commentaires</div>
+</div>
+
+<div class="container_user_profil">
+	 <div class="tab-pane " id="tab8">
+                   
+                   {{#if my_id this._id}}
+                         {{#each mes_commentaires_mobile}}
+                            {{> ItemCommentaire_mobile}}
+                         {{/each}}
+                    {{else}}
+                        {{#each commentaires_mobile}}
+                            {{> ItemCommentaire_mobile}}
+                        {{/each}}
+                    {{/if}}
+    </div> 
+</div>
+</template>
+
+                        
+<template name="ItemCommentaire_mobile">
+     <div class="message-gauche">
+
+      <div class="container-messages-gauche">
+        {{#if gender_garcon}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{from_name}}</div></div> 
+        {{/if}}
+
+        {{#if gender_fille}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{from_name}}</div></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines commentaire}}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{date_francais date}}</div>  
+                
+                <div class="nbr-reponse"></div>
+               {{#if my_id this.to_id}}
+                 <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+                {{/if}}
+           </div>
+               
+        </div>
+
+    </div>
+
+</template>

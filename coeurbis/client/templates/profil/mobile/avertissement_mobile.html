@@ -1,0 +1,63 @@
+<template name="avertissement_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Avertissements</div>
+</div>
+<div class="container_user_profil">
+	<div class="tab-pane " id="tab10">
+            <!-- Simple post content example. -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                       
+                    </div>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Avertissements</strong></a></h4>
+                    <hr>
+                    <div class="post-content">
+                       Si tu ne respect pas les conditions d'utilisation, ton compte sera supprimé au bout de 3 avertissements.<br>
+                            <td>
+                             <div class="avertissement"></div>
+                               
+                                {{#if count_0}}
+                               <div class="triangle-vert"> </div>  
+                                 {{else}}
+                                <div class="triangle-vert" style="visibility: hidden;"></div>   
+                                 {{/if}}
+                                <img src="/emoticones/1f600.png" width="40" height="40">
+                                
+                              </td>
+
+                              <td>
+                               
+                                <div class="avertissement"></div>
+                                 {{#if count_1}}
+                               <div class="triangle-vert"> </div>  
+                                 {{else}}
+                                <div class="triangle-vert" style="visibility: hidden;"></div>   
+                                 {{/if}}
+                                <img src="/emoticones/1f61f.png" width="40" height="40">
+                                
+                              </td>
+
+                              <td>
+                               
+                                <div class="avertissement"></div>
+                                {{#if count_2}}
+                               <div class="triangle-vert"> </div>  
+                                 {{else}}
+                                <div class="triangle-vert" style="visibility: hidden;"></div>   
+                                 {{/if}}
+                                <img src="/emoticones/1f61e.png" width="40" height="40">
+                                
+                              </td>
+
+                              <td>
+                                <div class="avertissement"></div>
+                                <div class="triangle-vert" style="visibility: hidden;"></div>      
+                                <img src="/emoticones/1f621.png" width="40" height="40"><br>
+                            </td>
+                    </div>
+                </div>
+            </div>
+       </div> 
+</div>
+</template>

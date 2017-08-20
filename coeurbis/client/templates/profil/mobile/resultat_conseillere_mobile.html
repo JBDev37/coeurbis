@@ -1,0 +1,67 @@
+<template name="resultat_conseillere_mobile">
+<div class="new_message_head">
+ <div class="titre_page_profil">Résultats de la recherche</div>
+</div>
+
+<div class="container_user_profil">
+
+
+     {{#each show_conseilleres_mobile}}
+      {{> ItemConseillere_mobile}}
+    {{/each}}
+</div>
+</template>
+
+
+<template name="ItemConseillere_mobile">
+<div class="container-messages">
+    <div class="message-gauche">
+
+    <div class="container-messages-gauche">
+    {{#if is_garcon gender}} 
+         <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
+          {{#if currentUser}}
+          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+          {{/if}}
+      </div> 
+      {{/if}}
+
+        {{#if is_fille gender}} 
+       <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="color: #ff6af1; margin-left: 5px;">{{username}}</a></div>
+          {{#if currentUser}}
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
+         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
+         {{/if}}
+      </div> 
+      {{/if}}
+
+      <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+        
+      <div class="footer-message_acceuil">
+            <a href="{{pathFor 'profil' }}">{{author_name}}</a>
+            <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie_mobile' post_author=user_id}}">Contacter</a></div>
+            <div class="date-message"></div>  
+            
+            <div class="footer-conseiller">
+            {{#if is_fille gender}} 
+              <div style="color: #ff6af1;" class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            
+            {{#if is_garcon gender}} 
+                <div class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            <div class="date_last_connexion">  {{date_last_connexion user_id}}  </div>
+            </div>
+          
+             
+         
+         
+       </div>
+           
+       </div>
+
+    </div>
+</div>
+</template>
+

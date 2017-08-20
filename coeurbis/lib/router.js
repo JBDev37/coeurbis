@@ -140,9 +140,24 @@ Router.route('/recherche_conseillere', {
 
 });
 
+Router.route('/recherche_mobile', {
+  name: 'recherche_mobile',
+  template : 'recherche_mobile',
+
+});
+
 Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:les_deux?', {
   name: 'resultat_conseillere',
   template : 'resultat_conseillere',
+      data: function() {
+    return Conseilleres.find();
+  }
+
+});
+
+Router.route('/resultat_conseillere_mobile/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:les_deux?', {
+  name: 'resultat_conseillere_mobile',
+  template : 'resultat_conseillere_mobile',
       data: function() {
     return Conseilleres.find();
   }
@@ -163,9 +178,25 @@ Router.route('/conseiller/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/presentation_conseiller_mobile/:post_author?', {
+  name: 'presentation_conseiller_mobile',
+  template : 'presentation_conseiller_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+
+
 Router.route('/histoire/:post_author?', {
   name: 'histoire',
   template : 'histoire',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/histoire_mobile/:post_author?', {
+  name: 'histoire_mobile',
+  template : 'histoire_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });
@@ -184,9 +215,23 @@ Router.route('/visites/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/visites_mobile/:post_author?', {
+  name: 'visites_mobile',
+  template : 'visites_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
 Router.route('/personne_aide/:post_author?', {
   name: 'personne_aide',
   template : 'personne_aide',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/personne_aide_mobile/:post_author?', {
+  name: 'personne_aide_mobile',
+  template : 'personne_aide_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });
@@ -198,9 +243,23 @@ Router.route('/messages_poste/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/messages_poste_mobile/:post_author?', {
+  name: 'messages_poste_mobile',
+  template : 'messages_poste_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
 Router.route('/commentaires/:post_author?', {
   name: 'commentaires',
   template : 'commentaires',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/commentaires_mobile/:post_author?', {
+  name: 'commentaires_mobile',
+  template : 'commentaires_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });
@@ -211,6 +270,13 @@ Router.route('/ils_ont_aide/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });
+
+Router.route('/ils_ont_aide_mobile/:post_author?', {
+  name: 'ils_ont_aide_mobile',
+  template : 'ils_ont_aide_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+})
 
 Router.route('/alerte/:post_author?', {
   name: 'alerte',
@@ -226,9 +292,23 @@ Router.route('/avertissement/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/avertissement_mobile/:post_author?', {
+  name: 'avertissement_mobile',
+  template : 'avertissement_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
 Router.route('/presentation/:post_author?', {
   name: 'presentation',
   template : 'presentation',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/presentation_mobile/:post_author?', {
+  name: 'presentation_mobile',
+  template : 'presentation_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });
@@ -239,9 +319,19 @@ Router.route('/notifications', {
   
 });
 
+Router.route('/profil_mobile/:post_author?', {
+  name: 'profil_mobile',
+  template : 'profil_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
 
-
-
+Router.route('/amis_mobile/:post_author?', {
+  name: 'amis_mobile',
+  template : 'amis_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
 
 
 

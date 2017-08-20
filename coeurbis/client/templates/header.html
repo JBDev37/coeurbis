@@ -11,15 +11,13 @@
 {{#if currentUser}}
 
               <div class="header_2">
-                  <i class="fa fa-lg fa-search" aria-hidden="true"></i>
+                 <a href="{{pathFor 'recherche_mobile'}}"> <i class="fa fa-lg fa-search" aria-hidden="true"></i></a>
                 </div>
                 <div class="header_3">
-                 <i class="fa fa-lg fa-users" aria-hidden="true"></i>
+                <a href="{{pathFor 'amis_mobile' post_author=id}}"> <i class="fa fa-lg fa-users" aria-hidden="true"></i></a>
                 </div>
                 <div class="header_4">
-                  <i class="fa fa-lg fa-bell" aria-hidden="true"></i>
-
-
+                 <a href="{{pathFor 'alerte_mobile' _id=id}}"> <i class="fa fa-lg fa-bell" aria-hidden="true"></i></a>
                 </div>
 
               <div class="menu">

@@ -3,7 +3,6 @@ Template.notifications_mobile.helpers({
     return Notifications.find({userId: Meteor.userId(), read: false});
   },
 
-
   notificationFriends : function() {
     return Notifications.find({to_id: Meteor.userId(), read: false});
   },

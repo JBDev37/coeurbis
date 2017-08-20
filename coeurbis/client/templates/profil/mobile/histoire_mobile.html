@@ -1,0 +1,119 @@
+<template name="histoire_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+{{#if my_id this._id}}
+ <div class="titre_page_profil">Mes histoires d'amour</div>
+ {{else}}
+ <div class="titre_page_profil">Ses histoires d'amour</div>
+ {{/if}}
+</div>
+ <div class="container_user_profil">
+    <div class="tab-pane " id="tab2">
+            <!-- Simple post content example. -->
+            <div class="panel panel-default">
+                <div class="panel-body"><br> Raconte tes différentes expériences amoureuses. Explique ce qu'elles t'on apportées et les conseils que tu pourrais donner (réussites, échecs, confiance en soi... )
+                    <div class="pull-left">
+
+                        
+                    </div>
+                   
+
+                    {{#if my_id this._id}}
+                    <div class="media">
+                        <div class="pull-left">
+                        </div>
+                        <div class="media-body">
+                            <ul class="nav nav-pills">
+                              <li class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></li>
+                              <li style="float: right;"><a href="#exp" class="t2" data-toggle="tab">Ajouter une expérience</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active " id="taba" ></div>
+                                <div class="tab-pane " id="exp" >
+                                
+                                <form enctype="multipart/form-data" action="" method="post" id="2">
+                                
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Titre</label>
+                                    <input type="text" class="form-control" name="titre-histoire" id="titre-histoire" required placeholder="titre">
+                                  </div>    <br>             
+                                   <div class="form-group">
+                                    <label for="exampleInputEmail1">Mon histoire</label>
+                                    <textarea class="form-control" rows="10" placeholder="Raconte ton histoire..." required id="histoire" name="histoire"></textarea>
+                                  </div>
+                                
+                                <br>
+                                <div class="input-conseillere">
+                               
+                                <input type="submit" name="submit" value="Valider" class="btn btn-success submit1" id="2"/>
+                               </div>
+                           
+                            </form>
+                            
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+          
+	       	{{#each histoires_mobile}}
+	      		{{> Item_Histoires_mobile}}
+	    	{{/each}}
+         
+
+       </div>
+</div>
+</template>
+
+
+<template name="Item_Histoires_mobile">
+	
+<br><br>
+	<div class="tab-pane" style="margin-top: 5px;" >
+            <!-- Simple post content example. -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="pull-left">
+                        
+                    </div>
+                    <div class="titre_histoires">{{titre_histoire}} </div>
+                    
+                    <hr>
+                    <div class="post-content">
+                        {{{breaklines histoire}}}
+                    </div>
+                    <div>
+                        <div class="pull-right btn-group-xs nav nav-pills">
+                             {{#if my_id post_author}}
+                            <a class="btn btn-danger delete"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            <a href="#modif" class="btn btn-success modifier" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                             {{/if}}
+                        </div>
+                      
+                        <br>
+                    </div>
+							<div class="tab-content">
+	  							<div class="tab-pane active " id="taba" ></div>
+	                        	<div class="tab-pane hist" id="modif" >
+	                                <form enctype="multipart/form-data" action="" method="post" id="hist">
+		                            <fieldset>                        
+			                        <label><strong>Modifier</strong></label>
+			                         <textarea id="" name="modif_histoire" class="form-control" style="height:250px;" required> {{   histoire}} </textarea><br>
+			                        
+			                        <br>
+			                        <div class="input-conseillere">
+			                       
+			                        <input type="submit" name="submit" value="Valider" id="hist" class="btn btn-success submit1"/>
+			                       </div>
+			                    </fieldset>
+			                    </form>
+                            </div>
+	                        </div>
+                           
+
+                </div>
+            </div>
+       </div>
+
+</template>

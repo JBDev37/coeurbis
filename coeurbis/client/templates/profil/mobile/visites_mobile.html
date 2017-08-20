@@ -1,0 +1,45 @@
+<template name="visites_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Visites sur mon profil</div>
+</div>
+
+ <div class="container_user_profil">
+	 <div class="tab-pane " id="tab4">
+
+                    {{#each visites_mobile}}
+                      {{> Itemvisites_mobile}}
+                    {{/each}}
+
+       </div>
+</div>
+</template>
+
+<template name="Itemvisites_mobile">
+        <div class="pull-left"> <p></p></div>
+                    
+ <div class="message-gauche">
+
+      <div class="container-messages-gauche">
+        {{#if gender_garcon}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{name_from_id}}</div></div> 
+        {{/if}}
+
+        {{#if gender_fille}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{name_from_id}}</div></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{{date_francais_heures post_date}}}</div>  
+                
+                <div class="nbr-reponse"></div>
+              
+                 <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+           </div>
+               
+        </div>
+
+    </div>
+
+</template>    

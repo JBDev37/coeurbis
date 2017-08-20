@@ -233,6 +233,14 @@ Template.registerHelper('my_name', function(name) {
   }
 });
 
+Template.registerHelper('name_user', function(id) {
+  var user = Meteor.user();
+  var name = user.username;
+
+    return name;
+
+});
+
 
 Template.registerHelper('scroll_bottom', function() {
     var element = document.getElementById('msgbox');

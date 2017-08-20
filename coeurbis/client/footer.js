@@ -1,7 +1,7 @@
 Template.footer.events({
   'click .profil_menu': function(e) {
   	var userId = Meteor.userId();
-     Router.go('mon_profil', {_id: userId});
+     Router.go('profil_mobile', {post_author: userId});
    }
 });
 

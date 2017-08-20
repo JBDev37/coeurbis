@@ -1,0 +1,68 @@
+<template name="amis_mobile">
+ <div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ 
+ <div class="titre_page_profil">Amis</div></div>
+  
+  <div class="container_user_profil">
+      {{#each amis}}
+          <div class="message-gauche">
+
+            <div class="container-messages-gauche">
+              {{#if gender_garcon}} 
+                   <div class="titre_message_container"><div class="username_garcon" >{{name}}</div></div> 
+              {{/if}}
+
+              {{#if gender_fille}} 
+                 <div class="titre_message_container_fille"><div class="username_fille" >{{name}}</div></div> 
+              {{/if}}
+
+                  <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+                  
+                <div class="footer-message_acceuil">
+                      <a href="{{pathFor 'profil' }}">{{author_name}}</a>
+                      <div class="date-message">{{date_francais post_date }}</div>  
+                      
+                      <div class="nbr-reponse"></div>
+                    
+                       <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+                      <div class="supprimer_ami repondre btn btn-danger btn-xs">supprimer</div>
+                 </div>
+                     
+              </div>
+
+          </div>
+      {{/each}}
+
+      {{#each amis1}}
+
+          <div class="message-gauche">
+
+            <div class="container-messages-gauche">
+              {{#if gender_garcon}} 
+                   <div class="titre_message_container"><div class="username_garcon" >{{name}}</div></div> 
+              {{/if}}
+
+              {{#if gender_fille}} 
+                 <div class="titre_message_container_fille"><div class="username_fille" >{{name}}</div></div> 
+              {{/if}}
+
+                  <div class="content-message-gauche"> {{{breaklines presentation}}}</div>
+                  
+                <div class="footer-message_acceuil">
+                      <a href="{{pathFor 'profil' }}">{{author_name}}</a>
+                      <div class="date-message">{{date_francais post_date }}</div>  
+                      
+                      <div class="nbr-reponse"></div>
+                    
+                      <div class="repondre profil_ami btn btn-success btn-xs">Message</div>
+                      <div class="supprimer_ami repondre btn btn-danger btn-xs">supprimer</div>
+                 </div>
+                     
+              </div>
+
+          </div>
+      {{/each}}          
+           
+</div>
+
+</template>
