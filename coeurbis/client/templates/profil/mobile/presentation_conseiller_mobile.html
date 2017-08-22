@@ -1,16 +1,15 @@
 <template name="presentation_conseiller_mobile">
-<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i></div>
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Présentation conseiller</div>
+ </div>
 
+<div class="container_user_profil">
 <div class="tab-pane" id="tab12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="pull-left">
                     </div>
                     {{#if my_id this._id}}
-                    <h4 class="titre-profil "><strong>Ma présentation conseiller</strong>  <small><small>
-                    <i> Visible par tous les utilisateurs</i></small></small></h4>
-                    <hr>
-                    
                     <div class="post-content ">
                         {{{presentation}}}
                     </div>
@@ -31,7 +30,7 @@
 	                            
                                 <form enctype="multipart/form-data" action="" method="post" id="4">
 	                            <fieldset>                        
-		                        <label><strong>Présentation</strong></label>
+		                        <label><strong>Modifier</strong></label>
 		                         <textarea id="" name="presentation" class="form-control" style="height:250px;" required> {{presentation}} </textarea><br>
 		                        
 		                        <br>
@@ -50,5 +49,5 @@
                 </div>
             </div>
        </div>
-
+</div>
 </template>

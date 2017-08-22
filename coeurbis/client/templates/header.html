@@ -4,7 +4,7 @@
       {{user_bloquer_url}}
       {{last_login_conseillere}}
           <div class="header">
-
+             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'index'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div>
              <div class="header_1">
                   <button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></a><!-- icone hamburger --></button>
                 </div>
@@ -42,8 +42,12 @@
                       <li><div id="notification1"> </div>
                       </li>
                       <li><a href="{{pathFor 'index'}}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                      <li><a href="{{pathFor 'messagerie'}}">Messagerie</a></li>
-                      <li><a href="{{pathFor 'mon_profil' _id=id}}" >Profil</a></li>
+                      
+
+                      <div class="mobile_lien"> <li ><a href="{{pathFor 'messagerie'}}"  >Messagerie</a></li></div>
+                       <li class="ecran"><a class="messagerie_ecran">Messagerie</a></li>
+                      
+                      <li><a href="{{pathFor 'presentation' post_author=id}}" >Profil</a></li>
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul class="dropdown-menu">

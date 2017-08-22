@@ -56,7 +56,14 @@
 </template>
 
 <template name="Item_message_droite_mobile">
-     <div class="message_droite_date" >{{ date_francais_heures post_date}}</div>
+     <div class="message_droite_date" >
+         <div style="display: inline-block;">
+             <a class=" delete_msg" >
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </a>
+         </div>
+         <div style="display: inline-block;"> {{ date_francais_heures post_date}}</div> 
+     </div>
      <div class="message_droite">{{{ breaklines message}}}<br></div>
      <div style="clear: both;"></div>
 </template>

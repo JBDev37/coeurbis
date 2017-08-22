@@ -858,6 +858,8 @@
 
    .status_conseiller_mobile{
     margin-left: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
    }
 
    .choix_profil{
@@ -968,6 +970,36 @@
         display: inline-block;
     }
 
+    .profil-connecté{
+        margin-left: 10px;
+    }
+
+    .button_profil{
+        margin-bottom: 5px;
+    }
+
+    .button_profil a:hover{
+        text-decoration: none;
+    }
+
+    .profil-connecté{
+        margin-bottom: 5px;
+        margin-top: -10px;
+    }
+
+    .post-content{
+        padding-top: 8px;
+    }
+
+    .button_profil_hist{
+        margin-top: -40px;
+        margin-bottom: 10px;
+    }
+
+    .form-group{
+        padding-left: 5px;
+    }
+
 
 
 
@@ -1019,6 +1051,15 @@
     
    }
 
+    .container_user_histoire{
+    display: block;
+    margin-top: 10px;
+    height: 380px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee;
+   }
+
 
 }
 
@@ -1064,6 +1105,15 @@
     overflow-y: auto;
     
    }
+
+       .container_user_histoire{
+    display: block;
+    margin-top: 10px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:568px){
@@ -1101,6 +1151,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     
+   }
+
+       .container_user_histoire{
+    display: block;
+    margin-top: 10px;
+    height: 460px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee;
    }
 }
 
@@ -1140,6 +1199,15 @@
     overflow-y: auto;
     
    }
+
+       .container_user_histoire{
+    display: block;
+    margin-top: 10px;
+    height: 520px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:667px){
@@ -1177,6 +1245,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     
+   }
+
+       .container_user_histoire{
+    display: block;
+    margin-top: 10px;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #eee;
    }
 }
 

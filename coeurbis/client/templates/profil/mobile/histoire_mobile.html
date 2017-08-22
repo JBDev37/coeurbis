@@ -10,12 +10,25 @@
     <div class="tab-pane " id="tab2">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
-                <div class="panel-body"><br> Raconte tes différentes expériences amoureuses. Explique ce qu'elles t'on apportées et les conseils que tu pourrais donner (réussites, échecs, confiance en soi... )
-                    <div class="pull-left">
+                {{#if my_id this._id}}
+                <div class="panel-body"><br> Raconte tes différentes expériences amoureuses. Explique ce qu'elles t'on apportées et les conseils que tu pourrais donner (réussites, échecs, confiance en soi, amitié... ) </div>
+                    <div class="pull-left"></div>
+                 {{else}}
+                 {{#if user_not_disponible _id}}
+                             <div class="button_profil_hist "><a href="">
+                                <button class="btn btn-primary btn-block disabled " type="button"  id="">
+                                    Contacter
+                                </button></a>
+                            </div>
+                            {{else}}
+                             <div class="button_profil_hist "><a href="{{pathFor 'messagerie_mobile' post_author=this._id}}">
+                                <button class="btn btn-primary btn-block  " type="button"  id="">
+                                    Contacter
+                                </button></a>
+                            </div>
+                           {{/if}}
+                 {{/if}}
 
-                        
-                    </div>
-                   
 
                     {{#if my_id this._id}}
                     <div class="media">
@@ -34,11 +47,11 @@
                                 
                                     <div class="form-group">
                                     <label for="exampleInputEmail1">Titre</label>
-                                    <input type="text" class="form-control" name="titre-histoire" id="titre-histoire" required placeholder="titre">
+                                    <input type="text" class="form-control" name="titre-histoire" id="titre-histoire" required placeholder="titre" >
                                   </div>    <br>             
                                    <div class="form-group">
                                     <label for="exampleInputEmail1">Mon histoire</label>
-                                    <textarea class="form-control" rows="10" placeholder="Raconte ton histoire..." required id="histoire" name="histoire"></textarea>
+                                    <textarea class="form-control" rows="10" placeholder="Raconte ton histoire..." required id="histoire" name="histoire" ></textarea>
                                   </div>
                                 
                                 <br>
@@ -54,66 +67,37 @@
                         </div>
                     </div>
                     {{/if}}
-                </div>
-            </div>
+               
+            </div><br>
           
 	       	{{#each histoires_mobile}}
-	      		{{> Item_Histoires_mobile}}
+	      		{{> Item_Histoires_mobile}}<spam></spam>
 	    	{{/each}}
          
 
-       </div>
+       </div><br>
 </div>
 </template>
 
 
 <template name="Item_Histoires_mobile">
 	
-<br><br>
-	<div class="tab-pane" style="margin-top: 5px;" >
-            <!-- Simple post content example. -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="pull-left">
-                        
-                    </div>
-                    <div class="titre_histoires">{{titre_histoire}} </div>
-                    
-                    <hr>
-                    <div class="post-content">
-                        {{{breaklines histoire}}}
-                    </div>
-                    <div>
-                        <div class="pull-right btn-group-xs nav nav-pills">
-                             {{#if my_id post_author}}
-                            <a class="btn btn-danger delete"><i class="fa fa-times" aria-hidden="true"></i></a>
-                            <a href="#modif" class="btn btn-success modifier" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                             {{/if}}
-                        </div>
-                      
-                        <br>
-                    </div>
-							<div class="tab-content">
-	  							<div class="tab-pane active " id="taba" ></div>
-	                        	<div class="tab-pane hist" id="modif" >
-	                                <form enctype="multipart/form-data" action="" method="post" id="hist">
-		                            <fieldset>                        
-			                        <label><strong>Modifier</strong></label>
-			                         <textarea id="" name="modif_histoire" class="form-control" style="height:250px;" required> {{   histoire}} </textarea><br>
-			                        
-			                        <br>
-			                        <div class="input-conseillere">
-			                       
-			                        <input type="submit" name="submit" value="Valider" id="hist" class="btn btn-success submit1"/>
-			                       </div>
-			                    </fieldset>
-			                    </form>
-                            </div>
-	                        </div>
-                           
+<div class="message-gauche">
+    <div class="container-messages-gauche">
+        {{#if is_garcon gender}} 
+        <div class="titre_message_container mobile_lien" style="color: #2196f3">{{titre_histoire}}</div>
+          {{/if}}
+         {{#if is_fille gender}} 
+        <div class="titre_message_container mobile_lien" style="color: #ff6af1">{{titre_histoire}}</div>
+            {{/if}}
+        <div class="content-message-gauche">  {{{breaklines histoire}}}</div>
+            
+        <div class="footer-message_acceuil">
+ 
+        </div>
+               
+    </div>
 
-                </div>
-            </div>
-       </div>
+</div>
 
 </template>

@@ -3016,7 +3016,7 @@ select[multiple].input-lg {
   }
 }
 .btn {
-  display: inline-block;
+  /*display: inline-block;*/
   margin-bottom: 0;
   font-weight: normal;
   text-align: center;
@@ -3468,7 +3468,7 @@ fieldset[disabled] .btn-link:focus {
   border-radius: 3px;
 }
 .btn-block {
-  display: block;
+  /*display: block;*/
   width: 100%;
 }
 .btn-block + .btn-block {
@@ -7397,3 +7397,6 @@ input[type="radio"]:checked:before,
 .radio input[type="radio"]:checked:before,
 .radio-inline input[type="radio"]:ch
 
+.mobile_lien{
+  display: none;
+}

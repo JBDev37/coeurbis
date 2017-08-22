@@ -2,7 +2,14 @@ Template.personne_aide_mobile.helpers({
   liste_personne_mobile: function() {
      var userId = Meteor.userId();
     return Comments.find({userId:userId }, {sort: {submitted: -1}});
+  },
+
+    liste_personne_user: function() {
+     var userId = Router.current().params.post_author;
+    return Comments.find({userId:userId }, {sort: {submitted: -1}});
   }
+
+
 });
 
 Template.commentsItem_mobile.helpers({

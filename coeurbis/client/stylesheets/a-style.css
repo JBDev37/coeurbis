@@ -1073,7 +1073,7 @@ float: left;
 .footer-message_acceuil{
     display: block;
     background-color: #ffffff;
-    height: 40px;
+    height: 60px;
     border-radius: 2px;
     padding-left: 5px;
 
@@ -3029,4 +3029,41 @@ label{
 
 .mobile_lien{
     display: none;
+}
+
+.receive_message{
+    height: 50px;
+    padding-left: 5px;
+}
+
+.en_cour{
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /*background-color: #e2e2e2;*/
+
+}
+
+.user_bloquer_chat{
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /*background-color: #e2e2e2;*/
+
+}
+
+.bloquer_user a{
+  text-decoration: none;
+}
+
+.delete_msg{
+    width: 20px;
+    padding: 0px;
+    margin-right: 5px;
+    height: 25px;
+    color: red;
 }

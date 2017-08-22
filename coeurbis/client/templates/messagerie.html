@@ -61,7 +61,7 @@
          <div class="col-sm-9 message_section">
          <div class="row">
          <div class="new_message_head">
-         <div class="pull-left name_user"><button> Conversation avec <a href="{{pathFor 'profil' post_author=this._id}}">{{username}}</a></button></div>
+         <div class="pull-left name_user"><button> Conversation avec <a href="{{pathFor 'presentation' post_author=this._id}}">{{username}}</a></button></div>
          <div class="bloquer_user" id="bloquer" ><a href="">{{bloquer}} </a></div>
          </div>
          
@@ -107,7 +107,14 @@
 </template>
 
 <template name="Item_message_droite">
-     <div class="message_droite_date" >{{ date_francais_heures post_date}}</div>
+     <div class="message_droite_date" >
+         <div style="display: inline-block;">
+             <a class=" delete_msg" >
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </a>
+         </div>
+         <div style="display: inline-block;"> {{ date_francais_heures post_date}}</div> 
+     </div>
      <div class="message_droite">{{{ breaklines message}}}<br></div>
      <div style="clear: both;"></div>
 </template>
@@ -136,7 +143,7 @@
                       </div>
                       <div class="contact_sec">
                          <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
-                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <a class="btn btn-danger btn-xs delete_contact" id="{{ id_contact}}" style="display:none;">
                          <i class="fa fa-times" aria-hidden="true"></i></a>
                       </div>
                    </div>

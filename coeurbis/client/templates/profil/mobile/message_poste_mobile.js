@@ -2,7 +2,14 @@ Template.messages_poste_mobile.helpers({
   mes_messages_mobile: function() {
      var userId = Meteor.userId();
     return Posts.find({post_author:userId }, {sort: {post_date: -1}});
-  }
+  },
+
+    mes_messages_user: function() {
+     var userId = Router.current().params.post_author;
+    return Posts.find({post_author:userId }, {sort: {post_date: -1}});
+  },
+
+
 });
 
 Template.messages_poste_mobile.events({

@@ -9,43 +9,49 @@
                               Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
                         </div>
                         {{else}}
+                           {{#if my_id this._id}}
                         <div class="status_conseiller_mobile">
                              <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
                               <br><hr>
                         </div>
+                         {{else}}
+                         {{/if}}
                         {{/if}}
-
+                            
+                            {{#if my_id this._id}} {{else}}
+                              <div class="profil-connecté"> {{#if user_online_conseillere _id}} <img src="/img/Point_vert.gif">  {{/if}}  {{date_last_connexion _id}}</div>
+                            {{/if}}
 
 
                          {{#if my_id this._id}}
-                             <div class="dropdown pull-right">
+                             <div class="button_profil">
                             <button class="btn {{is_disponible}} btn-sm dropdown-toggle disponible" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="disponible">   
                                {{disponible_text}}
                             </button>
                             </div>
                             <div class="pull-right" style="clear: both;">{{explication}}</div><br>
                          {{else}}
-                          <div class="dropdown pull-right">
-                            <button class="btn btn-success btn-sm dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">
+                          <div class="button_profil">
+                            <button class="btn btn-success btn-block dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">
                                 {{en_attente}}
                             </button>
                         </div>
                         
-                         <div class="dropdown pull-right show-com add-com">
-                            <button class="btn btn-warning btn-sm dropdown-toggle " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="">
+                         <div class="button_profil add-com"><a href="{{pathFor 'add_commentaire_mobile' post_author=this._id}}">
+                            <button class="btn btn-warning btn-block dropdown-toggle " type="button"  id="">
                                 Laisser un commentaire
-                            </button>
+                            </button></a>
                         </div>
                         
                            {{#if user_not_disponible _id}}
-                             <div class="dropdown pull-right "><a href="">
-                                <button class="btn btn-primary btn-sm disabled " type="button"  id="">
+                             <div class="button_profil "><a href="">
+                                <button class="btn btn-primary btn-block disabled " type="button"  id="">
                                     Contacter
                                 </button></a>
                             </div>
                             {{else}}
-                             <div class="dropdown pull-right "><a href="{{pathFor 'messagerie' post_author=this._id}}">
-                                <button class="btn btn-primary btn-sm  " type="button"  id="">
+                             <div class="button_profil "><a href="{{pathFor 'messagerie_mobile' post_author=this._id}}">
+                                <button class="btn btn-primary btn-block  " type="button"  id="">
                                     Contacter
                                 </button></a>
                             </div>
@@ -53,29 +59,19 @@
                       
                         {{/if}}
 
-                  
-                    
-                    
-                    
 
-
-                    {{#if my_id this._id}} {{else}}
-                      
-                      <div class="profil-connecté"> {{#if user_online_conseillere _id}} <img src="/img/Point_vert.gif">  {{/if}}  {{date_last_connexion _id}}</div>
-                    {{/if}}
-
-                    </span><br>
+                    </span>
                     <span class="pull-left-profil"><br>
                      
                         
                          
                         <div class="{{activeRouteClass 'presentation'}} choix_profil"><a href="{{pathFor 'presentation_mobile' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Présentation</a></div>
                        
-                       {{#if my_id this._id}}
+                       
                        {{#if is_conseiller_user _id}}
                         <div class="{{activeRouteClass 'presentation_conseiller'}} choix_profil"> <a href="{{pathFor 'presentation_conseiller_mobile' post_author=_id }}" style="text-decoration:none;"><i class="fa fa-address-card-o" aria-hidden="true"></i> Conseiller</a></div>
                        {{/if}} 
-                       {{/if}}
+                       
 
                        <div class="{{activeRouteClass 'histoire'}} choix_profil"> <a href="{{pathFor 'histoire_mobile' post_author=_id }}" style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires <span class="badge">{{count_histoires _id}}</span></a>
                        </div>   
@@ -119,8 +115,8 @@
 
     <div class="tab-content">
              
-            {{> add_commentaire}}
-            <!--{{> presentation}}
+             <!--{{> add_commentaire}}
+            {{> presentation}}
             {{> presentation_conseiller}}
             {{> histoire}}
             {{> amis}}

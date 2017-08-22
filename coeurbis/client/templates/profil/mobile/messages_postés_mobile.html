@@ -3,14 +3,17 @@
  <div class="titre_page_profil">Messages postés</div>
 </div>
 
-<div class="container_user_profil">
+<div class="container_user_histoire">
 	 <div class="tab-pane " id="tab7">
-
-
-                    {{#each mes_messages_mobile}}
-                      {{> messagePosteItem_mobile}}
-                    {{/each}}
-             
+  {{#if my_id this._id}}
+       {{#each mes_messages_mobile}}
+        {{> messagePosteItem_mobile}}
+      {{/each}}
+  {{else}}
+      {{#each mes_messages_user}}
+         {{> messagePosteItem_mobile}}
+      {{/each}}
+  {{/if}}     
     </div>
 </div>
 </template>

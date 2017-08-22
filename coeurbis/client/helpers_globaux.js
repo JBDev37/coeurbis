@@ -233,11 +233,10 @@ Template.registerHelper('my_name', function(name) {
   }
 });
 
-Template.registerHelper('name_user', function(id) {
-  var user = Meteor.user();
+Template.registerHelper('name_user', function() {
+  var user = Meteor.users.findOne(this._id);
   var name = user.username;
-
-    return name;
+  return name;
 
 });
 
@@ -587,11 +586,11 @@ Template.registerHelper("date_last_connexion", function(id) {
 	    }
 
 	    if(diff.min>1){
-	     return 'Connecté il y a ' + diff.day + ' minutes';
+	     return 'Connecté il y a ' + diff.min + ' minutes';
 	    }
 
 	    if(diff.min>0){
-	     return 'Connecté il y a ' + diff.day + ' minute';
+	     return 'Connecté il y a ' + diff.min + ' minute';
 	    }
 
 	    if(diff.sec>1){

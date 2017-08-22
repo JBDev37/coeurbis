@@ -56,7 +56,7 @@ Template.profil_mobile.helpers({
   },
 
     count_histoires: function() {
-    var curentUser = this._id; 
+    var curentUser = Router.current().params.post_author;
     return Histoires.find({post_author: curentUser}).count();
   },
 
@@ -74,17 +74,17 @@ Template.profil_mobile.helpers({
   },
 
     count_liste_personne: function() {
-     var userId = Meteor.userId();
+     var userId = Router.current().params.post_author;
     return Comments.find({userId:userId }).count();
   },
 
     count_mes_messages: function() {
-     var userId = Meteor.userId();
+     var userId = Router.current().params.post_author;
     return Posts.find({post_author:userId}).count();
   },
 
     count_commentaires: function() {
-    var curentUser = this._id;
+    var curentUser = Router.current().params.post_author;
     return Commentaires.find({to_id:curentUser }).count();
   },
 
@@ -94,7 +94,7 @@ Template.profil_mobile.helpers({
   },
 
     count_liste_personne_aide: function() {
-     var userId = Meteor.userId();
+     var userId = Router.current().params.post_author;
     return Comments.find({post_author_id:userId}).count();
   },
 

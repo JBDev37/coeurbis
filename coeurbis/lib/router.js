@@ -278,6 +278,13 @@ Router.route('/commentaires_mobile/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/rediger_commentaires_mobile/:post_author?', {
+  name: 'rediger_commentaires_mobile',
+  template : 'rediger_commentaires_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
 Router.route('/ils_ont_aide/:post_author?', {
   name: 'ils_ont_aide',
   template : 'ils_ont_aide',
@@ -306,9 +313,16 @@ Router.route('/avertissement/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
-Router.route('/avertissement_mobile/:post_author?', {
-  name: 'avertissement_mobile',
-  template : 'avertissement_mobile',
+Router.route('/add_commentaire_mobile/:post_author?', {
+  name: 'add_commentaire_mobile',
+  template : 'add_commentaire_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/valider_commentaire_mobile/:post_author?', {
+  name: 'valider_commentaire_mobile',
+  template : 'valider_commentaire_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); }
 });

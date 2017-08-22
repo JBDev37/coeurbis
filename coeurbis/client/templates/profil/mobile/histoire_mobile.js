@@ -70,7 +70,24 @@ Template.histoire_mobile.events({
 
   'click .retour': function(e) {
      window.history.back();
-   }
+   },
+
+    'focus #titre-histoire': function(e) {
+     document.getElementById('titre-histoire').placeholder="";
+  },
+
+    'focusout #titre-histoire': function(e) {
+     document.getElementById('titre-histoire').placeholder="Titre";
+  },
+
+      'focus #histoire': function(e) {
+     document.getElementById('histoire').placeholder="";
+  },
+
+    'focusout #histoire': function(e) {
+     document.getElementById('histoire').placeholder="Raconte ton histoire...";
+  },
+
 
 });
 

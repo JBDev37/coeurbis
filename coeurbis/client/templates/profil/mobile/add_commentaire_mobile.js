@@ -1,15 +1,11 @@
-Template.profil_mobile.events({
-  'click .show-com': function(e) {
-    e.preventDefault();
-   document.getElementById('show-com').style.display="block";
-  },
+Template.add_commentaire_mobile.events({
 
   'submit form#com': function(e) {
     e.preventDefault();
     
     var user = Meteor.user();
     var userId = Meteor.userId();
-    var to_id = this._id;
+    var to_id = Router.current().params.post_author;
     var name = Meteor.users.findOne(to_id);
     var username = name.username;
     
@@ -33,9 +29,12 @@ Template.profil_mobile.events({
         });
     
     document.getElementById("idcom").value=""; 
-    document.getElementById('show-com').style.display="none";
-   //Router.go('postPage', {_id: result._id});
+    Router.go('valider_commentaire_mobile', {post_author: to_id});
     },
+
+      'click .retour': function(e) {
+     window.history.back();
+   }
   
 });
 
@@ -90,3 +89,13 @@ Template.commentaires_mobile.events({
      window.history.back();
    }
 });
+
+Template.valider_commentaire_mobile.events({
+      'click .retour': function(e) {
+        var to_id = Router.current().params.post_author;
+        Router.go('profil_mobile', {post_author: to_id});
+   }
+
+
+});
+

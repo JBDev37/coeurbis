@@ -44,14 +44,14 @@ Template.messagerie.helpers({
   },
 
     bloquer: function() {
+    var to_id = Router.current().params.post_author;  
     var userId = Meteor.userId();
-    var to_id = this.post_author;
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) { 
       return 'Débloquer';
     } 
     else {
-      return 'Bloquer';
+      return 'Bloquer'; 
     }
   },
 
@@ -106,12 +106,12 @@ Template.messagerie.helpers({
   },
 
     not_current_user: function() {
-   var current_id = Router.current().params.post_author;
+    var current_id = Router.current().params.post_author;
 
     var userId = Meteor.userId();
     var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id }, {to_id:userId,from_id:current_id }]});
   
-  if (userId==user.from_id){ 
+    if (userId==user.from_id){ 
     var id = user.to_id;
    
     return true;
@@ -242,11 +242,16 @@ Template.messagerie_mobile.events({
 
     'focus #mes': function(e) {
      document.getElementById('mes').placeholder="";
-},
+  },
 
     'focusout #mes': function(e) {
      document.getElementById('mes').placeholder="Ecrire un message";
-},
+  },
+
+     'click .delete_msg':function() {
+     Chat.remove(this._id);
+
+  },
 
 
 });
@@ -409,6 +414,11 @@ Template.messagerie.events({
 
   },
 
+     'click .delete_msg':function() {
+    Chat.remove(this._id);
+
+  },
+
      'click .en_cour':function() {
     var userId = Meteor.userId();
     document.getElementById('member_list').style.display='block';
@@ -439,6 +449,19 @@ Template.messagerie.events({
     document.getElementById('member_list_mobile').style.display='none';
 
   },
+
+      'focus #mes': function(e) {
+     document.getElementById('mes').placeholder="";
+},
+
+      'focusout #mes': function(e) {
+     document.getElementById('mes').placeholder="Ecrire un message";
+},
+
+
+
+
+
 
 
 

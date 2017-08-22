@@ -4,10 +4,12 @@
 {{> side_bar_left }}
 <div class="container-messages-acceuil">
 	{{> postSubmit}}
-<br><br><br>
+
+<span class="mobile_lien"><br><br> </span>
     {{#each posts}}
       {{> postItem}}
     {{/each}}
+
 </div>
 
 </template>
@@ -84,11 +86,11 @@
                 
                 <span class="ecran">
                     {{#if is_fille gender}} 
-                    <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;"  class="ecran">{{author_name}}</a>
+                    <a href="{{pathFor 'presentation' }}" style="color: #ff6af1; margin-left: 5px;"  class="ecran">{{author_name}}</a>
                     {{/if}}
 
                     {{#if is_garcon gender}} 
-                    <a href="{{pathFor 'profil' }}" style="margin-left: 5px;">{{author_name}}</a>
+                    <a href="{{pathFor 'presentation' }}" style="margin-left: 5px;">{{author_name}}</a>
                     {{/if}}
                 </span>
 
