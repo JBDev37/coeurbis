@@ -18,9 +18,8 @@ Template.footer.helpers({
     }else{
     	var messages = 0;
     }
-    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
 
-    var total = comment + friends + messages + commentaires + alertes;
+    var total = comment + friends + messages + commentaires
     return total;
   },
 });

@@ -69,7 +69,7 @@ Template.postItem.events({
     Meteor.call('upvote1', this._id);
   },
 
-  'click .private_message': function(e) {
+  /*'click .private_message': function(e) {
     e.preventDefault();
 
     var user = Meteor.user();
@@ -87,7 +87,7 @@ Template.postItem.events({
            }
 
     Router.go('messagerie', {post_author: this.post_author});
-  },
+  },*/
 
 
   'click .signaler': function(e) {

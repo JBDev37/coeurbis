@@ -1,7 +1,21 @@
 Template.header.helpers({
     id: function() {
     return Meteor.userId();
-  }
+  },
+
+    notificationAlertes : function() {
+    var userId = Meteor.userId();
+   return Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } });
+  },
+
+    notificationCount: function(){
+    var userId = Meteor.userId();
+    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
+    return alertes;
+  },
+
+
+
 });
 
 accountsUIBootstrap3.logoutCallback = function(error) {

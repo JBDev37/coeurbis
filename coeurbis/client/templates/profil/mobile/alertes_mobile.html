@@ -1,0 +1,53 @@
+<template name="alertes_mobile">
+<div class="new_message_head" style="background-color: red; color:white">
+ <div class="titre_page_profil">Alertes</div>
+</div>
+
+<div class="container_user_histoire">
+	 <div class="tab-pane " id="tab8" >
+   <div class="post-content-alerte" >
+       Les alertes sont réservées aux situations les plus graves (agressions, viols, harcèlements...).
+       <br>
+       En créant une alerte, <u><strong> tout le monde</strong> </u> recevra ton message, tu aura ainsi très rapidement du soutien.
+       <br>
+       <span class="attention"> ATTENTION : Tu n'as le droit qu'à une seule alerte ! </span><br>
+    </div>
+
+    <div class="btn btn-block btn-danger creat_alert {{deja_alerte}}">Créer une alerte</div>
+
+      <div class="content-alertes"></div> 
+            {{#each notificationAlertesMobile}}
+                {{> ItemAlerte_mobile}}
+            {{/each}}            
+      </div> 
+</div>
+</template>
+
+                        
+<template name="ItemAlerte_mobile">
+     <div class="message-gauche">
+      <div class="container-messages-gauche">
+        {{#if is_garcon gender}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{author_name}} a besoin d'aide</div></div> 
+        {{/if}}
+
+        {{#if is_fille gender}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{author_name}} a besoin d'aide</div></div> 
+        {{/if}}
+            <div class="titre_alerte">{{{breaklines titre_alerte}}}</div>
+            <div class="content-message-gauche"> {{{breaklines alerte}}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{date_francais post_date}}</div>  
+                
+                <div class="nbr-reponse"></div>
+               <div class="repondre aider_message btn btn-sm btn-primary button_right mobile_lien"><a href="{{pathFor 'messagerie_mobile' post_author=this.author_id}}">Aider</a></div>
+
+                <div class="btn btn-danger btn-xs modifier_message private_message mobile_lien "><a  id="delete_alerte" class="">Supprimer</a></div>
+           </div>
+               
+        </div>
+
+    </div>
+
+</template>

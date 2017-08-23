@@ -20,5 +20,19 @@ Alertes.allow({
         return {
             _id: postId
         };
+    },
+
+        alerteInsert1: function(postAttributes) {
+       var user = Meteor.user();
+        var post = _.extend(postAttributes, {
+            author_id: user._id,
+            author_name: user.username,
+            gender :user.profile.gender,
+            post_date: new Date(),
+        });
+        var postId = Alertes.insert(post);
+        return {
+            _id: postId
+        };
     }
 });

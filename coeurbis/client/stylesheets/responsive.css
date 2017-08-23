@@ -907,6 +907,7 @@
         margin-top: 8px;
         margin-left: 20px;
         font-size: 16px;
+        text-align: center;
     }
 
     .mobile_recherche{
@@ -1000,6 +1001,28 @@
         padding-left: 5px;
     }
 
+    .post-content-alerte{
+        margin-bottom: 10px;
+        background-color: white;
+        padding: 10px;
+        font-size: 14px;
+
+    }
+
+    .content-alertes{
+        margin-top: 10px;
+    }
+
+    .blanc{
+        background-color: white;
+    }
+
+    .titre_alerte{
+        font-weight: bold;
+        margin-left: 8px;
+        font-size: 14px;
+    }
+
 
 
 
@@ -1060,6 +1083,15 @@
     background-color: #eee;
    }
 
+   .container_user_alerte{
+    display: block;
+    margin-top: 40px;
+    height: 380px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   background-color: white;
+   }
+
 
 }
 
@@ -1114,6 +1146,15 @@
     overflow-y: auto;
     background-color: #eee;
    }
+
+   .container_user_alerte{
+    display: block;
+    margin-top: 40px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   background-color: white;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:568px){
@@ -1160,6 +1201,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #eee;
+   }
+
+   .container_user_alerte{
+    display: block;
+    margin-top: 40px;
+    height: 460px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   background-color: white;
    }
 }
 
@@ -1208,6 +1258,15 @@
     overflow-y: auto;
     background-color: #eee;
    }
+
+   .container_user_alerte{
+    display: block;
+    margin-top: 40px;
+    height: 520px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   background-color: white;
+   }
 }
 
 @media only screen and (max-width:815px) and (min-height:667px){
@@ -1254,6 +1313,15 @@
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #eee;
+   }
+
+   .container_user_alerte{
+    display: block;
+    margin-top: 40px;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+   background-color: white;
    }
 }
 

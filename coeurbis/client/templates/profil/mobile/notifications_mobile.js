@@ -18,10 +18,10 @@ Template.notifications_mobile.helpers({
    return Commentaires.find({to_id:userId, read:false});
   },
 
-  notificationAlertes : function() {
+  /*notificationAlertes : function() {
     var userId = Meteor.userId();
    return Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } });
-  },
+  },*/
 
   dont_show_alertNot: function(id) {
     var my_id = Meteor.userId();
@@ -45,9 +45,8 @@ Template.notifications_mobile.helpers({
     if( Router.current().route.getName() !=='messagerie'){
     var messages = Chat.find({to_id:userId, read:false}).count();
     }
-    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
 
-    var total = comment + friends + messages + commentaires + alertes;
+    var total = comment + friends + messages + commentaires;
     return total;
   },
 

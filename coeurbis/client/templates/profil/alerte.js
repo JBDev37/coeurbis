@@ -18,8 +18,6 @@ Template.alerte.helpers({
     else {return false}
   },
 
-
-
 });
 
 

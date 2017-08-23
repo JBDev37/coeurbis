@@ -1,0 +1,23 @@
+<template name="creerAlerte">
+<div class="new_message_head" style="background-color: red; color:white"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Creer une alerte</div>
+</div>
+
+<div class="container_user_alerte ">
+	<form enctype="multipart/form-data" action="" method="post" id="2alertesM">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Titre</label>
+            <input type="text" class="form-control" name="titre-alerte" id="titre-alerte" required placeholder="Titre">
+        </div><br>             
+   		<div class="form-group">
+            <label for="exampleInputEmail1">Mon message</label>
+            <textarea class="form-control" rows="10" placeholder="Explique ton histoire..." required id="alerte" name="alerte1"></textarea>
+        </div>
+	        <br>
+	        <div class="input-conseillere">
+	        <input type="submit" name="submit" value="Creer une alerte" class="btn btn-danger submit1" id="2alertesM"/>
+       </div>
+    </form>
+</div>
+
+</template>

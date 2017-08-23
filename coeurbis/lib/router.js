@@ -334,6 +334,27 @@ Router.route('/presentation/:post_author?', {
     return Meteor.users.findOne(this.params.post_author); }
 });
 
+Router.route('/alertes_mobile/:post_author?', {
+  name: 'alertes_mobile',
+  template : 'alertes_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/creerAlerte/:post_author?', {
+  name: 'creerAlerte',
+  template : 'creerAlerte',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
+Router.route('/valider_Alerte/:post_author?', {
+  name: 'valider_Alerte',
+  template : 'valider_Alerte',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); }
+});
+
 Router.route('/presentation_mobile/:post_author?', {
   name: 'presentation_mobile',
   template : 'presentation_mobile',
