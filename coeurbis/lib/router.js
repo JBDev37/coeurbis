@@ -136,10 +136,20 @@ Router.route('/devenir_conseillere', {
 
 });
 
+Router.route('/devenir_conseillere_mobile', {
+  name: 'devenir_conseillere_mobile',
+  template : 'devenir_conseillere_mobile',
+
+});
+
 Router.route('/confirmation_conseillere', {
   name: 'confirmation_conseillere',
   template : 'confirmation_conseillere',
+});
 
+Router.route('/confirmation_conseillere_mobile', {
+  name: 'confirmation_conseillere_mobile',
+  template : 'confirmation_conseillere_mobile',
 });
 
 Router.route('/recherche_conseillere', {

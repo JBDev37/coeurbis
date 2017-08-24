@@ -2,6 +2,11 @@
 
 {{> side_bar_right }}
 {{> side_bar_left }}
+
+{{#if is_conseiller}}{{else}}
+<div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
+{{/if}}
+
 <div class="container-messages-acceuil">
 	{{> postSubmit}}
 
@@ -18,6 +23,8 @@
 <template name="postItem">
  {{supprimer_message _id}}
   <div class="message-gauche">
+
+
 
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 

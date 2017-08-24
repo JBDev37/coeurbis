@@ -2,6 +2,9 @@
 <div class="new_message_head">
  <div class="titre_page_profil">Contacter un(e) conseiller(e)</div>
 </div>
+{{#if is_conseiller}}{{else}}
+<div class="btn btn-block btn-primary mobile_lien devenir_conseiller_search"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
+{{/if}}
 <div class="classement_mobile" ><a href="{{pathFor 'classementComplet_mobile' }}"><img src="/img/cup.png" > Voir le classement complet</a></div>
 <div class="container_user_profil_recherche mobile_recherche">
 
@@ -36,7 +39,7 @@
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="les_deux" value="true">  Les deux  <div style="display: inline-block; margin-left: 5px"></div></label>
                     <br/> <br/>
                 </div>
-                <input type="submit" name="submit" value="valider" class="btn btn-success"/>
+                <input type="submit" name="submit" value="valider" class="btn btn-success right"/>
             </fieldset>
         </form>
     </div>

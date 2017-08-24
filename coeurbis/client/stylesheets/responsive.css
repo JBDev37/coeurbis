@@ -939,7 +939,7 @@
         padding-top: 10px;
         font-size: 16px;
         color: white;
-        margin-top: 40px;
+        margin-top: 5px;
     }
 
     .classement_mobile a:hover{
@@ -977,6 +977,8 @@
 
     .button_profil{
         margin-bottom: 5px;
+        float: right;
+        margin-right: 10px;
     }
 
     .button_profil a:hover{
@@ -1021,6 +1023,63 @@
         font-weight: bold;
         margin-left: 8px;
         font-size: 14px;
+    }
+
+    .status_conseiller_mobile a:hover{
+        text-decoration: none;
+    }
+
+    .devenir_conseiller_accueil {
+        margin-top: 5px;  
+    }
+
+    .devenir_conseiller_accueil a{
+        color: white;
+    }
+
+    .devenir_conseiller_accueil a:hover{
+        text-decoration: none;
+    }
+
+    .devenir_conseiller_search {
+        margin-top: 50px;  
+    }
+
+    .devenir_conseiller_search a{
+        color: white;
+    }
+
+    .devenir_conseiller_search a:hover{
+        text-decoration: none;
+    }
+
+    .right{
+        float: right;
+        margin-right: 10px;
+    }
+
+    .slideout-menu{
+        background-color: white;
+        color: black;
+    }
+
+    .slideout-menu h3{
+    color: black;
+    border-bottom-color: #0a68b4;
+    }
+
+    .slideout-menu ul li a{
+    color: black;
+    border-bottom-color: #0a68b4;
+    }
+
+    .slideout-menu ul li a:hover{
+    background-color: #0a68b4;
+    }
+
+
+    .slideout-menu ul li{
+    border-bottom-color: #0a68b4;
     }
 
 

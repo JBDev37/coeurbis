@@ -11,8 +11,8 @@
                         {{else}}
                            {{#if my_id this._id}}
                         <div class="status_conseiller_mobile">
-                             <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
-                              <br><hr>
+                             <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere_mobile' }}" >Tu n'es pas conseiller</a>
+                              <br>
                         </div>
                          {{else}}
                          {{/if}}
@@ -29,7 +29,7 @@
                                {{disponible_text}}
                             </button>
                             </div>
-                            <div class="pull-right" style="clear: both;">{{explication}}</div><br>
+                            <div class="pull-right" style="clear: both;">{{explication}}</div><br><br>
                          {{else}}
                           <div class="button_profil">
                             <button class="btn btn-success btn-block dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">

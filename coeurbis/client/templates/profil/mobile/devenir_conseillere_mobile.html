@@ -1,0 +1,46 @@
+<template name="devenir_conseillere_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Devenir conseiller</div>
+</div>
+
+ <div class="container_user_profil">
+
+    <div class="register-form-devenir blanc">
+
+        <form enctype="multipart/form-data" action="" method="post">
+
+            <fieldset>
+                
+                <strong>Pour qui :</strong>
+                <br>
+                <label class="btn btn-primary btn-circle btn-sm choix"><input type="checkbox" name="garcon" value="true" />  Les gar&ccedil;ons</label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><input type="checkbox" name="fille" value="true" />  Les filles</label><br>
+                <br>
+                <strong>Pour quelles tranches d'&acirc;ge :</strong><br>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="college" value="true" />  Coll&egrave;ge<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="lycee" value="true" />  Lyc&eacute;e<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="adulte" value="true" />  +18 ans<br></label><br>
+                <br>
+                <strong>Dans quels domaines :</strong><br>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="amour" value="true" />  Amour<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="amitie" value="true" />  Amiti&eacute;<br></label>
+               <label class="btn btn-primary btn-circle btn-sm choix"> <INPUT type="checkbox" name="confiance" value="true" />  Confiance en soi<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="sexo" value="true" />  Sexo<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="autre" value="true" />  Autre<br></label><br>
+   
+                <br>
+                <strong>Un petit mot pour te pr&eacute;senter et expliquer les conseils que tu pourras apporter (obligatoire):</strong><br><br>
+               
+                <textarea type="text" id="me" name="presentation" class="area-conseillere" required> </textarea><br>
+                <br>
+                <div class="input-conseillere">
+                <input type="submit" name="submit" value="valider" class="btn btn-primary"/>
+               </div>
+               <div class="bloc-emoticones-poster-message bloc-conseillere"></div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+
+</template>
