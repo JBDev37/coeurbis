@@ -5,14 +5,21 @@
     {{#if is_garcon gender}}
          <div class="titre_message_container" style="color: #2196f3">{{post_title}}
           <div class="categorie_msg"  >{{categorie}}</div> 
-         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
+         {{#if currentUser}}
+           <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+         {{/if}}
+
       </div> 
       {{/if}}
 
    {{#if is_fille gender}}
        <div class="titre_message_container_fille" style="color: #ff6af1">{{post_title}}
           <div class="categorie_msg"  >{{categorie}}</div> 
-         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+         
+          {{#if currentUser}}
+            <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+          {{/if}}  
+
       </div> 
       {{/if}}
 
@@ -20,11 +27,19 @@
         
       <div class="footer-message_acceuil">
            {{#if is_fille gender}} 
-            <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+              {{#if currentUser}}
+                <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+              {{else}}  
+                <a href="" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+              {{/if}}
             {{/if}}
 
             {{#if is_garcon gender}} 
+              {{#if currentUser}}
             <a href="{{pathFor 'profil' }}" style="margin-left: 5px;">{{author_name}}</a>
+              {{else}}
+            <a href="" style="margin-left: 5px;">{{author_name}}</a>
+                {{/if}}
             {{/if}}
            
             <div class="date-message">{{date_francais post_date }}</div>  

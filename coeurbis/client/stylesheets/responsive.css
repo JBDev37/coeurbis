@@ -590,7 +590,7 @@
     }
 
     .dropdown {
-       background-color: #e2e2e2;
+      background-color: #e2e2e2;
     
     }
 
@@ -679,7 +679,7 @@
     }
 
 
-    .header_1{
+    .header_1 {
         display: inline-block;
         width: 10%;
         color: white;
@@ -922,6 +922,18 @@
         color: white;
     }
 
+
+    .header_1 a {
+    
+    }
+
+
+    .header_1 a:hover {
+     
+    }
+
+
+
     .bloquer_user{
         float: right;
         margin-top: 10px;
@@ -1081,6 +1093,7 @@
     .slideout-menu ul li{
     border-bottom-color: #0a68b4;
     }
+
 
 
 

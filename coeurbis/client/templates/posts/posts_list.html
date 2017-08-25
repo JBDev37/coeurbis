@@ -3,14 +3,16 @@
 {{> side_bar_right }}
 {{> side_bar_left }}
 
-{{#if is_conseiller}}{{else}}
-<div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
+{{#if currentUser}}
+    {{#if is_conseiller}}{{else}}
+    <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
+    {{/if}}
 {{/if}}
 
 <div class="container-messages-acceuil">
 	{{> postSubmit}}
 
-<span class="mobile_lien"><br><br> </span>
+<span class="mobile_lien"></span>
     {{#each posts}}
       {{> postItem}}
     {{/each}}
@@ -74,17 +76,19 @@
               {{#if user_not_disponible post_author}}
                 <div class="repondre aider_message btn btn-sm btn-primary button_right ecran"><a href="{{pathFor 'postPage' }}">Aider</a></div>
                 <div class="repondre aider_message btn btn-sm btn-primary button_right mobile_lien"><a href="{{pathFor 'postPage_mobile' }}">Aider</a></div>
-                <div class="btn btn-success disabled btn-xs modifier_message private_message_disabled ecran"><a href="" class="">Message privé</a></div>
-                <div class="btn btn-success disabled btn-xs modifier_message private_message_disabled mobile_lien"><a href="" class="">Message privé</a></div>
+                  {{#if currentUser}}
+                    <div class="btn btn-success disabled btn-xs modifier_message private_message_disabled ecran"><a href="" class="">Message privé</a></div>
+                    <div class="btn btn-success disabled btn-xs modifier_message private_message_disabled mobile_lien"><a href="" class="">Message privé</a></div>
+                  {{/if}}
                 {{else}}
-
                 <div class="repondre aider_message btn btn-sm btn-primary button_right ecran"><a href="{{pathFor 'postPage' }}">Aider</a></div>
                 <div class="repondre aider_message btn btn-sm btn-primary button_right mobile_lien"><a href="{{pathFor 'postPage_mobile'}}">Aider</a></div>
-              
-                <div class="btn btn-success btn-xs modifier_message private_message ecran"><a href="{{pathFor 'messagerie'}}" class="">Message privé</a></div>
-                <div class="btn btn-success btn-xs modifier_message private_message mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.post_author}}" class="">Message privé</a></div>
+                {{#if currentUser}}
+                  <div class="btn btn-success btn-xs modifier_message private_message ecran"><a href="{{pathFor 'messagerie'}}" class="">Message privé</a></div>
+                  <div class="btn btn-success btn-xs modifier_message private_message mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.post_author}}" class="">Message privé</a></div>
+                {{/if}}
                  {{/if}}
-                
+               
                 <!--{{#if ownPost}} <div class="btn btn-warning btn-xs modifier_message "> <a href="{{pathFor 'postEdit'}}">Modifier</a></div> {{/if}}-->
             </div><br>
 
@@ -93,28 +97,39 @@
                 
                 <span class="ecran">
                     {{#if is_fille gender}} 
-                    <a href="{{pathFor 'presentation' }}" style="color: #ff6af1; margin-left: 5px;"  class="ecran">{{author_name}}</a>
+                        {{#if currentUser}}
+                        <a href="{{pathFor 'presentation' }}" style="color: #ff6af1; margin-left: 5px;"  class="ecran">{{author_name}}</a>
+                        {{else}}
+                        <a href="" style="color: #ff6af1; margin-left: 5px;"  class="ecran">{{author_name}}</a>
+                        {{/if}}
                     {{/if}}
 
                     {{#if is_garcon gender}} 
-                    <a href="{{pathFor 'presentation' }}" style="margin-left: 5px;">{{author_name}}</a>
+                        {{#if currentUser}}
+                      <a href="{{pathFor 'presentation' }}" style="margin-left: 5px;">{{author_name}}</a>
+                        {{else}}
+                      <a href="" style="margin-left: 5px;">{{author_name}}</a>
+                        {{/if}}
                     {{/if}}
                 </span>
 
                 <span class="mobile_lien"> 
                     {{#if is_fille gender}} 
-                    <a href="{{pathFor 'profil_mobile' }}" style="color: #ff6af1; margin-left: 5px;" >{{author_name}}</a>
+                       {{#if currentUser}}
+                        <a href="{{pathFor 'profil_mobile' }}" style="color: #ff6af1; margin-left: 5px;" >{{author_name}}</a>
+                        {{else}}
+                        <a href="" style="color: #ff6af1; margin-left: 5px;" >{{author_name}}</a>
+                        {{/if}}
                     {{/if}}
 
                     {{#if is_garcon gender}} 
-                    <a href="{{pathFor 'profil_mobile' }}" style="margin-left: 5px;">{{author_name}}</a>
+                        {{#if currentUser}}
+                      <a href="{{pathFor 'profil_mobile' }}" style="margin-left: 5px;">{{author_name}}</a>
+                        {{else}}
+                      <a href="" style="margin-left: 5px;">{{author_name}}</a>
+                        {{/if}}
                     {{/if}}
                 </span>
-
-
-
-
-
               
                 <div class="date-message">{{date_francais post_date }}</div>  
                 

@@ -28,17 +28,26 @@
     <div class="container-messages-gauche">
     
     {{#if is_garcon gender}}
-      <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'profil' post_author=this.userId}}">{{author}}</a>
-          <div class="categorie_msg" style="visibility: hidden;" >11</div> 
-       <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
-      </div> 
+          {{#if currentUser}}
+          <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'profil' post_author=this.userId}}">{{author}}</a></div> 
+          {{else}}
+          <div class="titre_message_container" style="color: #2196f3"><a href="">{{author}}</a>   </div>      
+          {{/if}}
+             {{#if currentUser}}
+            <button class="btn signaler-connect {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+            {{/if}}
      {{/if}}
      
      {{#if is_fille gender}}
-       <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'profil' post_author=this.userId}}" style="color: #ff6af1" >{{author}}</a>
-          <div class="categorie_msg"  style="visibility: hidden;">11</div> 
-         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
-      </div> 
+         {{#if currentUser}}
+         <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'profil' post_author=this.userId}}" style="color: #ff6af1" >{{author}}</a></div> 
+         {{else}}
+         <div class="titre_message_container_fille" style="color: #ff6af1"><a href="" style="color: #ff6af1" >{{author}}</a></div> 
+         {{/if}}    
+            {{#if currentUser}}
+            <button class="btn signaler-connect {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+            {{/if}}
+       
      {{/if}}
       
       <div class="content-message-gauche"> {{body}}</div>

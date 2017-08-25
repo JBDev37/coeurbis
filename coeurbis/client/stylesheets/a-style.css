@@ -1,7 +1,8 @@
 #login-dropdown-list .dropdown-menu {
     min-width: 300px;
     padding: 15px;
-    margin-left: -121px;
+    margin-left: -1px;
+
 }@font-face {
     font-family: "Saint denis";
     src: url('/police/Boulevard Saint Denis Light.ttf');
@@ -126,6 +127,7 @@ padding-top: 40px;
     margin-left: 10px;
     top: 8px;
     color: #ffffff;
+    /*float: left;*/
 }
 
 .logo-kurbys-disconnect a{
@@ -643,6 +645,16 @@ padding-top: 40px;
     border-width: 0px;
     background-color: transparent;
     margin-top: -5px;
+}
+
+.signaler-connect{
+    display: inline-block;
+    margin-right: 10px;
+    color: red;
+    float: right;
+    border-width: 0px;
+    background-color: transparent;
+    margin-top: -35px;
 }
 
 .signaler_post{

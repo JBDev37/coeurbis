@@ -153,7 +153,7 @@ Template.commentItem.events({
   },
 
 
-  'click .signaler': function(e) {
+  'click .signaler-connect': function(e) {
     e.preventDefault();
       var userId = Meteor.userId();
       var to_id = this.post_author;

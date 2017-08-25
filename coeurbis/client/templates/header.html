@@ -4,10 +4,16 @@
       {{user_bloquer_url}}
       {{last_login_conseillere}}
           <div class="header">
-             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'index'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div>
-             <div class="header_1">
-                  <button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></a><!-- icone hamburger --></button>
-                </div>
+             {{#if currentUser}}{{else}}
+             <span class="slogan">Des conseils, des solutions - Inscription gratuite</span>
+             {{/if}}
+              <div class="header_1">
+              
+                  <button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-lg fa-bars" aria-hidden="true"></i></a><!--icone hamburger --></button>
+             </div>
+             
+
+             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'index'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div> 
 {{#if currentUser}}
 
               <div class="header_2">
@@ -78,7 +84,6 @@
 {{/if}}
                       <div class="nav navbar-nav login_meteor1">
                         {{> loginButtons align="right"}}
-                        
                       </div>
                      <!-- <div class="contact_accueil ">
                         <a href="{{pathFor 'contact'}}">Contact</a>

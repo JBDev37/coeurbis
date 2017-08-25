@@ -23,7 +23,12 @@
               {{#if is_fille_conseillere gender}}
                   <div class="top-conseillere-content-fille">
                       <div class="top-conseillere-number"> n°{{true_value @index}} </div>         
+                      
+                      {{#if currentUser}}
                       <div class="top-conseillere-pseudo-fille"><a href="{{pathFor 'presentation' post_author=user_id}}">{{name}}</a></div> 
+                      {{else}}
+                      <div class="top-conseillere-pseudo-fille"><a href="">{{name}}</a></div> 
+                      {{/if}}
                       <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
 
                   </div>
@@ -32,8 +37,13 @@
               {{#if is_garcon_conseillere gender}}    
                   <div class="top-conseillere-content-garcon">
                       <div class="top-conseillere-number"> n°{{true_value @index}} </div>                      
+                     
+                      {{#if currentUser}}
                       <div class="top-conseillere-pseudo-garcon"><a href="{{pathFor 'presentation' post_author=user_id}}">{{name}}</a></div>
-                       <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
+                      {{else}}
+                      <div class="top-conseillere-pseudo-garcon"><a href="">{{name}}</a></div> 
+                      {{/if}}
+                      <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
                   </div>
               {{/if}}    
            {{/each}}   
