@@ -1,0 +1,51 @@
+<template name="messages_poste_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Messages postés</div>
+</div>
+
+<div class="container_user_histoire">
+	 <div class="tab-pane " id="tab7">
+  {{#if my_id this._id}}
+       {{#each mes_messages_mobile}}
+        {{> messagePosteItem_mobile}}
+      {{/each}}
+  {{else}}
+      {{#each mes_messages_user}}
+         {{> messagePosteItem_mobile}}
+      {{/each}}
+  {{/if}}     
+    </div>
+</div>
+</template>
+
+<template name="messagePosteItem_mobile">    
+                    
+                        
+<div class="message-gauche">
+
+      <div class="container-messages-gauche">
+      {{#if is_garcon_global}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{post_title}}</div> </div> 
+        {{/if}}
+
+        {{#if is_fille_global}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{post_title}}</div> </div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{breaklines post_content}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{date_francais post_date}}</div>  
+                
+                
+               {{#if my_id post_author}}
+                 <div class="repondre profil_ami btn btn-success btn-xs">Réponses</div>
+                 <div class="supprimer_ami repondre btn btn-danger btn-xs">Supprimer</div>
+                {{/if}}
+           </div>
+               
+        </div>
+
+    </div>
+
+</template>

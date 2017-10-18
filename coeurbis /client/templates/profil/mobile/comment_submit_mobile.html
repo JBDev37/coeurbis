@@ -1,0 +1,19 @@
+ <template name="commentSubmit_mobile">
+
+ {{#if currentUser}}
+ <div class="register-form blanc " style="height: 320px;">
+ <form action=""  method="POST" >
+ <legend style="color: #0a68b4; font-weight: bold">Donner un conseil</legend> 
+ 
+ 
+ <div class="bloc-emoticones-poster-message"></div> 
+ 
+ <textarea id="ma"  name="contenu" class="area-poster-message" required ></textarea><br>
+ 
+ <input type="submit" name="submit" value="valider" class="btn btn-primary " style="float: right;"> 
+</form>
+
+</div>
+{{/if}}
+
+</template>

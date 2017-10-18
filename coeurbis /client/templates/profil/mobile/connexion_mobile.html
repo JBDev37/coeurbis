@@ -1,0 +1,47 @@
+<template name="connexion_mobile">
+<div class="new_message_connexion">
+ <div class="titre_page_connexion">  {{> loginButtons align="right"}}
+ </div><br>
+<a href="{{pathFor 'cgu'}}" style="margin-left: 20px;">Conditions générales d'utilisation</a>
+</div>
+<br>
+<div class="btn btn-primary btn-sm forget">Mot de passe oublié</div>
+
+{{#if currentUser}}
+    <div class="btn btn-danger btn-sm del-compt"><a href="{{pathFor 'supprimer_mon_compte'}}">Supprimer mon compte</a></div>
+{{/if}}
+
+<div class="container_user_connexion">
+
+    <div class="register ">
+
+        <form id="forget">
+        <label for="exampleInputEmail1">Créer un mot de passe provisoire</label><br><br>
+        <div class="form-group">
+            <span >Pseudo :</span><br>
+            <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo">
+          </div>
+          <div class="form-group">
+            <span >Email :</span><br>
+            <input type="email" class="form-control" id="mail" name="email" placeholder="Email">
+          </div><br><br>
+          
+          <button type="submit" class="btn btn-primary">Valider</button>
+        </form><br><br>
+
+    </div>
+
+</div>
+
+<span class="password_provisoire">Mot de passe provisoire : <strong>orange</strong><br>
+Utilise ce mot de passe pour te connecter.
+N'oublie pas de le changer.
+
+</span>
+
+<span class="form_error">Le pseudo et le mail ne correspondent pas.</span>
+
+</template>
+
+
+

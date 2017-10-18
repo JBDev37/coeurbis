@@ -1,0 +1,49 @@
+<template name="postSubmit">
+{{#if currentUser}}
+<div class="poster_message">
+        <form action="message_poster.php" class="form-horizontal form_acceuil" method="POST" id="" ><span class="help-block">{{errorMessage 'post_title'}}</span>
+        <span class="help-block">{{errorMessage 'title'}}</span>
+            <div class="titre_poster_mesage">
+                <p>Demander un conseil</p>
+            </div>
+            
+            <textarea type="text" id="titre" required name="titre_message" class="titre_message_acceuil
+            " placeholder="Titre du message" maxlength="30"  onfocus="this.placeholder = ''" onblur="this.placeholder = ' Titre du message'"></textarea>
+            
+            
+            
+            <textarea id="m" required name="contenu" class="textarea_poster_message {{errorClass 'post_title'}}"   placeholder="Comment peut-on vous aider ?" onfocus="this.placeholder = ''" onblur="this.placeholder = ' Comment peut-on vous aider ?'"  ></textarea>
+            
+            
+            <div class="form-group footer-poster-message">
+                  <div class="form-group choix-theme" >
+      					     
+                     <div data-toggle="buttons">
+        					      <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
+        					      <label class="btn btn-primary  btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
+        					      <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
+        					       <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
+                         <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>
+      			         </div> <input type="submit" name="submit" value="valider" class="btn btn-sm btn-primary ecran valider-message"/> 
+      			     </div>
+
+                <div class=" choix-deroulant form-group">
+                     
+                  <div data-toggle="buttons"> <!-- Affichage mobile -->
+                        <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
+                        <label class="btn btn-primary  btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
+                        <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
+                         <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
+                         <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>
+                  </div>
+                </div>
+                <div class="valider_footer ">
+                  <input type="submit" name="submit" value="Valider" class="btn btn-block btn-success mobile_lien valider_acceuil" />    
+                </div>
+  
+            </div>
+        </form>
+    </div>
+    <div><br></div>
+{{/if}}
+</template>

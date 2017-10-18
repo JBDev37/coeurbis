@@ -1,0 +1,30 @@
+<template name="ameliore_site">
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages-acceuil">
+
+    <div class="register blanc">
+
+        <form id="contact" method="post" action="message_envoye_contact.php">
+
+            <fieldset><legend style="color: #0a68b4"><b>Tu as une idée pour améliorer le site ? </b></legend>
+                  <strong>Merci d'envoyer un message privé à <a href="{{pathFor 'messagerie' post_author='oANNC3P9SpQ5Fw8Qg'}}">Caroline </a> </strong><br/>
+               
+            </fieldset>
+         
+            <fieldset>
+                <strong> </strong><br/>
+                
+            </fieldset>
+         
+           
+        </form>
+
+        <span id="span"></span>
+
+    </div>
+
+</div>  
+
+</template>

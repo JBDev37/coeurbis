@@ -1,0 +1,42 @@
+<template name="dons">
+
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages-acceuil">
+
+    <div class="register blanc">
+
+      <form id="contact" method="post" action="message_envoye_contact.php">
+
+        <fieldset style="font-size: 14px"><legend style="color: #0a68b4; text-align: center;"><b>Soutenir Kurbys</b></legend>
+             <div class="presentation-sites" ><strong>Vous aimez Kurbys ? </strong><br>Vous pouvez soutenir ce projet en faisant un don : <br><br></div>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="JSSL9XM3AG5BU">
+              <input type="image" src="/img/faire-dons.png" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+              <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+              </form>
+             <br>
+
+             <strong>Vous ne pouvez pas faire de dons ?</strong><br>
+             Vous pouvez envoyer un gentil message d'encouragement à <strong><a href="{{pathFor 'messagerie' post_author='Pbxqa47Sqfyidqr3t'}}">Caroline </a></strong> (responsable du projet). <br><br>
+             Toute l'équipe travaille quotidiennement afin que tout le monde reçoive des conseils sans être jugé.
+
+
+        </fieldset>
+     
+        
+     
+       
+      </form>
+
+      <span id="span"></span>
+
+    </div>
+
+</div>  
+
+
+
+</template>

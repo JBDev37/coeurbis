@@ -1,0 +1,65 @@
+<template name="messagerie_vierge">
+{{add_contact_chat}}
+
+<div class="main_section">
+   <div class="container">
+      <div class="chat_container">
+         <div class="col-sm-3 chat_sidebar">
+         <div class="row">
+            <div class="dropdown all_conversation">
+               
+                  <div class="en_cour"> Conversations </div> 
+                  <div class="user_bloquer_chat"> Bloqués </div>
+
+                  <div class="en_cour_mobile"> Conversations </div> 
+                  <div class="user_bloquer_chat_mobile"> Bloqués </div>  
+               
+            </div>
+            
+
+
+            </div>
+         </div>
+         <!--chat_sidebar-->
+        
+         
+         <div class="col-sm-9 message_section">
+         <div class="row">
+         <div class="new_message_head">
+         <div class="pull-left name_user"><button> Conversation avec <a href="{{pathFor 'presentation' post_author=this._id}}">{{username}}</a></button></div>
+         <div class="bloquer_user" id="bloquer" ><a href="">{{bloquer}} </a></div>
+         </div>
+         
+         <div class="chat_area" id="msgbox">
+         <ul class="list-unstyled">
+                  <li class="left clearfix admin_chat">
+                     <span class="chat-img1 pull-right">
+                     </span>
+                     <div class="chat-body1 clearfix" >
+                       Tu n'as pas de message.
+                       
+                     </div>
+                  </li>
+                  
+         </ul>
+         </div><!--chat_area-->
+          
+          <div class="message_write">
+        <form enctype="multipart/form-data" action="" method="post">
+              {{#if is_bloquer this._id}}
+              <div class="is_bloquer">Tu as été bloqué</div> 
+              {{else}}
+              <textarea class="form-control" placeholder="Ecrire un message" name="message" id="mes" required></textarea>
+              <input   type="submit"  class="btn btn-success valider">
+              {{/if}}
+        </form>
+          </div>
+       
+
+
+         </div>
+         </div> <!--message_section-->
+      </div>
+   </div>
+</div>
+</template>
