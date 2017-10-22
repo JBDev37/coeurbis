@@ -1,0 +1,789 @@
+<template name="messagerie">
+{{add_contact_chat}}
+
+<div class="main_section">
+   <div class="container">
+      <div class="chat_container">
+         <div class="col-sm-3 chat_sidebar">
+         <div class="row">
+            <div class="dropdown all_conversation">
+               
+                  <div class="en_cour"> Conversations </div> 
+                  <div class="user_bloquer_chat"> Bloqués </div>
+
+                  <div class="en_cour_mobile"> Conversations </div> 
+                  <div class="user_bloquer_chat_mobile"> Bloqués </div>  
+               
+            </div>
+            
+
+
+            <div id="member_list" >
+               <ul class="list-unstyled">
+                  {{#each mes_contacts}}
+                    {{>Item_contact}}
+                  {{/each}}
+
+              </ul>
+        
+            <!-- 
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6112176939320267"
+                 data-ad-slot="6414647300"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+
+            </div>
+         </div>
+         <!--chat_sidebar-->
+
+            </div>
+
+            <div id="member_bloque">
+               <ul class="list-unstyled">
+                  <!--{{#each contact_bloque}}
+                    {{>Item_bloque}}
+                  {{/each}}-->
+
+              </ul>
+           <!-- 
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6112176939320267"
+                 data-ad-slot="6414647300"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+            </div>
+
+
+            <div id="member_list_mobile" >
+               <ul class="list-unstyled">
+                  {{#each mes_contacts}}
+                    {{>Item_contact_mobile}}
+                  {{/each}}
+
+              </ul>
+              
+            <!-- 
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6112176939320267"
+                 data-ad-slot="6414647300"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+            </div>
+
+            <div id="member_bloque_mobile">
+               <ul class="list-unstyled">
+                  <!--{{#each contact_bloque}}
+                    {{>Item_bloque_mobile}}
+                  {{/each}}-->
+
+              </ul>
+              <!-- 
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            
+
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6112176939320267"
+                 data-ad-slot="6414647300"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>-->
+            </div>
+    
+
+
+
+         
+         <div class="col-sm-9 message_section">
+         <div class="row">
+         <div class="new_message_head">
+             <div class="pull-left name_user"><button> Conversation avec <a href="{{pathFor 'presentation' post_author=this._id}}">{{username}}</a></button></div>
+             <br>
+
+             <!--<a href="{{pathFor 'dons'}}">
+               <img src="/img/donate.png" width="20px" height="20px" style="float: left;">
+               <img src="/img/don.png"  style="float: left;">
+            </a>-->
+
+
+
+             <div class="bloquer_user" id="bloquer" ><a href="">{{bloquer}} </a></div>
+         </div>
+         
+         <div class="chat_area" id="msgbox">
+         <ul class="list-unstyled">
+                  <li class="left clearfix admin_chat">
+                     <span class="chat-img1 pull-right">
+                     </span>
+                     <div class="chat-body1 clearfix" >
+                        {{#each mes_messages}}
+
+                            {{#if mon_message from_id}}
+                            {{> Item_message_droite}} {{message_read from_id}} 
+                            {{else}}
+                            {{> Item_message_gauche}} {{message_read from_id}}
+                            {{/if}}
+                        {{/each}}
+                       
+                     </div>
+                  </li>
+                  
+         </ul>
+                   
+         
+         </div><!--chat_area-->
+          
+                  <div class="message_write">
+                     <form enctype="multipart/form-data" action="" method="post">
+                    {{#if is_bloquer this._id}}
+                    <div class="is_bloquer">Tu as été bloqué</div> 
+                    {{else}}
+                    <textarea class="form-control" placeholder="Ecrire un message" name="message" id="mes" required></textarea>
+                    <input   type="submit"  class="btn btn-success valider">
+                    {{/if}}
+                    </form>
+                   </div>
+       
+
+
+         </div>
+         </div> <!--message_section-->
+      </div>
+   </div>
+</div>
+</template>
+
+<template name="Item_message_droite">
+     <div class="message_droite_date" >
+         <div style="display: inline-block;">
+             <a class=" delete_msg" >
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </a>
+         </div>
+         <div style="display: inline-block;"> {{ date_francais_heures post_date}}</div> 
+     </div>
+     <div class="message_droite">{{{ breaklines message}}}<br></div>
+     <div style="clear: both;"></div>
+</template>
+
+<template name="Item_message_gauche">
+   <div class="message_gauche_date">{{ date_francais_heures post_date}}</div>
+   <div class="message_gauche">{{{ breaklines message}}}<br> </div>
+</template>
+
+
+<template name="Item_contact">
+
+  {{#if my_name from_name}}
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #428bca ;" id="show">              
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font"> 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger btn-xs delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+        
+        </div>
+     {{/if}}
+    {{#if not_current_user _id}} 
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}"  style="background-color: #ffbc41;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+        {{else}}
+        <div class="receive_message  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{/if}}
+{{else}}
+
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{#if not_current_user _id}}  
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}" style="background-color: #ffbc41;" id="show">     
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+{{else}}
+                <div class="receive_message  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+     {{/if}}{{/if}}
+
+ {{/if}}
+
+</template>
+
+<template name="Item_bloque">
+
+{{#if my_name from_name}}
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #428bca ;" id="show">              
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font"> 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+        
+        </div>
+     {{/if}}
+    {{#if not_current_user _id}} 
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}"  style="background-color: #ffbc41;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+        {{else}}
+        <div class="receive_message  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{/if}}
+{{else}}
+
+       {{#if current_user _id}}  
+        <div class="receive_message current {{to_id}}" style="background-color: #0a68b4;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{#if not_current_user _id}}  
+        {{#if not_read }} 
+        <div class="receive_message  {{to_id}}" style="background-color: #ffbc41;" id="show">     
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+{{else}}
+                <div class="receive_message  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+     {{/if}}{{/if}}
+
+ {{/if}}
+ </template>
+<!--   - - - - - - - - - - - - - - - - - -                MOBILE     - - - - - - - - - - - - - - - - - -               -->
+<template name="Item_contact_mobile">
+
+  {{#if my_name from_name}}
+       {{#if current_user _id}}  
+        <div class="receive_message_mobile current {{to_id}}" id="show">              
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact"> 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+        
+        </div>
+     {{/if}}
+    {{#if not_current_user _id}} 
+        {{#if not_read }} 
+        <div class="receive_message_mobile  {{to_id}}"  style="background-color: #ffbc41;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+        {{else}}
+        <div class="receive_message_mobile  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{/if}}
+{{else}}
+
+       {{#if current_user _id}}  
+        <div class="receive_message_mobile current {{to_id}}" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{#if not_current_user _id}}  
+        {{#if not_read }} 
+        <div class="receive_message_mobile  {{to_id}}" style="background-color: #ffbc41;" id="show">     
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+{{else}}
+                <div class="receive_message_mobile  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+     {{/if}}{{/if}}
+
+ {{/if}}
+
+</template>
+
+<template name="Item_bloque_mobile">
+
+{{#if my_name from_name}}
+       {{#if current_user _id}}  
+        <div class="receive_message_mobile current {{to_id}}" style="background-color: #428bca ;" id="show">              
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact"> 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+        
+        </div>
+     {{/if}}
+    {{#if not_current_user _id}} 
+        {{#if not_read }} 
+        <div class="receive_message_mobile  {{to_id}}"  style="background-color: #ffbc41;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+        {{else}}
+        <div class="receive_message_mobile  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{/if}}
+{{else}}
+
+       {{#if current_user _id}}  
+        <div class="receive_message_mobile current {{to_id}}" style="background-color: #0a68b4;" id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+          
+        </div>
+     {{/if}}
+     {{#if not_current_user _id}}  
+        {{#if not_read }} 
+        <div class="receive_message_mobile  {{to_id}}" style="background-color: #ffbc41;" id="show">     
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+{{else}}
+                <div class="receive_message_mobile  {{to_id}}"  id="show">    
+                <li class="left clearfix" i>
+                   <span class="chat-img pull-left">
+                   </span>
+                   <div class="chat-body clearfix">
+                      <div class="header_sec">
+                         <strong class="primary-font user_send_contact">
+                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
+                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        </strong> <div class="pull-right">
+                         {{date_contact_chat last_date}}</div>
+                      </div>
+                      <div class="contact_sec">
+                         <strong class="primary-font"></strong> {{ limite_caractere last_message}}<span class="badge pull-right"></span>
+                         <a class="btn btn-danger delete_contact" id="{{ id_contact}}" style="display:none;">
+                         <i class="fa fa-times" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </li>
+         
+        </div>
+     {{/if}}{{/if}}
+
+ {{/if}}
+
+
+</template>

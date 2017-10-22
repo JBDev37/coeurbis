@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.idb9qf011pqj13l1a3vqwl" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <feature name="WebAppLocalServer">
-        <param name="android-package" value="com.meteor.webapp.WebAppLocalServer" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    <feature name="WebAppLocalServer">
+        <param name="android-package" value="com.meteor.webapp.WebAppLocalServer" />
         <param name="onload" value="true" />
     </feature>
     <feature name="StatusBar">
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Whitelist">
-        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
-    <name>coeurbis</name>
+    <name>coeurbis </name>
     <description>New Meteor Mobile App</description>
     <author email="n/a" href="n/a">A Meteor Developer</author>
     <content src="http://localhost:12608/" />
