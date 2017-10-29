@@ -61,6 +61,14 @@ PostsListController = RouteController.extend({
      },
 });
 
+if (Meteor.isClient) {
+    Router.plugin('reywood:iron-router-ga');
+    Router.configure({
+    trackPageView: true
+});
+}
+
+
 Router.route('/', function () {
   this.redirect('/index');
 });

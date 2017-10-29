@@ -28,11 +28,11 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-whitelist": "1.3.1",
-    "cordova-plugin-wkwebview-engine": "1.1.1",
-    "cordova-plugin-meteor-webapp": "1.4.0",
-    "cordova-plugin-statusbar": "2.2.1",
-    "cordova-plugin-splashscreen": "4.0.1"
+    "cordova-plugin-whitelist": "1.3.2",
+    "cordova-plugin-wkwebview-engine": "1.1.3",
+    "cordova-plugin-meteor-webapp": "1.4.2",
+    "cordova-plugin-statusbar": "2.2.3",
+    "cordova-plugin-splashscreen": "4.0.3"
 };
 // BOTTOM OF METADATA
 });
