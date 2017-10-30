@@ -46,12 +46,12 @@ Template.alerte.events({
         document.getElementById("alerte").value="";// on vide les champs du formulaire
   },
 
-   'click .t22': function(e) {
+   'touchstart .t22': function(e) {
          e.preventDefault();
          document.getElementById("exp1").style.display = "block";
   },
 
-   'click .delete_alerte': function(e) {
+   'touchstart .delete_alerte': function(e) {
     e.preventDefault();
     var my_id = Meteor.userId();
     var id = this._id;
@@ -99,7 +99,7 @@ Template.alerte.events({
     });
   },
 
-    'click .modifier_alerte': function(e) {
+    'touchstart .modifier_alerte': function(e) {
        e.preventDefault();
         document.getElementById("modifAlerte").style.display = "block";
   }

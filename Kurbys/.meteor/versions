@@ -68,7 +68,9 @@ logging@1.1.17
 matb33:collection-hooks@0.7.15
 meteor@1.7.2
 meteor-base@1.1.0
+meteorhacks:async@1.0.0
 meteorhacks:meteorx@1.0.2
+meteorhacks:npm@1.5.0
 meteorhacks:unblock@1.1.0
 mfactory:admin-lte@0.0.2
 minifier-css@1.2.16
@@ -88,9 +90,11 @@ mongo-id@1.0.6
 mongo-livedata@1.0.12
 mrt:jquery-raty@2.7.2
 npm-bcrypt@0.9.3
+npm-container@1.2.0
 npm-mongo@2.2.30
 observe-sequence@1.0.16
 ordered-dict@1.0.9
+pascoual:pdfjs@1.1.114
 patrickml:braintree@1.32.0
 promise@0.9.0
 raix:handlebar-helpers@0.2.5

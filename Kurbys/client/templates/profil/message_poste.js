@@ -8,12 +8,12 @@ Template.messages_poste.helpers({
 
 Template.messagePosteItem.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
      e.preventDefault();
      Router.go('postPage', {_id: this._id});
     },
 
-    'click .supprimer_ami': function(e) {
+    'touchstart .supprimer_ami': function(e) {
     e.preventDefault();
     Posts.remove(this._id);
     },

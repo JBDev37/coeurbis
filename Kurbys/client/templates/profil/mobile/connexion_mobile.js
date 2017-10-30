@@ -20,7 +20,7 @@ Template.connexion_mobile.events({
       
   },
 
-  'click .forget': function(e) {
+  'touchstart .forget': function(e) {
     e.preventDefault();
     document.getElementById('forget').style.display="block";
 

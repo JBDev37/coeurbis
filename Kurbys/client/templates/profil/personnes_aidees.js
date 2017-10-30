@@ -30,7 +30,7 @@ Template.commentsItem.helpers({
 
 Template.commentsItem.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.post_author_id});
     }

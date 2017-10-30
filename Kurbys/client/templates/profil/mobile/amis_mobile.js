@@ -57,19 +57,19 @@ Template.amis_mobile.helpers({
 });
 
 Template.amis_mobile.events({
-    'click .supprimer_ami': function(e) {
+    'touchstart .supprimer_ami': function(e) {
     e.preventDefault();
     Friends.remove(this._id);
     },
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
       var userId = Meteor.userId();
      if(this.from_id == userId){ var id = this.to_id}else{var id = this.from_id}
      Router.go('messagerie_mobile', {post_author: id});
     },
 
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 

@@ -32,7 +32,7 @@ Template.add_commentaire_mobile.events({
     Router.go('valider_commentaire_mobile', {post_author: to_id});
     },
 
-      'click .retour': function(e) {
+      'touchstart .retour': function(e) {
      window.history.back();
    }
   
@@ -76,7 +76,7 @@ Template.ItemCommentaire_mobile.helpers({
 
 Template.ItemCommentaire_mobile.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie_mobile', {post_author: this.from_id});
     }
@@ -85,13 +85,13 @@ Template.ItemCommentaire_mobile.events({
 
 Template.commentaires_mobile.events({
 
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 });
 
 Template.valider_commentaire_mobile.events({
-      'click .retour': function(e) {
+      'touchstart .retour': function(e) {
         var to_id = Router.current().params.post_author;
         Router.go('profil_mobile', {post_author: to_id});
    }

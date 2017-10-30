@@ -3,7 +3,9 @@
  <div class="titre_page_profil">Contacter un(e) conseiller(e)</div>
 </div>
 
-{{#if is_conseiller}}{{else}}
+{{#if is_conseiller}}
+<div style="margin-top: 80px;"></div>
+{{else}}
 <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_search">
 <a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a>
 </div>

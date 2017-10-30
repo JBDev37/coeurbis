@@ -38,7 +38,7 @@ if(on){
 }*/
 
 Template.header.events({
-     'click .messagerie_ecran':function() {
+     'touchstart .messagerie_ecran':function() {
 
     var userId = Meteor.userId();
 

@@ -65,13 +65,13 @@ Template.devenir_conseillere_mobile.events({
   },
 
 
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    },
 });
 
 Template.confirmation_conseillere_mobile.events({
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
     var my_id = Meteor.userId();
     Router.go('profil_mobile', {post_author: my_id});
   }

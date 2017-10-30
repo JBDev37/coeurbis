@@ -1,5 +1,5 @@
 Template.supprimer_mon_compte.events({
-  'click .suprim_compte': function(e) {
+  'touchstart .suprim_compte': function(e) {
     e.preventDefault();
       
      

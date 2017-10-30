@@ -9,7 +9,7 @@ Template.visites.helpers({
 
 Template.Itemvisites.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.from_id});
     }

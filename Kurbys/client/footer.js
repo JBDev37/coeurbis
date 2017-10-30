@@ -1,5 +1,5 @@
 Template.footer.events({
-  'click .profil_menu': function(e) {
+  'touchstart .profil_menu': function(e) {
   	var userId = Meteor.userId();
      /*Router.go('profil_mobile', {post_author: userId});*/
 

@@ -6,7 +6,7 @@ Template.visites_mobile.helpers({
 });
 
 Template.visites_mobile.events({
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 });
@@ -14,7 +14,7 @@ Template.visites_mobile.events({
 
 Template.Itemvisites_mobile.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie_mobile', {post_author: this.from_id});
     }

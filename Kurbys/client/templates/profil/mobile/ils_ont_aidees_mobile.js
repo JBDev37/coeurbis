@@ -6,12 +6,12 @@ Template.ils_ont_aide_mobile.helpers({
 });
 
 Template.ils_ont_aide_mobile.events({
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
       e.preventDefault();
      Router.go('messagerie_mobile', {post_author: this.userId});
     },
 
-    'click .retour': function(e) {
+    'touchstart .retour': function(e) {
      window.history.back();
    }
    

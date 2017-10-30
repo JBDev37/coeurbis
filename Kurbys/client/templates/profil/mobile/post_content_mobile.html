@@ -26,7 +26,8 @@
       <div class="footer-message_acceuil">
            {{#if is_fille gender}} 
               {{#if currentUser}}
-              <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
+              <a href="{{pathFor 'profil' }}" style="color: #ff6af1; margin-left: 5px;" class="ecran">{{author_name}}</a>
+              <a href="{{pathFor 'profil_mobile' }}" style="color: #ff6af1; margin-left: 5px;" class="mobile_lien">{{author_name}}</a>
               {{else}}
               <a href="" style="color: #ff6af1; margin-left: 5px;">{{author_name}}</a>
               {{/if}}
@@ -34,7 +35,8 @@
 
             {{#if is_garcon gender}} 
               {{#if currentUser}}
-            <a href="{{pathFor 'profil' }}" style="margin-left: 5px;">{{author_name}}</a>
+            <a href="{{pathFor 'profil' }}" style="margin-left: 5px;" class="ecran">{{author_name}}</a>
+            <a href="{{pathFor 'profil_mobile' }}" style="margin-left: 5px;" class="mobile_lien">{{author_name}}</a>
               {{else}}
             <a href="" style="margin-left: 5px;">{{author_name}}</a>
               {{/if}}

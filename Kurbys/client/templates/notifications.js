@@ -68,7 +68,7 @@ Template.notificationItemFriends.helpers({
 });
 
 Template.notificationItem.events({
-  'click a': function() {
+  'touchstart a': function() {
     Notifications.update(this._id, {$set: {read: true}});
   }
 });
@@ -81,13 +81,13 @@ Template.notificationItemMessages.helpers({
 });
 
 Template.notificationItemCommentaires.events({
-  'click .comm': function() {
+  'touchstart .comm': function() {
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
     Router.go('mon_profil', {_id: this.to_id});
   },
 
-  'click .comm_mobile': function() {
+  'touchstart .comm_mobile': function() {
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
     Router.go('commentaires_mobile', {_id: this.to_id});
@@ -95,7 +95,7 @@ Template.notificationItemCommentaires.events({
 }); 
 
 Template.notificationAlertesItem.events({
-  'click .Une_alerte': function() {
+  'touchstart .Une_alerte': function() {
     var my_id = Meteor.userId();
     var id = this._id;
     var unique = my_id + id;
@@ -106,7 +106,7 @@ Template.notificationAlertesItem.events({
 }); 
 
 Template.notificationItemFriends.events({
-  'click .oui': function(e) {
+  'touchstart .oui': function(e) {
     e.preventDefault();
     var from_id = this.from_id;
     var name_from_id = Meteor.users.findOne(this.from_id);
@@ -141,7 +141,7 @@ Template.notificationItemFriends.events({
     Notifications.update(this._id, {$set: {read: true}});
   },
 
-  'click .non': function() {
+  'touchstart .non': function() {
     Requests.remove({"from_id": from_id , "to_id":user._id });
     Requests.remove({"from_id": user._id , "to_id":from_id });
     Notifications.update(this._id, {$set: {read: true}});

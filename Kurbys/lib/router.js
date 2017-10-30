@@ -810,6 +810,19 @@ Router.route('/cgu', {
 });
 
 
+/*Router.route('/le_secret_de_cendrillon', function() {
+    var filePath = process.env.PWD + "/server/le_secret_de_cendrillon.pdf";
+    var fs = Meteor.npmRequire('fs');
+    var data = fs.readFileSync(filePath);
+    this.response.write(data);
+    this.response.end();
+}, {
+    where: 'server'
+});*/
 
+Router.route('/le_secret_de_cendrillon', {
+  name: 'le_secret_de_cendrillon',
+  template : 'le_secret_de_cendrillon',
+});
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});

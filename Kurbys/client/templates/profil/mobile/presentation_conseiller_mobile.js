@@ -19,12 +19,12 @@ Template.presentation_conseiller_mobile.events({
     });
   },
 
-    'click .taba': function(e) {
+    'touchstart .taba': function(e) {
        e.preventDefault();
         document.getElementById("tabbm").style.display = "block";
   },
 
-    'click .retour': function(e) {
+    'touchstart .retour': function(e) {
      window.history.back();
    }
 

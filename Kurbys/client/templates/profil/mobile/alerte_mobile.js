@@ -15,7 +15,7 @@ Template.alertes_mobile.helpers({
 });
 
 Template.alertes_mobile.events({
-  'click .creat_alert' : function() {
+  'touchstart .creat_alert' : function() {
     var my_id = Meteor.userId();
     var search = Alertes.findOne({"author_id":my_id});
     if(!search){
@@ -27,7 +27,7 @@ Template.alertes_mobile.events({
 
 Template.creerAlerte.events({
 
-   'click .retour': function(e) {
+   'touchstart .retour': function(e) {
      window.history.back();
    },
 
@@ -74,7 +74,7 @@ Template.creerAlerte.events({
 });
 
 Template.ItemAlerte_mobile.events({
-  'click #delete_alerte': function(e) {
+  'touchstart #delete_alerte': function(e) {
      var my_id = Meteor.userId(); 
     var id = this._id;
     var unique = my_id + id;

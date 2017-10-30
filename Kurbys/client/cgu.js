@@ -1,6 +1,6 @@
 Template.cgu.events({
     
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 });

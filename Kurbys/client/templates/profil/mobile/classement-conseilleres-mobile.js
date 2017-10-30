@@ -21,7 +21,7 @@ Template.classementComplet_mobile.helpers({
 
 Template.classementComplet_mobile.events({
 
-   'click .retour': function(e) {
+   'touchstart .retour': function(e) {
      window.history.back();
    }
   

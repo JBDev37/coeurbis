@@ -10,7 +10,7 @@ Template.ils_ont_aide.helpers({
 
 Template.commentsItemAide.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.userId});
     }

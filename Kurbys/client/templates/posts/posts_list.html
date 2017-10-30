@@ -4,8 +4,11 @@
 {{> side_bar_left }}
 
 {{#if currentUser}}
-    {{#if is_conseiller}}{{else}}
+    {{#if is_conseiller}}
+    
+    {{else}}
     <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
+    
     {{/if}}
 {{/if}}
 
@@ -30,6 +33,9 @@
 
 <div></div>
 <span class="mobile_lien"></span>
+{{#if currentUser}}{{else}}
+    <br><br><br>
+{{/if}}
     {{#each posts}}
       {{> postItem}}
     {{/each}}

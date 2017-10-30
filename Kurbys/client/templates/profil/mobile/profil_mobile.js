@@ -169,7 +169,7 @@ Template.profil_mobile.helpers({
 
 
 Template.profil_mobile.events({
-  'click .ami': function(e) {
+  'touchstart .ami': function(e) {
     e.preventDefault();
 
     var name = Meteor.users.findOne(this._id);
@@ -195,7 +195,7 @@ Template.profil_mobile.events({
         });  
   },
 
-  'click .disponible': function(e) {
+  'touchstart .disponible': function(e) {
     e.preventDefault();
     var userId = Meteor.userId();
     var search = Meteor.users.findOne(userId);
@@ -208,7 +208,7 @@ Template.profil_mobile.events({
     }
   },
 
-  'click .retour': function(e) {
+  'touchstart  .retour': function(e) {
      window.history.back();
    }
 

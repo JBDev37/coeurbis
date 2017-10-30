@@ -21,7 +21,10 @@ Template.postSubmit.events({
     
     document.getElementById("m").value=""; // on vide les champs du formulaire
     document.getElementById("titre").value="";// on vide les champs du formulaire
-  }
+  },
+
+
+
 });
 
 Template.postSubmit.onCreated(function() {

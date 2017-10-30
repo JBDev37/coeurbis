@@ -37,7 +37,7 @@ Template.commentsItem_mobile.helpers({
 
 Template.commentsItem_mobile.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie_mobile', {post_author: this.post_author_id});
     }
@@ -45,7 +45,7 @@ Template.commentsItem_mobile.events({
 });
 
 Template.personne_aide_mobile.events({
-   'click .retour': function(e) {
+   'touchstart .retour': function(e) {
      window.history.back();
    }
 });

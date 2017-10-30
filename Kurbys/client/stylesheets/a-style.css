@@ -3179,7 +3179,20 @@ label{
 }
 
 .google-play {
+    display: inline-block;
     width: 30%;
     margin-top: 10px;
-    margin-left: 30%;
+    margin-left: 10%;
+}
+
+.app-play {
+    display: inline-block;
+    width: 30%;
+    margin-top: 10px;
+    margin-left: 10%;
+}
+
+
+.private_com{
+    margin-left: 40px;
 }

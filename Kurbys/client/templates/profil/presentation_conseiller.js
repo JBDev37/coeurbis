@@ -19,7 +19,7 @@ Template.presentation_conseiller.events({
     });
   },
 
-    'click .taba': function(e) {
+    'touchstart .taba': function(e) {
        e.preventDefault();
         document.getElementById("tabbm").style.display = "block";
   }

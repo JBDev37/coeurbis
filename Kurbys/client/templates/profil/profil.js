@@ -161,7 +161,7 @@ Template.profil.helpers({
 
 
 Template.profil.events({
-  'click .ami': function(e) {
+  'touchstart .ami': function(e) {
     e.preventDefault();
 
     var name = Meteor.users.findOne(this._id);
@@ -187,7 +187,7 @@ Template.profil.events({
         });  
   },
 
-  'click .disponible': function(e) {
+  'touchstart .disponible': function(e) {
     e.preventDefault();
     var userId = Meteor.userId();
     var search = Meteor.users.findOne(userId);

@@ -1,5 +1,5 @@
 {
-    "WebKit.framework": 1,
     "CFNetwork.framework": 1,
-    "libz.dylib": 1
+    "libz.dylib": 1,
+    "WebKit.framework": 1
 }

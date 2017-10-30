@@ -196,11 +196,11 @@ Template.messagerie_mobile.helpers({
 });
 
 Template.messagerie_mobile.events({
-  'click .retour_mobile': function(e) {
+  'touchstart .retour_mobile': function(e) {
      window.history.back();
 },
 
-  'click .bloquer_user':function(e) {
+  'touchstart .bloquer_user':function(e) {
     e.preventDefault();
    
     var userId = Meteor.userId();
@@ -295,7 +295,7 @@ Template.messagerie_mobile.events({
      document.getElementById('mes').placeholder="Ecrire un message";
   },
 
-     'click .delete_msg':function() {
+     'touchstart .delete_msg':function() {
      Chat.remove(this._id);
 
   },
@@ -347,7 +347,7 @@ Template.messagerie.events({
         element.scrollTop = element.scrollHeight - element.clientHeight;
   },
 
-  'click .bloquer_user':function(e) {
+  'touchstart .bloquer_user':function(e) {
     e.preventDefault();
    
     var userId = Meteor.userId();
@@ -391,7 +391,7 @@ Template.messagerie.events({
 
   },
 
- 'click .receive_message':function() {
+ 'touchstart .receive_message':function() {
   var userId = Meteor.userId();
   //var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
   if(this.to_id == userId){
@@ -401,7 +401,7 @@ Template.messagerie.events({
    Router.go('messagerie', {post_author: id});
   },
 
-   'click .receive_message_mobile':function() {
+   'touchstart .receive_message_mobile':function() {
   var userId = Meteor.userId();
   //var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
   if(this.to_id == userId){
@@ -445,7 +445,7 @@ Template.messagerie.events({
     document.getElementById(id).style.display="none";
   },
 
-   'click .delete_contact':function() {
+   'touchstart .delete_contact':function() {
     var userId = Meteor.userId();
     if(this.to_id == userId){
     id=this.from_id
@@ -462,12 +462,12 @@ Template.messagerie.events({
 
   },
 
-     'click .delete_msg':function() {
+     'touchstart .delete_msg':function() {
     Chat.remove(this._id);
 
   },
 
-     'click .en_cour':function() {
+     'touchstart .en_cour':function() {
     var userId = Meteor.userId();
     document.getElementById('member_list').style.display='block';
     document.getElementById('member_bloque').style.display='none';
@@ -475,7 +475,7 @@ Template.messagerie.events({
 
   },
 
-     'click .user_bloquer_chat':function() {
+     'touchstart .user_bloquer_chat':function() {
     var userId = Meteor.userId();
     document.getElementById('member_bloque').style.display='block';
     document.getElementById('member_list').style.display='none';
@@ -484,14 +484,14 @@ Template.messagerie.events({
   },
 
 
-     'click .en_cour_mobile':function() {
+     'touchstart .en_cour_mobile':function() {
     var userId = Meteor.userId();
     document.getElementById('member_list_mobile').style.display='block';
     document.getElementById('member_bloque_mobile').style.display='none';
 
   },
 
-     'click .user_bloquer_chat_mobile':function() {
+     'touchstart .user_bloquer_chat_mobile':function() {
     var userId = Meteor.userId();
     document.getElementById('member_bloque_mobile').style.display='block';
     document.getElementById('member_list_mobile').style.display='none';

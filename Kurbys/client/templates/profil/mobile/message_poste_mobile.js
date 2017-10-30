@@ -13,7 +13,7 @@ Template.messages_poste_mobile.helpers({
 });
 
 Template.messages_poste_mobile.events({
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 });
@@ -21,12 +21,12 @@ Template.messages_poste_mobile.events({
 
 Template.messagePosteItem_mobile.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
      e.preventDefault();
      Router.go('postPage', {_id: this._id});
     },
 
-    'click .supprimer_ami': function(e) {
+    'touchstart .supprimer_ami': function(e) {
     e.preventDefault();
     Posts.remove(this._id);
     },
@@ -35,7 +35,7 @@ Template.messagePosteItem_mobile.events({
 
 /*Template.messages_poste_mobile.events({
 
-     'click .profil_ami': function(e) {
+     'touchstart .profil_ami': function(e) {
       e.preventDefault();
      Router.go('messagerie', {post_author: this.userId});
     },

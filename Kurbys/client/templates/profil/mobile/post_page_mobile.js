@@ -5,7 +5,7 @@ Template.postPage_mobile.helpers({
 });
 
 Template.postPage_mobile.events({
-  'click .retour': function(e) {
+  'touchstart .retour': function(e) {
      window.history.back();
    }
 });
@@ -119,7 +119,7 @@ Template.postContent_mobile.helpers({
 
 
 Template.postContent_mobile.events({
-  'click .signaler': function(e) {
+  'touchstart .signaler': function(e) {
     e.preventDefault();
       var userId = Meteor.userId();
       var to_id = this.post_author;
@@ -148,18 +148,18 @@ Template.postContent_mobile.events({
 
 
 Template.commentItem_mobile.events({
-  'click .upvotable': function(e) {
+  'touchstart .upvotable': function(e) {
     e.preventDefault();
     Meteor.call('upvote', this._id);
   },
 
-  'click .downvotable': function(e) {
+  'touchstart .downvotable': function(e) {
     e.preventDefault();
     Meteor.call('downvote', this._id);
   },
 
 
-  'click .signaler-connect': function(e) {
+  'touchstart .signaler-connect': function(e) {
     e.preventDefault();
       var userId = Meteor.userId();
       var to_id = this.post_author;

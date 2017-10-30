@@ -386,7 +386,7 @@ Template.registerHelper("password", function() {
 
 Template.registerHelper("is_conseiller", function() {
   var userId = Meteor.userId();
-  var search = Conseilleres.findOne({user_id:userId});
+  var search = Conseilleres.find({user_id:userId});
   if(search){
     return true
   }
@@ -394,7 +394,7 @@ Template.registerHelper("is_conseiller", function() {
 });
 
 Template.registerHelper("is_conseiller_user", function(id) {
-  var search = Conseilleres.findOne({user_id:id});
+  var search = Conseilleres.find({user_id:id});
   if(search){
     return true
   }
@@ -493,7 +493,10 @@ Template.registerHelper("status_conseiller", function(id) {
    if(confiance >4.5){
     return "Ange gardien";
    }
+  }else{
+    return "Bronze";
   }
+
 });
 
 

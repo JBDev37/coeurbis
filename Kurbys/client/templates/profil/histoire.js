@@ -31,12 +31,12 @@ Template.histoire.events({
         document.getElementById("histoire").value="";// on vide les champs du formulaire
   },
 
-      'click .t2': function(e) {
+      'touchstart .t2': function(e) {
          e.preventDefault();
          document.getElementById("exp").style.display = "block";
   },
 
-   'click .delete': function(e) {
+   'touchstart .delete': function(e) {
     e.preventDefault();
     
       var currentPostId = this._id;
@@ -63,7 +63,7 @@ Template.histoire.events({
     });
   },
 
-    'click .modifier': function(e) {
+    'touchstart .modifier': function(e) {
        e.preventDefault();
         document.getElementById("modif").style.display = "block";
   }
