@@ -433,6 +433,10 @@
         padding-bottom: 20px;
     }
 
+    .affiche{
+        margin-top: 40px;
+    }
+
 
      .container-messages-password{
         margin-top: 10px;
@@ -841,6 +845,7 @@
 
    .pull-right{
     margin-right: 20px;
+    font-size: 12px;
    }
 
    .notif_mobile{
@@ -1124,7 +1129,7 @@
     }
 
     .slideout-menu{
-        background-color: #e8e8e8;
+        background-color: white;
         color: black;
     }
 
@@ -1286,7 +1291,7 @@
     .container_user_histoire{
     display: block;
     margin-top: 80px;
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .register-form-devenir {
@@ -1312,12 +1317,30 @@
     width: 40%;
     margin-top: 10px;
     margin-left: 30%;
-}
-
+    }
 
 
     .private_com{
         margin-left: 40px;
+    }
+
+    .containeur_acceuil{
+        margin-top: -20px;
+    }
+
+    .test{
+    color: black;
+    
+    
+    }
+
+    .slideout-menu ul li a i{
+        position: absolute;
+        left: 10px;
+        top: 12px;
+        color: #0a68b4;
+        opacity: 1;
+
     }
 
     
@@ -1471,7 +1494,7 @@
     /*height: 380px;*/
     /*overflow-x: hidden;
     overflow-y: auto;*/
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .container_user_alerte{
@@ -1535,7 +1558,7 @@
     /*height: 400px;*/
     /*overflow-x: hidden;
     overflow-y: auto;*/
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .container_user_alerte{
@@ -1591,7 +1614,7 @@
     /*height: 460px;*/
     /*overflow-x: hidden;
     overflow-y: auto;*/
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .container_user_alerte{
@@ -1647,7 +1670,7 @@
     /*height: 520px;*/
     /*overflow-x: hidden;
     overflow-y: auto;*/
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .container_user_alerte{
@@ -1703,7 +1726,7 @@
     /*height: 550px;*/
     /*overflow-x: hidden;
     overflow-y: auto;*/
-    background-color: white;
+    /*background-color: white;*/
    }
 
    .container_user_alerte{

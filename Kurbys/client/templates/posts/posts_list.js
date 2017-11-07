@@ -69,6 +69,11 @@ Template.postItem.events({
     Meteor.call('upvote1', this._id);
   },
 
+    'touchstart .upvotable': function(e) {
+    e.preventDefault();
+    Meteor.call('upvote1', this._id);
+  },
+
   /*'click .private_message': function(e) {
     e.preventDefault();
 
@@ -91,6 +96,30 @@ Template.postItem.events({
 
 
   'click .signaler': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var to_id = this.post_author;
+      var post = {
+      id_post:this._id,
+      id_author:this.post_author,
+      signaler_par_id:userId,
+    };
+    var request = Signaler.findOne({"id_post":this._id,"id_author": to_id , "signaler_par_id":userId });
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('signaler_message', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+    'touchstart .signaler': function(e) {
     e.preventDefault();
       var userId = Meteor.userId();
       var to_id = this.post_author;

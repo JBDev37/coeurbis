@@ -53,6 +53,22 @@ Template.header.events({
     Router.go('messagerie_vierge', {post_author: userId});
     }
   },
+
+    'click .messagerie_ecran':function() {
+
+    var userId = Meteor.userId();
+
+    var search = ContactChat.findOne({$or : [{from_id: userId, show:true }, {to_id:userId, show:true}]}, {sort: {date: -1}});
+    if(search){
+    if(search.from_id == userId){
+    var id = search.to_id} else{
+    var id = search.from_id
+    }
+    Router.go('messagerie', {post_author: id});
+    }else{
+    Router.go('messagerie_vierge', {post_author: userId});
+    }
+  },
 });
 
 accountsUIBootstrap3.setLanguage('fr');

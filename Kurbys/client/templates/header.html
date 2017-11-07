@@ -1,7 +1,7 @@
 <template name="header">
 <div class="site-container" >
-      {{user_IP }}
-      {{user_bloquer_url}}
+      <!--{{user_IP }}
+      {{user_bloquer_url}}-->
       {{last_login_conseillere}}
           <div class="header">
              {{#if currentUser}}{{else}}
@@ -63,7 +63,7 @@
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <!--<li><a href="{{pathFor 'le_secret_de_cendrillon'}}" >Le Secret de Cendrillon</a></li>-->
+                          <li><a href="{{pathFor 'le_secret_de_cendrillon'}}" >Le Secret de Cendrillon</a></li>
                           <li><a href="{{pathFor 'signaler_bug'}}">Signaler un bug</a></li>
                           <li><a href="{{pathFor 'ameliore_site'}}">Améliorer le site</a></li>
                           <li><a href="{{pathFor 'contact'}}">Contact</a></li>
@@ -115,14 +115,14 @@
   <div class="slideout-menu">
     <h3>Menu </h3>
     <ul>
-        <li><a href="{{pathFor 'postsList'}}">Accueil</a></li>
-        <li><a href="{{pathFor 'connexion_mobile'}}">Connexion</a></li>
-        <!--<li><a href="{{pathFor 'le_secret_de_cendrillon'}}">Le Secret de Cendrillon</a></li>-->
+        <li><a href="{{pathFor 'postsList'}}"><i class="fa fa-home" aria-hidden="true"></i>  <span style="margin-left: 20px;">Accueil</span></a></li>
+        <li><a href="{{pathFor 'connexion_mobile'}}"><i class="fa fa-power-off" aria-hidden="true"></i><span style="margin-left: 20px;">Connexion</span></a></li>
+       <li><a href="{{pathFor 'le_secret_de_cendrillon'}}"><i class="fa fa-book" aria-hidden="true"></i><span style="margin-left: 20px;">Le Secret de Cendrillon</span></a></li>
         {{#if currentUser}}
-        <li><a href="{{pathFor 'signaler_bug'}}">Signaler un bug</a></li>
-        <li><a href="{{pathFor 'supprimer_mon_compte'}}">Supprimer mon compte</a></li>
+        <li><a href="{{pathFor 'signaler_bug'}}"><i class="fa fa-bug" aria-hidden="true"></i><span style="margin-left: 20px;">Signaler un bug</span></a></li>
+        <li><a href="{{pathFor 'supprimer_mon_compte'}}"><i class="fa fa-trash" aria-hidden="true"></i><span style="margin-left: 20px;">Supprimer mon compte</span></a></li>
         {{/if}}
-        <li><a href="{{pathFor 'contact'}}">Contact</a></li>
+        <li><a href="{{pathFor 'contact'}}"><i class="fa fa-envelope" aria-hidden="true"></i><span style="margin-left: 20px;">Contact</span></a></li>
     </ul>
   </div>
   <!--/.slideout-menu-->

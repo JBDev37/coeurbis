@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		0354F641D3324F00B43AB4C6 /* GCDWebServerFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE97ED03630542218CCB8E29 /* GCDWebServerFileResponse.m */; };
@@ -376,7 +375,6 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 42FHSBPNG2;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -514,8 +512,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 42FHSBPNG2;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -528,8 +524,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = Kurbys;
-				PROVISIONING_PROFILE = "354eb255-c877-46c9-9dce-b066072b0706";
-				PROVISIONING_PROFILE_SPECIFIER = Kurbys;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -544,7 +538,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 42FHSBPNG2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -555,8 +548,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_NAME = Kurbys;
-				PROVISIONING_PROFILE = "354eb255-c877-46c9-9dce-b066072b0706";
-				PROVISIONING_PROFILE_SPECIFIER = Kurbys;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

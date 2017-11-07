@@ -8,6 +8,7 @@
     </div>
 <br>
 {{#each classement}}
+
       <div class="message-gauche">
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
@@ -59,6 +60,8 @@
                 <div class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
             {{/if}}
             <div class="date_last_connexion">  {{date_last_connexion user_id}}  </div>
+              <div class="etoile_clas" id="etoile"> {{{etoiles user_id}}}</div>
+              <div class="person_aide_clas">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div><div></div>
             </div>  
             
    

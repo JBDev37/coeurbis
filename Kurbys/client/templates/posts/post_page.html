@@ -1,13 +1,23 @@
 <template name="postPage">
+{{classement}}  
 {{> side_bar_right }}
 {{> side_bar_left }}
-<div class="container-messages-acceuil">
+<div class="container-messages-acceuil affiche">
     {{> postContent}}
 
 
 {{> commentSubmit}}
 <br>
-
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Kurbys -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6112176939320267"
+     data-ad-slot="6414647300"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
   <ul class="comments">
     {{#each comments}}
       {{> commentItem}}
@@ -61,7 +71,10 @@
             <a href="#" class="btn btn-xs  btn-danger upvote {{downvotedClass}}"><span class="glyphicon glyphicon-thumbs-down"></span></a>
           </div>
            <div class="result-vote"> {{count votes }} </div> 
-
+            {{#if currentUser}}
+                  <div class="btn btn-success btn-xs modifier_message private_com ecran"><a href="{{pathFor 'messagerie' post_author=this.userId}}" class="">Message privé</a></div>
+                  <div class="modifier_message private_com mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.userId}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
+            {{/if}}
               
        </div>
            

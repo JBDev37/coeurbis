@@ -13,6 +13,12 @@ Template.commentsItemAide.events({
      'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.userId});
+    },
+
+
+     'click .profil_ami': function(e) {
+    e.preventDefault();
+     Router.go('messagerie', {post_author: this.userId});
     }
 
 });

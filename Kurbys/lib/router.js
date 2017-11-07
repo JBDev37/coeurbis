@@ -15,12 +15,12 @@ Router.configure({
     /*Meteor.subscribe('userBloquer'),*/
     /*Meteor.subscribe('contact_Chat'),*/
     Meteor.subscribe('userStatus'),
-    Meteor.subscribe('userIP'),
+    /*Meteor.subscribe('userIP'),*/
     /*Meteor.subscribe('visites'),*/
     /*Meteor.subscribe('commentaires'),*/
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('avertissement_user'),
-    Meteor.subscribe('user_bloquer_IP'),
+    /*Meteor.subscribe('user_bloquer_IP'),*/
     Meteor.subscribe('alertes'),
     Meteor.subscribe('delete_alertes'),
     /*Meteor.subscribe('conseilleres_acceuil'),*/
@@ -57,6 +57,9 @@ PostsListController = RouteController.extend({
   waitOn: function() {
     return  [
     Meteor.subscribe('comments'),
+    Meteor.subscribe('contact_Chat_profil'),
+    
+
     ];
      },
 });

@@ -24,6 +24,13 @@ Template.connexion_mobile.events({
     e.preventDefault();
     document.getElementById('forget').style.display="block";
 
+  },
+
+    'click .forget': function(e) {
+    e.preventDefault();
+    document.getElementById('forget').style.display="block";
+
   }
 
 });
+

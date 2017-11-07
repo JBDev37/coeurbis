@@ -61,6 +61,10 @@ Meteor.publish('contact_Chat', function() {
     ]});
 });
 
+Meteor.publish('contact_Chat_profil', function() {
+ return ContactChat.find();
+});
+
 Meteor.publish("userStatus", function() {
   return Meteor.users.find({ "status.online": true });
 });

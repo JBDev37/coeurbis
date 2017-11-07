@@ -12,7 +12,13 @@ Template.Itemvisites.events({
      'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.from_id});
-    }
+    },
+
+     'click .profil_ami': function(e) {
+    e.preventDefault();
+     Router.go('messagerie', {post_author: this.from_id});
+    },
+
 
 });
 

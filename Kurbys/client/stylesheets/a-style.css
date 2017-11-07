@@ -16,7 +16,7 @@
 html, body{
     margin: 0;
     padding: 0;
-    height: 100%;
+    /*height: 100%;*/
     background-color:#dde0e4;
 }
 
@@ -1086,7 +1086,7 @@ float: left;
 .footer-message_acceuil{
     display: block;
     background-color: #ffffff;
-    height: 60px;
+    height: 75px;
     border-radius: 2px;
     padding-left: 5px;
 
@@ -1308,7 +1308,7 @@ float: left;
     border-width: 1px;
     border-style: solid;*/
     border-radius: 3px;
-    height: 55px;
+    height: 80px;
     margin-top: 10px;
     background-color: rgba(255, 231, 244, 0.54);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.7); 
@@ -1321,7 +1321,7 @@ float: left;
     border-width: 1px;
     border-style: solid;*/
     border-radius: 3px;
-    height: 55px;
+    height: 80px;
     margin-top: 10px;
     background-color: rgba(10,104,180,0.1);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.7); 
@@ -1473,7 +1473,7 @@ float: left;
     border-width: 1px;
     border-style: solid;*/
     position: relative;
-    top: 6px;
+    top: 2px;
     height: 0px;
     width: 180px;
     font-size: 90%;
@@ -3195,4 +3195,59 @@ label{
 
 .private_com{
     margin-left: 40px;
+}
+
+.livre{
+    width: 100%;
+}
+
+.right{
+    text-align: right;
+}
+
+.text{
+    font-size: 16px;
+    text-align: justify;
+    color: black;
+    padding: 10px;
+}
+
+
+.center{
+    text-align: center;
+}
+
+.titre{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.logo-vente{
+    width: 20%;
+    margin-left: 15%;
+}
+
+.person_aide{
+    position: relative;
+    top: 35px;
+    height: 0px;
+    width: 180px;
+    font-size: 90%;
+    text-align: left;
+    margin-left: 28px;
+}
+
+
+.etoile{
+    position: relative;
+    top: 17px;
+    height: 0px;
+    width: 180px;
+    font-size: 90%;
+    text-align: left;
+    margin-left: -5px;
+}
+
+.containeur_acceuil{
+    margin-top: -30px;
 }

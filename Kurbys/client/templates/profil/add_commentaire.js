@@ -4,6 +4,11 @@ Template.profil.events({
    document.getElementById('show-com').style.display="block";
   },
 
+  'click .show-com': function(e) {
+    e.preventDefault();
+   document.getElementById('show-com').style.display="block";
+  },
+
   'submit form#com': function(e) {
     e.preventDefault();
     
@@ -78,6 +83,12 @@ Template.ItemCommentaire.helpers({
 Template.ItemCommentaire.events({
 
      'touchstart .profil_ami': function(e) {
+    e.preventDefault();
+     Router.go('messagerie', {post_author: this.from_id});
+    },
+
+
+     'click .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.from_id});
     }

@@ -2,7 +2,7 @@ Template.side_bar_right.helpers({
  
   New_conseillers: function() {
     Meteor.subscribe('conseilleres');
-    return Conseilleres.find({},{sort: {date: -1}});
+    return Conseilleres.find({},{sort: {date: -1}, limit:10});
   },
 
   counter: function() {

@@ -124,9 +124,13 @@ Template.profil.helpers({
     var disponible = search.disponible;
     if(disponible==true){
        return 'btn-success';
-    }else{
+    }if(disponible==false){
        return 'btn-danger';
+    }else{
+      return 'btn-success';
     }
+
+
    
   },
 
@@ -136,8 +140,10 @@ Template.profil.helpers({
     var disponible = search.disponible;
     if(disponible==true){
        return 'Disponible';
-    }else{
+    }if(disponible==false){
        return 'Indisponible';
+    }else{
+      return 'Disponible';
     }
    
   },
@@ -149,8 +155,10 @@ Template.profil.helpers({
     var disponible = search.disponible;
     if(disponible==true){
        return 'Tout le monde peut te contacter';
-    }else{
+    }if(disponible==false){
        return 'Tu ne peux pas recevoir de nouveaux contacts';
+    }else{
+      return 'Tout le monde peut te contacter';
     }
    
   },
@@ -187,7 +195,46 @@ Template.profil.events({
         });  
   },
 
+    'click .ami': function(e) {
+    e.preventDefault();
+
+    var name = Meteor.users.findOne(this._id);
+    var username = name.username;
+    var user = Meteor.user();
+   
+    var post = {
+      from_id: Meteor.userId(),
+      name_from_id: user.username,
+      to_id: this._id,
+      name_to_id: username
+    };
+
+    var errors = validatePost(post);
+    if (errors.from_id || errors.to_id)
+      return Session.set('postSubmitErrors', errors);
+    
+    Meteor.call('demande_ami', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });  
+  },
+
   'touchstart .disponible': function(e) {
+    e.preventDefault();
+    var userId = Meteor.userId();
+    var search = Meteor.users.findOne(userId);
+    var disponible = search.disponible;
+   
+    if(disponible==true){
+        Meteor.users.update(userId, {$set:{disponible:false}});
+    }else{
+        Meteor.users.update(userId, {$set:{disponible:true}});
+    }
+  },
+
+  'click .disponible': function(e) {
     e.preventDefault();
     var userId = Meteor.userId();
     var search = Meteor.users.findOne(userId);

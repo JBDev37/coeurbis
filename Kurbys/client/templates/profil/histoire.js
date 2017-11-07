@@ -36,7 +36,20 @@ Template.histoire.events({
          document.getElementById("exp").style.display = "block";
   },
 
+      'click .t2': function(e) {
+         e.preventDefault();
+         document.getElementById("exp").style.display = "block";
+  },
+
    'touchstart .delete': function(e) {
+    e.preventDefault();
+    
+      var currentPostId = this._id;
+      Histoires.remove(currentPostId);
+      /*Router.go('index');*/
+  },
+
+    'click .delete': function(e) {
     e.preventDefault();
     
       var currentPostId = this._id;
@@ -66,7 +79,13 @@ Template.histoire.events({
     'touchstart .modifier': function(e) {
        e.preventDefault();
         document.getElementById("modif").style.display = "block";
-  }
+  },
+
+    'click .modifier': function(e) {
+       e.preventDefault();
+        document.getElementById("modif").style.display = "block";
+  },
+
 });
 
 

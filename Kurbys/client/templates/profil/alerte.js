@@ -51,6 +51,11 @@ Template.alerte.events({
          document.getElementById("exp1").style.display = "block";
   },
 
+    'click .t22': function(e) {
+         e.preventDefault();
+         document.getElementById("exp1").style.display = "block";
+  },
+
    'touchstart .delete_alerte': function(e) {
     e.preventDefault();
     var my_id = Meteor.userId();
@@ -74,9 +79,32 @@ Template.alerte.events({
                 return throwError(error.reason);
             //Router.go('postPage', {_id: result._id});
         });
+      
+  },
 
+     'click .delete_alerte': function(e) {
+    e.preventDefault();
+    var my_id = Meteor.userId();
+    var id = this._id;
+    var date= new Date();
 
+    var post = {
+      id_alerte: id,
+      delete_from_id:my_id ,
+      date:date,
 
+    };
+
+    var errors = validatePost(post);
+    if (errors.id_alerte || errors.alerte)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('delete_alerte', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
       
   },
 
@@ -100,6 +128,11 @@ Template.alerte.events({
   },
 
     'touchstart .modifier_alerte': function(e) {
+       e.preventDefault();
+        document.getElementById("modifAlerte").style.display = "block";
+  },
+
+    'click .modifier_alerte': function(e) {
        e.preventDefault();
         document.getElementById("modifAlerte").style.display = "block";
   }

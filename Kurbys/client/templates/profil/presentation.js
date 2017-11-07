@@ -21,7 +21,14 @@ Template.presentation.events({
     'touchstart .taba': function(e) {
        e.preventDefault();
         document.getElementById("tabb").style.display = "block";
-  }
+  },
+
+    'click .taba': function(e) {
+       e.preventDefault();
+        document.getElementById("tabb").style.display = "block";
+  },
+
+
 
 });
 

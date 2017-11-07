@@ -1,4 +1,5 @@
 <template name="side_bar_left">
+
 	<div class="container-liste-conseillere" >
 {{#if currentUser}}
        {{#if is_conseiller}} {{else}}
@@ -19,7 +20,7 @@
          <div class="top-conseillere-scroll">
 
           {{#each counter}}
-             
+           
               {{#if is_fille_conseillere gender}}
                   <div class="top-conseillere-content-fille">
                       <div class="top-conseillere-number"> n°{{true_value @index}} </div>         
@@ -29,8 +30,9 @@
                       {{else}}
                       <div class="top-conseillere-pseudo-fille"><a href="">{{name}}</a></div> 
                       {{/if}}
-                      <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
-
+                      <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
+                       <div class=" etoile"> {{{etoiles user_id}}}</div><br>
+                      <div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>
                   </div>
               {{/if}} 
 
@@ -43,7 +45,9 @@
                       {{else}}
                       <div class="top-conseillere-pseudo-garcon"><a href="">{{name}}</a></div> 
                       {{/if}}
-                      <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
+                      <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
+                      <div class=" etoile"> {{{etoiles user_id}}}</div><br>
+                      <div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>
                   </div>
               {{/if}}    
            {{/each}}   

@@ -1,51 +1,35 @@
 <template name="postsList">
-
+{{calcul_confiance }}
 {{> side_bar_right }}
 {{> side_bar_left }}
 
 {{#if currentUser}}
     {{#if is_conseiller}}
-    
+     <div style="height: 65px;"> </div>
     {{else}}
     <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
-    
+    <div style="height: 35px;"> </div>
     {{/if}}
 {{/if}}
 
 <div class="container-messages-acceuil">
 	{{> postSubmit}}
-
-
-<div style="margin-top: 20px;" >
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
- 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-6112176939320267"
-     data-ad-slot="6414647300"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
-
-
-
-<div></div>
-<span class="mobile_lien"></span>
-{{#if currentUser}}{{else}}
-    <br><br><br>
-{{/if}}
-    {{#each posts}}
-      {{> postItem}}
-    {{/each}}
-  {{#if nextPath}}
-      <a class="load-more" href="{{nextPath}}">Voir plus</a>
-    {{else}}
-      {{#unless ready}}
-        {{> spinner}}
-      {{/unless}}
-    {{/if}}
+    <div class="containeur_acceuil">
+      <span class="mobile_lien"></span>
+      {{#if currentUser}}{{else}}
+        <br><br><br>
+      {{/if}}
+        {{#each posts}}
+          {{> postItem}}
+        {{/each}}
+      {{#if nextPath}}
+          <a class="load-more" href="{{nextPath}}">Voir plus</a>
+        {{else}}
+          {{#unless ready}}
+            {{> spinner}}
+          {{/unless}}
+        {{/if}}
+    </div>
 </div>
 
 </template>

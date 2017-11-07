@@ -328,7 +328,7 @@ Template.registerHelper("url_contact", function() {
   return id;
 });
 
-
+/*
 Template.registerHelper('user_IP', function() {
   var userId = Meteor.userId();
   var user = Meteor.user();
@@ -360,8 +360,8 @@ Template.registerHelper('user_IP', function() {
   }
 }
 
-});
-
+});*/
+/*
 Template.registerHelper("user_bloquer_url", function() {
   var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
@@ -374,7 +374,7 @@ Template.registerHelper("user_bloquer_url", function() {
   }
   }
    
-});
+});*/
 
 Template.registerHelper("password", function() {
   var userId = Meteor.userId();
@@ -386,19 +386,20 @@ Template.registerHelper("password", function() {
 
 Template.registerHelper("is_conseiller", function() {
   var userId = Meteor.userId();
-  var search = Conseilleres.find({user_id:userId});
+  var search = Conseilleres.findOne({user_id:userId});
   if(search){
     return true
   }
+  
    
 });
 
 Template.registerHelper("is_conseiller_user", function(id) {
-  var search = Conseilleres.find({user_id:id});
+  var search = Conseilleres.findOne({user_id:id});
   if(search){
     return true
   }
-   
+  
 });
 
 Template.registerHelper("last_login_conseillere", function() {
@@ -413,7 +414,7 @@ Template.registerHelper("last_login_conseillere", function() {
    }
   }
 });
-
+/*
 Template.registerHelper("calcul_confiance", function(id) {
  var total = 0;
  var votant = 0;
@@ -427,9 +428,9 @@ Template.registerHelper("calcul_confiance", function(id) {
  var vote_up = ((votant - total)/2) + total
   
   if(total >0){
-      if(votant>10){
+      
        var  result = (vote_up / votant)*5;
-        }else{var  result =0;}
+       
        Meteor.users.update(id, {$set:{indice_confiance:result}});
 
         var search = Conseilleres.findOne({user_id:id});
@@ -447,7 +448,125 @@ Template.registerHelper("calcul_confiance", function(id) {
   }
 }
  
+});*/
+
+Template.registerHelper("calcul_confiance", function() {
+    var id = Meteor.userId();
+    var sum1 = Comments.find({userId:id }).count();
+    var sum2 = ContactChat.find({from_id:id}).count();
+    var sum3 = ContactChat.find({to_id:id}).count();
+    var sum = sum1 + sum2 + sum3; 
+
+    if (!sum) {
+      var note = 0.5;
+    }
+
+    else if (sum < 10) {
+      var note = 0.5;
+    }
+
+    else if (sum < 15) {
+      var note = 1;
+    }
+
+    else if (sum < 20) {
+      var note = 1.5;
+    }
+
+    else if (sum < 30) {
+      var note = 2;
+    }
+
+    else if (sum < 40) {
+      var note = 2.5;
+    }
+
+    else if (sum < 50) {
+      var note = 3;
+    }
+
+    else if (sum < 60) {
+      var note = 3.5;
+    }
+
+    else if (sum < 80) {
+      var note = 4;
+    }
+
+    else if (sum <= 120) {
+      var note = 4.5;
+    }
+
+    else if (sum > 120) {
+      var note = 5;
+    }
+        
+       Meteor.users.update(id, {$set:{indice_confiance:note}});
+
+        var search = Conseilleres.findOne({user_id:id});
+        if(search){
+          Conseilleres.update(search._id, {$set:{indice_confiance:note}});
+        }
+  
+
+
+ 
 });
+
+
+Template.registerHelper("etoiles", function(id) {
+    var user = Conseilleres.findOne({user_id:id});
+    var confiance = user.indice_confiance;
+    
+
+    if (!confiance) {
+      return "<img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 0.5) {
+     return "<img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 1) {
+      return "<img src=/star-on.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 1.5) {
+      return "<img src=/star-on.png><img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 2) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 2.5) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 3) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-off.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 3.5) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 4) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png>";
+    }
+
+    else if (confiance == 4.5) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png>";
+    }
+
+    else if (confiance == 5) {
+      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png>";
+    }
+   
+
+
+});
+
 
 
 Template.registerHelper("confiance", function() {
@@ -459,6 +578,13 @@ Template.registerHelper("confiance", function() {
  return round;
 });
 
+Template.registerHelper("confiance_acceuil", function(id) {
+ var user = Meteor.users.findOne(id);
+ var confiance = user.indice_confiance;
+ var round = confiance.toFixed(2);
+
+ return round;
+});
 
 Template.registerHelper("etoile", function(id) {
    var user = Meteor.users.findOne(id);
@@ -626,5 +752,11 @@ Template.registerHelper("date_last_connexion", function(id) {
     
 });
 
-
+Template.registerHelper("personne_aidé", function(id) {
+    var sum1 = Comments.find({userId:id }).count();
+    var sum2 = ContactChat.find({from_id:id}).count();
+    var sum3 = ContactChat.find({to_id:id}).count();
+    var sum = sum1 + sum2 + sum3; 
+    return sum;
+});
 

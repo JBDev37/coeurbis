@@ -33,6 +33,12 @@ Template.commentsItem.events({
      'touchstart .profil_ami': function(e) {
     e.preventDefault();
      Router.go('messagerie', {post_author: this.post_author_id});
-    }
+    },
+
+      'click .profil_ami': function(e) {
+    e.preventDefault();
+     Router.go('messagerie', {post_author: this.post_author_id});
+    },
+
 
 });
