@@ -165,8 +165,8 @@ android {
     }
 
     defaultConfig {
-        versionCode 8 /*cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))*/
-        versionName "1.0.1"
+        versionCode 9 /*cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))*/
+        versionName "1.0.2"
         applicationId privateHelpers.extractStringFromManifest("package")
 
         if (cdvMinSdkVersion != null) {

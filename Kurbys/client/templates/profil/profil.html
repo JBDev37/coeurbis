@@ -50,13 +50,17 @@
                     <br><br>
                    <div class="confiance_profil"> Indice de confiance : {{confiance}}/5 </div><div class="raty"> </div><br>
                     
-                    {{#if is_conseiller_user _id}}
-                    Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
-                      {{else}}
-
-                         <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
+                   
+                    
+                  
+                    <!--{{#if my_id this._id}}
+                          {{#if is_conseiller}}
+                              Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
+                          {{else}}
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
                           <br><hr>
-                    {{/if}}
+                          {{/if}}
+                    {{/if}}-->
 
 
                     {{#if my_id this._id}} {{else}}

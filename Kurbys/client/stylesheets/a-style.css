@@ -647,6 +647,14 @@ padding-top: 40px;
     margin-top: -5px;
 }
 
+.signaler_mobile{
+    display: inline-block;
+    color: red;
+    border-width: 0px;
+    background-color: transparent;
+    margin-top: -12px;
+}
+
 .signaler-connect{
     display: inline-block;
     margin-right: 10px;
@@ -2451,13 +2459,13 @@ label{
 
 .new-conseillere{
     height: 30px;
-    /*background-color: #ffffff;*/
+    background-color: #ffffff;
     border-radius: 2px;
     padding: 5px;
-    color: #000000;
+    color: #2196f3;
     font-weight: bold;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
 
     
 }

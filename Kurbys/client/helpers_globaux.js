@@ -385,19 +385,26 @@ Template.registerHelper("password", function() {
 });
 
 Template.registerHelper("is_conseiller", function() {
+  Meteor.subscribe('conseilleres_acceuil');
   var userId = Meteor.userId();
   var search = Conseilleres.findOne({user_id:userId});
   if(search){
-    return true
+    return true;
+  }else{
+    return false;
   }
   
    
 });
 
-Template.registerHelper("is_conseiller_user", function(id) {
-  var search = Conseilleres.findOne({user_id:id});
+Template.registerHelper("is_conseiller_user", function() {
+  Meteor.subscribe('conseilleres_acceuil');
+  var current_id = Router.current().params.post_author;
+  var search = Conseilleres.findOne({user_id:current_id});
   if(search){
-    return true
+    return true;
+  }else{
+    return false;
   }
   
 });
@@ -759,4 +766,11 @@ Template.registerHelper("personne_aidé", function(id) {
     var sum = sum1 + sum2 + sum3; 
     return sum;
 });
+
+Template.registerHelper("is_cordova", function() {
+    if (Meteor.isCordova) {
+  return true;
+}
+});
+
 

@@ -1,4 +1,5 @@
 Template.profil.helpers({
+
     request: function() {
     var userId = Meteor.userId();
     var to_id = this._id;

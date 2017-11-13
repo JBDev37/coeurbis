@@ -5,10 +5,10 @@
 
 {{#if currentUser}}
     {{#if is_conseiller}}
-     <div style="height: 65px;"> </div>
+     
     {{else}}
     <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
-    <div style="height: 35px;"> </div>
+    
     {{/if}}
 {{/if}}
 
@@ -51,12 +51,7 @@
           {{/if}}
           </div>
 
-
           <div class="titre_message_container mobile_lien" style="color: #2196f3"><a href="{{pathFor 'postPage_mobile' }}">{{post_title}}</a>
-          
-          {{#if currentUser}}
-          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
-          {{/if}}
           </div>
 
 
@@ -72,10 +67,6 @@
          </div> 
 
           <div class="titre_message_container_fille mobile_lien" style="color: #ff6af1"><a href="{{pathFor 'postPage_mobile' }}">{{post_title}}</a>
-          
-         {{#if currentUser}}
-         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
-         {{/if}}
          </div> 
 
 
@@ -99,7 +90,13 @@
                   <div class="modifier_message private_message mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.post_author}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
                 {{/if}}
                  {{/if}}
-               <div class="date-message mobile_lien"><i class="fa fa-clock-o" aria-hidden="true"></i> {{date_francais post_date }}</div>  
+
+                {{#if currentUser}}
+                        <button class="btn signaler_mobile {{deja_signale}} dropdown-toggle mobile_lien " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+                {{/if}} 
+
+               <div class="date-message mobile_lien"><i class="fa fa-clock-o" aria-hidden="true"></i> {{date_francais post_date }}</div>
+            
                 <!--{{#if ownPost}} <div class="btn btn-warning btn-xs modifier_message "> <a href="{{pathFor 'postEdit'}}">Modifier</a></div> {{/if}}-->
             </div><br>
 
