@@ -23,15 +23,15 @@ Template.commentSubmit_mobile.events({
 
     var $body = $(e.target).find('[name=contenu]');
     var comment = {
-      body: $body.val(),
+      comments: $body.val(),
       postId: template.data._id,
       post_author_id:post_author_id,
       post_author_name:post_author_name
     };
 
     var errors = {};
-    if (! comment.body) {
-      errors.body = "Le commentaire est vide";
+    if (! comment.comments) {
+      errors.comments = "Le commentaire est vide";
       return Session.set('commentSubmitErrors', errors);
     }
 

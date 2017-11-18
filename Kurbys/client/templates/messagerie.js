@@ -10,6 +10,320 @@ element.scrollTop = element.scrollHeight - element.clientHeight;
 
 };
 
+Template.Item_message_gauche.helpers({
+    favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return 'Favoris';
+    } 
+    else {
+      return 'Ajouter aux favoris';
+    }
+  },
+
+    etoile_favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return '/star-on.png';
+    } 
+    else {
+      return '/star-off.png';
+    }
+  },
+
+});
+
+Template.Item_message_gauche_mobile.helpers({
+    favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return 'Favoris';
+    } 
+    else {
+      return 'Ajouter aux favoris';
+    }
+  },
+
+    etoile_favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return '/star-on.png';
+    } 
+    else {
+      return '/star-off.png';
+    }
+  },
+
+});
+
+Template.Item_message_gauche.events({
+    'click .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+    'touchstart .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+});
+
+Template.Item_message_gauche_mobile.events({
+    'click .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+    'touchstart .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+});
+
+Template.Item_message_droite.helpers({
+    favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return 'Favoris';
+    } 
+    else {
+      return 'Ajouter aux favoris';
+    }
+  },
+
+    etoile_favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return '/star-on.png';
+    } 
+    else {
+      return '/star-off.png';
+    }
+  },
+
+});
+
+
+Template.Item_message_droite_mobile.helpers({
+    favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return 'Favoris';
+    } 
+    else {
+      return 'Ajouter aux favoris';
+    }
+  },
+
+    etoile_favoris_mess: function() {
+    var userId = Meteor.userId();
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if (request) { 
+      return '/star-on.png';
+    } 
+    else {
+      return '/star-off.png';
+    }
+  },
+
+});
+
+Template.Item_message_droite.events({
+    'click .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+    'touchstart .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+});
+
+Template.Item_message_droite_mobile.events({
+    'click .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+    'touchstart .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavorisChat', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+});
+
+
 Template.messagerie.helpers({
     
     mes_messages: function() {
@@ -601,6 +915,34 @@ Template.messagerie.events({
     Chat.remove(this._id);
 
   },
+
+   'touchstart .favoris': function(e) {
+    e.preventDefault();
+      var userId = Meteor.userId();
+      var post = {
+      id_user_add_favoris: userId, 
+      id_post:this._id,
+      id_author:this.from_id,
+      author_name:this.from_name,
+      content:this.message,
+    };
+    var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
+    if(!request){
+    var errors = validatePost(post);
+    if (errors.id_post || errors.id_author)
+      return Session.set('postSubmitErrors', errors);
+
+    Meteor.call('AddFavoris', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+  }
+  },
+
+
+
 
      'touchstart .en_cour':function() {
     var userId = Meteor.userId();

@@ -1,5 +1,5 @@
 <template name="recherche_conseillere">
-
+{{classement}} 
 {{> side_bar_right }}
 {{> side_bar_left }}
 
@@ -24,6 +24,16 @@
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="amour" value="true" >  Amour  <div style="display: inline-block; margin-left: 5px"></div></label>
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="amitie" value="true">  Amiti&eacute;  <div style="display: inline-block; margin-left: 5px"></div></label>
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="confiance" value="true">  Confiance en soi  <div style="display: inline-block; margin-left: 5px"></div></label>
+                     
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="sport" value="true">  Sport  <div style="display: inline-block; margin-left: 5px"></div></label>
+                   
+                   <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="sante" value="true">  Santé  <div style="display: inline-block; margin-left: 5px"></div></label>
+
+                   <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="beaute" value="true">  Beauté  <div style="display: inline-block; margin-left: 5px"></div></label>
+
+                   <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="mode" value="true">  Mode  <div style="display: inline-block; margin-left: 5px"></div></label>
+
+
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="sexo" value="true">  Sexo  <div style="display: inline-block; margin-left: 5px"></div></label>
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="autre" value="true">  Autre  <div style="display: inline-block; margin-left: 5px"></div></label>
                     </div>
@@ -39,6 +49,7 @@
                 <input type="submit" name="submit" value="valider" class="btn btn-success"/>
             </fieldset>
         </form>
+      <div><a href="{{pathFor 'conseiller_online' }}" class="btn btn-block btn-danger conseiller_online">Tous les conseillers en ligne</a></div>
     </div>
 
 </div>

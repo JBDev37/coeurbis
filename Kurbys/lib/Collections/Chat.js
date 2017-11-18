@@ -19,6 +19,17 @@ Chat.allow({
         };
     },
 
+    AddFavorisChat: function(postAttributes) {
+        var user = Meteor.user();
+        var post = _.extend(postAttributes, {
+            author_name_add_favoris: user.username,
+            post_date: new Date(),
+        });
+        var postId = Favoris.insert(post);
+        return {
+            _id: postId
+        };
+    },
 
     bloquer_user: function(postAttributes) {
     var post = _.extend(postAttributes, {

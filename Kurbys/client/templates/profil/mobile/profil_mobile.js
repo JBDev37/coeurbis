@@ -107,6 +107,11 @@ Template.profil_mobile.helpers({
     return Alertes.find().count();
   },
 
+  count_favoris:function() {
+  var current_id = Router.current().params.post_author;
+  return Favoris.find({ id_user_add_favoris:current_id}).count();
+  },
+
   activeRouteClass: function(name) {
     var args = Array.prototype.slice.call(arguments, 0);
     args.pop();

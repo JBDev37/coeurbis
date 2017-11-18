@@ -65,11 +65,13 @@
          <div style="display: inline-block;"> {{ date_francais_heures post_date}}</div> 
      </div>
      <div class="message_droite">{{{ breaklines message}}}<br></div>
+     <div class="favoris fav_mes_droite"><img src="{{etoile_favoris_mess}}"> {{favoris_mess}}</div>
      <div style="clear: both;"></div>
 </template>
 
 <template name="Item_message_gauche_mobile">
    <div class="message_gauche_date">{{ date_francais_heures post_date}}</div>
    <div class="message_gauche">{{{ breaklines message}}}<br> </div>
+   <div class="favoris fav_mes"><img src="{{etoile_favoris_mess}}"> {{favoris_mess}}</div>
 </template>
 

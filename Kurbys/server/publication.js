@@ -118,3 +118,7 @@ Meteor.publish('conseilleres', function() {
   return Conseilleres.find();
 });
 
+Meteor.publish('favoris', function() {
+  return Favoris.find();
+});
+

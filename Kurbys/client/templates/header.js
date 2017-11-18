@@ -23,11 +23,20 @@ Template.header.helpers({
 accountsUIBootstrap3.logoutCallback = function(error) {
 
   if(error) console.log("Error:" + error);
+  var userId = Meteor.userId();
+  var search = Meteor.users.findOne(userId);
+  var online = search.status.online;
+  var conseillere = Conseilleres.findOne({user_id :userId});
+  var conseillere_id = conseillere._id; 
+   if(conseillere_id){
+   Conseilleres.update( conseillere_id,  {$set: {online:online}});
+   }
+alert('ok');
   Router.go('postsList');
 }
 
 /*Accounts.onLogin(function () {
- Router.go('index');
+Router.go('index');
 });*/
 
 

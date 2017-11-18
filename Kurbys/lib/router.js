@@ -89,6 +89,7 @@ Router.route('/posts/:_id', {
     return  [
     Meteor.subscribe('Singleposts', this.params._id),
     Meteor.subscribe('comments', this.params._id),
+    Meteor.subscribe('favoris'),
     ];
      },
   data: function() {
@@ -104,6 +105,7 @@ Router.route('/posts_mobile/:_id', {
     return  [
     Meteor.subscribe('Singleposts', this.params._id),
     Meteor.subscribe('comments', this.params._id),
+    Meteor.subscribe('favoris'),
     ];
      },
   data: function() {
@@ -146,6 +148,7 @@ Router.route('/profil/:post_author?', {
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('avertissement_user'),
+    Meteor.subscribe('favoris'),
      ];
      },
 
@@ -177,6 +180,7 @@ Router.route('/messagerie/:post_author?', {
      Meteor.subscribe('chat',this.params.post_author),
      Meteor.subscribe('userBloquer'),
      Meteor.subscribe('contact_Chat'),
+    Meteor.subscribe('favoris'),
      ];
      },
    data: function() {
@@ -195,6 +199,7 @@ Router.route('/messagerie_vierge/:post_author?', {
      Meteor.subscribe('chat',this.params.post_author),
      Meteor.subscribe('userBloquer'),
      Meteor.subscribe('contact_Chat'),
+    Meteor.subscribe('favoris'),
      ];
      }
 });
@@ -210,6 +215,7 @@ Router.route('/messagerie_mobile/:post_author?', {
      Meteor.subscribe('chat',this.params.post_author),
      Meteor.subscribe('userBloquer'),
      Meteor.subscribe('contact_Chat'),
+     Meteor.subscribe('favoris'),
      ];
      }
 });
@@ -278,7 +284,7 @@ Router.route('/recherche_mobile', {
 
 });
 
-Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:les_deux?', {
+Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sport?/:mode?/:sante?/:beaute?/:sexo?/:autre?/:les_deux?', {
   name: 'resultat_conseillere',
   template : 'resultat_conseillere',
       data: function() {
@@ -290,7 +296,7 @@ Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/
 
 });
 
-Router.route('/resultat_conseillere_mobile/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sexo?/:autre?/:les_deux?', {
+Router.route('/resultat_conseillere_mobile/:gender?/:college?/:lycee?/:adulte?/:amour?/:amitie?/:confiance?/:sport?/:mode?/:sante?/:beaute?/:sexo?/:autre?/:les_deux?', {
   name: 'resultat_conseillere_mobile',
   template : 'resultat_conseillere_mobile',
       data: function() {
@@ -318,6 +324,21 @@ Router.route('/classement-conseilleres-mobile', {
      }
 });
 
+Router.route('/conseiller_online', {
+  name: 'conseiller_online',
+  template : 'conseiller_online',
+  waitOn: function() {
+    return Meteor.subscribe('conseilleres');
+     }
+});
+
+Router.route('/conseiller_online_mobile', {
+  name: 'conseiller_online_mobile',
+  template : 'conseiller_online_mobile',
+  waitOn: function() {
+    return Meteor.subscribe('conseilleres');
+     }
+});
 
 Router.route('/conseiller/:post_author?', {
   name: 'presentation_conseiller',
@@ -334,10 +355,54 @@ Router.route('/conseiller/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
+    Meteor.subscribe('favoris'),
     
      ];
      },
 });
+
+Router.route('/favoris/:post_author?', {
+  name: 'mes_favoris',
+  template : 'mes_favoris',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+  },
+  waitOn: function() {
+    return [
+    Meteor.subscribe('posts'),
+    Meteor.subscribe('comments'),
+    Meteor.subscribe('histoires'),
+    Meteor.subscribe('friends'),
+    Meteor.subscribe('visites'),
+    Meteor.subscribe('commentaires'),
+    Meteor.subscribe('messages_signaler'),
+    Meteor.subscribe('favoris'),
+    
+     ];
+     },
+});
+
+Router.route('/favoris_mobile/:post_author?', {
+  name: 'favoris_mobile',
+  template : 'favoris_mobile',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+  },
+  waitOn: function() {
+    return [
+    Meteor.subscribe('posts'),
+    Meteor.subscribe('comments'),
+    Meteor.subscribe('histoires'),
+    Meteor.subscribe('friends'),
+    Meteor.subscribe('visites'),
+    Meteor.subscribe('commentaires'),
+    Meteor.subscribe('messages_signaler'),
+    Meteor.subscribe('favoris'),
+    
+     ];
+     },
+});
+
 
 Router.route('/presentation_conseiller_mobile/:post_author?', {
   name: 'presentation_conseiller_mobile',
@@ -363,7 +428,7 @@ Router.route('/histoire/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -383,7 +448,7 @@ Router.route('/histoire_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -403,7 +468,7 @@ Router.route('/amis/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -423,7 +488,7 @@ Router.route('/visites/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -443,7 +508,7 @@ Router.route('/visites_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -463,7 +528,7 @@ Router.route('/personne_aide/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -483,7 +548,7 @@ Router.route('/personne_aide_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -503,7 +568,7 @@ Router.route('/messages_poste/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -523,7 +588,7 @@ Router.route('/messages_poste_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -543,7 +608,7 @@ Router.route('/commentaires/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      }, 
 });
@@ -563,7 +628,7 @@ Router.route('/commentaires_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      }, 
 });
@@ -594,7 +659,7 @@ Router.route('/ils_ont_aide/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -614,7 +679,7 @@ Router.route('/ils_ont_aide_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 })
@@ -634,7 +699,7 @@ Router.route('/alerte/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -654,7 +719,7 @@ Router.route('/avertissement/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      }, 
 });
@@ -674,7 +739,7 @@ Router.route('/avertissement_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -708,7 +773,7 @@ Router.route('/presentation/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -762,7 +827,7 @@ Router.route('/profil_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
@@ -782,10 +847,11 @@ Router.route('/amis_mobile/:post_author?', {
     Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     Meteor.subscribe('messages_signaler'),
-    
+    Meteor.subscribe('favoris'),
      ];
      },
 });
+
 
 Router.route('/connexion_mobile', {
   name: 'connexion_mobile',

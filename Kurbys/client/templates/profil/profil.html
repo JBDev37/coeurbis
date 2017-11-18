@@ -106,6 +106,10 @@
                         <li class="{{activeRouteClass 'ils_ont_aide'}}"> <a href="{{pathFor 'ils_ont_aide' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-flag" aria-hidden="true"></i> Ils m'ont aidés <span class="badge">{{count_liste_personne_aide}}</span></a> </li>
                         {{/if}}
 
+                         {{#if my_id this._id}}
+                        <li class="{{activeRouteClass 'favoris'}}"> <a href="{{pathFor 'mes_favoris' post_author=_id }}"  style="text-decoration:none;"><img src="/star-on.png"> Favoris <span class="badge">{{count_favoris}}</span></a> </li>
+                        {{/if}}
+
                         {{#if my_id this._id}}
                         <li class="{{activeRouteClass 'alerte'}}">  <a href="{{pathFor 'alerte' post_author=_id }}" class="red" style="text-decoration:none;"><i class="fa fa-fw fa-bell" aria-hidden="true"></i> Alerte <span class="badge_red">{{count_alertes}}</span></a> </li>
                         {{/if}}

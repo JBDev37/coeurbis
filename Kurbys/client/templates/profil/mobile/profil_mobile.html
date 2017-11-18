@@ -85,6 +85,10 @@
                         <a href="{{pathFor 'histoire_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'histoire'}} choix_profil"> <i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires d'amour<span class="badge">{{count_histoires _id}}</span>
                         </div></a>
 
+                         {{#if my_id this._id}}
+                        <a href="{{pathFor 'favoris_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'favoris_mobile'}} choix_profil"> <i class="fa fa-fw fa-star" aria-hidden="true"></i> Favoris <span class="badge">{{count_favoris}}</span> </div></a>
+                        {{/if}}
+
                         {{#if my_id this._id}}
                         <a href="{{pathFor 'amis_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'amis'}} choix_profil"> <i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <span class="badge">{{count_amis}}</span> </div></a>
                      

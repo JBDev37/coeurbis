@@ -1,0 +1,49 @@
+<template name="favoris_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Mes favoris</div>
+</div>
+
+ <div class="container_user_profil">
+	 <div class="tab-pane " id="tab4">
+
+                    {{#each mes_favoris}}
+                      {{> ItemFavoris_mobile}}
+                    {{/each}}
+
+       </div>
+</div>
+</template>
+
+<template name="ItemFavoris_mobile">
+        <div class="pull-left"> <p></p></div>
+                    
+ <div class="message-gauche">
+
+      <div class="container-messages-gauche">
+        {{#if gender_garcon}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{author_name}}</div></div> 
+        {{/if}}
+
+        {{#if gender_fille}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{author_name}}</div></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines content}}} </div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{{date_francais post_date}}}</div>  
+                
+                <div class="nbr-reponse"></div>
+              
+                 <div class="repondre profil_favoris btn btn-success btn-xs"><a href="{{pathFor 'profil_mobile' post_author=id_author}}" style="color: white">Profil</a></div>
+                 <div class="supprimer_favoris_mobile btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></div>
+                 
+                
+              
+           </div>
+               
+        </div>
+
+    </div>
+
+</template>    

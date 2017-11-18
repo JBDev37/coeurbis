@@ -10,6 +10,10 @@ Template.resultat_conseillere.helpers({
       var amitie = Router.current().params.amitie;
       var confiance = Router.current().params.confiance;
       var sexo = Router.current().params.sexo;
+      var mode = Router.current().params.mode;
+      var sante = Router.current().params.sante;
+      var sport = Router.current().params.sport;
+      var beaute = Router.current().params.beaute;
       var autre = Router.current().params.autre;
 
 
@@ -27,6 +31,10 @@ Template.resultat_conseillere.helpers({
         amitie:amitie,
         confiance:confiance,
         sexo:sexo,
+        mode:mode,
+        sport:sport,
+        sante:sante,
+        beaute:beaute,
         autre:autre},
 
         {gender:'fille'},
@@ -45,6 +53,10 @@ Template.resultat_conseillere.helpers({
         amitie:amitie,
         confiance:confiance,
         sexo:sexo,
+        mode:mode,
+        sport:sport,
+        sante:sante,
+        beaute:beaute,
         autre:autre},
 
         {gender:gender},
@@ -53,4 +65,12 @@ Template.resultat_conseillere.helpers({
     ]}, {sort: {lastLogin: -1}});
   }
   }
+});
+
+Template.resultat_conseillere.helpers({
+  classement: function() {
+    Meteor.subscribe('comments');
+    Meteor.subscribe('contact_Chat_profil');
+    Meteor.subscribe('conseilleres_acceuil');
+  },
 });

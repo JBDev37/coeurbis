@@ -393,7 +393,6 @@ Template.registerHelper("is_conseiller", function() {
   }else{
     return false;
   }
-  
    
 });
 
@@ -413,14 +412,17 @@ Template.registerHelper("last_login_conseillere", function() {
   var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
   var lastLogin = search.status.lastLogin.date;
+  var online = search.status.online;
   if(lastLogin){
   var conseillere = Conseilleres.findOne({user_id :userId});
   var conseillere_id = conseillere._id; 
    if(conseillere_id){
    Conseilleres.update( conseillere_id,  {$set: {lastLogin:lastLogin}});
+   Conseilleres.update( conseillere_id,  {$set: {online:online}});
    }
   }
 });
+
 /*
 Template.registerHelper("calcul_confiance", function(id) {
  var total = 0;

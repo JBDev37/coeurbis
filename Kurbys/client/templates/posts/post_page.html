@@ -51,7 +51,7 @@
        
      {{/if}}
       
-      <div class="content-message-gauche"> {{{breaklines body}}}</div>
+      <div class="content-message-gauche"> {{{breaklines comments}}} {{{breaklines body}}}</div>
         
       <div class="footer-message_acceuil">
               
@@ -65,8 +65,10 @@
             {{#if currentUser}}
                   <div class="btn btn-success btn-xs modifier_message private_com ecran"><a href="{{pathFor 'messagerie' post_author=this.userId}}" class="">Message privé</a></div>
                   <div class="modifier_message private_com mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.userId}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
+                  
+                  <div class="favoris"><img src="{{etoile_favoris}}"> {{favoris}}</div>
             {{/if}}
-              
+          
        </div>
            
        </div>

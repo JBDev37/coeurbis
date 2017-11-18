@@ -1,22 +1,19 @@
-<template name="resultat_conseillere">
-{{classement}} 
-{{> side_bar_right }}
-{{> side_bar_left }}
-
-<div class="container-messages-acceuil">
-
-    <div class="blanc">
-             <div class="titre_classement"> Résultats de la recherche</div>
-    </div><br>
-
+<template name="conseiller_online_mobile">
+<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+ <div class="titre_page_profil">Tous les conseillers en ligne</div>
 </div>
-     {{#each show_conseilleres}}
-      {{> ItemConseillere}}
+
+<div class="container_user_profil">
+
+    {{#each conseillere}}
+      {{#if user_online_conseillere user_id}}
+        {{> Itemvisites_online_mobile}}
+      {{/if}}
     {{/each}}
+</div>
 </template>
 
-
-<template name="ItemConseillere">
+<template name="Itemvisites_online_mobile">
 <div class="container-messages">
     <div class="message-gauche">
 
@@ -25,7 +22,7 @@
          <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
           {{#if currentUser}}
-          <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button>
+
           {{/if}}
       </div> 
       {{/if}}
@@ -34,7 +31,6 @@
        <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="color: #ff6af1; margin-left: 5px;">{{username}}</a></div>
           {{#if currentUser}}
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
-         <button class="btn signaler {{deja_signale}} dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande" type="button"> {{text_signale}}</button> 
          {{/if}}
       </div> 
       {{/if}}
@@ -43,7 +39,7 @@
         
       <div class="footer-message_acceuil">
             <a href="{{pathFor 'profil' }}">{{author_name}}</a>
-            <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=user_id}}">Contacter</a></div>
+            <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie_mobile' post_author=user_id}}">Contacter</a></div>
             <div class="date-message"></div>  
             
             <div class="footer-conseiller">
@@ -67,4 +63,3 @@
     </div>
 </div>
 </template>
-

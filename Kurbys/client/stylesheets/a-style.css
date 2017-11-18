@@ -3,7 +3,8 @@
     padding: 15px;
     margin-left: -1px;
 
-}@font-face {
+}
+@font-face {
     font-family: "Saint denis";
     src: url('/police/Boulevard Saint Denis Light.ttf');
 }
@@ -3259,3 +3260,42 @@ label{
 .containeur_acceuil{
     margin-top: -30px;
 }
+
+.test{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 40px;
+    margin-top: -30px;
+    border-radius: 5px;
+}
+
+.test-short{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    /* margin-top: -30px; */
+    /* border-radius: 5px; */
+}
+
+.favoris{
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.fav_mes{
+    clear: both;
+    float: left;
+}
+
+
+.fav_mes_droite{
+    clear: both;
+    float: right;
+}
+
+.supprimer_favoris_mobile{
+    width: 20px;
+    margin-top:4px;
+}
+
+
