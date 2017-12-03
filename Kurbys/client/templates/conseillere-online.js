@@ -2,6 +2,7 @@ Template.conseiller_online.helpers({
   conseillere: function() {
     return Conseilleres.find({online:true});
   },
+
     classement: function() {
     Meteor.subscribe('comments');
     Meteor.subscribe('contact_Chat_profil');

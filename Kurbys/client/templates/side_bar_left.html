@@ -2,20 +2,30 @@
 
 	<div class="container-liste-conseillere" >
 {{#if currentUser}}
+  <a href="https://play.google.com/store/apps/details?id=com.idb9qf011pqj13l1a3vqwl&hl=fr" > <img src="/google-play.png" class="google-play"></a>
+  <a href="https://itunes.apple.com/us/app/kurbys/id1295881140?ls=1&mt=8" > <img src="/app_store.png" class="app-play"></a>
+
        {{#if is_conseiller}} {{else}}
-       <a href="{{pathFor 'devenir_conseillere' }}" ><div class="devenir-conseillere"><img src="/img/heart.png" style="position: relative; top: -3px" > Devenir conseiller</div></a>
+       <a href="{{pathFor 'devenir_conseillere' }}" ><div class="devenir-conseillere"><i class="fa fa-heartbeat" aria-hidden="true" style="color: red"></i> Devenir conseiller</div></a>
        {{/if}}
 
-        <a href="{{pathFor 'recherche_conseillere' }}" ><div class="recherche-conseillere"><img src="/img/valentines.png" > Recherche conseillers</div></a>
+        <a href="{{pathFor 'recherche_conseillere' }}" ><div class="recherche-conseillere"><i class="fa fa-search" aria-hidden="true" style="color: black"></i> Recherche conseillers</div></a>
+
+        {{#if is_rejoindre}}{{else}}
+          
+          <a href="{{pathFor 'rejoindre' }}" ><div class="recherche-conseillere"><i class="fa fa-plus" aria-hidden="true" style="color: red"></i> Nous rejoindre</div></a>
+          
+        {{/if}}
+
 {{/if}}
 
 
      <div class="top-conseillere">
-        <div class="top-conseillere-header"><img src="/img/chevron.png" ><strong> Top conseillers</strong></div>
+        <div class="top-conseillere-header"><strong> Top conseillers</strong></div>
        
        {{#if currentUser}}
-        <a href="{{pathFor 'classementComplet' }}"><div class="classement" ><img src="/img/cup.png" >Classement complet</div></a>
-        {{/if}}
+        <a href="{{pathFor 'classementComplet' }}"><div class="classement" ><i class="fa fa-trophy" aria-hidden="true" style="color: #f0a703"></i> Classement complet</div></a>
+       {{/if}}
 
          <div class="top-conseillere-scroll">
 
@@ -32,7 +42,7 @@
                       {{/if}}
                       <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
                        <div class=" etoile"> {{{etoiles user_id}}}</div><br>
-                      <div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>
+                      <!--<div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>-->
                   </div>
               {{/if}} 
 
@@ -47,7 +57,7 @@
                       {{/if}}
                       <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
                       <div class=" etoile"> {{{etoiles user_id}}}</div><br>
-                      <div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>
+                      <!--<div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>-->
                   </div>
               {{/if}}    
            {{/each}}   

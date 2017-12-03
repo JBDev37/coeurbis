@@ -3,8 +3,9 @@
 {{#if is_cordova}}
 <div style="height: 60px;"></div>
 {{else}}
-  <a href="https://play.google.com/store/apps/details?id=com.idb9qf011pqj13l1a3vqwl&hl=fr" > <img src="google-play.png" class="google-play"></a>
-  <a href="https://itunes.apple.com/us/app/kurbys/id1295881140?ls=1&mt=8" > <img src="app_store.png" class="app-play"></a>
+<div style="height: 60px;" class="mobile_lien"></div>
+  <!--<a href="https://play.google.com/store/apps/details?id=com.idb9qf011pqj13l1a3vqwl&hl=fr" > <img src="google-play.png" class="google-play"></a>
+  <a href="https://itunes.apple.com/us/app/kurbys/id1295881140?ls=1&mt=8" > <img src="app_store.png" class="app-play"></a>-->
 {{/if}}
 
 {{#if currentUser}}
@@ -29,15 +30,14 @@
                   <div class="form-group choix-theme" >
       					     
                      <div data-toggle="buttons">
-        					      <label class="btn btn-primary btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
-        					      <label class="btn btn-primary  btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
-        					      <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
-                        <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Mode">Mode</label>
-                        <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Beauté">Beauté</label>
-                        <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Sport">Sport</label>
-                        <label class="btn btn-primary btn-xs btn-circle "><input type="radio" name="categorie" value="Santé">Santé</label>
-        					       <label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
-                         <!--<label class="btn btn-primary btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>-->
+        					      <label class="btn btn-danger  btn-xs btn-circle active"><input type="radio" name="categorie" value="Amour" checked >Amour</label>
+        					      <label class="btn btn-danger   btn-xs btn-circle "><input type="radio" name="categorie" value="Amitié">Amitié</label>
+        					      <label class="btn btn-danger btn-xs btn-circle "><input type="radio" name="categorie" value="Confiance en soi">Confiance en soi</label>
+                        <label class="btn btn-danger  btn-xs btn-circle "><input type="radio" name="categorie" value="Mode">Mode</label>
+                        <label class="btn btn-danger  btn-xs btn-circle "><input type="radio" name="categorie" value="Beauté">Beauté</label>
+                        <label class="btn btn-danger  btn-xs btn-circle "><input type="radio" name="categorie" value="Santé">Santé</label>
+        					       <label class="btn btn-danger btn-xs btn-circle"><input type="radio" name="categorie" value="Sexo">Sexo</label>
+                         <label class="btn btn-danger btn-xs btn-circle"><input type="radio" name="categorie" value="Autre">Autre</label>
       			         </div> <input type="submit" name="submit" value="valider" class="btn btn-sm btn-primary ecran valider-message"/> 
       			     </div>
 
@@ -70,6 +70,6 @@
             </div>
         </form>
     </div>
-    <div><br></div>
+    
 {{/if}}
 </template>

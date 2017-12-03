@@ -72,10 +72,10 @@ Template.commentItem_mobile.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 

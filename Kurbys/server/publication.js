@@ -12,13 +12,15 @@ Meteor.publish('users', function() {
   return Meteors.users.find();
 });
 
+
 Meteor.publish('comments', function() {
   return Comments.find();
 });
 
 
 Meteor.publish('notifications', function() {
-  return Notifications.find({userId: this.userId, read: false});
+  var my_id = Meteor.userId();
+  return Notifications.find({userId: my_id, read: false});
 });
 
 Meteor.publish('histoires', function() {
@@ -26,7 +28,8 @@ Meteor.publish('histoires', function() {
 });
 
 Meteor.publish('requests', function() {
-  return Requests.find();
+  var my_id = Meteor.userId();
+  return Requests.find({to_id: my_id});
 });
 
 Meteor.publish('friends', function() {
@@ -35,16 +38,15 @@ Meteor.publish('friends', function() {
 
 Meteor.publish('chat', function(id) {
    var my_id = Meteor.userId();
-      return Chat.find({$or :[
-        {from_id:id, to_id:my_id},
-        {to_id:id, from_id:my_id},
-    ]});
+      return Chat.find({$or :[{from_id:id, to_id:my_id},{to_id:id, from_id:my_id}]});
 });
 
-Meteor.publish('chat_notif', function(id) {
+
+Meteor.publish('chat_notif', function() {
+  var my_id = Meteor.userId();
       return Chat.find({$or :[
-        {from_id:id },
-        {to_id:id},
+        {from_id:my_id},
+        {to_id:my_id},
     ]});
 });
 
@@ -110,12 +112,32 @@ Meteor.publish('delete_alertes', function() {
   return DeleteAlertes.find();
 });
 
-Meteor.publish('conseilleres_acceuil', function() {
-  return Conseilleres.find({},{limit:10});
+Meteor.publish('conseilleres', function() {
+  return Conseilleres.find();});
+
+Meteor.publish('rejoindre', function() {
+  return Rejoindre.find();});
+
+Meteor.publish('conseilleres_right', function() {
+  return Conseilleres.find({}, {
+      fields:{ 
+       gender:1,
+       username:1,
+       user_id:1,
+       presentation:1,
+       date:1,
+       user_id:1,
+     }});
 });
 
-Meteor.publish('conseilleres', function() {
-  return Conseilleres.find();
+Meteor.publish('conseilleres_left', function() {
+  return Conseilleres.find({}, {
+      fields:{ 
+       gender:1,
+       username:1,
+       indice_confiance:1,
+       user_id:1,
+     }});
 });
 
 Meteor.publish('favoris', function() {

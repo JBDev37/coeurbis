@@ -1191,38 +1191,34 @@ float: left;
     text-decoration: none;
 }
 
-.devenir-conseillere{
-    /*border-color: #000000;
-    border-width: 1px;
-    border-style: solid;*/
-    height: 40px;
-    margin-bottom: 10px;
+.devenir-conseillere {
+    height: 30px;
+    margin-bottom: 7px;
     background-color: #ffffff;
     border-radius: 2px;
-    padding-top: 8px;
+    padding-top: 4px;
     color: #2196f3;
     text-align: center;
     font-size: 15px;
-    box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7); 
+    box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7);
 }
+
 .devenir-conseillere:hover{
     background-color: #0a68b4;
     color: #ffffff;
 }
 .recherche-conseillere{
-    /*border-color: #000000;
-    border-width: 1px;
-    border-style: solid;*/
-    height: 40px;
-    margin-bottom: 10px;
+    height: 30px;
+    margin-bottom: 7px;
     background-color: #ffffff;
     border-radius: 2px;
-    padding-top: 8px;
+    padding-top: 4px;
     color: #2196f3;
     text-align: center;
     font-size: 15px;
-    box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7); 
+    box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7);
 }
+
 .recherche-conseillere:hover{
     background-color: #0a68b4;
     color: #ffffff;
@@ -1272,10 +1268,7 @@ float: left;
 }
 
 .classement{
-    margin-top: 10px;
     margin-bottom: 0px;
-    padding-bottom: 5px;
-
 }
 
 .classement_conseillere{
@@ -1317,7 +1310,7 @@ float: left;
     border-width: 1px;
     border-style: solid;*/
     border-radius: 3px;
-    height: 80px;
+    height: 60px;
     margin-top: 10px;
     background-color: rgba(255, 231, 244, 0.54);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.7); 
@@ -1330,7 +1323,7 @@ float: left;
     border-width: 1px;
     border-style: solid;*/
     border-radius: 3px;
-    height: 80px;
+    height: 60px;
     margin-top: 10px;
     background-color: rgba(10,104,180,0.1);
     box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.7); 
@@ -3189,16 +3182,19 @@ label{
 
 .google-play {
     display: inline-block;
-    width: 30%;
-    margin-top: 10px;
-    margin-left: 10%;
+    width: 110px;
+    margin-top: -10px;
+    margin-left: 0px;
+    height: 40px;
 }
 
 .app-play {
-    display: inline-block;
-    width: 30%;
-    margin-top: 10px;
-    margin-left: 10%;
+    display:inline-block;
+    width: 110px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    height: 40px;
 }
 
 
@@ -3257,8 +3253,12 @@ label{
     margin-left: -5px;
 }
 
+.etoile_clas{
+    margin-top: 10px;
+}
+
 .containeur_acceuil{
-    margin-top: -30px;
+    margin-top: -10px;
 }
 
 .test{
@@ -3298,4 +3298,57 @@ label{
     margin-top:4px;
 }
 
+.loading-message {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
 
+.sk-spinner-rotating-plane.sk-spinner {
+  background-color: #fff;
+}
+
+.numero{
+    color: black;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.rejoindre{
+    color: black;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.area-rejoindre{
+    width: 100%;
+    color: #000000;
+    font-size: 14px;
+    padding: 5px;
+    margin-left: -5px;
+}
+
+.area-rejoindre-text{
+    width: 100%;
+    height: 200px;
+    border-radius: 1px;
+    color: #000000;
+    font-size: 14px;
+   
+    padding: 5px;
+    margin-left: -5px;
+}
+
+.star{
+    color: #f0a703;
+}
+
+.circle{
+    color: green;
+}
+
+.poeme{
+    font-size: 16px;
+
+}

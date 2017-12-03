@@ -1,7 +1,9 @@
 Template.header.helpers({
     id: function() {
     Meteor.subscribe('contact_Chat');
-        
+    Meteor.subscribe('notifications');
+    Meteor.subscribe('requests');
+    Meteor.subscribe('chat_notif');       
     return Meteor.userId();
   },
 
@@ -10,10 +12,26 @@ Template.header.helpers({
    return Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } });
   },
 
-    notificationCount: function(){
+    notificationCount_alerte: function(){
     var userId = Meteor.userId();
     var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
     return alertes;
+  },
+
+
+   notificationCount: function(){
+    var userId = Meteor.userId();
+    var comment = Notifications.find({userId: Meteor.userId(), read: false}).count();
+    var friends = Notifications.find({to_id: Meteor.userId(), read: false}).count();
+    var commentaires = Commentaires.find({to_id: Meteor.userId(), read: false}).count();
+    if( Router.current().route.getName() !=='messagerie'){
+    var messages = Chat.find({to_id:userId, read:false}).count();
+    }else{
+      var messages = 0;
+    }
+    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
+    var total = comment + friends + messages + commentaires + alertes;
+    return total;
   },
 
 

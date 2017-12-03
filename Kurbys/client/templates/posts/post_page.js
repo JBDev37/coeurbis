@@ -6,7 +6,6 @@ Template.postPage.helpers({
   classement: function() {
     Meteor.subscribe('comments');
     Meteor.subscribe('contact_Chat_profil');
-    Meteor.subscribe('conseilleres_acceuil');
   },
 });
 
@@ -72,10 +71,10 @@ Template.commentItem.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 

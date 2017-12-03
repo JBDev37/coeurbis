@@ -3,7 +3,7 @@ Template.classementComplet.helpers({
   classement: function() {
     Meteor.subscribe('comments');
     Meteor.subscribe('contact_Chat_profil');
-    Meteor.subscribe('conseilleres_acceuil');
+    /*Meteor.subscribe('conseilleres_acceuil');*/
     var counters= [];
     var result= [];
     var counters = Conseilleres.find({}, {sort: {indice_confiance: -1}});

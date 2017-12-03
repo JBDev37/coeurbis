@@ -1,0 +1,105 @@
+<template name="rejoindre">
+{{classement}} 
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages-acceuil affiche">
+
+    <div class="register blanc">
+
+        
+
+            <fieldset class="rejoindre">
+                <legend style="text-align: center;" >Nous rejoindre</legend>
+                Nous recherchons des garçons et des filles qui souhaitent rejoindre notre équipe pour participer au développement de Kurbys.
+                <br><br>
+                Il suffit simplement de s'inscrire pour faire partie de notre équipe. <br><br>
+                
+                <u>Rejoindre l'équipe Kurbys c'est :</u><br>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> Participer aux prises de decisions.<br>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> Choisir ensemble les nouveautés à ajouter.<br>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> Etre informé de l'évolution du site.<br>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> Proposer des idées pour aider davantage de personnes. <br>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i> Recevoir toutes les semaines un compte rendu des differentes choix que nous avons retenus.<br><br>
+
+                Pour plus de convivialité, nous organiserons régulièrement des rencontres avec toute l'équipe afin de se réunir tous ensemble.
+                <br><br>
+                Si vous aussi vous souhaitez changer le monde, n'hésitez pas à nous rejoindre ! <br><br>
+
+                L'équipe Kurbys <br>
+                Jean-Benoit, Caroline, Ambre<br><br>
+
+
+           
+               
+        <form class="form-horizontal">
+        <fieldset>
+
+
+        <legend>S'incrire</legend>
+
+
+        <div class="control-group">
+          <label class="control-label" for="textinput">Nom</label>
+          <div class="controls">
+            <input id="textinput" name="nom" type="text"  class="area-rejoindre" required="">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <label class="control-label" for="textinput">Prénom</label>
+          <div class="controls">
+            <input id="textinput" name="prenom" type="text"  class="area-rejoindre" required="">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="textinput">Age</label>
+          <div class="controls">
+            <input id="textinput" name="age" type="number"  class="area-rejoindre" required="">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="textinput">Email</label>
+          <div class="controls">
+            <input id="textinput" name="email" type="email"  class="area-rejoindre" required="">
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="textinput">Quelques mots pour expliquer ta motivation</label>
+          <div class="controls">
+            <textarea type="text" id="me" name="motivation" class="area-rejoindre-text" required> </textarea><br>
+            <p class="help-block"></p>
+          </div>
+        </div>
+
+
+                <br>
+                <div class="input-conseillere">
+                <input type="submit" name="submit" value="valider" class="btn btn-primary"/>
+               </div>
+
+
+</fieldset>
+</form>
+
+
+
+
+
+                
+               
+            </fieldset>
+      
+    </div>
+
+</div>
+
+</template>

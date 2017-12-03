@@ -20,7 +20,7 @@
 
             <div id="member_list" >
 
-                <a href="{{pathFor 'le_secret_de_cendrillon'}}"><img src="/pub-livre-short.png" class="test-short"></a>
+                <!--<a href="{{pathFor 'le_secret_de_cendrillon'}}"><img src="/pub-livre-short.png" class="test-short"></a>-->
                <ul class="list-unstyled">
                   {{#each mes_contacts}}
                     {{>Item_contact}}
@@ -140,14 +140,14 @@
          <div style="display: inline-block;"> {{ date_francais_heures post_date}}</div> 
      </div>
      <div class="message_droite">{{{ breaklines message}}}<br></div>
-     <div class="favoris fav_mes_droite"><img src="{{etoile_favoris_mess}}"> {{favoris_mess}}</div>
+     <div class="favoris fav_mes_droite"><i class="fa {{etoile_favoris_mess}} star" aria-hidden="true"></i> {{favoris_mess}}</div>
      <div style="clear: both;"></div>
 </template>
 
 <template name="Item_message_gauche">
    <div class="message_gauche_date">{{ date_francais_heures post_date}}</div>
    <div class="message_gauche">{{{ breaklines message}}}<br> </div>
-   <div class="favoris fav_mes"><img src="{{etoile_favoris_mess}}"> {{favoris_mess}}</div>
+   <div class="favoris fav_mes"><i class="fa {{etoile_favoris_mess}} star" aria-hidden="true"></i> {{favoris_mess}}</div>
 </template>
 
 
@@ -162,8 +162,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font"> 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -186,8 +186,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -208,8 +208,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -234,8 +234,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -258,8 +258,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -280,8 +280,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -311,8 +311,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font"> 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -335,8 +335,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -357,8 +357,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -383,8 +383,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -407,8 +407,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -429,8 +429,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -459,8 +459,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact"> 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -483,8 +483,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -505,8 +505,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -531,8 +531,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -555,8 +555,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -577,8 +577,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{from_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{from_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -608,8 +608,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact"> 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -632,8 +632,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -654,8 +654,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -680,8 +680,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.png">  {{/if}} 
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -704,8 +704,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>
@@ -726,8 +726,8 @@
                    <div class="chat-body clearfix">
                       <div class="header_sec">
                          <strong class="primary-font user_send_contact">
-                        {{#if user_online_chat from_id}} <img src="/img/Point_vert.png"> {{/if}} 
-                        {{#if user_online_chat to_id}} <img src="/img/Point_vert.gif">  {{/if}} {{to_name }} 
+                        {{#if user_online_chat from_id}} <i class="fa fa-circle circle" aria-hidden="true"></i> {{/if}} 
+                        {{#if user_online_chat to_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} {{to_name }} 
                         </strong> <div class="pull-right">
                          {{date_contact_chat last_date}}</div>
                       </div>

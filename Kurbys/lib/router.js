@@ -5,34 +5,42 @@ Router.configure({
    waitOn: function() {
     var my_id = Meteor.userId();
     return [
-    Meteor.subscribe('notifications'),
+    /*Meteor.subscribe('notifications'),*/
+    /*Meteor.subscribe('requests'),*/
+    /*Meteor.subscribe('chat_notif'),*/
+    
+    Meteor.subscribe('userStatus'),
+    Meteor.subscribe('messages_signaler'),
+    Meteor.subscribe('avertissement_user'),
+    Meteor.subscribe('alertes'),
+    Meteor.subscribe('delete_alertes'),
+    Meteor.subscribe('lastlogin'),
+    Meteor.subscribe('password'),
+    Meteor.subscribe('conseilleres'),
+
     /*Meteor.subscribe('posts'),*/
     /*Meteor.subscribe('comments'),*/
     /*Meteor.subscribe('histoires'),*/
-    Meteor.subscribe('requests'),
     /*Meteor.subscribe('friends'),*/
-    Meteor.subscribe('chat_notif',my_id),
-    /*Meteor.subscribe('userBloquer'),*/
-    /*Meteor.subscribe('contact_Chat'),*/
-    Meteor.subscribe('userStatus'),
+    /*Meteor.subscribe('userBloquer'),
+    Meteor.subscribe('contact_Chat'),*/
     /*Meteor.subscribe('userIP'),*/
     /*Meteor.subscribe('visites'),*/
     /*Meteor.subscribe('commentaires'),*/
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('avertissement_user'),
     /*Meteor.subscribe('user_bloquer_IP'),*/
-    Meteor.subscribe('alertes'),
-    Meteor.subscribe('delete_alertes'),
     /*Meteor.subscribe('conseilleres_acceuil'),*/
-    Meteor.subscribe('lastlogin'),
-    Meteor.subscribe('password'),
+    /*Meteor.subscribe('favoris'),*/
      ];
-     }
+     },
+
 });
+
+
 
 PostsListController = RouteController.extend({
   template: 'postsList',
   increment: 5,
+
   postsLimit: function() {
     return parseInt(this.params.postsLimit) || this.increment;
   },
@@ -43,6 +51,7 @@ PostsListController = RouteController.extend({
     this.postsSub = Meteor.subscribe('posts', this.findOptions());
   },
   posts: function() {
+
     return Posts.find({}, this.findOptions());
   },
   data: function() {
@@ -62,9 +71,11 @@ PostsListController = RouteController.extend({
 
     ];
      },
+ 
 });
 
-if (Meteor.isClient) {
+
+if (Meteor.isClient) { // google analytic
     Router.plugin('reywood:iron-router-ga');
     Router.configure({
     trackPageView: true
@@ -78,9 +89,20 @@ Router.route('/', function () {
 
 Router.route('index/:postsLimit?', {
 name: 'postsList',
-	
 });
 
+/*Router.route('/index/:postsLimit?', {
+name: 'postsList',
+template: 'postsList',
+waitOn: function() {
+    return  [
+    Meteor.subscribe('posts'),
+    ];
+     },
+  data: function() {
+   return Posts.find();
+    },
+});*/
 
 Router.route('/posts/:_id', {
   name: 'postPage',
@@ -180,13 +202,16 @@ Router.route('/messagerie/:post_author?', {
      Meteor.subscribe('chat',this.params.post_author),
      Meteor.subscribe('userBloquer'),
      Meteor.subscribe('contact_Chat'),
-    Meteor.subscribe('favoris'),
+     Meteor.subscribe('favoris'),
      ];
      },
    data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-});
+
+
+})
+
 
 Router.route('/messagerie_vierge/:post_author?', {
   name: 'messagerie_vierge',
@@ -201,7 +226,9 @@ Router.route('/messagerie_vierge/:post_author?', {
      Meteor.subscribe('contact_Chat'),
     Meteor.subscribe('favoris'),
      ];
-     }
+     },
+
+
 });
 
 Router.route('/messagerie_mobile/:post_author?', {
@@ -217,7 +244,8 @@ Router.route('/messagerie_mobile/:post_author?', {
      Meteor.subscribe('contact_Chat'),
      Meteor.subscribe('favoris'),
      ];
-     }
+     },
+
 });
 
 Router.route('/mot_de_passe', {
@@ -290,9 +318,6 @@ Router.route('/resultat_conseillere/:gender?/:college?/:lycee?/:adulte?/:amour?/
       data: function() {
     return Conseilleres.find();
   },
-     waitOn: function() {
-    return Meteor.subscribe('conseilleres');
-     }
 
 });
 
@@ -302,42 +327,37 @@ Router.route('/resultat_conseillere_mobile/:gender?/:college?/:lycee?/:adulte?/:
       data: function() {
     return Conseilleres.find();
   },
-  waitOn: function() {
-    return Meteor.subscribe('conseilleres');
-     }
 
 });
 
 Router.route('/classement-conseilleres', {
   name: 'classementComplet',
   template : 'classementComplet',
-  waitOn: function() {
+  /*waitOn: function() {
     return Meteor.subscribe('conseilleres');
-     }
+     }*/
 });
 
 Router.route('/classement-conseilleres-mobile', {
   name: 'classementComplet_mobile',
   template : 'classementComplet_mobile',
-  waitOn: function() {
-    return Meteor.subscribe('conseilleres');
-     }
 });
 
 Router.route('/conseiller_online', {
   name: 'conseiller_online',
   template : 'conseiller_online',
-  waitOn: function() {
-    return Meteor.subscribe('conseilleres');
-     }
+
 });
 
 Router.route('/conseiller_online_mobile', {
   name: 'conseiller_online_mobile',
   template : 'conseiller_online_mobile',
-  waitOn: function() {
-    return Meteor.subscribe('conseilleres');
-     }
+
+});
+
+Router.route('/user_online', {
+  name: 'user_online',
+  template : 'user_online',
 });
 
 Router.route('/conseiller/:post_author?', {
@@ -878,6 +898,25 @@ Router.route('/cgu', {
   template : 'cgu',
 });
 
+Router.route('/numero', {
+  name: 'numero',
+  template : 'numero',
+});
+
+Router.route('/rejoindre', {
+  name: 'rejoindre',
+  template : 'rejoindre',
+});
+
+Router.route('/confirmation-rejoindre', {
+  name: 'confirmation_rejoindre',
+  template : 'confirmation_rejoindre',
+});
+
+Router.route('/poeme', {
+  name: 'poeme',
+  template : 'poeme',
+});
 
 /*Router.route('/le_secret_de_cendrillon', function() {
     var filePath = process.env.PWD + "/server/le_secret_de_cendrillon.pdf";

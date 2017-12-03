@@ -1039,6 +1039,7 @@
 
     .valider_footer{
         margin-right: 5px;
+        margin-top: -18px;
     }
 
     .btn-block{
@@ -1377,6 +1378,15 @@
     box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7);
     border-radius: 2px;
     background-color: rgba(0,61,111,1);
+    }
+
+    .amazon{
+        display: inline-block;
+        margin-top: 0px;
+    }
+
+    .etoile_profile{
+        margin-left: 20px;
     }
 
 

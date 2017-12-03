@@ -58,15 +58,16 @@
           <div class="date-message">{{date_francais submitted }}</div>  
 
           <div class="thumbs">
-            <a href="#" class="btn btn-xs  btn-success upvote {{upvotedClass}}"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-            <a href="#" class="btn btn-xs  btn-danger upvote {{downvotedClass}}"><span class="glyphicon glyphicon-thumbs-down"></span></a>
+            <a href="#" class="btn btn-xs  btn-success upvote {{upvotedClass}}"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+            <a href="#" class="btn btn-xs  btn-danger upvote {{downvotedClass}}"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
           </div>
            <div class="result-vote"> {{count votes }} </div> 
             {{#if currentUser}}
                   <div class="btn btn-success btn-xs modifier_message private_com ecran"><a href="{{pathFor 'messagerie' post_author=this.userId}}" class="">Message privé</a></div>
                   <div class="modifier_message private_com mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.userId}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
                   
-                  <div class="favoris"><img src="{{etoile_favoris}}"> {{favoris}}</div>
+                  <div class="favoris"><i class="fa {{etoile_favoris}} star" aria-hidden="true"></i> {{favoris}}</div>
+
             {{/if}}
           
        </div>

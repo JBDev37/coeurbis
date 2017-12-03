@@ -387,23 +387,21 @@ Template.registerHelper("password", function() {
 Template.registerHelper("is_conseiller", function() {
   Meteor.subscribe('conseilleres_acceuil');
   var userId = Meteor.userId();
-  var search = Conseilleres.findOne({user_id:userId});
-  if(search){
+  var search = Conseilleres.find({user_id:userId}).count();
+  if(search>0){
     return true;
-  }else{
-    return false;
   }
    
 });
 
+ 
+
 Template.registerHelper("is_conseiller_user", function() {
   Meteor.subscribe('conseilleres_acceuil');
   var current_id = Router.current().params.post_author;
-  var search = Conseilleres.findOne({user_id:current_id});
-  if(search){
+  var search = Conseilleres.find({user_id:userId}).count();
+  if(search>0){
     return true;
-  }else{
-    return false;
   }
   
 });
@@ -529,47 +527,52 @@ Template.registerHelper("etoiles", function(id) {
     
 
     if (!confiance) {
-      return "<img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+ 
+      return "<i class=\"fa fa-star-half-o star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
+        
     }
 
     else if (confiance == 0.5) {
-     return "<img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+     return "<i class=\"fa fa-star-half-o star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 1) {
-      return "<img src=/star-on.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
+      
     }
 
     else if (confiance == 1.5) {
-      return "<img src=/star-on.png><img src=/star-half.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-half-o star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 2) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-off.png><img src=/star-off.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 2.5) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-half-o star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 3) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-off.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
+
     }
 
     else if (confiance == 3.5) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-half-o star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 4) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png><img src=/star-off.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-o star\" aria-hidden=\"true\"></i>";
     }
 
     else if (confiance == 4.5) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-half.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star-half-o star\" aria-hidden=\"true\">";
     }
 
     else if (confiance == 5) {
-      return "<img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png><img src=/star-on.png>";
+      return "<i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\"><i class=\"fa fa-star star\" aria-hidden=\"true\">";
     }
    
 
@@ -774,5 +777,42 @@ Template.registerHelper("is_cordova", function() {
   return true;
 }
 });
+
+Template.registerHelper("is_admin", function() {
+    var userId = Meteor.userId();
+    if (userId == 'uRfQbshE92zRgzicw') {
+      return true;
+    }
+    if (userId == 'oANNC3P9SpQ5Fw8Qg') {
+      return true;
+    }
+});
+
+Template.registerHelper("notif", function() {
+   document.title = "My new title1";
+    Meteor.subscribe('notifications');
+    Meteor.subscribe('commentaires');
+    Meteor.subscribe('chat');
+    Meteor.subscribe('alertes');
+    var userId = Meteor.userId();
+    var comment = Notifications.find({userId: Meteor.userId(), read: false}).count();
+    var friends = Notifications.find({to_id: Meteor.userId(), read: false}).count();
+    var commentaires = Commentaires.find({to_id: Meteor.userId(), read: false}).count();
+    var messages = Chat.find({to_id:userId, read:false}).count();
+
+    var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
+    var total = comment + friends + messages + commentaires + alertes;
+    return total;
+});
+
+Template.registerHelper("is_rejoindre", function() {
+  Meteor.subscribe('rejoindre');
+  var userId = Meteor.userId();
+  var search = Rejoindre.find({user_id:userId}).count();
+  if(search>0){
+    return true;
+  }  
+});
+
 
 

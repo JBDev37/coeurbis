@@ -49,6 +49,10 @@ Template.notifications.helpers({
     }
     var alertes = Alertes.find( { read: { $ne:userId }, author_id: { $ne:userId } }).count();
     var total = comment + friends + messages + commentaires + alertes;
+    
+    var title = "(" + total + ") " + "Kurbys"  ;
+    DocHead.setTitle(title);
+   
     return total;
   },
 

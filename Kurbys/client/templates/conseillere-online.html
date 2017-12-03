@@ -10,10 +10,11 @@
     </div><br>
 
 </div>
+
     {{#each conseillere}}
-      {{#if user_online_conseillere user_id}}
-        {{> Itemvisites_online}}
-      {{/if}}
+        {{#if user_online_conseillere user_id}}
+          {{> Itemvisites_online}}
+        {{/if}}
     {{/each}}
 
 </template>
@@ -25,7 +26,7 @@
     <div class="container-messages-gauche">
     {{#if is_garcon gender}} 
          <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
-          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}} </div> 
           {{#if currentUser}}
 
           {{/if}}
@@ -35,7 +36,7 @@
         {{#if is_fille gender}} 
        <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="color: #ff6af1; margin-left: 5px;">{{username}}</a></div>
           {{#if currentUser}}
-          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <i class="fa fa-circle circle" aria-hidden="true"></i>  {{/if}}</div> 
          {{/if}}
       </div> 
       {{/if}}

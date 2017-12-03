@@ -76,7 +76,7 @@ Template.profil.helpers({
 
     count_liste_personne: function() {
      var userId = Router.current().params.post_author;
-    return Comments.find({userId:userId }).count();
+    return Comments.find({userId:userId }).count() + 50;
   },
 
     count_mes_messages: function() {

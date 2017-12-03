@@ -26,10 +26,10 @@ Template.Item_message_gauche.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 
@@ -51,10 +51,10 @@ Template.Item_message_gauche_mobile.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 
@@ -182,10 +182,10 @@ Template.Item_message_droite.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 
@@ -208,10 +208,10 @@ Template.Item_message_droite_mobile.helpers({
     var userId = Meteor.userId();
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
-      return '/star-on.png';
+      return 'fa-star';
     } 
     else {
-      return '/star-off.png';
+      return 'fa-star-o';
     }
   },
 
@@ -331,13 +331,10 @@ Template.messagerie.helpers({
     var current_id = Router.current().params.post_author;
     var my_id = Meteor.userId();
     var messages_recu = Chat.find({$or : [{from_id: curentUser, to_id:my_id}, {from_id: my_id, to_id:curentUser}]});
-    
-   
-
     return messages_recu;
   },
 
-
+  
     message_unread: function() {
     var current_id = Router.current().params.post_author;
     var my_id = Meteor.userId();
@@ -818,7 +815,8 @@ Template.messagerie.events({
    Router.go('messagerie', {post_author: id});
   },
 
-   'touchstart .receive_message_mobile':function() {
+   'touchstart .receive_message_mobile':function(e) {
+    e.stopPropagation();
   var userId = Meteor.userId();
   //var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id}, {to_id:userId,from_id:current_id }]});
   if(this.to_id == userId){
