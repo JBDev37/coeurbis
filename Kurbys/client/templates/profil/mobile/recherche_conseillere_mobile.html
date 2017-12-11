@@ -1,10 +1,10 @@
 <template name="recherche_mobile">
-<div class="new_message_head">
+<!--<div class="new_message_head">
  <div class="titre_page_profil">Contacter un(e) conseiller(e)</div>
-</div>
+</div>-->
 
 {{#if is_conseiller}}
-<div style="margin-top: 80px;"></div>
+<div style="margin-top: 50px;"></div>
 {{else}}
 <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_search">
 <a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a>
@@ -13,8 +13,6 @@
 
 
 <div class="classement_mobile" ><a href="{{pathFor 'classementComplet_mobile' }}"> Voir le classement complet</a></div>
-
-<br>
 
 <div class="online_conseiller_mobile" ><a href="{{pathFor 'conseiller_online_mobile' }}">Tous les conseillers en ligne</a></div>
 
@@ -25,7 +23,7 @@
         <form enctype="multipart/form-data" action="" method="post">
             
                 
-                    
+                    <strong style="font-size: 14px; text-decoration: underline;">Recherche avancée</strong><br/><br/>
                     <strong>Ta tranche d'&acirc;ge :</strong><br/>
                      <div data-toggle="buttons">
                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="college" value="true" >  Coll&egrave;ge</label>

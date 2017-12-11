@@ -18,7 +18,7 @@ html, body{
     margin: 0;
     padding: 0;
     /*height: 100%;*/
-    background-color:#dde0e4;
+    background-color:#efefef;
 }
 
 
@@ -775,7 +775,7 @@ padding-top: 40px;
 }
 
 .register-form-devenir{
-    height: 580px;
+    /*height: 580px;*/
     border-radius: 3px;
     box-shadow: 0px 0px 0.5px 0px rgba(0, 0, 0, 0.7); 
     padding-top: 5px;
@@ -1630,7 +1630,7 @@ label{
 
 .input-conseillere{
     float: right;
-    margin-top: -10px;
+    margin-bottom: 20px;
     margin-right: 20px;
 }
 

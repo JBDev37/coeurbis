@@ -4,6 +4,14 @@ Template.amis.helpers({
     return Friends.find({"from_id": userId});
   },
 
+    count_amis: function() {
+    var userId = Meteor.userId();
+    count1 =  Friends.find({"from_id": userId}).count();
+    count2 =  Friends.find({"to_id": userId}).count();
+
+    return count1 + count2;
+  },
+
   amis1: function() {
     var userId = Meteor.userId();
     return Friends.find({"to_id": userId});

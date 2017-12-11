@@ -55,6 +55,21 @@ Template.commentaires.helpers({
     return Commentaires.find({to_id:userId }, {sort: {date: -1}});
   },
 
+  count_mes_commentaires: function() {
+    var curentUser = this._id;
+    return Commentaires.find({to_id:curentUser }).count();
+  },
+
+    visite_profil:function() {
+  var current_id = Router.current().params.post_author;
+  var userId = Meteor.userId();
+  if(current_id!==userId){
+   return "visite-profil"
+  }else{
+  }
+  
+  },
+
 });
 
 

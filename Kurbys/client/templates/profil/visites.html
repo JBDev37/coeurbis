@@ -1,10 +1,10 @@
 <template name="visites">
 {{>profil}}
-	 <div class="tab-pane " id="tab4">
+	 <div class="container-messages-profil">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
-                  <h4><a href="#" style="text-decoration:none;"><strong>Vistes sur mon profil</strong></a></h4>      
+                  <h4><a href="#" style="text-decoration:none;"><strong>Visites sur mon profil<span style="color: red; margin-left: 10px">{{count_visites}}</span></strong></a></h4>      
                </div>
             </div>
                     {{#each visites}}

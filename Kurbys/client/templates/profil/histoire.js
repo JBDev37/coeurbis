@@ -3,6 +3,20 @@ Template.histoire.helpers({
     var curentUser = this._id;
     return Histoires.find({post_author: curentUser});
   },
+  count_histoires: function() {
+    var curentUser = this._id; 
+    return Histoires.find({post_author: curentUser}).count();
+  },
+
+    visite_profil:function() {
+  var current_id = Router.current().params.post_author;
+  var userId = Meteor.userId();
+  if(current_id!==userId){
+   return "visite-profil"
+  }else{
+  }
+  
+  },
 
 });
 

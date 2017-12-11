@@ -2,7 +2,22 @@ Template.messages_poste.helpers({
   mes_messages: function() {
      var userId = Router.current().params.post_author;
     return Posts.find({post_author:userId }, {sort: {post_date: -1}});
+  },
+
+  count_mes_messages: function() {
+     var userId = Router.current().params.post_author;
+    return Posts.find({post_author:userId}).count();
+  },
+
+    visite_profil:function() {
+  var current_id = Router.current().params.post_author;
+  var userId = Meteor.userId();
+  if(current_id!==userId){
+   return "visite-profil"
+  }else{
   }
+  
+  },
 });
 
 

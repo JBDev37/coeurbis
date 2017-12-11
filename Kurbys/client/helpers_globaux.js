@@ -235,9 +235,11 @@ Template.registerHelper('my_name', function(name) {
   }
 });
 
-Template.registerHelper('name_user', function() {
-  var user = Meteor.users.findOne(this._id);
+Template.registerHelper('name_user', function(id) {
+  var current_id = Router.current().params.post_author;
+  var user = Meteor.users.findOne(current_id);
   var name = user.username;
+
   return name;
 
 });
@@ -396,10 +398,10 @@ Template.registerHelper("is_conseiller", function() {
 
  
 
-Template.registerHelper("is_conseiller_user", function() {
+Template.registerHelper("is_conseiller_user", function(id) {
   Meteor.subscribe('conseilleres_acceuil');
-  var current_id = Router.current().params.post_author;
-  var search = Conseilleres.find({user_id:userId}).count();
+  /*var current_id = Router.current().params.post_author;*/
+  var search = Conseilleres.find({user_id:id}).count();
   if(search>0){
     return true;
   }

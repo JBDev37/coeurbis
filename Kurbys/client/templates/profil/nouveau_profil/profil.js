@@ -1,3 +1,11 @@
+Template.profil.onRendered(function() {
+  $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":hidden") || $(this).next().slideDown(),
+  $("#leftside-navigation .sub-menu > a").click(function(e) {
+  $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
+  e.stopPropagation()
+})
+})
+
 Template.profil.helpers({
 
     request: function() {
@@ -268,4 +276,7 @@ $('.raty').raty({
 });
    
   };
+
+
+
 

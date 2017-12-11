@@ -2,7 +2,13 @@ Template.ils_ont_aide.helpers({
   liste_personne_aide: function() {
      var userId = Meteor.userId();
     return Comments.find({post_author_id:userId}, {sort: {submitted: -1}});
-  }
+  },
+
+      count_liste_personne_aide: function() {
+     var userId = Router.current().params.post_author;
+    return Comments.find({post_author_id:userId}).count();
+  },
+  
 });
 
 

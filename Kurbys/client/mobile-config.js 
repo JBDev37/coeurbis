@@ -1,8 +1,7 @@
 App.info({
   id: 'com.idb9qf011pqj13l1a3vqwl',
   name: 'Kurbys',
-  version:'1.5.0',
-  buildNumber:'2'
+
 });
 
 

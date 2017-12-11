@@ -3,31 +3,42 @@
 	<div class="footer_mobile">
 		<a href="{{pathFor 'postsList'}}" >
 			<div class="footer_1" style="height: 35px;">
-			<i class="fa fa-2x fa-home" aria-hidden="true"></i>
+			<i class="fa fa-2x fa-home" style="color: #337ab7" aria-hidden="true"></i>
 			</div>
 		</a>
+		
 		<a class="profil_menu" >
 			{{#each id}}
 		<a href="{{pathFor 'profil_mobile' post_author=this._id}}" >
 			<div class="footer_1">
-				<i class="fa fa-2x fa-user" aria-hidden="true"></i>
+				<i class="fa fa-2x fa-user" style="color: #337ab7" aria-hidden="true"></i>
 			</div>
 		</a>
 			{{/each}}
 		</a>
+		
 		<a href="{{pathFor 'messagerie'}}">
 			<div class="footer_1">
-				<i class="fa fa-2x fa-comments" aria-hidden="true"></i>
+				<i class="fa fa-2x fa-comments" style="color: #337ab7" aria-hidden="true"></i>
 			</div>
 		</a>
+
+		<a href="{{pathFor 'recherche_mobile'}}">
+			<div class="footer_1">
+                   <i class="fa fa-2x fa-search" style="color: #337ab7" aria-hidden="true"></i>
+            </div>
+        </a>
+
 		<a href="{{pathFor 'notifications_mobile'}}">
 			<div class="footer_1">
-			<i class="fa fa-2x fa-globe" aria-hidden="true"></i>
+			<i class="fa fa-2x fa-globe" style="color: #337ab7" aria-hidden="true"></i>
 			{{#if notificationCount}} 
 		      <span class="badge_red badge-inverse notif notif_footer">{{notificationCount}}</span>
 		    {{/if}}
 			</div>
 		</a>
+
+
 	</div>
 
 {{/if}}

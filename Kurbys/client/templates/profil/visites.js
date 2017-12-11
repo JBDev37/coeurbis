@@ -2,7 +2,12 @@ Template.visites.helpers({
   visites: function() {
   	var userId = Meteor.userId();
     return Visites.find({to_id:userId }, {sort: {post_date: -1}});
-  }
+  },
+
+    count_visites: function() {
+    var userId = Router.current().params.post_author;
+    return Visites.find({to_id:userId}).count();
+  },
 });
 
 

@@ -1,11 +1,11 @@
 <template name="mes_favoris">
 {{>profil}}
-	 <div class="tab-pane " id="tab4">
+	 <div class="container-messages-profil">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
-                <div class="panel-body">
-                  <h4><a href="#" style="text-decoration:none;"><strong>Mes favoris</strong></a></h4>      
-               </div>
+                
+                  <h4><a href="#" style="text-decoration:none; padding-left: 10px;"><strong>Mes favoris<span style="color: red; margin-left: 10px">{{count_favoris}}</span></strong></a></h4>  
+               
             </div>
                     {{#each mes_favoris}}
                       {{> ItemFavoris}}

@@ -34,6 +34,157 @@ Template.header.helpers({
     return total;
   },
 
+    titre: function() {
+
+     var route = Router.current().route.getName();
+     
+     
+     if(route=='postsList'){
+        return 'Vous ne marcherez jamais seul';
+     }
+
+     if(route=='postPage_mobile'){
+        return 'Messages';
+     }
+
+      if(route=='postPage'){
+        return 'Message';
+     }
+
+    if(route=='postEdit'){
+        return 'Modifier';
+     }
+
+      if(route=='profil_mobile'){
+        return 'Profil';
+     }
+
+      if(route=='messagerie'){
+        return 'Messagerie';
+     }
+
+      if(route=='recherche_mobile'){
+        return 'Contacter un conseiller';
+     }
+
+      if(route=='notifications_mobile'){
+        return 'Notifications';
+     }
+
+      if(route=='presentation_mobile'){
+        return 'Présentation';
+     }
+
+      if(route=='histoire_mobile'){
+        return "Histoires d'amour";
+     }
+
+       if(route=='favoris_mobile'){
+        return "Favoris";
+     }
+
+       if(route=='amis_mobile'){
+        return "Amis";
+     }
+
+        if(route=='amis_mobile'){
+        return "Amis";
+     }
+
+        if(route=='visites_mobile'){
+        return "Visites";
+     }
+
+        if(route=='personne_aide_mobile'){
+        return "Personnes aidées";
+     }
+
+        if(route=='messages_poste_mobile'){
+        return "Messages postés";
+     }
+
+        if(route=='commentaires_mobile'){
+        return "Commentaires";
+     }
+
+        if(route=='ils_ont_aide_mobile'){
+        return "Ils m'ont aidé";
+     }
+
+        if(route=='avertissement_mobile'){
+        return "Avertissements";
+     }
+
+        if(route=='devenir_conseillere_mobile'){
+        return "Devenir conseiller";
+     }
+
+        if(route=='confirmation_conseillere_mobile'){
+        return "Confirmation d'inscription";
+     }
+
+     if(route=='classementComplet_mobile'){
+        return "Classement complet";
+     }
+
+     if(route=='conseiller_online_mobile'){
+        return "Tous les conseillers en ligne";
+     }
+
+     if(route=='resultat_conseillere_mobile'){
+        return "Résultats de la recherche";
+     }
+
+     if(route=='messagerie_mobile'){
+        return "Messagerie";
+     }
+
+     if(route=='connexion_mobile'){
+        return "Connexion";
+     }
+
+     if(route=='le_secret_de_cendrillon'){
+        return "Le Secret de Cendrillon";
+     }
+
+     if(route=='poeme'){
+        return "Poèmes";
+     }
+
+     if(route=='numero'){
+        return "Numéros utiles";
+     }
+
+     if(route=='signaler_bug'){
+        return "Signaler un bug";
+     }
+
+     if(route=='supprimer_mon_compte'){
+        return "Supprimer mon compte";
+     }
+
+     if(route=='contact'){
+        return "Contact";
+     }
+
+     if(route=='presentation_conseiller_mobile'){
+        return "Présentation conseiller";
+     }
+
+
+return route;
+
+    
+  },
+
+  index: function() {
+     var index = Router.current().route.getName();
+     if(index=='postsList'){
+        return true;
+     }
+
+    },
+
 
 
 });
@@ -96,6 +247,10 @@ Template.header.events({
     Router.go('messagerie_vierge', {post_author: userId});
     }
   },
+
+  'touchstart  .retour': function(e) {
+     window.history.back();
+   }
 });
 
 accountsUIBootstrap3.setLanguage('fr');

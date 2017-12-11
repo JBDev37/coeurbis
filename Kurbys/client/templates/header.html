@@ -9,15 +9,19 @@
              {{/if}}
               <div class="header_1">
               
-                  <button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></a><!--icone hamburger --></button>
+                  <button type="button" id="btnRespNav" class="btn-navbar navbar-toggle1 slideout-menu-toggle pull-left" data-toggle="collapse" data-target="#login-navbar-collapse"><a href="" id="icon"><i class="fa fa-2x fa-bars" style="color: #337ab7" aria-hidden="true"></i></a><!--icone hamburger --></button>
              </div>
              
+{{#if currentUser}}
+             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'postsList'}}"><img src="/img/logo_site.png" width="30px" height="30px;"></a></div> 
+{{else}}
+             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'postsList'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div>
+             {{/if}} 
 
-             <div class="logo-kurbys-disconnect"><a href="{{pathFor 'postsList'}}"><img src="/img/logo.png" width="150px" height="30px;"></a></div> 
 {{#if currentUser}}
 
-                <a href="{{pathFor 'recherche_mobile'}}"><div class="header_2">
-                   <i class="fa fa-2x fa-search" aria-hidden="true"></i>
+                <!--<a href="{{pathFor 'recherche_mobile'}}"><div class="header_2">
+                   <i class="fa fa-2x fa-search" style="color: #337ab7" aria-hidden="true"></i>
                   </div>
                 </a>
                 <a href="{{pathFor 'amis_mobile' post_author=id}}"><div class="header_3">
@@ -26,11 +30,23 @@
                 </a>
                 <a href="{{pathFor 'alertes_mobile' post_author=id}}"> <div class="header_4">
                   <i class="fa fa-2x fa-bell" aria-hidden="true"></i>
+                
                 {{#if notificationCount_alerte}} 
                   <span class="badge_red badge-inverse notif notif_footer">{{notificationCount_alerte}}</span>
                 {{/if}}
+                
                 </div>
-                </a>
+                </a>-->
+
+                <div class=" mobile_lien">
+                  {{#if index}}
+                  <div class="devise_index">{{titre}}</div>
+
+                  {{else}}
+                  <i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i> 
+                  <span class="devise">{{titre}}</span>
+                  {{/if}}
+               </div>
 
               <div class="menu">
 
@@ -117,11 +133,6 @@
 </template>
 
 
-
-
-
-
-
 <template name="menuItems">
   <div class="slideout-menu">
     <h3>Menu </h3>
@@ -143,4 +154,6 @@
   </div>
   <!--/.slideout-menu-->
 </template>
+
+
 

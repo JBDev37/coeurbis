@@ -1,14 +1,22 @@
 <template name="avertissement">
-{{>profil}}
-	<div class="tab-pane " id="tab10">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+	<div class="container-messages-profil {{visite_profil}}">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="pull-left">
                        
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Avertissements</strong></a></h4>
+                    {{#if my_id this._id}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>Avertissements<span style="color: red; margin-left: 10px">{{count_avertissement}}</span></strong></a></h4>      
                     <hr>
+                    {{else}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>{{name_user }} :  Avertissements<span style="color: red; margin-left: 10px">{{count_avertissement}}</span></strong></a></h4>      
+                    <hr>
+                    {{/if}}
+
                     <div class="post-content">
                        Si tu ne respect pas les conditions d'utilisation, ton compte sera supprimé au bout de 3 avertissements.<br>
                             <td>

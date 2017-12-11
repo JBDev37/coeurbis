@@ -1,6 +1,8 @@
 <template name="personne_aide">
-{{>profil}}
-	<div class="tab-pane " id="tab5">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+	<div class="container-messages-profil {{visite_profil}}">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
@@ -8,8 +10,11 @@
                         
                     </div>
 
-                    <h4><a href="#" style="text-decoration:none;"><strong>Personnes aidées</strong></a></h4>
-                    
+                  {{#if my_id this._id}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>Personnes aidées<span style="color: red; margin-left: 10px">{{count_liste_personne}}</span></strong></a></h4>
+                  {{else}}
+                   <h4><a href="#" style="text-decoration:none;"><strong>{{name_user }} :  Personnes aidées<span style="color: red; margin-left: 10px">{{count_liste_personne}}</span></strong></a></h4>
+                  {{/if}}  
                 </div>
             </div>
 
@@ -34,7 +39,7 @@
            <div class="titre_message_container_fille"><div class="username_fille" >{{post_author_name}}</div></div> 
         {{/if}}
 
-            <div class="content-message-gauche"> {{{breaklines body}}}</div>
+            <div class="content-message-gauche"> {{{breaklines comments}}}</div>
             
           <div class="footer-message_acceuil">
                 <div class="date-message">{{date_francais submitted}}</div>  

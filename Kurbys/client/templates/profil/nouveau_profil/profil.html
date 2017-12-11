@@ -1,0 +1,70 @@
+<template name="profil">
+
+	<div class="sidebar1">
+	  <div id="leftside-navigation" class="nano">
+	    <ul class="nano-content">
+	      
+	      <li class="{{activeRouteClass 'presentation'}}"><a href="{{pathFor 'presentation' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-dashboard"></i><span>Mon profil</span></a>
+	      </li>
+
+	        <li class="{{activeRouteClass 'commentaires'}} sub-menu"> <a href="{{pathFor 'commentaires' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-commenting" aria-hidden="true"></i><span>Commentaires</span></a>
+	      </li>
+
+	      <li class="sub-menu">
+	        <a href="javascript:void(0);"><i class="fa fa-fw fa-flag" aria-hidden="true"></i><span>Conseils</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+	        <ul>
+
+	          <li class="{{activeRouteClass 'personne_aide'}}"> <a href="{{pathFor 'personne_aide' post_author=_id }}"   style="text-decoration:none;">Personnes aidées</a>
+	          </li>
+
+	          <li class="{{activeRouteClass 'ils_ont_aide'}}"> <a href="{{pathFor 'ils_ont_aide' post_author=_id }}"  style="text-decoration:none;">Ils m'ont aidés</a>
+	          </li>
+
+	          <li class="{{activeRouteClass 'messages_poste'}}"> <a href="{{pathFor 'messages_poste' post_author=_id }}"  style="text-decoration:none;">Messages postés</a>
+	          </li>
+	          
+	        </ul>
+	      </li>
+
+	        <li class="{{activeRouteClass 'histoire'}} sub-menu"> <a href="{{pathFor 'histoire' post_author=_id }}" style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i><span>Histoires</span></a>
+	      </li>
+
+	      	<li class="{{activeRouteClass 'favoris'}} sub-menu"> <a href="{{pathFor 'mes_favoris' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-star" aria-hidden="true"></i><span>Favoris</span></a>
+	        
+	      </li>
+
+	        <li class="{{activeRouteClass 'amis'}} sub-menu active"> <a href="{{pathFor 'amis' post_author=_id }}" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i><span>Amis</span></a>
+	      </li>
+
+	        <li class="{{activeRouteClass 'visites'}} sub-menu"> <a href="{{pathFor 'visites' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-bar-chart-o"></i><span>Visites</span></a>
+	      </li>
+<!--
+	      <li class="sub-menu">
+	        <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>Paramétres</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+	        <ul>
+	          <li><a href="map-google.html">Mot de passe</a>
+	          </li>
+	          <li><a href="map-google.html">Email</a>
+	          </li>
+	          <li><a href="map-vector.html">Supprimer compte</a>
+	          </li>
+	        </ul>
+	      </li>
+-->
+	        <li class="{{activeRouteClass 'avertissement'}} sub-menu"> <a href="{{pathFor 'avertissement' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i><span>Avertissements</span></a>
+	      </li>
+
+	      <li class="sub-menu">
+	        <a href="javascript:void(0);"><i class="fa fa-eur" aria-hidden="true"></i><span>Portefeuille</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+	        <ul>
+	         <li class="{{activeRouteClass 'mon_compte'}}"> <a href="{{pathFor 'mon_compte' post_author=_id }}"  style="text-decoration:none;">Mon compte</a>
+	          </li>
+	           <li class="{{activeRouteClass 'compte_bancaire'}}"> <a href="{{pathFor 'compte_bancaire' post_author=_id }}"  style="text-decoration:none;">Ajouter/Modifier</a>
+	           </li>
+	        </ul>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+
+</template>

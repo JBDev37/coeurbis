@@ -1,12 +1,19 @@
 <template name="commentaires">
-{{>profil}}
-	 <div class="tab-pane " id="tab8">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+	 <div class="container-messages-profil {{visite_profil}}">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
-    
-                    <h4><a href="#" style="text-decoration:none;"><strong>Commentaires</strong></a> </h4>
-                    </div>
+
+                    {{#if my_id this._id}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>Commentaires <span style="color: red; margin-left: 10px">{{count_mes_commentaires}}</span></strong></a></h4>
+                    {{else}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>{{name_user }} :  Commentaires <span style="color: red; margin-left: 10px">{{count_mes_commentaires}}</span></strong></a></h4>
+                    {{/if}}
+
+            </div>
             </div>
                    
                    {{#if my_id this._id}}

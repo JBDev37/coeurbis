@@ -1,11 +1,11 @@
 <template name="devenir_conseillere_mobile">
-<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+<!--<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
  <div class="titre_page_profil">Devenir conseiller</div>
-</div>
+</div>-->
 
- <div class="container_user_profil">
+ <div class="container_user_profil fav_mob">
 
-    <div class="register-form-devenir blanc">
+    <div class="register-form-devenir">
 
         <form enctype="multipart/form-data" action="" method="post">
 
@@ -13,33 +13,47 @@
                 
                 <strong>Pour qui :</strong>
                 <br>
-                <label class="btn btn-primary btn-circle btn-sm choix"><input type="checkbox" name="garcon" value="true" />  Les gar&ccedil;ons</label>
-                <label class="btn btn-primary btn-circle btn-sm choix"><input type="checkbox" name="fille" value="true" />  Les filles</label><br>
+
+
+
+
+
+                <label class="btn btn-primary btn-circle btn-sm choix">Les gar&ccedil;ons<input type="checkbox" name="garcon" class="badgebox" value="true" /><span class="badge">&check;</span></label><br>
+                
+                <label class="btn btn-primary btn-circle btn-sm choix">Les filles<input type="checkbox" name="fille" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
                 <br>
                 <strong>Pour quelles tranches d'&acirc;ge :</strong><br>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="college" value="true" />  Coll&egrave;ge<br></label>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="lycee" value="true" />  Lyc&eacute;e<br></label>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="adulte" value="true" />  +18 ans<br></label><br>
-                <br>
-                <strong>Dans quels domaines :</strong><br>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="amour" value="true" />  Amour<br></label>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="amitie" value="true" />  Amiti&eacute;<br></label>
-               
-               <label class="btn btn-primary btn-circle btn-sm choix"> <INPUT type="checkbox" name="sport" value="true" />  Sport<br></label>
-
-               <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="sante" value="true" />  Santé<br></label>
-
-               <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="beaute" value="true" />  Beauté<br></label>
-
-               <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="mode" value="true" />  Mode<br></label>
-               
-               <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="sexo" value="true" />  Sexo<br></label>
+                <label class="btn btn-primary btn-circle btn-sm choix">Coll&egrave;ge<INPUT type="checkbox" name="college" value="true" class="badgebox" /><span class="badge">&check;</span></label><br>
                 
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="sexo" value="true" />  Sexo<br></label>
-                <label class="btn btn-primary btn-circle btn-sm choix"><INPUT type="checkbox" name="autre" value="true" />  Autre<br></label><br>
+                <label class="btn btn-primary btn-circle btn-sm choix">Lyc&eacute;e<INPUT type="checkbox" name="lycee" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+                
+                <label class="btn btn-primary btn-circle btn-sm choix">+18 ans<INPUT type="checkbox" name="adulte" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+                <br>
+                
+                <strong>Dans quels domaines :</strong><br>
+                <label class="btn btn-primary btn-circle btn-sm choix">Amour<INPUT type="checkbox" name="amour" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+                
+                <label class="btn btn-primary btn-circle btn-sm choix">Amiti&eacute;<INPUT type="checkbox" name="amitie" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+               
+               
+               <label class="btn btn-primary btn-circle btn-sm choix">Sport <INPUT type="checkbox" name="sport" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+
+               
+               <label class="btn btn-primary btn-circle btn-sm choix">Santé<INPUT type="checkbox" name="sante" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+
+               
+               <label class="btn btn-primary btn-circle btn-sm choix">Beauté<INPUT type="checkbox" name="beaute" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+
+              
+               <label class="btn btn-primary btn-circle btn-sm choix">Mode<INPUT type="checkbox" name="mode" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+               
+                
+                <label class="btn btn-primary btn-circle btn-sm choix">Sexo<INPUT type="checkbox" name="sexo" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
+               
+                <label class="btn btn-primary btn-circle btn-sm choix"> Autre<INPUT type="checkbox" name="autre" value="true" class="badgebox"/><span class="badge">&check;</span></label><br>
    
                 <br>
-                <strong>Un petit mot pour te pr&eacute;senter et expliquer les conseils que tu pourras apporter (obligatoire):</strong><br><br>
+                <strong>Un petit mot pour te pr&eacute;senter et expliquer les conseils que tu pourras apporter <span style="color: red;">(obligatoire)</span>:</strong><br><br>
                
                 <textarea type="text" id="me" name="presentation" class="area-conseillere" required> </textarea><br>
                 <br>

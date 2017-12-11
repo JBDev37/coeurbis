@@ -66,6 +66,7 @@ npm-container
 kadira:dochead
 easy:search
 kadira:debug
-staringatlights:fast-render
 pcel:loading
 percolate:synced-cron
+lookback:tooltips
+raix:push

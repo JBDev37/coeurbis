@@ -1,0 +1,49 @@
+.sidebar1{
+    float: left;
+    position: fixed;
+    margin-left: 10px;
+    width: 150px;
+    background-color: #0a68b4;
+    border-radius: 5px;
+    margin-top: 0px;
+}
+
+.nano-content li {
+      padding-top: 20px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      
+}
+
+.nano-content li:hover{
+      background-color: #1b4b71;
+}
+
+.nano-content li a:hover{
+      text-decoration: none;
+
+}
+
+.nano-content li a{
+      text-decoration: none;
+      color: white;
+}
+
+.sub-menu ul li {
+  list-style: none;
+  background-color: none;
+}
+
+.sub-menu ul li:hover {
+  
+}
+
+.sub-menu span {
+  margin-left: 10px;
+}
+
+.nano-content span {
+  margin-left: 10px;
+}
+

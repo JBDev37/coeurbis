@@ -1,6 +1,8 @@
 <template name="histoire">
-{{>profil}}
-	<div class="tab-pane " id="tab2">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+	<div class="container-messages-profil {{visite_profil}}">
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -8,15 +10,15 @@
                         
                     </div>
                    {{#if my_id this._id}}
-                    <h4><a href="#" style="text-decoration:none;"><strong>Mes histoires d'amour</strong></a> <small><small>
-                    <i> Visible par tous les utilisateurs</i></small></small></h4>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Mes histoires d'amour  <span style="color: red; margin-left: 10px">{{count_histoires _id}}</span></strong></a> <small><small>
+                   <!-- <i> Visible par tous les utilisateurs</i>--></small></small></h4>
                     
                     <hr>
                     <div class="post-content">
                         Raconte tes différentes expériences amoureuses et explique ce qu'elles t'on apportées : réussites, échecs, les conseils que tu pourrais donner...
                     </div>
                     {{else}}
-                     <h4><a href="#" style="text-decoration:none;"><strong>Ses histoires d'amour</strong></a></h4>
+                     <h4><a href="#" style="text-decoration:none;"><strong>{{name_user }} :  Ses histoires d'amour</strong></a></h4>
                     {{/if}}
 
                     {{#if my_id this._id}}
@@ -29,8 +31,8 @@
                               <li style="float: right;"><a href="#exp" class="t2" data-toggle="tab">Ajouter une expérience</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active " id="taba" ></div>
-                                <div class="tab-pane " id="exp" >
+                                <div class=" " id="taba" ></div>
+                                <div class=" " id="exp" >
                                 
                                 <form enctype="multipart/form-data" action="" method="post" id="2">
                                 
@@ -72,7 +74,7 @@
 <template name="Item_Histoires">
 	
 
-	<div class="tab-pane" style="margin-top: 5px;" >
+	<div class="" style="margin-top: 5px; " >
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">

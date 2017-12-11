@@ -1,15 +1,15 @@
 <template name="profil_mobile">
-<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
+<!--<div class="new_message_head"><i class="fa fa-2x fa-arrow-left retour" aria-hidden="true"></i>
  <div class="titre_page_profil">Profil {{name_user this_id}}</div>
- </div>
+ </div>-->
 {{add_visites}}
-{{calcul_confiance _id}}
+{{calcul_confiance this_id}}
  <div class="container_user_overflow">
                     
-                       <div class="name_profil"> </div> 
-                       <div class="confiance_profil"> Indice de confiance : {{confiance}}/5 </div><div class="etoile_profile"> {{{etoiles _id}}}</div><br>
+                       <div class="name_profil">{{name_user}}</div> 
+                       <div class="confiance_profil"> Indice de confiance : {{confiance}}/5 </div><div class="etoile_profile"> {{{etoiles this._id}}}</div><br>
 
-                       {{#if is_conseiller_user _id}}
+                       {{#if is_conseiller_user this._id}}
                         <div class="status_conseiller_mobile">
                               Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
                         </div>
@@ -74,45 +74,58 @@
                      
                         <div ></div>
                          
-                        <a href="{{pathFor 'presentation_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'presentation'}} choix_profil"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Présentation</div></a>
-                       
-                       
-                       {{#if is_conseiller_user _id}}
-                        <a href="{{pathFor 'presentation_conseiller_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'presentation_conseiller'}} choix_profil"> <i class="fa fa-address-card-o" aria-hidden="true"></i> Conseiller</div></a>
+                        <a href="{{pathFor 'presentation_mobile' post_author=_id }}"  style="text-decoration:none;">
+                            <div class="{{activeRouteClass 'presentation'}} choix_profil_presentation"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Présentation <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i>
+                            </div>
+                        </a>
+
+                        {{#if is_conseiller_user _id}}
+                        <a href="{{pathFor 'presentation_conseiller_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'presentation_conseiller'}} choix_profil"> <i class="fa fa-address-card-o" aria-hidden="true"></i> Conseiller <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i></div></a>
                        {{/if}} 
-                       
 
-                        <a href="{{pathFor 'histoire_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'histoire'}} choix_profil"> <i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires d'amour<span class="badge">{{count_histoires _id}}</span>
-                        </div></a>
+                        <div class="choix_profil_blanc"></div>
 
-                         {{#if my_id this._id}}
-                        <a href="{{pathFor 'favoris_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'favoris_mobile'}} choix_profil"> <i class="fa fa-fw fa-star" aria-hidden="true"></i> Favoris <span class="badge">{{count_favoris}}</span> </div></a>
-                        {{/if}}
-
-                        {{#if my_id this._id}}
-                        <a href="{{pathFor 'amis_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'amis'}} choix_profil"> <i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <span class="badge">{{count_amis}}</span> </div></a>
-                     
-                        <a href="{{pathFor 'visites_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'visites'}} choix_profil"> <i class="fa fa-fw fa-eye" aria-hidden="true"></i> Visites <span class="badge">{{count_visites}}</span> </div></a>
-                           {{/if}}
-                        <a href="{{pathFor 'personne_aide_mobile' post_author=_id }}"   style="text-decoration:none;"><div class="{{activeRouteClass 'personne_aide'}} choix_profil"> <i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <span class="badge">{{count_liste_personne}}</span></div></a> 
-                        
-                        <!--<li> <a href="#tab6" data-toggle="tab"  style="text-decoration:none;"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i> Mes conseils <span class="badge">42</span></a> </li>-->
-                        
-                        <a href="{{pathFor 'messages_poste_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'messages_poste'}} choix_profil"> <i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Messages postés <span class="badge">{{count_mes_messages}}</span></div></a> 
-                        
-                        <a href="{{pathFor 'commentaires_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'commentaires'}} choix_profil"> <i class="fa fa-fw fa-commenting" aria-hidden="true"></i> Commentaires <span class="badge">
+                        <a href="{{pathFor 'commentaires_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'commentaires'}} choix_profil"> <i class="fa fa-fw fa-commenting" aria-hidden="true"></i> Commentaires <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">
                         {{#if my_id this._id}}{{count_mes_commentaires}}
                         {{else}}{{count_commentaires}}
                         {{/if}}
-
                         </span></div></a> 
-                         
+                       
+                       
+                       {{#if is_conseiller_user _id}}
+                        <a href="{{pathFor 'presentation_conseiller_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'presentation_conseiller'}} choix_profil"> <i class="fa fa-address-card-o" aria-hidden="true"></i> Conseiller <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i></div></a>
+                       {{/if}} 
+                       
+
+                        <a href="{{pathFor 'histoire_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'histoire'}} choix_profil"> <i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires d'amour <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_histoires _id}}</span>
+                        </div></a>
+
+                        <div class="choix_profil_blanc"></div>
+
+                         <a href="{{pathFor 'personne_aide_mobile' post_author=_id }}"   style="text-decoration:none;"><div class="{{activeRouteClass 'personne_aide'}} choix_profil"> <i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_liste_personne}}</span></div></a> 
+
                          {{#if my_id this._id}}
-                        <a href="{{pathFor 'ils_ont_aide_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'ils_ont_aide'}} choix_profil"> <i class="fa fa-fw fa-flag" aria-hidden="true"></i> Ils m'ont aidés <span class="badge">{{count_liste_personne_aide}}</span> </div></a>
+                        <a href="{{pathFor 'ils_ont_aide_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'ils_ont_aide'}} choix_profil"> <i class="fa fa-fw fa-flag" aria-hidden="true"></i> Ils m'ont aidés <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_liste_personne_aide}}</span> </div></a>
+                        {{/if}}
+                        
+                      
+                        <a href="{{pathFor 'messages_poste_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'messages_poste'}} choix_profil"> <i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Messages postés <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_mes_messages}}</span></div></a>
+
+                        <div class="choix_profil_blanc"></div>
+
+                         {{#if my_id this._id}}
+                        <a href="{{pathFor 'favoris_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'favoris_mobile'}} choix_profil"> <i class="fa fa-fw fa-star" aria-hidden="true"></i> Favoris <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_favoris}}</span> </div></a>
                         {{/if}}
 
+                        {{#if my_id this._id}}
+                        <a href="{{pathFor 'amis_mobile' post_author=_id }}" style="text-decoration:none;"><div class="{{activeRouteClass 'amis'}} choix_profil"> <i class="fa fa-fw fa-users" aria-hidden="true"></i> Amis <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_amis}}</span> </div></a>
+                     
+                        <a href="{{pathFor 'visites_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'visites'}} choix_profil"> <i class="fa fa-fw fa-eye" aria-hidden="true"></i> Visites <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_visites}}</span> </div></a>
+                        {{/if}}
+
+                        <div class="choix_profil_blanc"></div>
                                                
-                        <a href="{{pathFor 'avertissement_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'avertissement'}} choix_profil"> <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Avertissements <span class="badge">{{count_avertissement}}</span> </div></a>
+                        <a href="{{pathFor 'avertissement_mobile' post_author=_id }}"  style="text-decoration:none;"><div class="{{activeRouteClass 'avertissement'}} choix_profil"> <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Avertissements <i class="arrow fa size fa-angle-right pull-right" aria-hidden="true"></i> <span class="badge">{{count_avertissement}}</span> </div></a>
                         
                         
                    

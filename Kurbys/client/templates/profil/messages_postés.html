@@ -1,14 +1,21 @@
 <template name="messages_poste">
-{{>profil}}
-	 <div class="tab-pane " id="tab7">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+	 <div class="container-messages-profil {{visite_profil}}">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
                     <div class="pull-left">
                         
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Messages postés</strong></a></h4>
-                       </div>
+                    {{#if my_id this._id}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>Messages postés<span style="color: red; margin-left: 10px">{{count_mes_messages}}</span></strong></a></h4>
+                    {{else}}
+                    <h4><a href="#" style="text-decoration:none;"><strong>{{name_user }} :  Messages postés<span style="color: red; margin-left: 10px">{{count_mes_messages}}</span></strong></a></h4>
+                    {{/if}}
+
+                </div>
             </div>
 
                     {{#each mes_messages}}

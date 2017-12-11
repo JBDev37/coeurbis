@@ -2,7 +2,23 @@ Template.personne_aide.helpers({
   liste_personne: function() {
      var userId =  Router.current().params.post_author;
     return Comments.find({userId:userId }, {sort: {submitted: -1}});
+  },
+
+     count_liste_personne: function() {
+     var userId = Router.current().params.post_author;
+    return Comments.find({userId:userId }).count() ;
+  },
+
+    visite_profil:function() {
+  var current_id = Router.current().params.post_author;
+  var userId = Meteor.userId();
+  if(current_id!==userId){
+   return "visite-profil"
+  }else{
   }
+  
+  },
+
 });
 
 Template.commentsItem.helpers({

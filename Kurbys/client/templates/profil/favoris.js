@@ -2,7 +2,12 @@ Template.mes_favoris.helpers({
   mes_favoris: function() {
   	var userId = Meteor.userId();
     return Favoris.find({id_user_add_favoris:userId }, {sort: {post_date: -1}});
-  }
+  },
+
+  count_favoris:function() {
+  var current_id = Router.current().params.post_author;
+  return Favoris.find({ id_user_add_favoris:current_id}).count();
+  },
 });
 
 

@@ -1,14 +1,14 @@
 <template name="ils_ont_aide">
 {{>profil}}
-    <div class="tab-pane " id="tab9">
+    <div class="container-messages-profil">
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
                     <div class="pull-left">
                         
                     </div>
-                    <h4><a href="#" style="text-decoration:none;"><strong>Ils m'ont aidé</strong></a></h4>
-                        </div>
+                    <h4><a href="#" style="text-decoration:none;"><strong>Ils m'ont aidé<span style="color: red; margin-left: 10px">{{count_liste_personne_aide}}</span></strong></a></h4>
+                    </div>
             </div>
 
                     {{#each liste_personne_aide}}
@@ -31,7 +31,7 @@
            <div class="titre_message_container_fille"><div class="username_fille" >{{author}}</div></div> 
         {{/if}}
 
-            <div class="content-message-gauche"> {{{breaklines body}}}</div>
+            <div class="content-message-gauche"> {{{breaklines comments}}}</div>
             
           <div class="footer-message_acceuil">
                 <div class="date-message">{{date_francais submitted}}</div>  

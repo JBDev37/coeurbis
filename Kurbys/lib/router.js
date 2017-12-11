@@ -26,7 +26,7 @@ Router.configure({
     Meteor.subscribe('contact_Chat'),*/
     /*Meteor.subscribe('userIP'),*/
     /*Meteor.subscribe('visites'),*/
-    /*Meteor.subscribe('commentaires'),*/
+    Meteor.subscribe('commentaires'),
     /*Meteor.subscribe('user_bloquer_IP'),*/
     /*Meteor.subscribe('conseilleres_acceuil'),*/
     /*Meteor.subscribe('favoris'),*/
@@ -513,6 +513,24 @@ Router.route('/visites/:post_author?', {
      },
 });
 
+Router.route('/mon_compte/:post_author?', {
+  name: 'mon_compte',
+  template : 'mon_compte',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+  },
+  
+});
+
+Router.route('/compte_bancaire/:post_author?', {
+  name: 'compte_bancaire',
+  template : 'compte_bancaire',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+  },
+  
+});
+
 Router.route('/visites_mobile/:post_author?', {
   name: 'visites_mobile',
   template : 'visites_mobile',
@@ -619,7 +637,7 @@ Router.route('/commentaires/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author);
      },
-  waitOn: function() {
+  /*waitOn: function() {
     return [
     Meteor.subscribe('posts'),
     Meteor.subscribe('comments'),
@@ -630,7 +648,7 @@ Router.route('/commentaires/:post_author?', {
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('favoris'),
      ];
-     }, 
+     },*/ 
 });
 
 Router.route('/commentaires_mobile/:post_author?', {

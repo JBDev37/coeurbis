@@ -1,62 +1,179 @@
 <template name="presentation">
-{{>profil}}
-{{add_visites}}
-{{calcul_confiance this._id}}
-<div class="tab-pane active " id="active_presentation">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="pull-left">
-                    </div>
-                    {{#if my_id this._id}}
-                    <h4 class="titre-profil "><strong>Ma présentation</strong>  <small><small>
-                    <i> Visible par tous les utilisateurs</i></small></small></h4>
-                    <hr>
-                    
-                    <div class="post-content ">
-                        {{{breaklines currentUser.profile.presentation}}}
-                    </div>
-                    {{else}}
-                    <h4 class="titre-profil "><strong>Présentation</strong> 
-                    </h4>
-                    <hr>
-                    <div class="post-content ">
-                        {{{breaklines profile.presentation}}}
-                    </div>
-                    {{/if}}
-                    <div class="media">
-                        <div class="pull-left">
+{{#if my_id this._id}}
+        {{>profil}}
+{{/if}}
+        {{add_visites}}
+        {{calcul_confiance this._id}}
+
+
+    <div class="container-messages-profil {{visite_profil}}">
+
+        <div class="mainbody ">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <span>
+                               <div class="name_profil">{{name_user }}</div> 
+                                 {{#if my_id this._id}}
+                                     <div class="dropdown pull-right">
+                                    <button class="btn {{is_disponible}} btn-sm dropdown-toggle disponible" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="disponible">   
+                                       {{disponible_text}}
+                                    </button>
+                                    </div>
+                                    <div class="dropdown pull-right" style="clear: both;">{{explication}}</div>
+                                 {{else}}
+                                  <div class="dropdown pull-right">
+                                    <button class="btn btn-success btn-sm dropdown-toggle {{request}}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="demande">
+                                        {{en_attente}}
+                                    </button>
+                                </div>
+                                
+                                 <div class="dropdown pull-right show-com add-com">
+                                    <button class="btn btn-warning btn-sm dropdown-toggle " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" id="">
+                                        Laisser un commentaire
+                                    </button>
+                                </div>
+                                
+                                   {{#if user_not_disponible _id}}
+                                     <div class="dropdown pull-right "><a href="">
+                                        <button class="btn btn-primary btn-sm disabled " type="button"  id="">
+                                            Contacter
+                                        </button></a>
+                                    </div>
+                                    {{else}}
+                                     <div class="dropdown pull-right "><a href="{{pathFor 'messagerie' post_author=this._id}}">
+                                        <button class="btn btn-primary btn-sm  " type="button"  id="">
+                                            Contacter
+                                        </button></a>
+                                    </div>
+                                   {{/if}}
+                              
+                                {{/if}}
+
+                          
+                            <br><br>
+                           <div class="confiance_profil"> Indice de confiance : {{confiance}}/5 </div>
+                           <div > {{{etoiles _id}}}</div>
+                          
+                            {{#if my_id this._id}}
+                                  {{#if is_conseiller}}
+                                      Statut conseiller : <strong> {{status_conseiller _id}}</strong><br> 
+                                  {{else}}
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> <a href="{{pathFor 'devenir_conseillere' }}" >Tu n'es pas conseiller</a>
+                                  <br><hr>
+                                  {{/if}}
+                            {{/if}}
+
+
+                            {{#if my_id this._id}} {{else}}
+                              
+                              <div class="profil-connecté"> {{#if user_online_conseillere _id}} <img src="/img/Point_vert.gif">  {{/if}}  {{date_last_connexion _id}}</div>
+                            {{/if}}
+
+                            </span>
+        
+        {{#if my_id this._id}}{{else}} 
+                    <span class="pull-left"><br>
+                      <ul class="nav nav-pills">
+                        
+                        
+                        <li class="{{activeRouteClass 'presentation'}}"><a href="{{pathFor 'presentation' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Présentation</a></li>
+                       
+
+                       <li class="{{activeRouteClass 'histoire'}}"> <a href="{{pathFor 'histoire' post_author=_id }}" style="text-decoration:none;"><i class="fa fa-fw fa-heart" aria-hidden="true"></i> Histoires <span class="badge">{{count_histoires _id}}</span></a>
+                       </li>    
+
+                       
+                        <li class="{{activeRouteClass 'personne_aide'}}"> <a href="{{pathFor 'personne_aide' post_author=_id }}"   style="text-decoration:none;"><i class="fa fa-fw fa-key" aria-hidden="true"></i> Personnes aidées <span class="badge">{{count_liste_personne}}</span></a> </li>
+                        
+                        
+                        <li class="{{activeRouteClass 'messages_poste'}}"> <a href="{{pathFor 'messages_poste' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i> Messages postés <span class="badge">{{count_mes_messages}}</span></a> </li>
+                        
+                        <li class="{{activeRouteClass 'commentaires'}}"> <a href="{{pathFor 'commentaires' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-commenting" aria-hidden="true"></i> Commentaires <span class="badge">
+                        {{count_commentaires}}
+                        
+
+                        </span></a> </li>
+                        
+                        <li class="{{activeRouteClass 'avertissement'}}"> <a href="{{pathFor 'avertissement' post_author=_id }}"  style="text-decoration:none;"><i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i> Avertissements <span class="badge">{{count_avertissement}}</span></a> </li>
+                   
+                        
+                    </ul>
+
+                    </span>
+        {{/if}}                     
+
                         </div>
-                        {{#if my_id this._id}}
-                        <div class="media-body">
-	                        <div class="pull-right btn-group-xs nav nav-pills">
-							  <div class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></div>
-							  <a href="#tabb" class="btn btn-success taba" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                               
-							</div>
-							<div class="tab-content">
-	  							<div class="tab-pane active " id="taba" ></div>
-	                        	<div class="tab-pane " id="tabb" >
-	                            
-                                <form enctype="multipart/form-data" action="" method="post" id="1">
-	                            <fieldset>                        
-		                        <label><strong>Présentation</strong></label>
-		                         <textarea id="" name="presentation" class="form-control" style="height:250px;" required> {{   profile.presentation}} </textarea><br>
-		                        
-		                        <br>
-		                        <div class="input-conseillere">
-		                       
-		                        <input type="submit" name="submit" value="Valider" id="1" class="btn btn-success submit1"/>
-		                       </div>
-		                    </fieldset>
-		                    </form>
-	                        
-                            </div>
-	                        </div>
-						</div>
-                        {{/if}}
                     </div>
-                </div>
+
+            
             </div>
-       </div>
+            </div>
+            </div>
+    </div>
+
+
+        <div class="container-messages-profil prof_pres {{visite_profil}} " id="active_presentation">
+                    <div class="panel panel-default ">
+                        <div class="">
+                            <div class="pull-left">
+                            </div>
+                            {{#if my_id this._id}}
+                            <h4 class="titre-profil " style="padding-left: 10px;"><strong>Ma présentation</strong>  <small><small>
+                            <i> Visible par tous les utilisateurs</i></small></small></h4>
+                            <hr>
+                            
+                            <div class="post-content ">
+                                {{{breaklines currentUser.profile.presentation}}}
+                            </div>
+                            {{else}}
+                            <h4 class="titre-profil " style="padding-left: 10px;" ><strong>Présentation</strong> 
+                            </h4>
+                            <hr>
+                            <div class="post-content ">
+                                {{{breaklines profile.presentation}}}
+                            </div>
+                            {{/if}}
+                            <div class="media">
+                                <div class="pull-left">
+                                </div>
+                                {{#if my_id this._id}}
+                                <div class="media-body">
+        	                        <div class="pull-right btn-group-xs nav nav-pills modif">
+        							  <div class="active" style="display: none;"><a href="#taba" data-toggle="tab">Programme</a></div>
+        							  <a href="#tabb" class="btn btn-success taba" data-toggle="tab"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                       
+        							</div>
+        							<div class="tab-content">
+        	  							<div class="tab-pane active " id="taba" ></div>
+        	                        	<div class=" " id="tabb" >
+        	                            
+                                        <form enctype="multipart/form-data" action="" method="post" id="1">
+        	                            <fieldset>                        
+        		                        <label><strong>Présentation</strong></label>
+        		                         <textarea id="" name="presentation" class="form-control" style="height:250px;" required> {{   profile.presentation}} </textarea><br>
+        		                        
+        		                        <br>
+        		                        <div class="input-conseillere">
+        		                       
+        		                        <input type="submit" name="submit" value="Valider" id="1" class="btn btn-success submit1"/>
+        		                       </div>
+        		                    </fieldset>
+        		                    </form>
+        	                        
+                                    </div>
+        	                        </div>
+        						</div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+               </div>
+
+
+
+
+
 
 </template>
