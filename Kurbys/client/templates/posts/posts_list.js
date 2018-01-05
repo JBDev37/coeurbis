@@ -1,7 +1,26 @@
 Template.postsList.helpers({
   posts: function() {
     return Posts.find({}, {sort: {post_date: -1}});
-  }
+  },
+
+   mangopay :function() {
+      var userId = Meteor.userId();
+      var post = {
+      userId: userId, 
+    };
+
+    var search = Mangopay.find({"userId":userId}).count();
+    if(search==0){
+             Meteor.call('mangopay', post, function(error, result) { // on recherche la methode 'postInsert' 
+                // affiche l'erreur à l'utilisateur et s'interrompt
+                if (error)
+                    return throwError(error.reason);
+                //Router.go('postPage', {_id: result._id});
+            });
+        }
+    },
+
+
 });
 
 Template.postItem.helpers({
@@ -59,6 +78,8 @@ Template.postItem.helpers({
             Posts.remove(id);
     } 
   },
+
+
 
 });
 

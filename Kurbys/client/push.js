@@ -1,8 +1,17 @@
-Push.Configure({
-  ios: {
+/*Push.Configure({
+  android: {
+    senderID: 12341234,
     alert: true,
     badge: true,
     sound: true,
-    clearBadge: true
+    vibrate: true,
+    clearNotifications: true
+    // icon: '',
+    // iconColor: ''
+  },
+  ios: {
+    alert: true,
+    badge: true,
+    sound: true
   }
-});
+});*/

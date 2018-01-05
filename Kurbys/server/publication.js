@@ -9,9 +9,15 @@ Meteor.publish('Singleposts', function(id) {
 
 
 Meteor.publish('users', function() {
-  return Meteors.users.find();
+  return Meteors.users.find({}, {
+      fields:{ 
+       username:1,
+     }});
 });
 
+Meteor.publish('mangopay', function() {
+  return Mangopay.find();
+});
 
 Meteor.publish('comments', function() {
   return Comments.find();

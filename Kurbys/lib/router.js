@@ -17,6 +17,7 @@ Router.configure({
     Meteor.subscribe('lastlogin'),
     Meteor.subscribe('password'),
     Meteor.subscribe('conseilleres'),
+    Meteor.subscribe('mangopay'),
 
     /*Meteor.subscribe('posts'),*/
     /*Meteor.subscribe('comments'),*/
@@ -523,13 +524,35 @@ Router.route('/mon_compte/:post_author?', {
 });
 
 Router.route('/compte_bancaire/:post_author?', {
+
   name: 'compte_bancaire',
   template : 'compte_bancaire',
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
-  },
+},
   
 });
+
+/*
+Router.route('/compte_bancaire/:post_author?',function(){
+
+
+  if(isHTTPS()){
+    this.route('/compte_bancaire/:post_author?', {
+  name: 'compte_bancaire',
+  template : 'compte_bancaire',
+  data: function() {
+    return Meteor.users.findOne(this.params.post_author); 
+},
+});
+  } else {
+    switchHTTPS([6000]);
+  }
+  
+  
+});
+*/
+
 
 Router.route('/visites_mobile/:post_author?', {
   name: 'visites_mobile',
@@ -950,5 +973,8 @@ Router.route('/le_secret_de_cendrillon', {
   name: 'le_secret_de_cendrillon',
   template : 'le_secret_de_cendrillon',
 });
+
+
+
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});

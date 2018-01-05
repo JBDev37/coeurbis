@@ -89,6 +89,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "cordova-plugin-meteor-webapp/idb9qf011pqj13l1a3vqwl-build-extras.gradle"
+apply from: "phonegap-plugin-push/idb9qf011pqj13l1a3vqwl-push.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -156,7 +157,7 @@ android {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = ['src']
             resources.srcDirs = ['src']
-            aidl.srcDirs = ['res']
+            aidl.srcDirs = ['src']
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
@@ -165,8 +166,7 @@ android {
     }
 
     defaultConfig {
-        versionCode 11 /*cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))*/
-        versionName "1.10.0"
+        versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
         applicationId privateHelpers.extractStringFromManifest("package")
 
         if (cdvMinSdkVersion != null) {
@@ -252,6 +252,8 @@ dependencies {
     debugCompile(project(path: "CordovaLib", configuration: "debug"))
     releaseCompile(project(path: "CordovaLib", configuration: "release"))
     compile "com.squareup.okhttp3:okhttp:3.1.2"
+    compile "com.android.support:support-v13:23+"
+    compile "com.google.android.gms:play-services-gcm:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -7,6 +7,9 @@ Posts = new Mongo.Collection('posts');
   }
  });*/
 
+
+
+
 Posts.allow({
   
   update: function(userId, post) { return ownsDocument(userId, post); },
@@ -56,7 +59,9 @@ Meteor.users.allow({
       $addToSet: {upvoters: this.userId},
       $inc: {votes: -1}
     });
-  }
+  },
+
+
 });
 
 
