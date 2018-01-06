@@ -10,12 +10,12 @@ var cardData = {
      cardNumber: $(e.target).find('[name=card-number]').val(),
      cardExpirationDate: date_exp, 
      cardCvx: $(e.target).find('[name=cvv]').val(),
-     cardType: 'CB_VISA_MASTERCARD'
+     cardType: 'CB_VISA_MASTERCARD',
 };
-
+var name_carte = $(e.target).find('[name=card-holder-name]').val();
 var post = {
-cardData : cardData
-
+cardData : cardData,
+name_carte : name_carte
 }
 
 document.getElementById("submitCard").style.display="none";
@@ -657,33 +657,49 @@ var request = Mangopay.findOne({userId:userId});
 var cardRegistrationURL = request.CardRegistrationURL;
 var preregistrationData = request.PreregistrationData;
 var accessKey = request.AccessKey;
-var CardId = request.CardId;
+var CardIdRegister = request.CardIdRegister;
 
   // Initialize with card register data prepared on the server
 mangoPay.cardRegistration.init({
     cardRegistrationURL: cardRegistrationURL,
     preregistrationData: preregistrationData,
     accessKey: accessKey,
-    Id: CardId
+    Id: CardIdRegister
 });
 
 
 
 
 // Register card
+const bound = Meteor.bindEnvironment((callback) => {callback();});
+var userId = Meteor.userId();
 mangoPay.cardRegistration.registerCard(
     cardData, 
     function(res) {
+bound(() => {
+      var post = {
+CardId : res.CardId
+
+}
+      Meteor.call('CardId', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+            //Router.go('postsList');
+        });
+      
         // Success, you can use res.CardId now that points to registered card
-    },
-    function(res) {
-        // Handle error, see res.ResultCode and res.ResultMessage
-    }
-);
+    });
+});
 
-if (CardId){
+     
+
+
+
+if (CardIdRegister){
+  
   Router.go('postsList');
-
 }
 
    

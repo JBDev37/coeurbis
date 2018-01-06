@@ -13,68 +13,69 @@ var api = new mangopay({
 
  Meteor.methods({
     mangopay: function(postAttributes) {
-
- var userId = Meteor.userId();
-
-const bound = Meteor.bindEnvironment((callback) => {callback();});
-
-api.Users.create({
-    Name: 'MangoPay',
-    Email: 'info@mangopay.com',
-    LegalPersonType: 'BUSINESS',
-    LegalRepresentativeFirstName: 'Mango',
-    LegalRepresentativeLastName: 'Pay',
-    LegalRepresentativeEmail: 'mango@mangopay.com',
-    PersonType: "LEGAL",
-    HeadquartersAddress: {
-        "AddressLine1": "4101 Reservoir Rd NW",
-        "AddressLine2": "",
-        "City": "Washington",
-        "Region": "District of Columbia",
-        "PostalCode": "20007",
-        "Country": "US"
-    },
-    LegalRepresentativeBirthday: 1300186358,
-    LegalRepresentativeNationality: 'FR',
-    LegalRepresentativeCountryOfResidence: 'FR',
-    Tag: 'custom tag'
-}, function(data) {
-   bound(() => {
-    // Output the created user data to console
-    console.log(data.Name + ' user created at ' + data.CreationDate);
-    var post = {
-      userId: userId, 
-      Id_user_mangopay:data.Id,
-      Wallet_Id:"0"
-    };
-
-    Mangopay.insert(post);
-
-    /*var request = Mangopay.findOne(userId);
-var mangopay_id = request.Id_user_mangopay;*/
-
-        api.Wallets.create({
-        "Tag": "custom meta",
-        "Owners": [ data.Id ],
-        "Balance": {
-        "Currency": "EUR",
-
-        },
-        "FundsType": "DEFAULT",
-        "Description": "My big project",
-        "Currency": "EUR"
-
+         var userId = Meteor.userId();
+        const bound = Meteor.bindEnvironment((callback) => {callback();});
+         var user = Meteor.user();
+         var name = user.username;
+         var mail = user.profile.mail;
+        api.Users.create({
+            Name: name,
+            Email: mail,
+            LegalPersonType: 'BUSINESS',
+            LegalRepresentativeFirstName: 'rien ',
+            LegalRepresentativeLastName: 'rien ',
+            LegalRepresentativeEmail: mail,
+            PersonType: "LEGAL",
+            /*HeadquartersAddress: {
+                "AddressLine1": "4101 Reservoir Rd NW",
+                "AddressLine2": "",
+                "City": "Washington",
+                "Region": "District of Columbia",
+                "PostalCode": "20007",
+                "Country": "US"
+            },*/
+            LegalRepresentativeBirthday: 1300186358,
+            LegalRepresentativeNationality: 'FR',
+            LegalRepresentativeCountryOfResidence: 'FR',
+            Tag: name
         }, function(data) {
            bound(() => {
             // Output the created user data to console
-            console.log(data.Id + ' user created at ' + data.CreationDate);
+            console.log(data.Name + ' user created at ' + data.CreationDate);
+            var post = {
+              userId: userId, 
+              Id_user_mangopay:data.Id,
+              Wallet_Id:"0",
+              CardId:"0",
+              name : name
+            };
 
-            Mangopay.update({userId:userId},  {$set: {Wallet_Id:data.Id}});
+            Mangopay.insert(post);
+            /*var request = Mangopay.findOne(userId);
+        var mangopay_id = request.Id_user_mangopay;*/
+
+                api.Wallets.create({
+                "Tag": "custom meta",
+                "Owners": [ data.Id ],
+                "Balance": {
+                "Currency": "EUR",
+
+                },
+                "FundsType": "DEFAULT",
+                "Description": data.Name,
+                "Currency": "EUR"
+
+                }, function(data) {
+                   bound(() => {
+                    // Output the created user data to console
+                    console.log(data.Id + ' user created at ' + data.CreationDate);
+
+                    Mangopay.update({userId:userId},  {$set: {Wallet_Id:data.Id}});
+                     });
+                });
+
              });
         });
-
-     });
-});
 
        
     },
@@ -84,10 +85,10 @@ const bound = Meteor.bindEnvironment((callback) => {callback();});
 var userId = Meteor.userId();
 var request = Mangopay.findOne({userId:userId});
 var mangopay_id = request.Id_user_mangopay;
-
+var name = request.name;
 
        api.CardRegistrations.create({ 
-      "Tag": "custom meta007",
+      "Tag": "post.name_carte",
       "UserId": mangopay_id,
       "Currency": "EUR",
       "CardType": "CB_VISA_MASTERCARD"
@@ -96,13 +97,7 @@ var mangopay_id = request.Id_user_mangopay;
             // Output the created user data to console
             console.log(data);
 
-       Mangopay.update({userId:userId},  {$set: {AccessKey:data.AccessKey, PreregistrationData:data.PreregistrationData, CardId:data.Id, CardRegistrationURL:data.CardRegistrationURL}});
-
-
-
-
-
-
+       Mangopay.update({userId:userId},  {$set: {AccessKey:data.AccessKey, PreregistrationData:data.PreregistrationData, CardIdRegister:data.Id, CardRegistrationURL:data.CardRegistrationURL}});
 
         }); // fin de function(data)
            
@@ -110,90 +105,105 @@ var mangopay_id = request.Id_user_mangopay;
 
 },
 
-});
-
-
-
-
-
-
-
-
-
-api.PayIns.create({
-"Tag": "custom meta",
-"AuthorId": "40706141",
-"CreditedUserId": "40706141",
-"CreditedWalletId": "40706171",
-"DebitedFunds": {
-"Currency": "EUR",
-"Amount": 1200
+CardId: function(post) {
+var userId = Meteor.userId();
+Mangopay.update({userId:userId},  {$set: {CardId:post.CardId}});
 },
-"DebitedWalletId": "40706171",
-"CreditedFunds": {
-"Currency": "EUR",
-"Amount": 1200
+
+
+
+
+PayIn: function(post) {
+
+var frais = post.frais * 100;
+var don = post.don * 100;
+var from = post.From_id;
+var to = post.To_id;
+
+var request_from = Mangopay.findOne({userId:from});
+var From_id = request_from.Id_user_mangopay;
+var Wallet_from = request_from.Wallet_Id;
+var CardId_from = request_from.CardId;
+var name = request_from.name;
+var message = post.message
+
+var request_to = Mangopay.findOne({userId:to});
+var To_id = request_to.Id_user_mangopay;
+var Wallet_to = request_to.Wallet_Id;
+var CardId_to = request_to.CardId;
+var transfert = don - frais;
+    
+    api.PayIns.create({
+    "Tag": "message",
+    "AuthorId": From_id,
+    "CreditedUserId": From_id,
+    "CreditedWalletId": Wallet_from,
+    "DebitedFunds": {
+    "Currency": "EUR",
+    "Amount": don,
+    },
+    "Fees": {
+    "Currency": "EUR",
+    "Amount": frais,
+    },
+    "SecureModeReturnURL": "https://www.kurbys.com/index",
+    "CardId": CardId_from,
+    "SecureMode": "DEFAULT",
+    "StatementDescriptor": "Don",
+    "ResultMessage": "Transaction réussi",
+    "Type": "PAYIN",
+    "PaymentType": "CARD",
+    "ExecutionType": "DIRECT"
+    });
 },
-"Fees": {
-"Currency": "EUR",
-"Amount": 10
+
+Transfert: function(post) {
+
+var frais = post.frais * 100;
+var don = post.don * 100;
+var from = post.From_id;
+var to = post.To_id;
+
+var request_from = Mangopay.findOne({userId:from});
+var From_id = request_from.Id_user_mangopay;
+var Wallet_from = request_from.Wallet_Id;
+var CardId_from = request_from.CardId;
+var name = request_from.name;
+var message = post.message
+
+var request_to = Mangopay.findOne({userId:to});
+var To_id = request_to.Id_user_mangopay;
+var Wallet_to = request_to.Wallet_Id;
+var CardId_to = request_to.CardId;
+var transfert = don - frais;
+    
+
+    api.Transfers.create({
+
+    "Tag": "transfert",
+    "DebitedFunds": {
+    "Currency": "EUR",
+    "Amount": transfert,
+    },
+    "Fees": {
+    "Currency": "EUR",
+    "Amount": 0
+    },
+    "DebitedWalletId": Wallet_from,
+    "CreditedWalletId": Wallet_to,
+    "AuthorId": From_id,
+    "CreditedUserId": To_id,
+    "Nature": "REGULAR",
+    "Status": "SUCCEEDED",
+    "ResultCode": "000000",
+    "ResultMessage": "Transaction réussi",
+    //"Type": "PAYIN"
+    }, function(data) {
+       
+            // Output the created user data to console
+            console.log(data);
+
+      });
 },
-"SecureModeReturnURL": "http://www.my-site.com/returnURL",
-"CardId": "40706151",
-"SecureMode": "DEFAULT",
-"StatementDescriptor": "Mar2016",
-"ResultMessage": "The transaction was successful",
-"Type": "PAYIN",
-"PaymentType": "CARD",
-"ExecutionType": "DIRECT"
+
 });
-
-
-/*
-api.CardRegistrations.get({
-           "Id": "39924627"
-            },function( error, response ) {
-  if ( error ) {
-    console.log( error );
-  } else {
-    console.log( response);
-   }
-});
-*/
-
-/*
-api.Users.get(
-           40587612
-            ,function( error, response ) {
-  if ( error ) {
-    console.log( error );
-  } else {
-    console.log( response);
-   }
-});
-*/
-
-
-/*
-api.Wallets.create({
-"Id": "1r1gfhc214vgfd",
-"CreationDate": 12926321,
-"Tag": "custom meta",
-"Owners": [ "39677373" ],
-"Balance": {
-"Currency": "EUR",
-"Amount": 12630.0
-},
-"FundsType": "DEFAULT",
-"Description": "My big project",
-"Currency": "EUR"
-
-}).then(function(){
-    // Output the created user data to console
-    console.log();
-});
-*/
-
-
-
-

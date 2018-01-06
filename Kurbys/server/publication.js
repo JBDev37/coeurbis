@@ -7,6 +7,9 @@ Meteor.publish('Singleposts', function(id) {
   return Posts.find(id);
 });
 
+Meteor.publish('dons', function() {
+  return Dons.find();
+});
 
 Meteor.publish('users', function() {
   return Meteors.users.find({}, {

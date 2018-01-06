@@ -64,6 +64,9 @@
            <div class="result-vote"> {{count votes }} </div> 
             {{#if currentUser}}
                   <div class="btn btn-success btn-xs modifier_message private_com ecran"><a href="{{pathFor 'messagerie' post_author=this.userId}}" class="">Message privé</a></div>
+
+                   <div class="btn btn-danger btn-xs modifier_message private_com ecran"><a href="{{pathFor 'faire_don' post_author=this.userId}}" class="">Faire un don</a></div>
+
                   <div class="modifier_message private_com mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.userId}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
                   
                   <div class="favoris"><i class="fa {{etoile_favoris}} star" aria-hidden="true"></i> {{favoris}}</div>

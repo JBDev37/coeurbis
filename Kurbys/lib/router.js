@@ -296,6 +296,11 @@ Router.route('/confirmation_conseillere', {
   template : 'confirmation_conseillere',
 });
 
+Router.route('/confirmation_don', {
+  name: 'confirmation_don',
+  template : 'confirmation_don',
+});
+
 Router.route('/confirmation_conseillere_mobile', {
   name: 'confirmation_conseillere_mobile',
   template : 'confirmation_conseillere_mobile',
@@ -304,6 +309,21 @@ Router.route('/confirmation_conseillere_mobile', {
 Router.route('/recherche_conseillere', {
   name: 'recherche_conseillere',
   template : 'recherche_conseillere',
+
+});
+
+Router.route('/faire_don/:post_author?', {
+  name: 'faire_don',
+  template : 'faire_don',
+    data: function() {
+    return Mangopay.findOne(this.params.post_author); 
+  },
+    waitOn: function() {
+    return [
+     Meteor.subscribe('mangopay'),
+     Meteor.subscribe('dons'),
+     ];
+     },
 
 });
 

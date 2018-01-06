@@ -1,0 +1,42 @@
+<template name="faire_don">
+{{classement}} 
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages-acceuil">
+
+    <div class="register-form-devenir blanc">
+
+        <form enctype="multipart/form-data" action="" method="post">
+            <fieldset>
+                
+               {{#if is_fille_global}}
+                    <legend style="text-align:center;">Faire un don à <strong style="color: #ff6af1">{{{name_user}}}</strong></legend>
+               {{else}} 
+                    <legend style="text-align:center;" >Faire un don à <strong style="color: #2196f3">{{{name_user}}}</strong></legend>
+                {{/if}}    
+                    <strong style="font-size: 14px">Montant du don :</strong><br/>
+                     <div data-toggle="buttons">
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="10" value="true" >  10€</label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="20" value="true">  20€</label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="30" value="true">  30€</label>
+                    <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="40" value="true">  40€</label>
+                     <label class="btn btn-primary btn-sm btn-circle choix"><INPUT type="radio" name="50" value="true">  50€</label>
+                    </div>
+                    <br/>
+
+                    <strong style="font-size: 14px">Un petit mot de remerciement:</strong><br/>
+                    <textarea type="text" id="me" name="presentation" class="area-conseillere" required> </textarea><br>
+                    <br/> 
+                
+                <input type="submit" name="submit" value="Valider" class="btn btn-success" style="float: right;" />
+            </fieldset>
+        </form>
+      
+    </div>
+        
+</div>
+   
+</template>
+
+

@@ -3350,5 +3350,15 @@ label{
 
 .poeme{
     font-size: 16px;
+}
 
+.ajout_CB{
+    font-size: 16px;
+    text-align: center;
+    color: #0a68b4;
+    font-weight: bold;
+}
+
+.cart_form{
+    margin-left: 20px;
 }
