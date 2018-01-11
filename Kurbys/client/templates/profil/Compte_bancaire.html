@@ -5,20 +5,39 @@
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
-                <span class="ajout_CB">Enregistrer une carte bancaire</span>   
+                <span class="ajout_CB">Enregistrer une carte bancaire : <span style="color: red"> Faire des dons </span></span>   
                </div>
             </div>
-                    
+                    {{#if is_carte_CB}}
+                      {{> carte_ok}}
+                    {{else}}
                       {{> ItemCompteBancaire}}
+                    {{/if}}
             
-       </div>
+    </div>
+
+    <div class="container-messages-pay">
+            <!-- Simple post content example. -->
+            <div class="panel panel-default panelBot">
+                <div class="panel-body">
+                <span class="ajout_CB">Enregistrer un compte bancaire : <span style="color: red"> Recevoir des dons </span></span>   
+               </div>
+            </div>
+
+                    {{#if is_bank_account}}
+                      {{> bank_ok}}
+                    {{else}}
+                      {{> ItemIBAN}}
+                    {{/if}}
+ 
+    </div>
 
 </template>
 
 <template name="ItemCompteBancaire">
         <div class="pull-left"> <p></p></div>
                     
- <div class="message-gauche">
+ <div class="message-gauche-pay">
 
       <div class="container-messages-gauche">
         
@@ -96,11 +115,99 @@
 
 
            </div>
-            
-
                
         </div>
 
     </div>
 
 </template>    
+
+
+<template name="ItemIBAN">
+   <div class="message-gauche-pay">
+      <div class="container-messages-gauche">
+            <div class="content-message-gauche">
+                <form id="ibanForm" class="form-horizontal">
+                  <strong>Ajouter un compte bancaire pour recevoir des dons :</strong><br><br>
+                  
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">Nom :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="nom"  placeholder="Nom"/>
+                      </div><br>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">Prénom :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="prenom" placeholder="Prénom" />
+                      </div><br>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">Adresse :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="adresse" placeholder="Adresse" />
+                      </div><br>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">Ville :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="ville"  placeholder="Ville"/>
+                      </div><br>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">Code postal :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="code" placeholder="Code postal" />
+                      </div><br>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label" style="margin-top: -10px">Pays :</label>
+                      <select id="pays" class="selectpicker">
+                        <option value="FR" selected>France</option> 
+                        <option value="BE" >Belgique</option>
+                      </select>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label class="col-xs-3 control-label">IBAN :</label>
+                      <div class="col-xs-7">
+                          <input type="text" class="form-control" name="iban" required placeholder="IBAN"/>
+                      </div><br>
+                  </div><div id="reponse_iban" >ee</div>
+
+
+                  
+
+                  <input type="submit" name="submit" value="Valider" id="valid_iban" class="btn btn-primary " />
+              </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="carte_ok">
+   <div class="message-gauche-pay">
+      <div class="container-messages-gauche">
+      <div class="content-message-gauche">
+           Vous avez enregistré une carte bancaire. Vous pouvez envoyer des dons.     
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="bank_ok">
+   <div class="message-gauche-pay">
+      <div class="container-messages-gauche">
+      <div class="content-message-gauche">
+                Vous avez enregistré un compte bancaire. Vous pouvez recevoir des dons.
+      </div>
+    </div>
+  </div>
+</template>

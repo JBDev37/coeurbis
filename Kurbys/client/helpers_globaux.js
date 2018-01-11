@@ -788,6 +788,9 @@ Template.registerHelper("is_admin", function() {
     if (userId == 'oANNC3P9SpQ5Fw8Qg') {
       return true;
     }
+    if (userId == 'HbvR8JRpKRc5d4Mx5') {
+      return true;
+    }
 });
 
 Template.registerHelper("notif", function() {

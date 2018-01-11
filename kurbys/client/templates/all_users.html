@@ -1,0 +1,76 @@
+<template name="all_users">
+{{classement}} 
+{{> side_bar_right }}
+{{> side_bar_left }}
+
+<div class="container-messages-acceuil">
+
+    <div class="blanc">
+             <div class="titre_classement"> Tous les utilisateurs en ligne</div>
+    </div><br>
+
+{{#if is_admin}}
+
+  Utilisateurs en ligne : {{count_user}} <br>
+{{/if}}
+
+</div>
+ <br>
+    {{#each user}}
+
+          {{> ItemAll_user}}
+        
+    {{/each}}
+
+</template>
+
+<template name="ItemAll_user">
+<div class="container-messages">
+    <div class="message-gauche">
+
+    <div class="container-messages-gauche">
+    {{#if gender_garcon}} 
+         <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
+          {{#if currentUser}}
+
+          {{/if}}
+      </div> 
+      {{/if}}
+
+        {{#if gender_fille}} 
+       <div class="titre_message_container_fille"><div class="username" ><a href="{{pathFor 'profil' post_author=user_id }}" style="color: #ff6af1; margin-left: 5px;">{{username}}</a></div>
+          {{#if currentUser}}
+          <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
+         {{/if}}
+      </div> 
+      {{/if}}
+
+     <!-- <div class="content-message-gauche"> {{{breaklines profile.mail}}}</div> --><span style="margin-left: 10px; margin-top: 10px;">{{profile.mail}}</span>
+        
+      <div class="footer-message_acceuil">
+            <a href="{{pathFor 'profil' }}">{{author_name}}</a>
+            <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=this._id}}">Contacter</a></div>
+            <div class="date-message"></div>  
+            
+            <div class="footer-conseiller">
+            {{#if is_fille gender}} 
+              <div style="color: #ff6af1;" class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            
+            {{#if is_garcon gender}} 
+                <div class="statuts_classement_conseiller">{{status_conseiller user_id}}</div>
+            {{/if}}
+            <div class="date_last_connexion">  {{date_last_connexion user_id}}  </div>
+            </div>
+          
+             
+         
+         
+       </div>
+           
+       </div>
+
+    </div>
+</div>
+</template>

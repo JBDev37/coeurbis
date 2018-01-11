@@ -1,4 +1,4 @@
-Template.profil.events({
+Template.presentation.events({
   'touchstart .show-com': function(e) {
     e.preventDefault();
    document.getElementById('show-com').style.display="block";

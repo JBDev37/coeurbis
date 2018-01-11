@@ -92,13 +92,13 @@ Template.notificationItemCommentaires.events({
   'touchstart .comm': function() {
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
-    Router.go('mon_profil', {_id: this.to_id});
+    Router.go('presentation', {_id: this.to_id});
   },
 
     'click .comm': function() {
     Commentaires.update(this._id,{$set:{read:true}})
     //Router.routes.profil.path({post_author: this.to_id});
-    Router.go('mon_profil', {_id: this.to_id});
+    Router.go('presentation', {_id: this.to_id});
   },
 
   'touchstart .comm_mobile': function() {

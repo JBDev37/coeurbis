@@ -4,36 +4,86 @@
             <!-- Simple post content example. -->
             <div class="panel panel-default panelBot">
                 <div class="panel-body">
-                  <h4><a href="#" style="text-decoration:none;"><strong>Mon compte</strong></a></h4>      
+                <span class="ajout_CB">Mes Dons</span>   
+               </div>
+            </div><br>
+
+            <div class="panel panel-default panelBot">
+                <div class="panel-body">
+                <span class="ajout_CB" style="color: red">Dons effectués <span style="float: right;">Total : {{count_don_effectue}} €</span></span>   
                </div>
             </div>
-                    
-                      {{> ItemMonCompte}}
-                    
+                    {{#each Dons_effectue}}
+                      {{> Dons_effectues}}
+                    {{/each}}
+
+           <div class="panel panel-default panelBot">
+                <div class="panel-body">
+                <span class="ajout_CB" style="color: red">Dons recus<span style="float: right;">Total : {{count_don_recu}} €</span></span>
+               </div>
+            </div>
+                    {{#each Dons_recus}}
+                      {{> Dons_recu}}
+                    {{/each}}
+
+
+
+
        </div>
 
 </template>
 
-<template name="ItemMonCompte">
+<template name="Dons_effectues">
         <div class="pull-left"> <p></p></div>
                     
- <div class="message-gauche">
+ <div class="message-gauche">                       
 
       <div class="container-messages-gauche">
-        
+        {{#if gender_garcon this.To_id}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{To_name}} </div><span class="voir_don_garcons">{{don}} €</span></div> 
+        {{/if}}
 
-            <div class="content-message-gauche"> Bientôt disponible</div>
+        {{#if gender_fille this.To_id}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{To_name}}</div><span class="voir_don_filles">{{don}} €</span></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines message}}}</div>
             
           <div class="footer-message_acceuil">
-                
-                
-                
-              
-                 
+                <div class="date-message">{{date_francais date}}</div>  
+                <div class="nbr-reponse"></div>
+                 <div class="repondre profil_ami btn btn-success btn-sm"><a href="{{pathFor 'messagerie'}}" class="">Message</a></div>
            </div>
-               
         </div>
-
     </div>
 
-</template>    
+   
+    
+</template> 
+
+
+
+<template name="Dons_recu">
+        <div class="pull-left"> <p></p></div>
+                    
+ <div class="message-gauche">                       
+
+      <div class="container-messages-gauche">
+        {{#if gender_garcon this.From_id}} 
+             <div class="titre_message_container"><div class="username_garcon" >{{From_name}}</div><span class="voir_don_garcons">{{don}} €</span></div> 
+        {{/if}}
+
+        {{#if gender_fille this.From_id}} 
+           <div class="titre_message_container_fille"><div class="username_fille" >{{From_name}}</div><span class="voir_don_filles">{{don}} €</span></div> 
+        {{/if}}
+
+            <div class="content-message-gauche"> {{{breaklines message}}}</div>
+            
+          <div class="footer-message_acceuil">
+                <div class="date-message">{{date_francais date}}</div>  
+                <div class="nbr-reponse"></div>
+                 <div class="repondre profil_ami btn btn-success btn-sm"><a href="{{pathFor 'messagerie'}}" class="">Message</a></div>
+           </div>
+        </div>
+    </div>
+</template> 

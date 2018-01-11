@@ -50,10 +50,19 @@ Template.faire_don.events({
           });
 
          Meteor.call('PayIn', post, function(error, result) { // on recherche la methode 'postInsert' 
-            // affiche l'erreur à l'utilisateur et s'interrompt
+            var userId = Meteor.userId();
+            var user_mango = Mangopay.findOne({userId:userId});
+            var url = user_mango.url_3DS;
+            if (result){}
+              
+            if(url=="0"){Router.go('confirmation_don');
+             }else{Router.go(url)}
+                return throwError(error.reason);
             if (error)
                 return throwError(error.reason);
           });
+
+           
 
          Meteor.call('Transfert', post, function(error, result) { // on recherche la methode 'postInsert' 
             // affiche l'erreur à l'utilisateur et s'interrompt
@@ -61,7 +70,7 @@ Template.faire_don.events({
                 return throwError(error.reason);
           });
 
-         Router.go('confirmation_don');
+        // Router.go('confirmation_don');
       }
 
       

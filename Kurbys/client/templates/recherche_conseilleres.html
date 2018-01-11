@@ -52,6 +52,7 @@
       <div><a href="{{pathFor 'conseiller_online' }}" class="btn btn-block btn-danger conseiller_online">Tous les conseillers en ligne</a></div>
     </div>
         {{#if is_admin}}
+        <div><a href="{{pathFor 'all_users' }}" class="btn btn-block btn-success conseiller_online">Tous les utilisateurs </a></div>
          <div><a href="{{pathFor 'user_online' }}" class="btn btn-block btn-primary conseiller_online">Tous les utilisateurs en ligne</a></div>
       {{/if}}
 </div>

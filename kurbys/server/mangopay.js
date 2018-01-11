@@ -12,6 +12,9 @@ var api = new mangopay({
 
 
  Meteor.methods({
+
+  
+
     mangopay: function(postAttributes) {
          var userId = Meteor.userId();
         const bound = Meteor.bindEnvironment((callback) => {callback();});
@@ -47,6 +50,8 @@ var api = new mangopay({
               Id_user_mangopay:data.Id,
               Wallet_Id:"0",
               CardId:"0",
+              Num_BankAccount:"0",
+              url:"0",
               name : name
             };
 
@@ -114,7 +119,8 @@ Mangopay.update({userId:userId},  {$set: {CardId:post.CardId}});
 
 
 PayIn: function(post) {
-
+const bound = Meteor.bindEnvironment((callback) => {callback();});
+var userId = Meteor.userId();
 var frais = post.frais * 100;
 var don = post.don * 100;
 var from = post.From_id;
@@ -154,7 +160,27 @@ var transfert = don - frais;
     "Type": "PAYIN",
     "PaymentType": "CARD",
     "ExecutionType": "DIRECT"
-    });
+    }, function(data) {
+       bound(() => {
+            // Output the created user data to console
+            console.log(data);
+            var url = data.SecureModeRedirectURL;
+            if(url){
+                    Mangopay.update({userId:userId},  {$set: {url_3DS:url}});
+                   
+                   /* api.Hooks.create({
+                    "Tag": "custom meta",
+                    "EventType": "PAYIN_NORMAL_CREATED",
+                    "Url": url
+                  }, function(data) {
+       
+            // Output the created user data to console
+            console.log(data);
+
+      });*/
+            }
+          });
+      });
 },
 
 Transfert: function(post) {
@@ -177,7 +203,7 @@ var Wallet_to = request_to.Wallet_Id;
 var CardId_to = request_to.CardId;
 var transfert = don - frais;
     
-
+/*
     api.Transfers.create({
 
     "Tag": "transfert",
@@ -203,7 +229,71 @@ var transfert = don - frais;
             // Output the created user data to console
             console.log(data);
 
+      });*/
+},
+
+
+Account: function(post) {
+const bound = Meteor.bindEnvironment((callback) => {callback();});
+var id =post.userId;
+var iban = post.Iban;
+var nom = post.nom;
+var prenom = post.prenom;
+var ville = post.ville;
+var code = post.code;
+var adresse = post.adresse;
+var pays = post.pays;
+var nom_complet = prenom + " " + nom;
+
+
+    api.Users.createBankAccount(id,{
+
+    "Type": "IBAN",
+    "OwnerAddress": {
+    "AddressLine1": adresse,
+    "City": ville,
+    "PostalCode": code,
+    "Country": pays,
+    },
+    "OwnerName": nom_complet,
+    "Active": true,
+    "IBAN": iban,
+    
+    }, function(data) {
+           
+               bound(() => {
+            console.log(data);
+
+       Mangopay.update({Id_user_mangopay:id},  {$set: {Num_BankAccount:data.Id}});
+
+        });
       });
+
+
+/*
+api.PayOuts.create({
+"Tag": "custom meta145",
+"AuthorId": id,
+"DebitedFunds": {
+"Currency": "EUR",
+"Amount": 1200
+},
+"Fees": {
+"Currency": "EUR",
+"Amount": 0
+},
+"BankAccountId": "40888161",
+"DebitedWalletId": "40719040",
+"BankWireRef": "invoice 7282",
+"PaymentType": "BANK_WIRE"
+}, function(data) {
+           
+                // Output the created user data to console
+                console.log(data);
+
+          });
+*/
+
 },
 
 });

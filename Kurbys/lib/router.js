@@ -18,6 +18,7 @@ Router.configure({
     Meteor.subscribe('password'),
     Meteor.subscribe('conseilleres'),
     Meteor.subscribe('mangopay'),
+    Meteor.subscribe('dons'),
 
     /*Meteor.subscribe('posts'),*/
     /*Meteor.subscribe('comments'),*/
@@ -977,6 +978,11 @@ Router.route('/confirmation-rejoindre', {
 Router.route('/poeme', {
   name: 'poeme',
   template : 'poeme',
+});
+
+Router.route('/all_users', {
+  name: 'all_users',
+  template : 'all_users',
 });
 
 /*Router.route('/le_secret_de_cendrillon', function() {

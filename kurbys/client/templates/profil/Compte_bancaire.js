@@ -681,15 +681,15 @@ bound(() => {
 CardId : res.CardId
 
 }
-      Meteor.call('CardId', post, function(error, result) { // on recherche la methode 'postInsert' 
-            // affiche l'erreur à l'utilisateur et s'interrompt
+      Meteor.call('CardId', post, function(error, result) { 
+
             if (error)
                 return throwError(error.reason);
             //Router.go('postPage', {_id: result._id});
             //Router.go('postsList');
         });
       
-        // Success, you can use res.CardId now that points to registered card
+
     });
 });
 
@@ -699,7 +699,7 @@ CardId : res.CardId
 
 if (CardIdRegister){
   
-  Router.go('postsList');
+  Router.go('compte_bancaire');
 }
 
    
@@ -707,12 +707,81 @@ if (CardIdRegister){
 return mangoPay;
 }));
 
-
-
-
-
-   
-
   },
 });
 
+Template.ItemIBAN.events({
+  'click #valid_iban': function(e) {
+    e.preventDefault();
+    var iban = $('input[name=iban]').val();
+    var nom = $('input[name=nom]').val();
+    var prenom = $('input[name=prenom]').val();
+    var adresse = $('input[name=adresse]').val();
+    var ville = $('input[name=ville]').val();
+    var code = $('input[name=code]').val();
+    var pays = $('#pays').find('option:selected').val();
+
+    var valid = IBAN.isValid(iban);
+    var userId = Meteor.userId();
+    var request = Mangopay.findOne({userId:userId});
+    var id_mango = request.Id_user_mangopay;
+    var post = {
+               userId : id_mango,
+               Iban:iban,
+               nom:nom,
+               prenom:prenom,
+               adresse:adresse,
+               ville:ville,
+               code:code,
+               pays:pays,
+
+              }
+
+    if(valid == true){
+
+      Meteor.call('Account', post, function(error, result) { 
+            if (error)
+                return throwError(error);
+        });
+      
+      Router.go('compte_bancaire');
+        
+    
+
+    }else{
+      alert(pays)
+      document.getElementById("reponse_iban").style.display = "block"
+      document.getElementById("reponse_iban").innerHTML = "IBAN non valide"
+    }
+  },
+});
+
+
+Template.compte_bancaire.helpers({
+  is_carte_CB: function() {
+    var userId = Meteor.userId();
+    var request = Mangopay.findOne({userId:userId});
+    var CB = request.CardId;
+    if (CB =="0") {
+      return false;
+    }else{
+      return true
+    }
+
+  },
+
+  is_bank_account: function() {
+    var userId = Meteor.userId();
+    var request = Mangopay.findOne({userId:userId});
+    var bank = request.Num_BankAccount;
+    if (bank =="0") {
+      return false;
+    }else{
+      return true
+    }
+
+  },
+
+
+
+});

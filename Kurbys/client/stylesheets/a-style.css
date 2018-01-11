@@ -582,6 +582,7 @@ padding-top: 40px;
     /*border-color: #000000;
     border-width: 1px;
     border-style: solid;*/
+    background-color: white;
 
 }
 .content-message-gauche{
@@ -3362,3 +3363,40 @@ label{
 .cart_form{
     margin-left: 20px;
 }
+
+.voir_don_garcons{
+    color: #2196f3;
+    font-weight: bold;
+    float: right;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.voir_don_filles{
+    color: #ff6af1;
+    font-weight: bold;
+    float: right;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#reponse_iban{
+    display: none;
+    margin-left: 95px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.pay{
+    margin-top: -20px;
+}
+
+#valid_iban{
+    margin-left: 90px;
+
+}
+
+
