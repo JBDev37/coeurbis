@@ -1,5 +1,5 @@
 SSL('/Users/roussatjean-claude/Desktop/coeurbis/Kurbys/private/server.key','/Users/roussatjean-claude/Desktop/coeurbis/Kurbys/private/server.crt', 443);
-
+/*
 var mangopay = require('mangopay2-nodejs-sdk');
 
 var api = new mangopay({
@@ -36,7 +36,7 @@ var api = new mangopay({
                 "Region": "District of Columbia",
                 "PostalCode": "20007",
                 "Country": "US"
-            },*/
+            },
             LegalRepresentativeBirthday: 1300186358,
             LegalRepresentativeNationality: 'FR',
             LegalRepresentativeCountryOfResidence: 'FR',
@@ -57,7 +57,7 @@ var api = new mangopay({
 
             Mangopay.insert(post);
             /*var request = Mangopay.findOne(userId);
-        var mangopay_id = request.Id_user_mangopay;*/
+        var mangopay_id = request.Id_user_mangopay;
 
                 api.Wallets.create({
                 "Tag": "custom meta",
@@ -177,7 +177,7 @@ var transfert = don - frais;
             // Output the created user data to console
             console.log(data);
 
-      });*/
+      });
             }
           });
       });
@@ -203,7 +203,7 @@ var Wallet_to = request_to.Wallet_Id;
 var CardId_to = request_to.CardId;
 var transfert = don - frais;
     
-/*
+
     api.Transfers.create({
 
     "Tag": "transfert",
@@ -229,7 +229,7 @@ var transfert = don - frais;
             // Output the created user data to console
             console.log(data);
 
-      });*/
+      });
 },
 
 
@@ -292,8 +292,8 @@ api.PayOuts.create({
                 console.log(data);
 
           });
-*/
+
 
 },
 
-});
+});*/

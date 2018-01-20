@@ -5,8 +5,10 @@
   <a href="https://play.google.com/store/apps/details?id=com.idb9qf011pqj13l1a3vqwl&hl=fr" > <img src="/google-play.png" class="google-play"></a>
   <a href="https://itunes.apple.com/us/app/kurbys/id1295881140?ls=1&mt=8" > <img src="/app_store.png" class="app-play"></a>
 
-       {{#if is_conseiller}} {{else}}
-       <a href="{{pathFor 'devenir_conseillere' }}" ><div class="devenir-conseillere"><i class="fa fa-heartbeat" aria-hidden="true" style="color: red"></i> Devenir conseiller</div></a>
+       {{#if is_conseiller}}
+             
+        {{else}}
+             <a href="{{pathFor 'devenir_conseillere' }}" ><div class="devenir-conseillere"><i class="fa fa-heartbeat" aria-hidden="true" style="color: red"></i> Devenir conseiller</div></a>
        {{/if}}
 
         <a href="{{pathFor 'recherche_conseillere' }}" ><div class="recherche-conseillere"><i class="fa fa-search" aria-hidden="true" style="color: black"></i> Recherche conseillers</div></a>
@@ -21,10 +23,10 @@
 
 
      <div class="top-conseillere">
-        <div class="top-conseillere-header"><strong> Top conseillers</strong></div>
+        <div class="top-conseillere-header"><strong> Les plus recomandés</strong></div>
        
        {{#if currentUser}}
-        <a href="{{pathFor 'classementComplet' }}"><div class="classement" ><i class="fa fa-trophy" aria-hidden="true" style="color: #f0a703"></i> Classement complet</div></a>
+        <a href="{{pathFor 'classementComplet' }}"><div class="classement" > Voir tous les conseillers</div></a>
        {{/if}}
 
          <div class="top-conseillere-scroll">
@@ -33,14 +35,14 @@
            
               {{#if is_fille_conseillere gender}}
                   <div class="top-conseillere-content-fille">
-                      <div class="top-conseillere-number"> n°{{true_value @index}} </div>         
+                         
                       
                       {{#if currentUser}}
                       <div class="top-conseillere-pseudo-fille"><a href="{{pathFor 'presentation' post_author=user_id}}">{{name}}</a></div> 
                       {{else}}
                       <div class="top-conseillere-pseudo-fille"><a href="">{{name}}</a></div> 
-                      {{/if}}
-                      <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
+                      {{/if}}<br>
+                      <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
                        <div class=" etoile"> {{{etoiles user_id}}}</div><br>
                       <!--<div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>-->
                   </div>
@@ -48,14 +50,14 @@
 
               {{#if is_garcon_conseillere gender}}    
                   <div class="top-conseillere-content-garcon">
-                      <div class="top-conseillere-number"> n°{{true_value @index}} </div>                      
+                                
                      
                       {{#if currentUser}}
                       <div class="top-conseillere-pseudo-garcon"><a href="{{pathFor 'presentation' post_author=user_id}}">{{name}}</a></div>
                       {{else}}
                       <div class="top-conseillere-pseudo-garcon"><a href="">{{name}}</a></div> 
-                      {{/if}}
-                      <div class="top-conseillere-confiance">Statut: <strong>{{status_conseiller user_id}}</strong></div>
+                      {{/if}}<br>
+                      <div class="top-conseillere-confiance">{{status_conseiller user_id}}</div>
                       <div class=" etoile"> {{{etoiles user_id}}}</div><br>
                       <!--<div class="person_aide">Personnes aidées : <strong>{{personne_aidé user_id}}</strong></div>-->
                   </div>

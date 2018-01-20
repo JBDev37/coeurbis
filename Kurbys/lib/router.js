@@ -17,8 +17,7 @@ Router.configure({
     Meteor.subscribe('lastlogin'),
     Meteor.subscribe('password'),
     Meteor.subscribe('conseilleres'),
-    Meteor.subscribe('mangopay'),
-    Meteor.subscribe('dons'),
+
 
     /*Meteor.subscribe('posts'),*/
     /*Meteor.subscribe('comments'),*/
@@ -89,7 +88,7 @@ Router.route('/', function () {
   this.redirect('/index');
 });
 
-Router.route('index/:postsLimit?', {
+Router.route('index/:postsLimit?/:theme?/', {
 name: 'postsList',
 });
 
@@ -199,14 +198,6 @@ Router.route('/profil/:_id', {
 Router.route('/messagerie/:post_author?', {
 	name: 'messagerie',
 	template : 'messagerie',
-    waitOn: function() {
-    return [
-     Meteor.subscribe('chat',this.params.post_author),
-     Meteor.subscribe('userBloquer'),
-     Meteor.subscribe('contact_Chat'),
-     Meteor.subscribe('favoris'),
-     ];
-     },
    data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
@@ -313,20 +304,6 @@ Router.route('/recherche_conseillere', {
 
 });
 
-Router.route('/faire_don/:post_author?', {
-  name: 'faire_don',
-  template : 'faire_don',
-    data: function() {
-    return Mangopay.findOne(this.params.post_author); 
-  },
-    waitOn: function() {
-    return [
-     Meteor.subscribe('mangopay'),
-     Meteor.subscribe('dons'),
-     ];
-     },
-
-});
 
 Router.route('/recherche_mobile', {
   name: 'recherche_mobile',
@@ -535,44 +512,7 @@ Router.route('/visites/:post_author?', {
      },
 });
 
-Router.route('/mon_compte/:post_author?', {
-  name: 'mon_compte',
-  template : 'mon_compte',
-  data: function() {
-    return Meteor.users.findOne(this.params.post_author); 
-  },
-  
-});
 
-Router.route('/compte_bancaire/:post_author?', {
-
-  name: 'compte_bancaire',
-  template : 'compte_bancaire',
-  data: function() {
-    return Meteor.users.findOne(this.params.post_author); 
-},
-  
-});
-
-/*
-Router.route('/compte_bancaire/:post_author?',function(){
-
-
-  if(isHTTPS()){
-    this.route('/compte_bancaire/:post_author?', {
-  name: 'compte_bancaire',
-  template : 'compte_bancaire',
-  data: function() {
-    return Meteor.users.findOne(this.params.post_author); 
-},
-});
-  } else {
-    switchHTTPS([6000]);
-  }
-  
-  
-});
-*/
 
 
 Router.route('/visites_mobile/:post_author?', {
@@ -846,18 +786,7 @@ Router.route('/presentation/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author);
      },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
+
 });
 
 Router.route('/alertes_mobile/:post_author?', {

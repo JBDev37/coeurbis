@@ -67,7 +67,8 @@ meteorhacks:npm
 kadira:dochead
 pcel:loading
 reywood:iron-router-ga
-nourharidy:ssl
 tarang:ssl
 http
 theduke:iban
+nourharidy:ssl
+reactive-dict

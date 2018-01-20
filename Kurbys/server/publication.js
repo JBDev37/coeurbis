@@ -7,9 +7,6 @@ Meteor.publish('Singleposts', function(id) {
   return Posts.find(id);
 });
 
-Meteor.publish('dons', function() {
-  return Dons.find();
-});
 
 Meteor.publish('users', function() {
   return Meteors.users.find({}, {
@@ -18,9 +15,7 @@ Meteor.publish('users', function() {
      }});
 });
 
-Meteor.publish('mangopay', function() {
-  return Mangopay.find();
-});
+
 
 Meteor.publish('comments', function() {
   return Comments.find();
@@ -49,6 +44,7 @@ Meteor.publish('chat', function(id) {
    var my_id = Meteor.userId();
       return Chat.find({$or :[{from_id:id, to_id:my_id},{to_id:id, from_id:my_id}]});
 });
+
 
 
 Meteor.publish('chat_notif', function() {

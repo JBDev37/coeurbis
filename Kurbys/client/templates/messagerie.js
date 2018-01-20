@@ -10,9 +10,39 @@ element.scrollTop = element.scrollHeight - element.clientHeight;
 
 };
 
+Template.messagerie.rendered = function() {
+
+
+
+};
+
+Template.messagerie.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+      this.subscribe('chat', user);
+      //this.subscribe('contact_Chat');
+      this.subscribe('favoris');
+      this.subscribe('userBloquer');
+    });
+
+
+});
+
+Template.messagerie_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+      this.subscribe('chat', user);
+      this.subscribe('contact_Chat');
+      this.subscribe('favoris');
+      this.subscribe('userBloquer');
+    });
+
+});
+
 Template.Item_message_gauche.helpers({
     favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'Favoris';
@@ -24,6 +54,7 @@ Template.Item_message_gauche.helpers({
 
     etoile_favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris')
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'fa-star';
@@ -38,6 +69,7 @@ Template.Item_message_gauche.helpers({
 Template.Item_message_gauche_mobile.helpers({
     favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'Favoris';
@@ -49,6 +81,7 @@ Template.Item_message_gauche_mobile.helpers({
 
     etoile_favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'fa-star';
@@ -63,6 +96,7 @@ Template.Item_message_gauche_mobile.helpers({
 Template.Item_message_gauche.events({
     'click .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -88,6 +122,7 @@ Template.Item_message_gauche.events({
 
     'touchstart .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -116,6 +151,7 @@ Template.Item_message_gauche.events({
 Template.Item_message_gauche_mobile.events({
     'click .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -141,6 +177,7 @@ Template.Item_message_gauche_mobile.events({
 
     'touchstart .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -169,6 +206,7 @@ Template.Item_message_gauche_mobile.events({
 Template.Item_message_droite.helpers({
     favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'Favoris';
@@ -180,6 +218,7 @@ Template.Item_message_droite.helpers({
 
     etoile_favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'fa-star';
@@ -195,6 +234,7 @@ Template.Item_message_droite.helpers({
 Template.Item_message_droite_mobile.helpers({
     favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'Favoris';
@@ -206,6 +246,7 @@ Template.Item_message_droite_mobile.helpers({
 
     etoile_favoris_mess: function() {
     var userId = Meteor.userId();
+    //Meteor.subscribe('favoris');
     var request = Favoris.findOne({"id_post":this._id, "id_user_add_favoris":userId});
     if (request) { 
       return 'fa-star';
@@ -220,6 +261,7 @@ Template.Item_message_droite_mobile.helpers({
 Template.Item_message_droite.events({
     'click .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -245,6 +287,7 @@ Template.Item_message_droite.events({
 
     'touchstart .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -273,6 +316,7 @@ Template.Item_message_droite.events({
 Template.Item_message_droite_mobile.events({
     'click .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -298,6 +342,7 @@ Template.Item_message_droite_mobile.events({
 
     'touchstart .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 
@@ -327,8 +372,10 @@ Template.Item_message_droite_mobile.events({
 Template.messagerie.helpers({
     
     mes_messages: function() {
+    
     var curentUser = this._id;
     var current_id = Router.current().params.post_author;
+    //Meteor.subscribe('chat',current_id);
     var my_id = Meteor.userId();
     var messages_recu = Chat.find({$or : [{from_id: curentUser, to_id:my_id}, {from_id: my_id, to_id:curentUser}]});
     return messages_recu;
@@ -338,6 +385,7 @@ Template.messagerie.helpers({
     message_unread: function() {
     var current_id = Router.current().params.post_author;
     var my_id = Meteor.userId();
+    //Meteor.subscribe('chat',current_id);
     var messages_recu = Chat.findOne({$or : [{from_id: current_id, to_id:my_id}, {from_id: my_id, to_id:current_id}]});
 
     if (current_id==messages_recu.from_id){ 
@@ -357,6 +405,7 @@ Template.messagerie.helpers({
     bloquer: function() {
     var to_id = Router.current().params.post_author;  
     var userId = Meteor.userId();
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) { 
       return 'Débloquer';
@@ -367,47 +416,56 @@ Template.messagerie.helpers({
   },
 
     add_contact_chat: function() {
-    var user = Meteor.user();
-    var userId = Meteor.userId();
-    var to_id = this._id;
-    var name = Meteor.users.findOne(this._id);
-    var username = name.username;
-    var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
-    if(to_id){
-        if (request) {
-               ContactChat.update(request._id, {$set: {show:true} }, function(error) {
-              if (error) {
-               return throwError(error.reason);
-              } else {}
-              });
-        } 
-        else {
-          var post = {
-          from_id: Meteor.userId(),
-          from_name: user.username,
-          to_id: this._id,
-          to_name: username,
-          show:true
-        };
+     
+    const handle = Meteor.subscribe('contact_Chat');
+    Tracker.autorun(() => {
+    const isReady = handle.ready();
+    if (isReady==true){
+              var user = Meteor.user();
+              var userId = Meteor.userId();
+              var to_id = this._id;
+              var name = Meteor.users.findOne(this._id);
+              var username = name.username;
+              var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]}); 
 
-        var errors = validatePost(post);
-        if (errors.user)
-          return Session.set('postSubmitErrors', errors);
+                  if(request) {
+                         ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+                        if (error) {
+                         return throwError(error.reason);
+                        } 
+                        });
+                  } 
 
-        Meteor.call('contact_chat', post, function(error, result) { 
-                if (error)
-                    return throwError(error.reason);
-                //Router.go('postPage', {_id: result._id});
-            });
-        
-        }
-    }
+                 if(!request) {
+                    var post = {
+                    from_id: Meteor.userId(),
+                    from_name: user.username,
+                    to_id: this._id,
+                    to_name: username,
+                    show:true
+                  };
+
+                  var errors = validatePost(post);
+                  if (errors.user)
+                    return Session.set('postSubmitErrors', errors);
+
+                  Meteor.call('contact_chat', post, function(error, result) { 
+                          if (error)
+                              return throwError(error.reason);
+                          //Router.go('postPage', {_id: result._id});
+                      });
+                  
+                  }
+     };
+
+    });
   },
 
     mes_contacts: function() {
     var userId = Meteor.userId();
     var current_id = Router.current().params.post_author;
     var request = Meteor.users.findOne(current_id);
+    //Meteor.subscribe('contact_Chat');
     if(!request){ 
       var search = ContactChat.findOne({from_id :current_id, to_id:userId });
       if(search){ ContactChat.remove(search._id);}
@@ -419,6 +477,7 @@ Template.messagerie.helpers({
 
     contact_bloque: function() {
     var userId = Meteor.userId();
+     //Meteor.subscribe('userBloquer');
     return UserBloquer.find({from_id: userId});
  
    
@@ -426,7 +485,7 @@ Template.messagerie.helpers({
 
     not_current_user: function() {
     var current_id = Router.current().params.post_author;
-
+    //Meteor.subscribe('contact_Chat');
     var userId = Meteor.userId();
     var user = ContactChat.findOne({$or : [{from_id: userId, to_id:current_id }, {to_id:userId,from_id:current_id }]});
   
@@ -450,6 +509,7 @@ Template.messagerie_mobile.helpers({
     var curentUser = this._id;
     var current_id = Router.current().params.post_author;
     var my_id = Meteor.userId();
+    //Meteor.subscribe('chat',current_id);
     var messages_recu = Chat.find({$or : [{from_id: curentUser, to_id:my_id}, {from_id: my_id, to_id:curentUser}]});
 
     return messages_recu;
@@ -458,6 +518,7 @@ Template.messagerie_mobile.helpers({
     bloquer: function() {
     var userId = Meteor.userId();
     var to_id = Router.current().params.post_author;
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) { 
       return 'Débloquer';
@@ -468,41 +529,48 @@ Template.messagerie_mobile.helpers({
   },
 
   add_contact_chat: function() {
-    var user = Meteor.user();
-    var userId = Meteor.userId();
-    var to_id = this._id;
-    var name = Meteor.users.findOne(this._id);
-    var username = name.username;
-    var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]});
-    if(to_id){
-        if (request) {
-               ContactChat.update(request._id, {$set: {show:true} }, function(error) {
-              if (error) {
-               return throwError(error.reason);
-              } else {}
-              });
-        } 
-        else {
-          var post = {
-          from_id: Meteor.userId(),
-          from_name: user.username,
-          to_id: this._id,
-          to_name: username,
-          show:true
-        };
+    const handle = Meteor.subscribe('contact_Chat');
+    Tracker.autorun(() => {
+    const isReady = handle.ready();
+    if (isReady==true){
+              var user = Meteor.user();
+              var userId = Meteor.userId();
+              var to_id = this._id;
+              var name = Meteor.users.findOne(this._id);
+              var username = name.username;
+              var request = ContactChat.findOne({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]}); 
 
-        var errors = validatePost(post);
-        if (errors.user)
-          return Session.set('postSubmitErrors', errors);
+                  if(request) {
+                         ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+                        if (error) {
+                         return throwError(error.reason);
+                        } 
+                        });
+                  } 
 
-        Meteor.call('contact_chat', post, function(error, result) { 
-                if (error)
-                    return throwError(error.reason);
-                //Router.go('postPage', {_id: result._id});
-            });
-        
-        }
-    }
+                 if(!request) {
+                    var post = {
+                    from_id: Meteor.userId(),
+                    from_name: user.username,
+                    to_id: this._id,
+                    to_name: username,
+                    show:true
+                  };
+
+                  var errors = validatePost(post);
+                  if (errors.user)
+                    return Session.set('postSubmitErrors', errors);
+
+                  Meteor.call('contact_chat', post, function(error, result) { 
+                          if (error)
+                              return throwError(error.reason);
+                          //Router.go('postPage', {_id: result._id});
+                      });
+                  
+                  }
+     };
+
+    });
   },
 });
 
@@ -516,6 +584,7 @@ Template.messagerie_mobile.events({
    
     var userId = Meteor.userId();
     var to_id = this._id;
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) {
      var is_bloquer = true;
@@ -560,6 +629,7 @@ Template.messagerie_mobile.events({
    
     var userId = Meteor.userId();
     var to_id = this._id;
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) {
      var is_bloquer = true;
@@ -614,7 +684,7 @@ Template.messagerie_mobile.events({
       to_id: this._id,
       to_name: username
     };
-
+    //Meteor.subscribe('contact_Chat')
     var search = ContactChat.findOne({$or : [{from_id: userId, to_id:this._id }, {to_id:userId,from_id:this._id }]});
     var contact_id = search._id;
 
@@ -679,7 +749,7 @@ Template.messagerie.events({
       to_id: this._id,
       to_name: username
     };
-
+    //Meteor.subscribe('contact_Chat');
     var search = ContactChat.findOne({$or : [{from_id: userId, to_id:this._id }, {to_id:userId,from_id:this._id }]});
     var contact_id = search._id;
 
@@ -712,6 +782,7 @@ Template.messagerie.events({
    
     var userId = Meteor.userId();
     var to_id = this._id;
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) {
      var is_bloquer = true;
@@ -756,6 +827,7 @@ Template.messagerie.events({
    
     var userId = Meteor.userId();
     var to_id = this._id;
+    //Meteor.subscribe('userBloquer');
     var request = UserBloquer.findOne({"from_id": userId , "to_id":to_id });
     if (request) {
      var is_bloquer = true;
@@ -875,7 +947,7 @@ Template.messagerie.events({
     if(this.to_id == userId){
     id=this.from_id
     }else {id=this.to_id}
-
+    //Meteor.subscribe('contact_Chat');
     var search = ContactChat.findOne({$or : [{from_id: userId, to_id:id }, {to_id:userId,from_id:id }]});
     var contact_id = search._id;
 
@@ -892,10 +964,10 @@ Template.messagerie.events({
     if(this.to_id == userId){
     id=this.from_id
     }else {id=this.to_id}
-
+    //Meteor.subscribe('contact_Chat');
     var search = ContactChat.findOne({$or : [{from_id: userId, to_id:id }, {to_id:userId,from_id:id }]});
     var contact_id = search._id;
-
+    
     ContactChat.update(contact_id, {$set: {show:false} }, function(error) {
           if (error) {
            return throwError(error.reason);
@@ -905,17 +977,22 @@ Template.messagerie.events({
   },
 
      'touchstart .delete_msg':function() {
-    Chat.remove(this._id);
+      var current_id = Router.current().params.post_author;
+      //Meteor.subscribe('chat',current_id);
+      Chat.remove(this._id);
 
   },
 
     'click .delete_msg':function() {
-    Chat.remove(this._id);
+      var current_id = Router.current().params.post_author;
+      //Meteor.subscribe('chat',current_id);
+      Chat.remove(this._id);
 
   },
 
    'touchstart .favoris': function(e) {
     e.preventDefault();
+    //Meteor.subscribe('favoris');
       var userId = Meteor.userId();
       var post = {
       id_user_add_favoris: userId, 

@@ -1,24 +1,16 @@
 Template.postsList.helpers({
   posts: function() {
-    return Posts.find({}, {sort: {post_date: -1}});
+    var limit= Router.current().params.postsLimit;
+    var theme = Router.current().params.theme;
+    
+    if(theme){
+      return Posts.find({'categorie':theme}, {sort: {post_date: -1},limit:50});
+    }else{
+      return Posts.find({}, {sort: {post_date: -1}});
+    }
   },
 
-   mangopay :function() {
-      var userId = Meteor.userId();
-      var post = {
-      userId: userId, 
-    };
-
-    var search = Mangopay.find({"userId":userId}).count();
-    if(search==0){
-             Meteor.call('mangopay', post, function(error, result) { // on recherche la methode 'postInsert' 
-                // affiche l'erreur à l'utilisateur et s'interrompt
-                if (error)
-                    return throwError(error.reason);
-                //Router.go('postPage', {_id: result._id});
-            });
-        }
-    },
+   
 
 
 });
@@ -214,3 +206,46 @@ Template.postItem.events({
 
 
 });
+
+Template.classer.events({
+  'submit form': function(e) {
+    e.preventDefault();
+
+   
+      var amitie = $('input[type=radio][name=amitie]:checked').attr('value');
+      var amour = $('input[type=radio][name=amour]:checked').attr('value');
+      var confiance = $('input[type=radio][name=confiance]:checked').attr('value');
+      var sexo = $('input[type=radio][name=sexo]:checked').attr('value');
+      var autre = $('input[type=radio][name=autre]:checked').attr('value');
+            
+      if(amitie){
+      Router.go('postsList', {postsLimit: 30, theme:amitie});
+      $("input:radio").attr("checked", false);
+          }
+
+      if(amour){
+      Router.go('postsList', {postsLimit: 30, theme:amour});
+      $("input:radio").attr("checked", false);
+          }
+
+      if(confiance){
+      Router.go('postsList', {postsLimit: 30, theme:confiance});
+      $("input:radio").attr("checked", false);
+          }
+
+      if(sexo){
+      Router.go('postsList', {postsLimit: 30, theme:sexo});
+      $("input:radio").attr("checked", false);
+          }
+
+      if(autre){
+      Router.go('postsList', {postsLimit: 30, theme:autre});
+      $("input:radio").attr("checked", false);
+          }
+
+    
+    
+    
+  },
+  });
+

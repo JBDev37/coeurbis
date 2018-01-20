@@ -3,10 +3,10 @@
 {{> side_bar_right }}
 {{> side_bar_left }}
 {{test}}
-{{mangopay}}
+
 {{#if currentUser}}
     {{#if is_conseiller}}
-     <div style="margin-top: 20px; height: 10px;"></div>
+     <div style="margin-top: 20px; height: 10px;" class="mobile_lien"></div>
     {{else}}
     <div class="btn btn-block btn-primary mobile_lien devenir_conseiller_accueil"><a href="{{pathFor 'devenir_conseillere_mobile' }}">Devenir conseiller</a></div>
     
@@ -17,6 +17,10 @@
 	{{> postSubmit}}
   <!--{{#if currentUser}}{{else}}<div style="margin-top: 80px;"></div>{{/if}}-->
   <!--<a href="{{pathFor 'le_secret_de_cendrillon'}}"><img src="/livre-pub.png" class="test"></a>-->
+    
+{{> classer}}
+
+
     <div class="containeur_acceuil">
       <span class="mobile_lien"></span>
         {{#each posts}}
@@ -73,7 +77,7 @@
 
       {{/if}}
 
-      <div class="content-message-gauche"> {{{limite_caractere_acceuil post_content}}} ...</div>
+      <div class="content-message-gauche"> {{{limite_caractere_acceuil post_content}}} </div>
         
       <div class="footer-message_acceuil">
             <div style="display: block;">
@@ -190,3 +194,41 @@
 
 </div>
 </template>
+
+
+
+
+<template name="classer">
+
+  <div class="message-gauche-trier">
+     <div class="titre_message_container_trier ecran" >Trier par catégorie :
+     </div> 
+
+    <div class="container-messages-gauche">
+      <div class="content-message-trier"> 
+      </div>
+            <form action="message_poster.php" class="form-horizontal form_acceuil" method="POST" id="" >
+            
+            <div class="form-group footer-poster-message">
+                  <div class="form-group choix-theme" >
+                     
+                     <div data-toggle="buttons">
+                        <label class="btn btn-success  btn-xs btn-circle "><input type="radio" name="amour" value="Amour"  >Amour</label>
+                        <label class="btn btn-success    btn-xs btn-circle "><input type="radio" name="amitie" value="Amitié">Amitié</label>
+                        <label class="btn btn-success  btn-xs btn-circle "><input type="radio" name="confiance" value="Confiance en soi">Confiance en soi</label>
+   
+                         <label class="btn btn-success  btn-xs btn-circle"><input type="radio" name="sexo" value="Sexo">Sexo</label>
+                         <label class="btn btn-success btn-xs btn-circle"><input type="radio" name="autre" value="Autre">Autre</label>
+                     </div> <input type="submit" name="submit" value="Trier" class="btn btn-sm btn-primary ecran valider-trier"/> 
+                 </div>
+
+               
+                
+  
+            </div>
+        </form>
+    </div>
+  </div>
+</template>
+
+

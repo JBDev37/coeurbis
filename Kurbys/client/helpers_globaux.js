@@ -316,7 +316,7 @@ Template.registerHelper("limite_caractere_acceuil", function(text) {
   text1 = text.replace(/(\r\n|\n|\r)/g, "<br>");
   }
 
-  return text1.substring(0, 800);
+  return text1.substring(0, 80000);
 });
 
 Template.registerHelper("url_contact", function() {
@@ -819,8 +819,52 @@ Template.registerHelper("is_rejoindre", function() {
   }  
 });
 
+/*
+Template.registerHelper("add_contact_chat", function() {
+   
+     
 
+    var user = Meteor.user();
+    var userId = Meteor.userId();
+    var to_id = this._id;
+    var name = Meteor.users.findOne(this._id);
+    var username = name.username;
+    
+   
+  
+  var request = ContactChat.find({$or : [{from_id: userId, to_id:to_id}, {from_id: to_id, to_id:userId}]}).count(); 
+  alert(request)
 
+        if(request==1) {
+               ContactChat.update(request._id, {$set: {show:true} }, function(error) {
+              if (error) {
+               return throwError(error.reason);
+              } else {}
+              });
+        } 
+        else {
+          var post = {
+          from_id: Meteor.userId(),
+          from_name: user.username,
+          to_id: this._id,
+          to_name: username,
+          show:true
+        };
 
+        var errors = validatePost(post);
+        if (errors.user)
+          return Session.set('postSubmitErrors', errors);
+
+        Meteor.call('contact_chat', post, function(error, result) { 
+                if (error)
+                    return throwError(error.reason);
+                //Router.go('postPage', {_id: result._id});
+            });
+        
+        }
+    
+
+    
+  });*/
 
 

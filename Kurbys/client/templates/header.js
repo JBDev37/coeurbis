@@ -1,9 +1,9 @@
 Template.header.helpers({
     id: function() {
-    Meteor.subscribe('contact_Chat');
+    //Meteor.subscribe('contact_Chat');
     Meteor.subscribe('notifications');
     Meteor.subscribe('requests');
-    Meteor.subscribe('chat_notif');       
+    Meteor.subscribe('chat_notif');   
     return Meteor.userId();
   },
 

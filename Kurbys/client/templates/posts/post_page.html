@@ -30,7 +30,7 @@
     
     {{#if is_garcon gender}}
           {{#if currentUser}}
-          <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'profil' post_author=this.userId}}">{{author}}</a></div> 
+          <div class="titre_message_container" style="color: #2196f3"><a href="{{pathFor 'presentation' post_author=this.userId}}">{{author}}</a></div> 
           {{else}}
           <div class="titre_message_container" style="color: #2196f3"><a href="">{{author}}</a>   </div>      
           {{/if}}
@@ -41,7 +41,7 @@
      
      {{#if is_fille gender}}
          {{#if currentUser}}
-         <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'profil' post_author=this.userId}}" style="color: #ff6af1" >{{author}}</a></div> 
+         <div class="titre_message_container_fille" style="color: #ff6af1"><a href="{{pathFor 'presentation' post_author=this.userId}}" style="color: #ff6af1" >{{author}}</a></div> 
          {{else}}
          <div class="titre_message_container_fille" style="color: #ff6af1"><a href="" style="color: #ff6af1" >{{author}}</a></div> 
          {{/if}}    
@@ -65,7 +65,7 @@
             {{#if currentUser}}
                   <div class="btn btn-success btn-xs modifier_message private_com ecran"><a href="{{pathFor 'messagerie' post_author=this.userId}}" class="">Message privé</a></div>
 
-                   <div class="btn btn-danger btn-xs modifier_message private_com ecran"><a href="{{pathFor 'faire_don' post_author=this.userId}}" class="">Faire un don</a></div>
+                  
 
                   <div class="modifier_message private_com mobile_lien "><a href="{{pathFor 'messagerie_mobile' post_author=this.userId}}" class=""><i class="fa fa-comment-o" aria-hidden="true"></i> Privé</a></div>
                   

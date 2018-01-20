@@ -19,6 +19,7 @@
     {{#each user}}
 
           {{> ItemAll_user}}
+          
         
     {{/each}}
 
@@ -29,7 +30,8 @@
     <div class="message-gauche">
 
     <div class="container-messages-gauche">
-    {{#if gender_garcon}} 
+    
+  <!--{{#if gender_garcon}} 
          <div class="titre_message_container"><div class="username" > <a href="{{pathFor 'profil' post_author=user_id}}" style="margin-left: 5px;">{{username}}</a></div>
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}} </div> 
           {{#if currentUser}}
@@ -44,10 +46,10 @@
           <div class="online-conseillere"  > {{#if user_online_conseillere user_id}} <img src="/img/Point_vert.gif">  {{/if}}</div> 
          {{/if}}
       </div> 
-      {{/if}}
+      {{/if}}-->
 
-     <!-- <div class="content-message-gauche"> {{{breaklines profile.mail}}}</div> --><span style="margin-left: 10px; margin-top: 10px;">{{profile.mail}}</span>
-        
+     <!-- <div class="content-message-gauche"> {{{breaklines profile.mail}}}</div> --><span style="margin-left: 10px; margin-top: 10px;">{{profile.mail}};</span>
+        <!--
       <div class="footer-message_acceuil">
             <a href="{{pathFor 'profil' }}">{{author_name}}</a>
             <div class="aider btn btn-sm btn-primary"><a href="{{pathFor 'messagerie' post_author=this._id}}">Contacter</a></div>
@@ -67,7 +69,7 @@
              
          
          
-       </div>
+       </div>-->
            
        </div>
 
