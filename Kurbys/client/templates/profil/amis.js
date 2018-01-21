@@ -1,3 +1,11 @@
+/*Template.amis.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+   this.subscribe('friends', user);
+    });
+});*/
+
+
 Template.amis.helpers({
     amis: function() {
     var userId = Meteor.userId();

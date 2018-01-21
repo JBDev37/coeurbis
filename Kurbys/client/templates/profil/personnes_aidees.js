@@ -1,3 +1,11 @@
+/*Template.personne_aide.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('comments');
+    });
+});*/
+
+
 Template.personne_aide.helpers({
   liste_personne: function() {
      var userId =  Router.current().params.post_author;

@@ -1,3 +1,9 @@
+Template.avertissement.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('avertissement_user');
+    });
+});
+
 Template.avertissement.helpers({
 
 	count_0:function() {

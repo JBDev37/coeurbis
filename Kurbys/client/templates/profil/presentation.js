@@ -1,15 +1,16 @@
 Template.presentation.onCreated(function() {
   var user= Router.current().params.post_author;
   this.autorun(() => {
-   this.subscribe('posts');
+   /*this.subscribe('posts');
     this.subscribe('comments');
-    this.subscribe('histoires');
-    this.subscribe('friends');
+    //this.subscribe('histoires');
+    this.subscribe('friends', user);
     this.subscribe('visites');
     this.subscribe('commentaires');
     this.subscribe('messages_signaler');
     this.subscribe('avertissement_user');
-    this.subscribe('favoris');
+    this.subscribe('requests');
+    this.subscribe('favoris', user);*/
     });
 
 
@@ -78,7 +79,7 @@ Template.presentation.events({
     var name = Meteor.users.findOne(this._id);
     var username = name.username;
     var user = Meteor.user();
-   
+    var name_from = user.username;
     var post = {
       from_id: Meteor.userId(),
       name_from_id: user.username,
@@ -95,7 +96,15 @@ Template.presentation.events({
             if (error)
                 return throwError(error.reason);
             //Router.go('postPage', {_id: result._id});
-        });  
+        });
+
+    Meteor.call(
+    'Demande_ami',
+    'jbroussat@orange.fr',
+    'Kurbys <kurbys@mail.kurbys.com>',
+    'Tu as reçu une demande en ami',
+    name_from
+    );  
   },
 
   'touchstart .disponible': function(e) {
@@ -156,13 +165,13 @@ Template.presentation.helpers({
   request: function() {
     var userId = Meteor.userId();
     var to_id = this._id;
-    var request1 = Requests.findOne({"from_id": userId , "to_id":to_id });
-    var request2 = Friends.findOne({"from_id": userId , "to_id":to_id });
-    var request3 = Friends.findOne({"from_id": to_id, "to_id":userId });
-    if (request1) { 
+    var request1 = Requests.find({"from_id": userId , "to_id":to_id }).count();
+    var request2 = Friends.find({"from_id": userId , "to_id":to_id }).count();
+    var request3 = Friends.find({"from_id": to_id, "to_id":userId });
+    if (request1>0) { 
       return 'disabled';
     } 
-    if (request2 || request3) { 
+    if (request2>0 || request3>0) { 
       return 'disabled';
     } 
     else {
@@ -173,13 +182,13 @@ Template.presentation.helpers({
     en_attente: function() {
     var userId = Meteor.userId();
     var to_id = this._id;
-    var request1 = Requests.findOne({"from_id": userId , "to_id":to_id });
-    var request2 = Friends.findOne({"from_id": userId , "to_id":to_id });
-    var request3 = Friends.findOne({"from_id": to_id, "to_id":userId });
-    if (request1) { 
+    var request1 = Requests.find({"from_id": userId , "to_id":to_id }).count();
+    var request2 = Friends.find({"from_id": userId , "to_id":to_id }).count();
+    var request3 = Friends.find({"from_id": to_id, "to_id":userId }).count();
+    if (request1>0) { 
       return 'En attente';
     }
-    if (request2 || request3) { 
+    if (request2>0 || request3>0) { 
       return 'Ami';
     }
      else {

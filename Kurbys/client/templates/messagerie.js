@@ -15,7 +15,7 @@ Template.messagerie.rendered = function() {
 
 
 };
-
+/*
 Template.messagerie.onCreated(function() {
   var user= Router.current().params.post_author;
   this.autorun(() => {
@@ -26,8 +26,8 @@ Template.messagerie.onCreated(function() {
     });
 
 
-});
-
+});*/
+/*
 Template.messagerie_mobile.onCreated(function() {
   var user= Router.current().params.post_author;
   this.autorun(() => {
@@ -37,7 +37,7 @@ Template.messagerie_mobile.onCreated(function() {
       this.subscribe('userBloquer');
     });
 
-});
+});*/
 
 Template.Item_message_gauche.helpers({
     favoris_mess: function() {
@@ -417,10 +417,10 @@ Template.messagerie.helpers({
 
     add_contact_chat: function() {
      
-    const handle = Meteor.subscribe('contact_Chat');
+    /*const handle = Meteor.subscribe('contact_Chat');
     Tracker.autorun(() => {
     const isReady = handle.ready();
-    if (isReady==true){
+    if (isReady==true){*/
               var user = Meteor.user();
               var userId = Meteor.userId();
               var to_id = this._id;
@@ -456,9 +456,9 @@ Template.messagerie.helpers({
                       });
                   
                   }
-     };
+     /*};
 
-    });
+    });*/
   },
 
     mes_contacts: function() {

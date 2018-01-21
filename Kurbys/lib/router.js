@@ -3,12 +3,12 @@ Router.configure({
   loadingTemplate: 'loading',
   notFoundTemplate: 'notFound',
    waitOn: function() {
-    var my_id = Meteor.userId();
+    
     return [
     /*Meteor.subscribe('notifications'),*/
     /*Meteor.subscribe('requests'),*/
     /*Meteor.subscribe('chat_notif'),*/
-    
+    Meteor.subscribe('all_chat'),
     Meteor.subscribe('userStatus'),
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('avertissement_user'),
@@ -17,27 +17,29 @@ Router.configure({
     Meteor.subscribe('lastlogin'),
     Meteor.subscribe('password'),
     Meteor.subscribe('conseilleres'),
+    Meteor.subscribe('comments'),
+    //Meteor.subscribe('contact_Chat_profil'),
+    Meteor.subscribe('posts'),
 
 
-    /*Meteor.subscribe('posts'),*/
-    /*Meteor.subscribe('comments'),*/
-    /*Meteor.subscribe('histoires'),*/
-    /*Meteor.subscribe('friends'),*/
-    /*Meteor.subscribe('userBloquer'),
-    Meteor.subscribe('contact_Chat'),*/
+    Meteor.subscribe('requests'),
+    Meteor.subscribe('all_histoires'),
+    Meteor.subscribe('friends'),
+    Meteor.subscribe('userBloquer'),
+    Meteor.subscribe('contact_Chat'),
     /*Meteor.subscribe('userIP'),*/
-    /*Meteor.subscribe('visites'),*/
+    Meteor.subscribe('visites'),
     Meteor.subscribe('commentaires'),
     /*Meteor.subscribe('user_bloquer_IP'),*/
     /*Meteor.subscribe('conseilleres_acceuil'),*/
-    /*Meteor.subscribe('favoris'),*/
+    Meteor.subscribe('all_favoris'),
      ];
      },
 
 });
 
 
-
+/*
 PostsListController = RouteController.extend({
   template: 'postsList',
   increment: 5,
@@ -73,7 +75,7 @@ PostsListController = RouteController.extend({
     ];
      },
  
-});
+});*/
 
 
 if (Meteor.isClient) { // google analytic
@@ -108,13 +110,6 @@ waitOn: function() {
 Router.route('/posts/:_id', {
   name: 'postPage',
   template: 'postPage',
-  waitOn: function() {
-    return  [
-    Meteor.subscribe('Singleposts', this.params._id),
-    Meteor.subscribe('comments', this.params._id),
-    Meteor.subscribe('favoris'),
-    ];
-     },
   data: function() {
    return Posts.findOne(this.params._id);
     },
@@ -124,13 +119,6 @@ Router.route('/posts/:_id', {
 Router.route('/posts_mobile/:_id', {
   name: 'postPage_mobile',
   template: 'postPage_mobile',
-    waitOn: function() {
-    return  [
-    Meteor.subscribe('Singleposts', this.params._id),
-    Meteor.subscribe('comments', this.params._id),
-    Meteor.subscribe('favoris'),
-    ];
-     },
   data: function() {
    return Posts.findOne(this.params._id);
     },
@@ -142,11 +130,6 @@ Router.route('/posts/:_id/edit', {
   data: function() {
    return Posts.findOne(this.params._id); 
  },
-  waitOn: function() {
-    return  [
-    Meteor.subscribe('Singleposts', this.params._id),
-    ];
-     },
 });
 
 Router.route('/contact', {
@@ -161,19 +144,7 @@ Router.route('/profil/:post_author?', {
 	data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('avertissement_user'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
+
 
 });
 
@@ -181,7 +152,7 @@ Router.route('/profil/:post_author?', {
 Router.route('/profil/:_id', {
 	name: 'mon_profil',
 	template : 'profil',
-  waitOn: function() {
+  /*waitOn: function() {
     return [
     Meteor.subscribe('posts'),
     Meteor.subscribe('comments'),
@@ -192,7 +163,7 @@ Router.route('/profil/:_id', {
     Meteor.subscribe('messages_signaler'),
     Meteor.subscribe('avertissement_user'),
      ];
-     },
+     },*/
 });
 
 Router.route('/messagerie/:post_author?', {
@@ -230,14 +201,7 @@ Router.route('/messagerie_mobile/:post_author?', {
     data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-    waitOn: function() {
-    return [
-     Meteor.subscribe('chat',this.params.post_author),
-     Meteor.subscribe('userBloquer'),
-     Meteor.subscribe('contact_Chat'),
-     Meteor.subscribe('favoris'),
-     ];
-     },
+
 
 });
 
@@ -386,19 +350,7 @@ Router.route('/favoris/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-    
-     ];
-     },
+
 });
 
 Router.route('/favoris_mobile/:post_author?', {
@@ -407,19 +359,6 @@ Router.route('/favoris_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-    
-     ];
-     },
 });
 
 
@@ -438,18 +377,7 @@ Router.route('/histoire/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
+
 });
 
 Router.route('/histoire_mobile/:post_author?', {
@@ -457,18 +385,6 @@ Router.route('/histoire_mobile/:post_author?', {
   template : 'histoire_mobile',
   data: function() {
     return Meteor.users.findOne(this.params.post_author);
-     },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
      },
 });
 
@@ -478,18 +394,7 @@ Router.route('/amis/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-    waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
+    
 });
 
 Router.route('/visites/:post_author?', {
@@ -498,18 +403,6 @@ Router.route('/visites/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 
@@ -521,18 +414,6 @@ Router.route('/visites_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/personne_aide/:post_author?', {
@@ -541,18 +422,6 @@ Router.route('/personne_aide/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/personne_aide_mobile/:post_author?', {
@@ -561,18 +430,6 @@ Router.route('/personne_aide_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/messages_poste/:post_author?', {
@@ -581,18 +438,6 @@ Router.route('/messages_poste/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/messages_poste_mobile/:post_author?', {
@@ -601,18 +446,6 @@ Router.route('/messages_poste_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/commentaires/:post_author?', {
@@ -641,18 +474,6 @@ Router.route('/commentaires_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     }, 
 });
 
 Router.route('/rediger_commentaires_mobile/:post_author?', {
@@ -672,18 +493,6 @@ Router.route('/ils_ont_aide/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/ils_ont_aide_mobile/:post_author?', {
@@ -692,19 +501,7 @@ Router.route('/ils_ont_aide_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
-})
+});
 
 Router.route('/alerte/:post_author?', {
   name: 'alerte',
@@ -732,18 +529,6 @@ Router.route('/avertissement/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     }, 
 });
 
 Router.route('/avertissement_mobile/:post_author?', {
@@ -752,18 +537,6 @@ Router.route('/avertissement_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
- waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/add_commentaire_mobile/:post_author?', {
@@ -829,18 +602,6 @@ Router.route('/profil_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 Router.route('/amis_mobile/:post_author?', {
@@ -849,18 +610,6 @@ Router.route('/amis_mobile/:post_author?', {
   data: function() {
     return Meteor.users.findOne(this.params.post_author); 
   },
-  waitOn: function() {
-    return [
-    Meteor.subscribe('posts'),
-    Meteor.subscribe('comments'),
-    Meteor.subscribe('histoires'),
-    Meteor.subscribe('friends'),
-    Meteor.subscribe('visites'),
-    Meteor.subscribe('commentaires'),
-    Meteor.subscribe('messages_signaler'),
-    Meteor.subscribe('favoris'),
-     ];
-     },
 });
 
 

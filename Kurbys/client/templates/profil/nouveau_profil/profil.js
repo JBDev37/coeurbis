@@ -6,22 +6,20 @@ Template.profil.onRendered(function() {
 })
 })
 
-Template.profil.onCreated(function() {
+/*Template.profil.onCreated(function() {
   var user= Router.current().params.post_author;
   this.autorun(() => {
    this.subscribe('posts');
     this.subscribe('comments');
-    this.subscribe('histoires');
-    this.subscribe('friends');
-    this.subscribe('visites');
+    //this.subscribe('histoires');
+    //this.subscribe('all_friends');
+    //this.subscribe('visites');
     this.subscribe('commentaires');
     this.subscribe('messages_signaler');
     this.subscribe('avertissement_user');
-    this.subscribe('favoris');
+    this.subscribe('favoris', user);
     });
-
-
-});
+});*/
 
 
 Template.profil.helpers({

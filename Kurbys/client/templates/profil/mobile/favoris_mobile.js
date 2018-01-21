@@ -1,3 +1,11 @@
+Template.favoris_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('favoris',user);
+    });
+});
+
+
 Template.favoris_mobile.helpers({
 mes_favoris: function() {
     var userId = Meteor.userId();

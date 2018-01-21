@@ -191,7 +191,7 @@ return route;
 });
 
 accountsUIBootstrap3.logoutCallback = function(error) {
-
+Router.go('postsList');
   if(error) console.log("Error:" + error);
   var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
@@ -201,13 +201,13 @@ accountsUIBootstrap3.logoutCallback = function(error) {
    if(conseillere_id){
    Conseilleres.update( conseillere_id,  {$set: {online:online}});
    }
-alert('ok');
-  Router.go('postsList');
+
+  
 }
 
-/*Accounts.onLogin(function () {
-Router.go('index');
-});*/
+Accounts.onLogin(function () {
+//Router.go('postsList');
+});
 
 
  /*var id = Meteor.userId();

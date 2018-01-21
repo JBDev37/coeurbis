@@ -1,3 +1,12 @@
+Template.postPage_mobile.onCreated(function() {
+  var user= Router.current().params._id;
+  this.autorun(() => {
+   this.subscribe('Singleposts', user);
+    this.subscribe('comments', user);
+    this.subscribe('favoris');
+    });
+});
+
 Template.postPage_mobile.helpers({
   comments_mobile: function() {
     return Comments.find({postId: this._id},{sort: {submitted: -1}} );

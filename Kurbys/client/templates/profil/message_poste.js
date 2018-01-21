@@ -1,3 +1,11 @@
+/*Template.messages_poste.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('posts');
+    });
+});*/
+
+
 Template.messages_poste.helpers({
   mes_messages: function() {
      var userId = Router.current().params.post_author;

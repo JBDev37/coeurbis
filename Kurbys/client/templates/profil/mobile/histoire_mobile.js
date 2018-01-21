@@ -1,3 +1,11 @@
+Template.histoire_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('histoires', user);
+    });
+});
+
+
 Template.histoire_mobile.helpers({
   histoires_mobile: function() {
     var curentUser = this._id;

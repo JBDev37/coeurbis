@@ -1,3 +1,11 @@
+Template.messages_poste_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('posts');
+    });
+});
+
+
 Template.messages_poste_mobile.helpers({
   mes_messages_mobile: function() {
      var userId = Meteor.userId();

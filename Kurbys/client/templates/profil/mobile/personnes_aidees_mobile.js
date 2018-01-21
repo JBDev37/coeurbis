@@ -1,3 +1,11 @@
+Template.personne_aide_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('comments');
+    });
+});
+
+
 Template.personne_aide_mobile.helpers({
   liste_personne_mobile: function() {
      var userId = Meteor.userId();

@@ -1,3 +1,10 @@
+Template.avertissement_mobile.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('avertissement_user');
+    });
+});
+
+
 Template.avertissement_mobile.helpers({
 
 	count_0:function() {

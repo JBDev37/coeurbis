@@ -50,10 +50,8 @@ Template.recherche_conseillere.events({
       });
       
       //document.getElementById('147').value="";
-     
 
 
-    
 
     //document.getElementById("me").value="";
     //Router.go('confirmation_conseillere');

@@ -1,3 +1,9 @@
+Template.ils_ont_aide_mobile.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('comments');
+    });
+});
+
 Template.ils_ont_aide_mobile.helpers({
   liste_personne_aide_mobile: function() {
      var userId = Meteor.userId();

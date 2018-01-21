@@ -1,3 +1,19 @@
+/*Template.notifications.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+   this.subscribe('notifications');
+    this.subscribe('comments');
+    this.subscribe('histoires');
+    this.subscribe('friends', user);
+    this.subscribe('visites');
+    this.subscribe('commentaires');
+    this.subscribe('messages_signaler');
+    this.subscribe('avertissement_user');
+    this.subscribe('favoris', user);
+    });
+});*/
+
+
 Template.notifications.helpers({
   notifications: function() {
     return Notifications.find({userId: Meteor.userId(), read: false});
@@ -205,15 +221,59 @@ Template.notificationItemFriends.events({
     Notifications.update(this._id, {$set: {read: true}});
   },
 
-  'touchstart .non': function() {
-    Requests.remove({"from_id": from_id , "to_id":user._id });
-    Requests.remove({"from_id": user._id , "to_id":from_id });
+  'touchstart .non': function(e) {
+    e.preventDefault();
+    var from_id = this.from_id;
+    var name_from_id = Meteor.users.findOne(this.from_id);
+    var username = name_from_id.username;
+    var user = Meteor.user();
+    
+    var post = {
+      from_id: from_id,
+      name_from_id: name_from_id,
+      to_id: user._id,
+      name_to_id: user.username
+    };
+
+    var errors = validatePost(post);
+    if (errors.from_id || errors.to_id)
+      return Session.set('postSubmitErrors', errors);
+    
+    Meteor.call('delete_request', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+
     Notifications.update(this._id, {$set: {read: true}});
   },
 
-    'click .non': function() {
-    Requests.remove({"from_id": from_id , "to_id":user._id });
-    Requests.remove({"from_id": user._id , "to_id":from_id });
+    'click .non': function(e) {
+      e.preventDefault();
+    var from_id = this.from_id;
+    var name_from_id = Meteor.users.findOne(this.from_id);
+    var username = name_from_id.username;
+    var user = Meteor.user();
+    
+    var post = {
+      from_id: from_id,
+      name_from_id: name_from_id,
+      to_id: user._id,
+      name_to_id: user.username
+    };
+
+    var errors = validatePost(post);
+    if (errors.from_id || errors.to_id)
+      return Session.set('postSubmitErrors', errors);
+    
+    Meteor.call('delete_request', post, function(error, result) { // on recherche la methode 'postInsert' 
+            // affiche l'erreur à l'utilisateur et s'interrompt
+            if (error)
+                return throwError(error.reason);
+            //Router.go('postPage', {_id: result._id});
+        });
+
     Notifications.update(this._id, {$set: {read: true}});
   }
 });

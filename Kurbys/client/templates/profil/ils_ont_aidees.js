@@ -1,3 +1,9 @@
+/*Template.ils_ont_aide.onCreated(function() {
+  this.autorun(() => {
+    this.subscribe('comments');
+    });
+});*/
+
 Template.ils_ont_aide.helpers({
   liste_personne_aide: function() {
      var userId = Meteor.userId();

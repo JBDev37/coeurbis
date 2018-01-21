@@ -1,3 +1,11 @@
+Template.postEdit.onCreated(function() {
+  var user= Router.current().params._id;
+  this.autorun(() => {
+   this.subscribe('Singleposts', user);
+    });
+});
+
+
 Template.postEdit.events({
   'submit form': function(e) {
     e.preventDefault();

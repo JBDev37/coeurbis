@@ -1,3 +1,10 @@
+Template.visites_mobile.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('visites');
+    });
+});
+
 Template.visites_mobile.helpers({
   visites_mobile: function() {
   	var userId = Meteor.userId();

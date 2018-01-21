@@ -1,5 +1,13 @@
+/*Template.mes_favoris.onCreated(function() {
+  var user= Router.current().params.post_author;
+  this.autorun(() => {
+    this.subscribe('favoris',user);
+    });
+});*/
+
+
 Template.mes_favoris.helpers({
-  mes_favoris: function() {
+  mes_favoris: function() {  
   	var userId = Meteor.userId();
     return Favoris.find({id_user_add_favoris:userId }, {sort: {post_date: -1}});
   },

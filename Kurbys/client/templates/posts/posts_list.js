@@ -1,10 +1,26 @@
+Template.postsList.onCreated(function() {
+  this.autorun(() => {
+    /*this.subscribe('comments');
+    this.subscribe('contact_Chat_profil');
+    this.subscribe('posts');*/
+    });
+});
+
+Template.classer.onCreated(function() {
+  this.autorun(() => {
+    /*this.subscribe('comments');
+    this.subscribe('contact_Chat_profil');
+    this.subscribe('posts');*/
+    });
+});
+
 Template.postsList.helpers({
   posts: function() {
     var limit= Router.current().params.postsLimit;
     var theme = Router.current().params.theme;
     
     if(theme){
-      return Posts.find({'categorie':theme}, {sort: {post_date: -1},limit:50});
+      return Posts.find({'categorie':theme}, {sort: {post_date: -1}});
     }else{
       return Posts.find({}, {sort: {post_date: -1}});
     }

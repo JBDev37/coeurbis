@@ -1,5 +1,5 @@
-Meteor.publish('posts', function(options) {
-  return Posts.find({}, options);
+Meteor.publish('posts', function() {
+  return Posts.find();
 });
 
 
@@ -24,28 +24,38 @@ Meteor.publish('comments', function() {
 
 Meteor.publish('notifications', function() {
   var my_id = Meteor.userId();
-  return Notifications.find({userId: my_id, read: false});
+  return Notifications.find({read: false});
 });
 
-Meteor.publish('histoires', function() {
+Meteor.publish('histoires', function(id) {
+  return Histoires.find({ "post_author": id });
+});
+
+Meteor.publish('all_histoires', function() {
   return Histoires.find();
 });
 
 Meteor.publish('requests', function() {
-  var my_id = Meteor.userId();
-  return Requests.find({to_id: my_id});
+  
+  return Requests.find();
 });
 
 Meteor.publish('friends', function() {
+   var my_id = Meteor.userId();
   return Friends.find();
 });
+
+
 
 Meteor.publish('chat', function(id) {
    var my_id = Meteor.userId();
       return Chat.find({$or :[{from_id:id, to_id:my_id},{to_id:id, from_id:my_id}]});
 });
 
-
+Meteor.publish('all_chat', function() {
+var my_id = Meteor.userId();
+      return Chat.find({$or :[{to_id:my_id},{from_id:my_id}]});
+});
 
 Meteor.publish('chat_notif', function() {
   var my_id = Meteor.userId();
@@ -145,7 +155,11 @@ Meteor.publish('conseilleres_left', function() {
      }});
 });
 
-Meteor.publish('favoris', function() {
+Meteor.publish('favoris', function(id) {
+  return Favoris.find({ "id_user_add_favoris": id });
+});
+
+Meteor.publish('all_favoris', function() {
   return Favoris.find();
 });
 

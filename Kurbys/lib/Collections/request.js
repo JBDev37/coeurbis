@@ -2,8 +2,8 @@ Requests = new Mongo.Collection('requests');
 
 Requests.allow({
   
-  update: function() { return true; },
-  remove: function() { return true; },
+  update: function(userId, post) {  return true },
+  remove: function(userId, post) {  return true },
 });
 
 Meteor.methods({

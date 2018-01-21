@@ -1,9 +1,11 @@
 Template.postPage.onCreated(function() {
-  this.comments = new ReactiveDict();
-  Meteor.subscribe('messages_signaler');
+  var user= Router.current().params._id;
+  this.autorun(() => {
+   this.subscribe('Singleposts', user);
+    this.subscribe('comments', user);
+    this.subscribe('favoris');
+    });
 });
-
-
 
 Template.postPage.helpers({
   comments: function() {
