@@ -410,6 +410,7 @@ Template.registerHelper("is_conseiller_user", function(id) {
 
 Template.registerHelper("last_login_conseillere", function() {
   var userId = Meteor.userId();
+  if(userId){
   var search = Meteor.users.findOne(userId);
   var lastLogin = search.status.lastLogin.date;
   var online = search.status.online;
@@ -420,7 +421,7 @@ Template.registerHelper("last_login_conseillere", function() {
    Conseilleres.update( conseillere_id,  {$set: {lastLogin:lastLogin}});
    Conseilleres.update( conseillere_id,  {$set: {online:online}});
    }
-  }
+  }}
 });
 
 /*

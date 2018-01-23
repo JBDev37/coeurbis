@@ -1,11 +1,11 @@
 Template.header.helpers({
-    id: function() {
+    /*id: function() {
     //Meteor.subscribe('contact_Chat');
     Meteor.subscribe('notifications');
     Meteor.subscribe('requests');
     Meteor.subscribe('chat_notif');   
     return Meteor.userId();
-  },
+  },*/
 
     notificationAlertes : function() {
     var userId = Meteor.userId();
@@ -191,18 +191,18 @@ return route;
 });
 
 accountsUIBootstrap3.logoutCallback = function(error) {
-Router.go('postsList');
+
   if(error) console.log("Error:" + error);
-  var userId = Meteor.userId();
+  /*var userId = Meteor.userId();
   var search = Meteor.users.findOne(userId);
   var online = search.status.online;
   var conseillere = Conseilleres.findOne({user_id :userId});
   var conseillere_id = conseillere._id; 
    if(conseillere_id){
    Conseilleres.update( conseillere_id,  {$set: {online:online}});
-   }
+   }*/
 
-  
+  Router.go('postsList');
 }
 
 Accounts.onLogin(function () {
